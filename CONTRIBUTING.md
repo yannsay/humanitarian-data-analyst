@@ -8,15 +8,10 @@ an agent's task matches the `description` in `SKILL.md`'s frontmatter.
 
 ## The ontology is generated, not hand-edited
 
-`ontology/` (the `index.yaml` + per-node files + `_axis.yaml`) is produced by
-`scripts/build_layer_a.py` from the upstream per-node draft YAMLs. **Do not edit
-`ontology/` files by hand** — change the source drafts and regenerate:
-
-```bash
-python3 scripts/build_layer_a.py <path-to>/ontology_drafts ontology
-```
-
-Requires Python 3 with `pyyaml`.
+`ontology/` (the `index.yaml` + per-node files + `_axis.yaml`) was generated from
+the upstream per-node draft YAMLs in `09_full_layer_a_implementation/`. **Do not
+edit `ontology/` files by hand** — update the source drafts and regenerate using the
+build script in that folder.
 
 ## Validate before you push
 

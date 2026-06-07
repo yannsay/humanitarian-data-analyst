@@ -52,8 +52,6 @@ humanitarian-data-analyst/
 │   ├── subpillars_1d/            # 27 nodes
 │   ├── pillars_2d/               # 6 nodes
 │   └── subpillars_2d/            # 16 nodes
-├── scripts/
-│   └── build_layer_a.py          # regenerates ontology/ from the source drafts
 ├── LICENSE
 └── package.json
 ```
@@ -65,15 +63,6 @@ The agent never loads the whole 180 KB ontology. On a question it reads
 then opens only the handful of node files it needs to read their `distinguish_from`
 fields before committing to a routing. This keeps the context footprint small while
 preserving the full framework detail on demand.
-
-## Regenerating the ontology
-
-`ontology/` is generated, not hand-edited. To rebuild it from the source per-node
-drafts:
-
-```bash
-python3 scripts/build_layer_a.py <path-to>/ontology_drafts ontology
-```
 
 ## Provenance & citation
 

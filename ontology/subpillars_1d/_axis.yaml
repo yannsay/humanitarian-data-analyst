@@ -1,0 +1,3 @@
+axis: subpillars_1d
+description: Children of the 1D pillars — finer-grained 'type of information' categories.
+lookup: one file per node in this folder

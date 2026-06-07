@@ -1,0 +1,5 @@
+axis: sectors
+description: The 11 humanitarian sectors (WASH, Protection, Health, Education, Food
+  Security, Shelter, Livelihoods, Nutrition, Logistics, Agriculture, Cross). Answers
+  'what domain of need?'
+lookup: one file per node in this folder

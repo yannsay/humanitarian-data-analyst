@@ -1,0 +1,69 @@
+subpillar_1d::Shock/Event->Hazard & Threats:
+  description: 'Tags excerpts that identify the danger source or threat agent causing or likely to cause
+    harm — the nature of what is threatening people, not the consequences for people or the structural
+    conditions that enabled it. In practice, analysts apply this tag across five overlapping hazard families:
+    natural and climate hazards (flash floods, riverine floods, drought, tropical cyclones, landslides,
+    earthquakes, extreme heat, desert locust infestations, and fire outbreaks in camp settings — including
+    near-term forecasts that name the specific hazard, e.g., "heavy and very heavy rainfall expected in
+    the next 72 hours," "drought conditions anticipated in early 2021"); epidemic and disease threats
+    (cholera outbreaks with reported case counts and epi-curves, Lassa fever transmission across states,
+    measles epidemics with declared outbreak status, yellow fever spread, malaria endemicity, COVID-19
+    spread and new variant risk, risk of zika/dengue/chikungunya escalating to epidemic level — including
+    outbreak risk forecasts, not just confirmed events); conflict and armed-actor threats (active armed-group
+    attacks including Boko Haram looting and ambushes, armed hostilities in cities like al-Hudaydah and
+    Tripoli, NSAG roadblocks, forced taxation, child recruitment by parties to conflict, attacks on schools
+    and healthcare workers — where the excerpt characterises the armed actor or pattern of violence as
+    a threat rather than describing displacement or casualties already produced); explosive hazard contamination
+    (landmines and ERW contaminating large areas of territory, IED detonations and the threat to civilians
+    and aid workers, mine contamination in areas of origin forcing displacement); and compound or simultaneous
+    hazards (the "triple threat" of floods, COVID-19 and desert locusts in Somalia; conflict-plus-flooding
+    in northeastern Nigeria; cyclone arriving on top of a pandemic). The distinguishing signal is that
+    the excerpt names or describes the danger agent itself — flood, armed group, cholera, IED, drought
+    — in terms of its presence, severity, geographic scope, or forecast likelihood, rather than cataloguing
+    what it did to people after the fact.
+
+    '
+  synonyms:
+  - hazard source
+  - threat agent
+  - danger source
+  - natural hazard
+  - epidemic threat
+  - armed threat
+  - explosive hazard
+  - climate shock
+  - outbreak risk
+  - compound hazard
+  example_questions:
+  - What specific hazards — floods, armed groups, disease outbreaks, mines, drought — are present or forecast
+    in this area, and how severe or widespread are they?
+  - Which epidemic threats (cholera, measles, COVID-19, Lassa fever) have been declared or are at elevated
+    risk of outbreak, and what is the current trajectory of transmission?
+  - What armed-actor threats — attacks, IED contamination, forced recruitment, roadblocks — are documented
+    in this context, and who is being targeted?
+  distinguish_from:
+    subpillar_1d::Shock/Event->Type And Characteristics: 'Hazard & Threats names the danger source (what
+      is threatening — armed group, flood, cholera outbreak, landmine field); Type And Characteristics
+      describes the nature, scale, and defining features of the shock event itself (whether it is sudden-onset
+      or protracted, its geographic extent, duration, and classification — the event as a phenomenon rather
+      than the threat agent producing it).
+
+      '
+    subpillar_1d::Context->Security & Stability: 'Hazard & Threats tags an active, operationally specific
+      threat (a named armed group conducting attacks, an ongoing IED threat, an armed confrontation in
+      a city); Context-> Security & Stability tags the background security environment — generalised insecurity,
+      political fragility, governance conditions, and systemic stability dynamics that frame the overall
+      context without identifying a discrete current threat.
+
+      '
+    subpillar_2d::At Risk->Risk And Vulnerabilities: 'Cross-axis distinction: Hazard & Threats (1D) characterises
+      the danger source from the shock-event perspective — what threat exists and what it looks like;
+      At Risk-> Risk And Vulnerabilities (2D) characterises populations'' exposure and susceptibility
+      to that danger — who is at risk, why they are vulnerable, and what makes certain groups disproportionately
+      affected. The hazard is the external agent; the risk is the intersection of that agent with a population''s
+      capacity to withstand it.
+
+      '
+  low_support: false
+  excerpt_count: 2141
+  saturation_batches: 10

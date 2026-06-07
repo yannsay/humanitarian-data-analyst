@@ -1,0 +1,47 @@
+pillar_2d::Humanitarian Conditions:
+  description: 'Humanitarian Conditions is an analytical lens applied to text that describes the current
+    lived state of affected populations — their present access to food, water, shelter, health care, education,
+    and protection, and whether that access meets minimum standards. Excerpts tagged here characterise
+    severity and prevalence of unmet needs across these domains: for example, rates of severe food insecurity
+    (IPC Phase 3+), malnutrition indicators (SAM, GAM, chronic stunting), WASH deficits (latrine unavailability,
+    unsafe water sources), shelter adequacy, health-system access gaps, GBV incidence, and education attendance
+    rates. The pillar also captures the negative coping strategies populations are currently using to
+    manage those conditions — reduced meal frequency, catastrophic debt, child labour, transactional sex
+    — which signal how far living standards have already degraded rather than how far they might fall.
+
+    '
+  synonyms:
+  - living standards
+  - humanitarian situation
+  - current needs severity
+  - population wellbeing
+  - sectoral gaps
+  - multi-sectoral needs
+  - conditions on the ground
+  example_questions:
+  - What proportion of households in assessed sites are in Crisis or Emergency food insecurity (IPC Phase
+    3+)?
+  - What are the most commonly reported illnesses or injuries among displaced populations in the past
+    two weeks?
+  - How many people currently lack access to functioning latrines or safe water in the assessed camps?
+  distinguish_from:
+    pillar_2d::Impact: 'Impact describes what the shock or crisis did to people and systems (casualties,
+      asset destruction, displacement triggered by an event), whereas Humanitarian Conditions describes
+      the ongoing lived state that results — how people are eating, sheltering, and coping right now,
+      regardless of which shock caused it.
+
+      '
+    pillar_2d::At Risk: 'At Risk describes future or potential vulnerability — populations who may fall
+      into crisis if conditions worsen — while Humanitarian Conditions describes the present state of
+      those already experiencing unmet needs or degraded living standards.
+
+      '
+    pillar_1d::Context: 'Context (a 1D pillar) captures background factors such as structural poverty
+      rates, pre-crisis baselines, and political economy; Humanitarian Conditions (a 2D pillar) is the
+      analytical lens applied to how those factors, combined with crisis, manifest as measurable deficits
+      in what people currently have and can do.
+
+      '
+  low_support: false
+  excerpt_count: 24694
+  saturation_batches: 4

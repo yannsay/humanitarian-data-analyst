@@ -1,0 +1,60 @@
+subpillar_1d::Shock/Event->Underlying/Aggravating Factors:
+  description: 'Tags excerpts that describe pre-existing structural conditions, chronic vulnerabilities,
+    or concurrent stressors that intensify or enable the shock itself — as distinct from the shock''s
+    downstream effects on people. In practice, analysts apply this tag to: background fragility that raises
+    shock severity (decades of conflict fracturing social fabric, endemic poverty with more than half
+    the population below $1/day, weak or overwhelmed health infrastructure from years of limited investment,
+    governance failures and corruption emptying institutional capacity); structural economic vulnerabilities
+    amplifying exposure (large informal sectors with no social protection, high dependence on remittances
+    or commodity exports, high public debt constraining fiscal response); environmental and physical conditions
+    worsening shock dynamics (saturated soils increasing flood risk, rainfed-only agriculture exposed
+    to temperature extremes, loss of vegetation accelerating erosion); and the compounding or cascading
+    of concurrent shocks onto populations with already depleted reserves (desert locusts landing on drought-affected
+    areas, COVID-19 arriving in a context of armed conflict and fragile health systems, a port explosion
+    following an economic collapse). The core signal is a condition or factor that existed before or alongside
+    the triggering event and made the shock worse, more likely, or harder to contain.
+
+    '
+  synonyms:
+  - pre-existing vulnerabilities
+  - structural fragility
+  - underlying risk factors
+  - chronic vulnerabilities
+  - compounding stressors
+  - background conditions
+  - enabling factors
+  - vulnerability drivers
+  example_questions:
+  - What pre-existing conditions — poverty, weak institutions, governance failures, environmental degradation
+    — made this shock more severe or more likely to occur?
+  - What concurrent or cascading stressors are stacking on top of each other, amplifying the scale of
+    the crisis?
+  - What structural economic or infrastructure weaknesses reduced the capacity to absorb the shock before
+    it escalated?
+  distinguish_from:
+    subpillar_1d::Shock/Event->Mitigating Factors: 'Direction of effect: Underlying/Aggravating Factors
+      worsen, amplify, or enable the shock (fragile health systems, endemic poverty, environmental degradation,
+      compound shocks); Mitigating Factors dampen or buffer the shock (preparedness, early-warning systems,
+      institutional buffers, emergency coordination). Same structural-conditions framing, opposite directional
+      sign — worsening = aggravating, dampening = mitigating.
+
+      '
+    subpillar_1d::Shock/Event->Hazard & Threats: 'Hazard & Threats describes the nature and source of
+      the danger itself (armed groups, flood, disease outbreak); Underlying/Aggravating Factors describes
+      pre-existing or concurrent conditions that make that danger worse — not what the hazard is, but
+      what fed into its severity.
+
+      '
+    subpillar_2d::Impact->Driver/Aggravating Factors: 'Critical 1D/2D cross-axis distinction: Shock/Event->Underlying/Aggravating
+      Factors (1D) tags factors that feed into or worsen the shock event itself — the crisis as a phenomenon
+      (e.g., fragile health systems making a pandemic harder to contain, saturated soils intensifying
+      flooding, compound shocks cascading on depleted populations). Impact->Driver/Aggravating Factors
+      (2D) tags factors that drive or worsen the impact on people — why affected populations suffer more
+      (e.g., poverty limiting coping, lack of documentation blocking service access, gender dynamics increasing
+      exposure to violence). Same vocabulary ("pre-existing vulnerabilities", "structural fragility"),
+      different referent: the shock event versus the human consequences.
+
+      '
+  low_support: false
+  excerpt_count: 537
+  saturation_batches: 7

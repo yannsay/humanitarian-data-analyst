@@ -1,0 +1,45 @@
+pillar_2d::At Risk:
+  description: 'Analytical lens applied when an excerpt is used to assess which populations are exposed
+    to potential harm — whether from conflict, disease, natural hazard, protection violation, or deteriorating
+    coping capacity — rather than describing harm that has already materialised. Excerpts typically quantify
+    the size of an at-risk population (e.g. "775,000 are at extreme risk"), identify which sub-groups
+    face elevated exposure (IDPs, women and girls, children, elderly, persons with disabilities, migrants
+    without legal status), or trace the pathways through which current conditions — overcrowding, negative
+    coping, restricted access, lack of documentation — heighten future vulnerability. The same text can
+    carry a 1D tag describing a shock and a 2D At Risk tag capturing who is endangered by it.
+
+    '
+  synonyms:
+  - population at risk
+  - exposure to harm
+  - vulnerability
+  - risk of famine
+  - protection risk
+  - elevated risk
+  - susceptibility
+  - pre-crisis vulnerability
+  example_questions:
+  - Which population groups face the highest risk of GBV or trafficking in this crisis?
+  - What proportion of households are at risk of forced eviction, famine, or disease outbreak, and what
+    factors drive their exposure?
+  - How do displacement status, gender, age, or legal status determine differential risk levels across
+    the affected population?
+  distinguish_from:
+    pillar_2d::Humanitarian Conditions: 'At Risk captures potential or future harm and who is exposed
+      to it; Humanitarian Conditions captures the actual, present-day state of living standards, access
+      to services, and wellbeing already being experienced.
+
+      '
+    pillar_2d::Impact: 'At Risk describes exposure to a threat that has not fully materialised; Impact
+      describes harm that has already occurred and can be attributed to a shock or crisis event.
+
+      '
+    pillar_1d::Displacement: 'Displacement (1D) tags excerpts describing movement of people as a factual
+      event (numbers, locations, triggers); At Risk (2D) tags the same or related excerpts when the analytical
+      purpose is to identify that displaced populations face heightened exposure to further harm (GBV,
+      eviction, disease, exploitation).
+
+      '
+  low_support: false
+  excerpt_count: 5640
+  saturation_batches: 6

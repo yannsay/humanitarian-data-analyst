@@ -1,0 +1,5 @@
+axis: pillars_1d
+description: Pillars 1D describe the TYPE OF INFORMATION (Context, Shock/Event, Displacement,
+  Casualties, Humanitarian Access, Information And Communication). Orthogonal to the
+  2D axis.
+lookup: one file per node in this folder

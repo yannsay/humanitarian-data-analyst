@@ -1,0 +1,44 @@
+subpillar_1d::Context->Socio Cultural:
+  description: 'Covers the social norms, cultural practices, and community power structures that shape
+    behaviour and access in humanitarian contexts, including patriarchal gender norms governing women''s
+    mobility, decision-making authority, and property rights; harmful traditional practices such as child
+    and forced marriage, purdah, and menstruation taboos that restrict access to services; and stigmatisation
+    and discrimination based on ethnicity, religion, displacement status, or association with armed groups.
+    Also encompasses inter-community dynamics — ethnic, religious, and clan-based tensions; host-IDP social
+    cohesion; customary accountability mechanisms; and cultural practices (food taboos, traditional healing,
+    gendered divisions of labour) that mediate access to food, WASH, health, and education.
+
+    '
+  synonyms:
+  - gender norms
+  - cultural practices
+  - social norms
+  - community dynamics
+  - social cohesion
+  - traditional practices
+  - ethnic and religious tensions
+  - inter-community relations
+  example_questions:
+  - What cultural or social norms restrict women's and girls' access to services, resources, or decision-making
+    in this context?
+  - What are the main sources of inter-community tension — ethnic, religious, or between displaced and
+    host populations?
+  - What harmful traditional practices (child marriage, food taboos, menstruation restrictions) affect
+    vulnerability in this crisis?
+  distinguish_from:
+    subpillar_1d::Context->Demography: 'Demography covers the quantitative composition of the population
+      — counts, ratios, age/sex breakdowns, and household structure — whereas Socio Cultural covers the
+      norms, practices, and relational dynamics that shape how different groups behave and access resources,
+      regardless of their numerical size.
+
+      '
+    subpillar_1d::Context->Legal & Policy: 'Legal & Policy covers formal legislation, codified rights,
+      and institutional frameworks (e.g. discriminatory inheritance law, absence of a minimum marriage
+      age in statute), whereas Socio Cultural covers the informal norms, customs, and community-level
+      practices that operate independently of or alongside formal law (e.g. patrilineal land inheritance
+      customs, purdah, community shaming mechanisms).
+
+      '
+  low_support: false
+  excerpt_count: 707
+  saturation_batches: 24

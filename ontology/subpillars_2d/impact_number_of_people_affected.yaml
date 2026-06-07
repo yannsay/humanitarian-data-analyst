@@ -1,0 +1,43 @@
+subpillar_2d::Impact->Number Of People Affected:
+  description: 'Quantitative counts of people reached by a specific shock event or crisis driver — reported
+    as individuals, households, or demographic sub-groups (children, women, IDPs, refugees, etc.) who
+    were directly exposed to conflict, flooding, fire, disease outbreak, or displacement. Figures are
+    typically sourced from rapid assessments, DTM programmes, or situation reports and are anchored to
+    a named incident, geographic area, and reporting period. The count establishes the scale of exposure
+    to a shock rather than assessing the severity of resulting deprivation or the number currently unable
+    to meet their needs.
+
+    '
+  synonyms:
+  - people affected
+  - affected population
+  - individuals affected
+  - households affected
+  - affected persons
+  - number of people reached by the crisis
+  - affected communities
+  example_questions:
+  - How many people were affected by the flooding across Aleppo and Idlib governorates?
+  - How many individuals were affected by the fire outbreak in the Rohingya refugee camps in Cox's Bazar?
+  - How many children and adults were displaced or affected by armed group attacks in Ituri territory?
+  distinguish_from:
+    subpillar_2d::Humanitarian Conditions->Number Of People In Need: 'This node counts people exposed
+      to a shock event (e.g. 220,000 affected by Lake Chad Basin flooding); Number Of People In Need counts
+      people whose deprivation has reached a threshold requiring humanitarian assistance regardless of
+      when the causative shock occurred.
+
+      '
+    pillar_1d::Casualties: 'Casualties records deaths and injuries sustained in an event; Number Of People
+      Affected records the broader population exposed to or disrupted by that same event, most of whom
+      are not killed or injured.
+
+      '
+    subpillar_2d::Impact->Impact On People: 'Impact On People describes the qualitative or sectoral consequences
+      experienced by affected populations (e.g. loss of livelihoods, restricted access to services, protection
+      risks); Number Of People Affected provides the headcount of who was exposed to the shock, not what
+      happened to them as a result.
+
+      '
+  low_support: false
+  excerpt_count: 708
+  saturation_batches: 7

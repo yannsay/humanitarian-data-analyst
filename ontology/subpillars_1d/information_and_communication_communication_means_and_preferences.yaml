@@ -1,0 +1,43 @@
+subpillar_1d::Information And Communication->Communication Means And Preferences:
+  description: 'Covers the channels, formats, and sources through which affected populations receive and
+    prefer to receive information, including radio, television, social media (Facebook, WhatsApp), loudspeakers
+    and miking, face-to-face/door-to-door sessions, posters and IEC materials, and hotlines or IVR systems.
+    Encompasses which sources communities trust most — health workers, NGOs, religious leaders, community
+    leaders, family and friends, or government officials — and how these preferences vary by population
+    group, geography (camp vs. host community, rural vs. urban), gender, and language or literacy constraints.
+    Also captures how humanitarian actors select and adapt channels to match community preferences, including
+    use of local languages, trusted intermediaries, and low-tech formats where digital access is limited.
+
+    '
+  synonyms:
+  - communication channels
+  - information sources
+  - preferred media
+  - trusted sources
+  - channel mix
+  - community engagement modalities
+  - risk communication platforms
+  example_questions:
+  - What are the primary channels through which IDPs in camp settings receive information, and which sources
+    do they trust most?
+  - How do communication channel preferences differ between women and men, or between rural and urban
+    populations?
+  - Are there population groups not reached by current communication modalities, and what alternative
+    channels might close those gaps?
+  distinguish_from:
+    subpillar_1d::Information And Communication->Information Challenges And Barriers: 'Information Challenges
+      And Barriers focuses on why people cannot access information (connectivity gaps, censorship, language
+      exclusion, physical access constraints), whereas Communication Means And Preferences focuses on
+      which channels and sources people actually use or prefer when information is available to them.
+
+      '
+    subpillar_1d::Information And Communication->Knowledge And Info Gaps (Pop): 'Knowledge And Info Gaps
+      (Pop) addresses what substantive information people lack or misunderstand (e.g. not knowing COVID
+      symptoms or return assistance entitlements), whereas Communication Means And Preferences addresses
+      the delivery mechanism — how and from whom people receive or want to receive information, regardless
+      of its content.
+
+      '
+  low_support: false
+  excerpt_count: 603
+  saturation_batches: 7

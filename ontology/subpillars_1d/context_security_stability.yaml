@@ -1,0 +1,41 @@
+subpillar_1d::Context->Security & Stability:
+  description: 'Captures the prevailing armed conflict environment and insecurity conditions that form
+    the structural backdrop to a crisis, including the activity and territorial reach of state forces
+    and non-state armed groups (NSAGs), patterns of armed clashes, airstrikes, and ceasefire dynamics.
+    Encompasses civilian exposure to violence — killings, abductions, explosive hazards (IEDs, landmines,
+    ERWs) — and the cascading effect of that insecurity on displacement, humanitarian access, and the
+    functioning of basic services such as health, education, and markets.
+
+    '
+  synonyms:
+  - armed conflict environment
+  - insecurity conditions
+  - conflict dynamics
+  - security situation
+  - armed group activity
+  - volatility and instability
+  - security deterioration
+  example_questions:
+  - How has the security situation evolved in the affected area over the past three months, and which
+    armed actors are present?
+  - To what extent do explosive hazards (landmines, IEDs, ERWs) restrict civilian movement and humanitarian
+    access?
+  - Which population groups face the highest exposure to violence, abductions, or forced displacement
+    due to NSAG activity?
+  distinguish_from:
+    subpillar_1d::Shock/Event->Hazard & Threats: 'Hazard & Threats labels a discrete, bounded triggering
+      event or acute threat (e.g. a specific attack, an imminent offensive), whereas Context->Security
+      & Stability describes the persistent armed conflict landscape — the cumulative presence of armed
+      groups, ongoing hostilities, and entrenched insecurity — that constitutes the structural environment
+      rather than a single shock.
+
+      '
+    subpillar_1d::Context->Politics: 'Context->Politics covers governance structures, political fragmentation,
+      elections, and state legitimacy, while Context->Security & Stability focuses on the military and
+      armed-group dimension — combat operations, territorial control, ceasefire agreements, and the physical
+      safety of civilians — even when the two overlap in fragile-state settings.
+
+      '
+  low_support: false
+  excerpt_count: 3625
+  saturation_batches: 5

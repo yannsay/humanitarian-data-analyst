@@ -1,0 +1,52 @@
+subpillar_2d::Humanitarian Conditions->Coping Mechanisms:
+  description: 'Assesses the range and severity of strategies that affected populations adopt to manage
+    shortfalls in basic needs — food, water, income, health, and shelter — as a lens on how far households
+    have depleted their capacity to sustain themselves. Excerpts centre on two axes: consumption-reducing
+    strategies (skipping or reducing meals, eating wild foods or less preferred foods, forgoing adults''
+    meals so children can eat) and resource-mobilising strategies at escalating cost (borrowing money,
+    buying on credit, selling assets, exhausting savings, withdrawing children from school to work, child
+    labour, child marriage, survival sex, and begging). The severity classification — stress, crisis,
+    or emergency — is used across sources (rCSI, IPC livelihood coping, LCSM) to signal how close populations
+    are to irreversible depletion of coping capacity.
+
+    '
+  synonyms:
+  - negative coping strategies
+  - coping strategy index (rCSI / LCSM)
+  - livelihood coping strategies
+  - harmful coping mechanisms
+  - emergency coping mechanisms
+  - survival strategies
+  - adaptive strategies
+  example_questions:
+  - What proportion of households are using crisis or emergency livelihood coping strategies, and how
+    does this differ by displacement status (IDP, returnee, host community)?
+  - Which specific coping strategies — meal reduction, debt, asset sales, child labour, or survival sex
+    — are most prevalent, and what do prevalence rates indicate about the remaining coping capacity of
+    the population?
+  - How has the use of negative coping mechanisms changed over time, and which sub-groups (female-headed
+    households, households with disabled members, camp IDPs) show the highest rates of crisis or emergency
+    strategies?
+  distinguish_from:
+    subpillar_2d::Humanitarian Conditions->Living Standards: 'Living Standards focuses on the objective
+      conditions of daily life (shelter quality, water access, sanitation, food consumption scores), while
+      Coping Mechanisms focuses on the behavioural responses households adopt — often at personal cost
+      — when those conditions fall short.
+
+      '
+    subpillar_2d::Humanitarian Conditions->Physical And Mental Well Being: 'Physical And Mental Well Being
+      assesses health and psychosocial outcomes (disease, injury, psychological distress) that result
+      from conditions and shocks; Coping Mechanisms tracks the strategies populations use to manage those
+      conditions, some of which (survival sex, child marriage, reduced health spending) directly generate
+      the harm captured under wellbeing.
+
+      '
+    subpillar_2d::Impact->Driver/Aggravating Factors: 'Driver/Aggravating Factors identifies the causes
+      and stressors that produce deteriorating conditions (conflict, price shocks, COVID restrictions,
+      floods); Coping Mechanisms records the population''s behavioural response to those conditions, not
+      the conditions themselves.
+
+      '
+  low_support: false
+  excerpt_count: 2573
+  saturation_batches: 7

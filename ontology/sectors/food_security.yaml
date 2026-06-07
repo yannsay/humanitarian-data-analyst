@@ -1,0 +1,62 @@
+sector::Food Security:
+  description: 'Covers household- and population-level food access, availability, and consumption, assessed
+    through classification frameworks such as the Integrated Food Security Phase Classification (IPC)
+    and Cadre Harmonise (CH) — ranging from Minimal (Phase 1) through Crisis (Phase 3), Emergency (Phase
+    4), and Catastrophe/Famine (Phase 5) — and through consumption-side metrics including the Food Consumption
+    Score (FCS), meal frequency, dietary diversity, and the proportion of households with poor or borderline
+    food consumption. Encompasses market monitoring of staple commodity prices (wheat, sorghum, rice,
+    cooking oil) and food basket costs (Minimum Expenditure Basket, Survival MEB), analysis of coping
+    strategies (reduced Coping Strategy Index behaviours such as eating less preferred food, skipping
+    meals, adults eating less so children can eat, consuming wild foods, selling assets), and delivery
+    of food assistance including general food distributions, cash-based transfers, commodity vouchers,
+    and school feeding programmes. Key drivers tracked within this sector include conflict-driven market
+    disruption, displacement severing subsistence production, economic shocks and inflation eroding purchasing
+    power, and seasonal lean periods.
+
+    '
+  synonyms:
+  - food insecurity
+  - acute food insecurity
+  - IPC phase classification
+  - food consumption score
+  - FCS
+  - food basket cost
+  - dietary diversity
+  - coping strategies
+  - general food distribution
+  - food assistance
+  - SMEB
+  - lean season
+  example_questions:
+  - What proportion of households are in IPC Phase 3 or worse, and how has this changed since the last
+    assessment period?
+  - What is the share of households with poor or borderline food consumption, broken down by displacement
+    status?
+  - How have staple food prices changed over the past six months, and what is the impact on household
+    purchasing power relative to the minimum food basket?
+  distinguish_from:
+    sector::Nutrition: 'Food Security covers household food access, consumption quality, and coping strategies
+      (IPC phases, FCS, ration distributions) — the demand and intake side — whereas Nutrition covers
+      the resulting physiological and anthropometric status of individuals, including SAM/MAM prevalence,
+      MUAC screening, therapeutic feeding admissions, and IYCF counselling; food insecurity is frequently
+      cited as a driver of poor nutritional outcomes, but the two sectors use different measurement tools
+      and target different intervention types.
+
+      '
+    sector::Agriculture: 'Agriculture covers the production side — crop yields, livestock herd conditions,
+      input access, seasonal harvests, and pastoral livelihoods — whereas Food Security covers the consumption
+      side, assessing whether households can access and afford adequate food regardless of whether that
+      food is self-produced or market-purchased; agricultural shocks (failed harvests, locust damage,
+      flood-destroyed crops) appear in Food Security analysis only as drivers of food access deterioration.
+
+      '
+    sector::Livelihoods: 'Livelihoods covers income-generating activities, employment, asset ownership,
+      and economic capacity, whereas Food Security focuses specifically on whether that income translates
+      into adequate food consumption; loss of livelihoods is tracked in Food Security analysis as a driver
+      of reduced purchasing power and food access, but the livelihood activity itself (job type, asset
+      base, market participation) belongs to the Livelihoods sector.
+
+      '
+  low_support: false
+  excerpt_count: 8519
+  saturation_batches: 8

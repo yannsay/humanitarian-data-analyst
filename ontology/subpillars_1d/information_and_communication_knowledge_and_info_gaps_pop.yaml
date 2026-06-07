@@ -1,0 +1,47 @@
+subpillar_1d::Information And Communication->Knowledge And Info Gaps (Pop):
+  description: 'Captures measured or reported deficits in what affected populations actually know about
+    hazards, services, and protective behaviours — distinct from the structural barriers that prevent
+    information from reaching them. Typical findings include quantified awareness levels (e.g. "58% of
+    sub-districts had sufficient knowledge of COVID-19 risk"; "53% of older people do not know where the
+    nearest testing facility is"), subject-specific knowledge gaps (what to do if sick, how to get tested,
+    what services exist, how to access aid), and misconceptions or false beliefs held by communities (myths
+    about disease transmission, conspiracy theories attributing COVID-19 to 5G or government schemes,
+    rumours linking vaccines to harm). Also covers gaps in risk perception — populations that have heard
+    of a hazard but do not consider it serious or relevant to themselves — and knowledge gaps disproportionately
+    affecting sub-groups such as children, women, IDPs, or persons with disabilities who receive less
+    information even when general community awareness is high.
+
+    '
+  synonyms:
+  - community knowledge gaps
+  - population awareness deficits
+  - information needs of affected populations
+  - health literacy gaps
+  - risk perception gaps
+  - misconceptions and false beliefs
+  - rumours and misinformation (belief side)
+  - service awareness gaps
+  example_questions:
+  - What proportion of the affected population knows where to go for healthcare, testing, or humanitarian
+    assistance, and which sub-groups have the lowest service-location awareness?
+  - What specific knowledge gaps remain after sensitisation campaigns — e.g., do communities know what
+    to do if they develop symptoms, or only that a hazard exists?
+  - To what extent do misconceptions, false beliefs, or low risk perception prevent protective behaviour
+    even among populations that have received information?
+  distinguish_from:
+    subpillar_1d::Information And Communication->Knowledge And Info Gaps (Hum): 'Knowledge And Info Gaps
+      (Pop) concerns deficits in what affected populations themselves know or believe; Knowledge And Info
+      Gaps (Hum) concerns gaps in data and evidence available to humanitarian actors for planning and
+      decision-making.
+
+      '
+    subpillar_1d::Information And Communication->Information Challenges And Barriers: 'Information Challenges
+      And Barriers covers structural obstacles that prevent information from reaching populations (infrastructure,
+      literacy, censorship, cost); Knowledge And Info Gaps (Pop) covers what is actually missing from
+      the population''s knowledge once information exposure has occurred — i.e., the content deficit rather
+      than the access deficit.
+
+      '
+  low_support: false
+  excerpt_count: 583
+  saturation_batches: 20

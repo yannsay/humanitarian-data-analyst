@@ -1,0 +1,5 @@
+axis: pillars_2d
+description: 'Pillars 2D describe the ANALYTICAL LENS (Humanitarian Conditions, At
+  Risk, Capacities & Response, Impact, Priority Interventions/Needs). Orthogonal to
+  1D: an excerpt can carry both a 1D and a 2D tag.'
+lookup: one file per node in this folder

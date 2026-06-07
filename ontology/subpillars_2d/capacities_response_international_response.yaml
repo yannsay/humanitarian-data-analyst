@@ -1,0 +1,47 @@
+subpillar_2d::Capacities & Response->International Response:
+  description: 'Covers the actions, outputs, and capacities of international actors — UN agencies (UNICEF,
+    UNHCR, WHO, WFP, IOM, UNFPA, OCHA), international NGOs (MSF, IRC, DRC, NRC, Save the Children), bilateral
+    donors (USAID/BHA, EU, Germany, Canada), and the Red Cross/Red Crescent Movement — in delivering or
+    enabling humanitarian assistance. Entries typically report quantified delivery (beneficiary counts,
+    commodity volumes, funding amounts, coverage percentages) and inter-agency coordination structures
+    such as clusters, Humanitarian Country Teams, and multi-sector response plans. Also encompasses international
+    actors building in-country capacity: deploying mobile teams, training health workers, supplying laboratory
+    equipment, and prepositioning supplies at scale.
+
+    '
+  synonyms:
+  - UN agency response
+  - INGO operations
+  - international humanitarian operations
+  - donor-funded humanitarian assistance
+  - inter-agency response
+  - UN cluster response
+  - international aid delivery
+  - multilateral humanitarian funding
+  example_questions:
+  - How many people did UNICEF, WFP, and WHO reach with food and health assistance in this reporting period,
+    and what was the funding gap against the appeal?
+  - Which international organizations are operational in this area and what sectors do they cover?
+  - What is the total value of international humanitarian funding allocated to this response, and which
+    donors contributed?
+  distinguish_from:
+    subpillar_2d::Capacities & Response->National Response: 'International Response covers actors whose
+      mandate, funding, and headquarters are external to the affected country (UN agencies, INGOs, bilateral
+      donors), whereas National Response covers the affected state''s own government institutions, national
+      NGOs, and community-based organizations.
+
+      '
+    subpillar_2d::Capacities & Response->People Reached/Response Gaps: 'International Response focuses
+      on what international actors have done or are capable of doing (operations, funding, coordination),
+      whereas People Reached/Response Gaps focuses on coverage outcomes — who was or was not reached and
+      where unmet needs remain.
+
+      '
+    pillar_2d::Priority Interventions: 'International Response describes assistance that has been delivered
+      or is underway by international actors, whereas Priority Interventions identifies what should be
+      done next (recommended actions, strategic priorities).
+
+      '
+  low_support: false
+  excerpt_count: 9986
+  saturation_batches: 5

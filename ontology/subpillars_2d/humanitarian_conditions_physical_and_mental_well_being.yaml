@@ -1,0 +1,55 @@
+subpillar_2d::Humanitarian Conditions->Physical And Mental Well Being:
+  description: 'Captures the actual health and psychosocial state of affected populations as an outcome
+    of humanitarian conditions — measured through infectious disease burden (prevalence and case fatality
+    rates for cholera, COVID-19, malaria, measles, Ebola, dengue, diphtheria, Lassa fever), acute and
+    chronic malnutrition status (SAM/MAM rates by MUAC and WHZ, stunting prevalence, mortality rates among
+    children under five), and injuries or death resulting directly from conflict, including war wounds,
+    IED casualties, and civilian fatality counts. Also encompasses mental health and psychosocial outcomes
+    arising from prolonged displacement, violence exposure, and GBV — including PTSD, depression, anxiety,
+    trauma from conflict, and psychological distress documented in affected populations (e.g., an estimated
+    half of Afghanistan''s population experiencing depression, anxiety, or PTSD due to violence), as well
+    as reproductive and maternal health outcomes such as maternal mortality and acute malnutrition among
+    pregnant and breastfeeding women.
+
+    '
+  synonyms:
+  - physical health status
+  - mental health outcomes
+  - psychosocial wellbeing
+  - disease burden
+  - morbidity and mortality
+  - nutritional status
+  - MHPSS outcomes
+  - population health conditions
+  example_questions:
+  - What is the current prevalence of acute malnutrition (SAM and MAM) among children aged 6–59 months,
+    and how does this compare to emergency thresholds?
+  - What infectious disease outbreaks are active in the assessed area, and what are the case counts, case
+    fatality rates, and most affected age or population groups?
+  - What proportion of the affected population is experiencing psychological distress, depression, PTSD,
+    or trauma, and what groups — survivors of GBV, conflict-displaced households, detained populations
+    — are most affected?
+  distinguish_from:
+    subpillar_2d::Humanitarian Conditions->Living Standards: 'Living Standards covers the material and
+      service conditions of daily life — shelter quality, water and sanitation access, food consumption
+      scores — whereas Physical And Mental Well Being captures health and psychosocial outcomes that result
+      from those conditions: the disease, injury, malnutrition, or psychological harm that manifests in
+      the population''s bodies and minds.
+
+      '
+    sector::Health: 'Health (sector axis) covers health system functionality, facility access, service
+      delivery, and outbreak response as operational dimensions; Physical And Mental Well Being is an
+      analytical lens on the population''s resulting health state — what disease burden and psychosocial
+      harm actually exists — irrespective of which sector delivers the response.
+
+      '
+    subpillar_2d::Impact->Impact On People: 'Impact On People captures the direct, often immediate consequences
+      of a shock or event on the population (displacement triggered by an attack, livelihood loss from
+      flooding); Physical And Mental Well Being captures the cumulative health and psychosocial condition
+      of populations, which may reflect months or years of compounding exposure rather than a single event''s
+      impact.
+
+      '
+  low_support: false
+  excerpt_count: 8150
+  saturation_batches: 4

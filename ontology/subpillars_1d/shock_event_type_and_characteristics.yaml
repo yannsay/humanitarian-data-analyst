@@ -1,0 +1,44 @@
+subpillar_1d::Shock/Event->Type And Characteristics:
+  description: 'Covers the identification, classification, and descriptive properties of the shock or
+    event driving a humanitarian crisis, including its type (epidemic, natural disaster, armed conflict,
+    fire, infrastructure failure), onset pattern (sudden vs. slow, first confirmed date, geographic spread),
+    and magnitude (number of confirmed cases or people affected, storm category, flood levels, outbreak
+    wave). Excerpts document events as discrete, named phenomena — COVID-19 pandemic waves, cholera or
+    measles outbreaks, cyclones (Yaas, Gati), volcanic eruptions (Nyiragongo), monsoon floods, desert
+    locust swarms, camp fires, and armed group attacks — with quantitative characteristics (case counts,
+    positivity rates, affected-population figures, storm intensity) that define the scope and nature of
+    the shock itself, not its causes or downstream consequences.
+
+    '
+  synonyms:
+  - event type
+  - hazard type
+  - shock classification
+  - disaster type
+  - outbreak characterization
+  - crisis onset
+  - event profile
+  - natural disaster type
+  example_questions:
+  - What type of shock is driving the current crisis — epidemic, flood, conflict, or compound event —
+    and when did it begin?
+  - How many confirmed cases or people affected have been recorded, and has the outbreak reached a second
+    wave?
+  - Was the flood flash or riverine, what was the storm category, and which geographic areas were most
+    affected?
+  distinguish_from:
+    subpillar_1d::Shock/Event->Hazard & Threats: 'Hazard & Threats covers prospective or ongoing risks
+      and dangers that could cause harm (e.g., forecast rainfall, armed group presence, disease risk zones),
+      whereas Type And Characteristics describes the shock that has already materialised — its identity,
+      onset date, measured magnitude, and spatial extent.
+
+      '
+    subpillar_1d::Shock/Event->Underlying/Aggravating Factors: 'Underlying/Aggravating Factors addresses
+      the pre-existing structural conditions or concurrent stressors that intensify a shock''s impact
+      (e.g., weakened health systems, poverty, displacement density), whereas Type And Characteristics
+      focuses on the nature and measurable properties of the shock event itself.
+
+      '
+  low_support: false
+  excerpt_count: 1387
+  saturation_batches: 7

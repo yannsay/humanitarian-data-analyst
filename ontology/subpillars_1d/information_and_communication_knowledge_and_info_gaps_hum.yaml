@@ -1,0 +1,46 @@
+subpillar_1d::Information And Communication->Knowledge And Info Gaps (Hum):
+  description: 'Covers gaps in the data, evidence, and situational awareness available to humanitarian
+    actors — encompassing unknown or unverifiable figures (true case counts, casualty totals, displacement
+    numbers believed to far exceed official tallies), geographic and population- group coverage gaps where
+    specific areas or groups remain unassessed due to insecurity, inaccessibility, or insufficient humanitarian
+    footprint, and missing or outdated secondary data (censuses, sector information systems, facility
+    functionality reports) that limit planning and targeting. Also captures structural deficiencies in
+    humanitarian information management — inadequate data collection capacity within clusters (WASH, CCCM,
+    Protection), absent or unreliable surveillance mechanisms, and systematic underreporting of protection
+    incidents (GBV, child recruitment, deaths) where actors acknowledge they cannot quantify true prevalence
+    due to weak reporting systems, stigma, or denial of access.
+
+    '
+  synonyms:
+  - humanitarian data gaps
+  - assessment coverage gaps
+  - evidence gaps for humanitarian response
+  - unknown needs and scale
+  - underreported humanitarian incidents
+  - information management capacity gaps
+  - surveillance gaps
+  - humanitarian knowledge gaps
+  example_questions:
+  - Which geographic areas or population groups remain unassessed, and what is the estimated scale of
+    unmet needs in those locations?
+  - To what extent does underreporting of GBV, mortality, or displacement distort the evidence base used
+    for humanitarian response prioritization?
+  - Where do gaps in cluster-level information management capacity prevent consolidation or sharing of
+    sectoral data needed for coordinated planning?
+  distinguish_from:
+    subpillar_1d::Information And Communication->Knowledge And Info Gaps (Pop): 'Knowledge And Info Gaps
+      (Hum) refers to what humanitarian actors do not know — unknown case counts, unassessed areas, missing
+      operational data — whereas Knowledge And Info Gaps (Pop) refers to what affected populations themselves
+      do not know, such as unawareness of available services, entitlements, or public health guidance.
+
+      '
+    subpillar_1d::Information And Communication->Information Challenges And Barriers: 'Information Challenges
+      And Barriers covers structural and social obstacles (infrastructure failure, literacy gaps, censorship,
+      misinformation) that prevent information from reaching or being understood by affected populations;
+      Knowledge And Info Gaps (Hum) covers the absence or unreliability of data and evidence on the humanitarian
+      side — what responders lack in order to assess needs, plan operations, and target assistance.
+
+      '
+  low_support: false
+  excerpt_count: 310
+  saturation_batches: 11

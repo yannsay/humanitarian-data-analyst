@@ -1,0 +1,51 @@
+subpillar_1d::Humanitarian Access->Relief To Population:
+  description: 'Covers the ability of humanitarian actors to physically deliver aid and services to affected
+    populations, including constraints arising from armed conflict, insecurity, attacks on aid workers
+    and humanitarian infrastructure, administrative restrictions, blockades, and forced suspension or
+    evacuation of operations. The dominant pattern in the data is obstruction at the delivery end: convoys
+    ambushed, warehouses and humanitarian hubs destroyed, workers abducted or killed, and organisations
+    ordered to suspend or withdraw by armed groups or authorities, leaving communities without access
+    to life-saving assistance. Secondary constraints include movement restrictions imposed by curfews,
+    COVID-19 measures, or authority denial of approvals, as well as infrastructure degradation (damaged
+    roads, seasonal flooding) that limits the reach of supply chains.
+
+    '
+  synonyms:
+  - delivery of humanitarian assistance
+  - aid delivery constraints
+  - humanitarian operations suspension
+  - access to affected populations (aid-actor perspective)
+  - obstruction of relief delivery
+  - attacks on humanitarian workers
+  - humanitarian space shrinkage
+  example_questions:
+  - What incidents have obstructed humanitarian organisations from delivering aid to affected communities
+    in northeast Nigeria?
+  - To what extent have attacks on aid workers and humanitarian infrastructure forced the suspension or
+    withdrawal of operations?
+  - What administrative or security restrictions have prevented humanitarian actors from reaching populations
+    in need?
+  distinguish_from:
+    subpillar_1d::Humanitarian Access->Population To Relief: 'Relief To Population tracks the aid actor
+      moving toward the population (delivery direction: organisation → beneficiary), whereas Population
+      To Relief tracks the affected person moving toward an assistance point (direction: beneficiary →
+      service location, e.g., crossing a checkpoint or reaching a distribution site).
+
+      '
+    subpillar_1d::Humanitarian Access->Physical Constraints: 'Physical Constraints covers environmental
+      and infrastructure barriers (roads, terrain, weather, explosive hazards) that impede movement in
+      general; Relief To Population focuses specifically on whether humanitarian actors can operate and
+      deliver, including security-driven suspensions and administrative denials that have no physical
+      infrastructure dimension.
+
+      '
+    subpillar_2d::Capacities & Response->People Reached/Response Gaps: 'Relief To Population is an access
+      information type — it describes whether humanitarian actors can get to populations at all; People
+      Reached/Response Gaps is an analytical lens under Capacities & Response that quantifies how many
+      people were actually served versus the total in need, treating coverage as an output metric rather
+      than an access constraint.
+
+      '
+  low_support: false
+  excerpt_count: 506
+  saturation_batches: 5

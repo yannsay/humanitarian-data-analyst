@@ -1,0 +1,44 @@
+sector::Nutrition:
+  description: 'Covers the assessment, prevention, and treatment of all forms of malnutrition — including
+    Severe Acute Malnutrition (SAM), Moderate Acute Malnutrition (MAM), Global Acute Malnutrition (GAM),
+    stunting, wasting, and micronutrient deficiencies — primarily among children aged 6–59 months and
+    pregnant and lactating women (PLW). Encompasses screening and surveillance (MUAC, weight-for-height
+    z-scores, SMART surveys), treatment programmes (Outpatient Therapeutic Programmes, Targeted Supplementary
+    Feeding Programmes, stabilization centres, therapeutic feeding centres), and preventive interventions
+    including Infant and Young Child Feeding (IYCF) counselling, Vitamin A supplementation, and Community-Based
+    Management of Acute Malnutrition (CMAM). Also includes analysis of service access barriers — distance
+    to nutrition facilities, insecurity limiting programme reach, awareness gaps — and Nutrition Cluster
+    coordination.
+
+    '
+  synonyms:
+  - malnutrition
+  - acute malnutrition
+  - SAM/MAM treatment
+  - IYCF
+  - infant and young child feeding
+  - CMAM
+  - therapeutic feeding
+  - nutritional status
+  - micronutrient deficiency
+  example_questions:
+  - What is the GAM prevalence among children under five in this population?
+  - How many children have been admitted to OTP and TSFP programmes this month?
+  - What proportion of pregnant and lactating women are receiving IYCF counselling?
+  distinguish_from:
+    sector::Food Security: 'Food Security covers household-level food access, consumption, and coping
+      strategies (IPC phases, food ration distribution, dietary diversity scores), whereas Nutrition covers
+      the resulting physiological status — anthropometric measurements, malnutrition treatment admissions,
+      and feeding programme delivery — even though food insecurity is frequently cited as a driver of
+      poor nutritional outcomes.
+
+      '
+    sector::Health: 'Health covers disease burden, health facility functionality, and general medical
+      care, while Nutrition covers nutrition-specific interventions and anthropometric status even when
+      those interventions are delivered inside health facilities (e.g., SAM management at stabilization
+      centres or therapeutic feeding centres within hospitals).
+
+      '
+  low_support: false
+  excerpt_count: 2954
+  saturation_batches: 5

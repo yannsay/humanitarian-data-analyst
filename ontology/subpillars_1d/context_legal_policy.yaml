@@ -1,0 +1,49 @@
+subpillar_1d::Context->Legal & Policy:
+  description: 'Covers the national and international legal frameworks, policies, and formal agreements
+    that govern the rights and status of crisis-affected populations — including migration and asylum
+    law (residence permits, regularization schemes, visa requirements, deportation procedures), refugee-protection
+    instruments (1951 Convention ratification, national refugee acts, asylum determination procedures),
+    and domestic legislation affecting access to services such as healthcare, education, housing, and
+    labour markets. Also encompasses the formulation, adoption, and implementation gaps of government
+    policies directed at displaced persons, IDPs, and vulnerable groups — including national IDP policies,
+    social protection frameworks, gender-equality legislation, child rights acts, and anti-trafficking
+    laws — noting where legal commitments exist on paper but fail in practice due to inadequate enforcement,
+    resource constraints, or political resistance. Captures inter-state and multilateral legal arrangements
+    as contextual background shaping the humanitarian environment, such as bilateral readmission agreements,
+    regional coordination processes (e.g. Quito Process), UN Security Council resolutions, and peace agreements
+    that define the parameters within which humanitarian action operates.
+
+    '
+  synonyms:
+  - legal framework
+  - policy environment
+  - migration law
+  - asylum procedures
+  - regularization schemes
+  - refugee legislation
+  - domestic legislation
+  - immigration policy
+  example_questions:
+  - What legal status options are available to Venezuelan refugees and migrants in host countries, and
+    what are the documented barriers to accessing regularization?
+  - Has the government enacted or reformed domestic legislation on IDP rights, anti-trafficking, or refugee
+    protection, and to what extent is it being implemented?
+  - Which international legal instruments has the country ratified, and are national laws harmonized with
+    those obligations?
+  distinguish_from:
+    subpillar_1d::Context->Politics: 'Context->Politics covers the exercise of state power, political
+      dynamics, governance legitimacy, and political actors'' behavior; Context->Legal & Policy covers
+      the enacted legal and regulatory texts, formal policy frameworks, and their implementation status
+      — legal reform is the outcome of politics but is coded here once it takes statutory form.
+
+      '
+    subpillar_1d::Shock/Event->Mitigating Factors: 'Context->Legal & Policy describes existing legal frameworks
+      as standing structural conditions that shape the humanitarian environment; Shock/Event->Mitigating
+      Factors captures specific legal or policy measures introduced as an active response to reduce the
+      impact of a discrete shock or event (e.g. an emergency decree releasing detainees during COVID-19
+      is a mitigating factor, whereas the underlying detention law is legal context).
+
+      '
+  low_support: false
+  excerpt_count: 763
+  saturation_batches: 8

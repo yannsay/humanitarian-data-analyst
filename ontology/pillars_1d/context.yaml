@@ -1,0 +1,48 @@
+pillar_1d::Context:
+  description: 'Context excerpts describe the structural and background conditions of a crisis environment
+    — the political landscape, economic dynamics, demographic profile, legal frameworks, sociocultural
+    patterns, and environmental conditions — that set the stage for humanitarian needs without themselves
+    constituting the shock or the resulting harm. Recurring examples include currency devaluations and
+    inflation data (Sudanese Pound, Syrian Pound, Nigerian Naira), political fragmentation and rival governance
+    arrangements (Libya''s rival governments, Yemen''s fractured state, Afghanistan''s contested election
+    outcomes), demographic baselines (population counts, age-sex breakdowns, life expectancy, out-of-school
+    children figures), legal and policy frameworks governing migration and asylum (government detention
+    policies, ECHR obligations, asylum adjudication procedures), sociocultural factors driving vulnerability
+    (gender norms, clan power relations, child marriage prevalence, community tensions), and environmental
+    stressors (La Niña drought cycles, erratic rainfall, desertification, flooding seasons). This information
+    type functions as the explanatory backdrop — the conditions analysts must understand to interpret
+    why a shock has the severity it does and why certain populations are structurally exposed.
+
+    '
+  synonyms:
+  - background conditions
+  - structural context
+  - country context
+  - operating environment
+  - macro context
+  - situational background
+  - contextual factors
+  - crisis landscape
+  example_questions:
+  - What are the main political and governance dynamics shaping the humanitarian operating environment
+    in Libya?
+  - How has currency devaluation and inflation affected the macroeconomic context in northwest Syria over
+    the past year?
+  - What demographic and socio-cultural factors explain the structural vulnerability of women and girls
+    in South Sudan?
+  distinguish_from:
+    pillar_1d::Shock/Event: 'Shock/Event captures discrete triggering incidents — a specific airstrike,
+      an armed attack, a flood event, an outbreak — as bounded occurrences with a date and location; Context
+      captures the durable structural conditions (political arrangements, economic trends, legal frameworks,
+      environmental patterns) that pre-exist and persist beyond any single shock.
+
+      '
+    pillar_2d::Humanitarian Conditions: 'Humanitarian Conditions (2D) is an analytical lens assessing
+      the severity of people''s actual unmet needs and deprivations (what people are experiencing); Context
+      (1D) is a type of background/structural information that explains the environment in which those
+      conditions arise — not the conditions themselves.
+
+      '
+  low_support: false
+  excerpt_count: 10140
+  saturation_batches: 5

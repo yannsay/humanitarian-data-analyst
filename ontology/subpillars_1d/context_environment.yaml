@@ -1,0 +1,41 @@
+subpillar_1d::Context->Environment:
+  description: 'Describes the prevailing physical and climatic conditions of an affected area as background
+    context shaping humanitarian needs, including seasonal rainfall patterns, drought cycles, flooding
+    regimes, temperature extremes, and the state of natural resources such as land, forests, water bodies,
+    and soil. Encompasses structural environmental features — arid or semi-arid agro-ecological zones,
+    monsoon seasonality, deforestation, land degradation, and long-term climate change trajectories —
+    that set the baseline within which crises unfold, rather than describing any single hazard event itself.
+
+    '
+  synonyms:
+  - agro-ecological conditions
+  - climatic context
+  - environmental baseline
+  - natural resource conditions
+  - seasonal weather patterns
+  - land and ecosystem conditions
+  - climate variability
+  example_questions:
+  - What is the typical rainfall pattern and how does the rainy season affect access and agricultural
+    production in this area?
+  - To what extent have land degradation, deforestation, or long-term drought eroded the environmental
+    resource base that communities depend on?
+  - How do seasonal temperature extremes or recurring flood cycles shape the vulnerability profile of
+    affected populations?
+  distinguish_from:
+    subpillar_1d::Shock/Event->Hazard & Threats: 'Context->Environment captures the chronic or seasonal
+      environmental conditions (e.g., semi-arid climate, recurring monsoon season, multi-year drought
+      trend) that define the operating landscape, whereas Shock/Event->Hazard & Threats labels a discrete,
+      time-bounded environmental event — such as a specific cyclone landfall, a single flood episode,
+      or an acute locust infestation — that triggers an acute humanitarian response.
+
+      '
+    subpillar_1d::Shock/Event->Underlying/Aggravating Factors: 'Context->Environment describes the environmental
+      conditions as neutral background facts about a place (rainfall regime, soil quality, climate zone),
+      whereas Underlying/Aggravating Factors flags those same environmental features specifically in their
+      role as pre-existing drivers that amplify the severity or duration of a crisis already in motion.
+
+      '
+  low_support: false
+  excerpt_count: 408
+  saturation_batches: 8

@@ -1,0 +1,46 @@
+pillar_1d::Information And Communication:
+  description: 'Covers the information and communication environment of affected populations and humanitarian
+    actors, including population awareness levels of crises and public health threats, the channels through
+    which people receive information (radio, community leaders, social media, health workers, religious
+    leaders, NGOs, hotlines), and the barriers that limit access to information such as lack of phone
+    credit, illiteracy, language mismatch, absence of electricity, and gender-based restrictions on device
+    use. Encompasses misinformation, rumors, and community perceptions that distort behavior (e.g., beliefs
+    that a disease is not real, racial immunity myths, vaccine hesitancy driven by conspiracy narratives),
+    as well as humanitarian communication activities — risk communication, community engagement, feedback
+    mechanisms, and IEC material distribution — designed to close information gaps. Also covers the telecommunications
+    infrastructure underpinning information access, including mobile network coverage, ICT connectivity,
+    and the functioning of humanitarian hotlines and community radio systems.
+
+    '
+  synonyms:
+  - risk communication and community engagement (RCCE)
+  - community awareness
+  - information gaps
+  - misinformation and rumors
+  - communication channels and preferences
+  - telecommunications access
+  - community feedback mechanisms
+  - knowledge gaps (population)
+  example_questions:
+  - What share of the assessed population is aware of COVID-19, and what are the main sources of that
+    information?
+  - What misinformation or rumors about the crisis are prevalent in the community, and how are they affecting
+    behavior?
+  - What barriers prevent affected populations from accessing accurate information (language, literacy,
+    connectivity, gender)?
+  distinguish_from:
+    pillar_1d::Context: 'Context describes the broader socio-political, demographic, and economic environment
+      of the crisis (population figures, governance, conflict dynamics, economic conditions), whereas
+      Information And Communication focuses specifically on how information flows — or fails to flow —
+      between actors and populations, and on awareness, rumors, and communication channel availability.
+
+      '
+    pillar_1d::Humanitarian Access: 'Humanitarian Access concerns the physical and administrative ability
+      of humanitarian actors to reach affected populations with assistance, whereas Information And Communication
+      concerns the flow of information itself — whether populations know about services, risks, or crises,
+      and whether they can communicate with or provide feedback to humanitarian actors.
+
+      '
+  low_support: false
+  excerpt_count: 1603
+  saturation_batches: 5

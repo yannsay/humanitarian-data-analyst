@@ -1,0 +1,48 @@
+subpillar_1d::Information And Communication->Information Challenges And Barriers:
+  description: 'Covers structural, social, and political obstacles that prevent affected populations from
+    receiving, understanding, or trusting information — including physical infrastructure gaps (lack of
+    electricity, mobile network outages, no phone credit, internet blockades imposed by authorities),
+    literacy and language barriers (illiteracy blocking written-format messages, materials in the wrong
+    language, absence of indigenous-language outreach), and differential access by gender, age, and disability
+    (women depending on men''s phones, older people and persons with disabilities disproportionately excluded).
+    Also captures security and conflict- imposed restrictions on information flow — armed groups banning
+    phone or radio ownership, governments suppressing or falsifying data on casualties and disease burden
+    — as well as demand-side barriers including misinformation, rumors, and conspiracy theories that fill
+    the void left by untrustworthy or absent official messaging, and social stigma that prevents communities
+    from seeking information or disclosing symptoms to health workers.
+
+    '
+  synonyms:
+  - barriers to information access
+  - information access constraints
+  - communication infrastructure gaps
+  - digital divide
+  - information environment challenges
+  - misinformation and rumors
+  - language and literacy barriers to information
+  - restricted information flow
+  example_questions:
+  - What proportion of households report being unable to access information about humanitarian assistance
+    due to lack of electricity, mobile network, or phone credit?
+  - Which population groups (women, elderly, persons with disabilities, non-native-language speakers)
+    face the greatest barriers to receiving or understanding critical information?
+  - To what extent are misinformation, rumors, or government-suppressed data preventing communities from
+    taking appropriate health or safety actions?
+  distinguish_from:
+    subpillar_1d::Information And Communication->Communication Means And Preferences: 'Communication Means
+      And Preferences covers which channels populations use or prefer to receive information (radio, phone,
+      community leaders, face-to-face) and their availability; Information Challenges And Barriers focuses
+      on what prevents information from reaching or being understood by populations — infrastructure failure,
+      literacy gaps, censorship, misinformation — regardless of channel preference.
+
+      '
+    subpillar_1d::Humanitarian Access->Physical Constraints: 'Physical Constraints covers terrain, infrastructure,
+      and security obstacles that restrict humanitarian actors'' operational movement; Information Challenges
+      And Barriers covers obstacles specifically preventing information from flowing to or being comprehended
+      by affected populations, which may include political censorship, illiteracy, or network outages
+      rather than physical movement barriers.
+
+      '
+  low_support: false
+  excerpt_count: 154
+  saturation_batches: 5

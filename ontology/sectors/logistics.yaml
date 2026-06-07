@@ -1,0 +1,49 @@
+sector::Logistics:
+  description: 'Analysts tag Logistics when excerpts address the physical movement and supply chain infrastructure
+    that enables humanitarian response and civilian commerce: road access, border crossings (land, air,
+    sea ports), UNHAS flights, warehousing and mobile storage units, and fuel/energy availability that
+    powers transport and generator-dependent operations. The sector also captures disruptions to these
+    systems — blockades, road closures, insecurity along supply routes, checkpoint delays, and COVID-related
+    transport restrictions — as well as telecommunications and connectivity infrastructure (mobile networks,
+    internet access, data prices) when these affect operational access or humanitarian communications.
+    Points of Entry (PoE) monitoring, truck volume counts at crossings, and air cargo routes managed by
+    the Logistics Cluster are canonical tagging cases.
+
+    '
+  synonyms:
+  - supply chain
+  - humanitarian access
+  - transport and movement
+  - points of entry (PoE)
+  - UNHAS
+  - logistics cluster
+  - freight and cargo
+  - fuel availability
+  - road conditions
+  example_questions:
+  - Is the Bab al-Hawa border crossing open to humanitarian trucks and how many trucks crossed last month?
+  - What is the current price and availability of transport fuel (diesel/petrol) and how is this affecting
+    aid delivery?
+  - Are UNHAS or commercial flights operational, and what restrictions apply to cargo movements into the
+    area?
+  distinguish_from:
+    sector::Shelter: 'Shelter covers the physical condition and adequacy of housing and displacement sites;
+      Logistics covers the transport routes, fuel supply, and cargo movement systems used to reach those
+      sites or deliver materials to them.
+
+      '
+    sector::WASH: 'WASH covers water supply, sanitation, and hygiene services for affected populations;
+      Logistics covers infrastructure (roads, ports, power) that supports delivery of WASH inputs, but
+      excerpts about fuel for water pumps or generator power shortages are tagged Logistics when the focus
+      is on the energy/supply system rather than the water service outcome.
+
+      '
+    sector::Food Security: 'Food Security covers household food access and nutrition adequacy; Logistics
+      covers the import volumes, port operations, and transport disruptions that affect food supply chains
+      — an excerpt about port throughput or truck shortages slowing cereal imports belongs to Logistics,
+      not Food Security.
+
+      '
+  low_support: false
+  excerpt_count: 1982
+  saturation_batches: 4

@@ -1,0 +1,48 @@
+subpillar_2d::Priority Interventions->Expressed By Humanitarian Staff:
+  description: 'Prescriptive statements authored by humanitarian actors — UN agencies, clusters, NGOs,
+    and sector leads — specifying the concrete actions that should be taken to address identified needs,
+    ranked or framed as urgent or priority responses. Excerpts take the form of recommendations, calls
+    to scale up or establish specific services, advocacy demands addressed to governments or donors, and
+    cluster-level prioritization decisions (e.g. "urgent treatment and nutrition support are required
+    for approximately 838,900 children," "cash voucher assistance for WASH programming should be scaled
+    to the forefront of the sectoral response," "land advocacy and decongestion of highly congested camps
+    will remain the main priority for the sector"). The source is always an institutional humanitarian
+    voice — a cluster, a UN body, an INGO, or a task force — not affected population members, distinguishing
+    this node from the parallel Expressed By Population subpillar.
+
+    '
+  synonyms:
+  - recommendations
+  - priority actions
+  - calls to action
+  - sector priorities
+  - urgent interventions required
+  - cluster prioritization
+  - advocacy demands
+  - scale-up requirements
+  example_questions:
+  - What interventions are humanitarian partners recommending as most urgent to address food insecurity
+    in the affected counties?
+  - Which WASH actions has the cluster prioritized for the next response phase?
+  - What does the protection sector call for in terms of GBV service scale-up?
+  distinguish_from:
+    subpillar_2d::Priority Interventions->Expressed By Population: 'Both subpillars identify preferred
+      actions, but this node captures the institutional voice of humanitarian staff and organizations
+      as the source, whereas Expressed By Population captures the same type of content when it originates
+      from affected community members or beneficiaries themselves.
+
+      '
+    subpillar_2d::Priority Needs->Expressed By Humanitarian Staff: 'Priority Needs identifies what is
+      lacking or deficient (the gap or condition), while this node specifies the operational action to
+      be taken in response — the intervention, program, or policy measure that humanitarian staff judge
+      should be prioritized.
+
+      '
+    pillar_2d::Capacities & Response: 'Capacities & Response documents actions that have already been
+      undertaken or are currently ongoing; this node captures forward-looking recommendations and calls
+      to action that have not yet been implemented or that staff are advocating should be done.
+
+      '
+  low_support: false
+  excerpt_count: 3257
+  saturation_batches: 3

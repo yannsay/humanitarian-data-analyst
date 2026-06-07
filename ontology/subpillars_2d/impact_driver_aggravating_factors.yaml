@@ -1,0 +1,55 @@
+subpillar_2d::Impact->Driver/Aggravating Factors:
+  description: 'Conditions and structural factors that amplify or sustain the severity of a humanitarian
+    crisis, compounding one another in ways that deepen needs beyond what any single shock would produce.
+    Excerpts consistently surface three interlocking categories: conflict and insecurity that disrupts
+    markets, destroys infrastructure, and blocks humanitarian access; pre-existing structural weaknesses
+    such as fragile health systems, youth unemployment, inadequate WASH infrastructure, and overcrowded
+    camp facilities that reduce community resilience before any new shock arrives; and secondary stressors—COVID-19
+    restrictions, currency devaluation, flooding, rising food prices, and legal/bureaucratic barriers—that
+    multiply harm when layered onto ongoing crises. The node captures not the shock itself, but the web
+    of conditions that make populations more exposed, less able to cope, and harder to reach when the
+    shock occurs or persists.
+
+    '
+  synonyms:
+  - aggravating factors
+  - compounding drivers
+  - exacerbating conditions
+  - structural vulnerabilities
+  - multiplying stressors
+  - pre-existing weaknesses
+  - secondary stressors
+  - cascading risk factors
+  example_questions:
+  - What factors are compounding the existing humanitarian crisis and making needs more severe?
+  - Which structural weaknesses or secondary stressors are amplifying the impact of conflict or displacement
+    on affected populations?
+  - How are overlapping crises—such as insecurity, economic collapse, and disease outbreaks—interacting
+    to deepen humanitarian needs?
+  distinguish_from:
+    subpillar_2d::Impact->Impact On People: 'Impact On People captures the resulting harm to individuals
+      and groups (deaths, injuries, malnutrition, displacement), whereas Driver/Aggravating Factors names
+      the conditions and dynamics that cause or worsen that harm—the mechanism, not the outcome.
+
+      '
+    subpillar_2d::Impact->Impact On Systems, Services And Networks: 'Impact On Systems captures damage
+      or degradation to services and infrastructure as an outcome; Driver/Aggravating Factors treats service
+      collapse or market dysfunction as a condition that amplifies further harm, framing the same fact
+      from a causal rather than outcome perspective.
+
+      '
+    subpillar_2d::Impact->Number Of People Affected: 'Number Of People Affected quantifies who and how
+      many bear the consequences; Driver/Aggravating Factors explains why those consequences are as severe
+      or widespread as they are.
+
+      '
+    subpillar_1d::Shock/Event->Underlying/Aggravating Factors: 'The 1D node (Shock/Event axis) identifies
+      factors that precede or shape the triggering shock itself—root causes and pre-crisis vulnerabilities—while
+      this 2D node (Impact axis) identifies factors that amplify the severity of the crisis once it is
+      underway; the distinction is analytical frame (pre-shock context vs. within-crisis compounding),
+      not content, so the two nodes frequently describe overlapping material.
+
+      '
+  low_support: false
+  excerpt_count: 7346
+  saturation_batches: 5

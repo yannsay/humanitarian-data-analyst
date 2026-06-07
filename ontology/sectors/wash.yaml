@@ -1,0 +1,49 @@
+sector::WASH:
+  description: 'Covers access to safe drinking water (quantity, quality, distance to source, and infrastructure
+    type — boreholes, hand pumps, piped systems, water trucking), sanitation infrastructure (latrine availability,
+    functionality, open defecation, desludgement, solid waste management, and drainage), and hygiene promotion
+    and non-food item distribution (handwashing stations, soap, hygiene kits, dignity/menstrual hygiene
+    kits). Tracks WASH living standards gaps — including the share of households without improved water
+    sources or functional latrines — against Sphere minimum standards and JMP ladder categories, with
+    particular attention to displacement contexts (IDP sites, camps, host communities) where existing
+    infrastructure is overwhelmed or destroyed. Also encompasses infection prevention and control (IPC)
+    at health facilities and points of entry, disease outbreak prevention and response (cholera, acute
+    watery diarrhoea, COVID-19), gender and protection dimensions of WASH service delivery (safe and gender-
+    marked latrines, lighting, menstrual hygiene management), and WASH Cluster coordination.
+
+    '
+  synonyms:
+  - water, sanitation and hygiene
+  - water and sanitation
+  - WSH
+  - safe water
+  - drinking water
+  - sanitation
+  - hygiene promotion
+  - IPC/WASH
+  - water trucking
+  example_questions:
+  - What proportion of households lack access to an improved water source or functional latrine?
+  - How many litres per person per day is water trucking delivering, and does it meet Sphere minimums?
+  - Are latrines in displacement sites gender-marked, lit, and safe for women and girls?
+  distinguish_from:
+    sector::Health: 'Health covers disease burden, health facility functionality, and medical care delivery,
+      while WASH covers the water supply, sanitation infrastructure, and hygiene conditions that create
+      or prevent disease risk — even when WASH interventions (handwashing stations, IPC measures) are
+      physically located inside health facilities.
+
+      '
+    sector::Shelter: 'Shelter covers the physical structure and living space of housing and displacement
+      sites, while WASH covers the water, sanitation, and hygiene services within or adjacent to those
+      sites — though both sectors frequently co-occur in assessments of IDP camp conditions.
+
+      '
+    sector::Logistics: 'Logistics covers the transport and supply chain that moves humanitarian cargo
+      (including WASH supplies such as chlorine, soap, and water storage equipment) to delivery points,
+      while WASH covers the operational use of those supplies to deliver water and sanitation services
+      to affected populations.
+
+      '
+  low_support: false
+  excerpt_count: 6121
+  saturation_batches: 7

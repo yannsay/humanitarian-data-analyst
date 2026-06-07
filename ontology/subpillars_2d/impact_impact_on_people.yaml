@@ -1,0 +1,47 @@
+subpillar_2d::Impact->Impact On People:
+  description: 'Impact On People captures the direct, causal harm a shock or crisis event has inflicted
+    on individuals and households — framed explicitly as consequences of that event rather than as a snapshot
+    of current conditions. Excerpts tagged here describe how a specific trigger (conflict, flood, pandemic
+    containment measures, fire, displacement) caused income loss, livelihood disruption, physical injury
+    or death, forced school drop-out, family separation, increased exposure to violence or exploitation,
+    and deteriorating mental health. The subpillar covers both quantified harm (e.g., 6 million jobs lost,
+    45,000 refugees made homeless by a single fire, income falling 75 percent after lockdown) and qualitative
+    accounts of how a shock cascaded across protection, food security, education, and psychosocial domains
+    for specific population groups such as women, children, persons with disabilities, IDPs, and refugees.
+
+    '
+  synonyms:
+  - consequences for affected population
+  - harm to individuals
+  - shock-induced livelihood loss
+  - crisis impact on households
+  - personal and community-level damage
+  - population-level consequences of the event
+  - human toll of the crisis
+  example_questions:
+  - How has the COVID-19 lockdown affected income and employment levels among daily-wage workers and refugees?
+  - What harm did the camp fire cause to Rohingya households in terms of shelter, documents, and livelihoods?
+  - How has the conflict in north-east Nigeria increased child marriage, GBV, and child labour among displaced
+    families?
+  distinguish_from:
+    subpillar_2d::Impact->Impact On Systems, Services And Networks: 'Impact On Systems focuses on damage
+      to institutions, infrastructure, markets, and service delivery chains (health facilities overwhelmed,
+      markets disrupted, supply routes cut), while Impact On People focuses on the harm those and other
+      shock effects caused to individuals and communities directly — income loss, injury, exploitation,
+      mental distress.
+
+      '
+    pillar_2d::Humanitarian Conditions: 'Humanitarian Conditions describes the current state of deprivation
+      without requiring explicit causal attribution to a specific shock, whereas Impact On People requires
+      a traceable causal link from a named event or driver to measurable harm experienced by people.
+
+      '
+    subpillar_2d::Impact->Number Of People Affected: 'Number Of People Affected records aggregate headcounts
+      of those reached by a shock (people displaced, families homeless, deaths), while Impact On People
+      describes the nature and severity of harm across livelihood, protection, education, and psychosocial
+      dimensions for those individuals.
+
+      '
+  low_support: false
+  excerpt_count: 6766
+  saturation_batches: 3

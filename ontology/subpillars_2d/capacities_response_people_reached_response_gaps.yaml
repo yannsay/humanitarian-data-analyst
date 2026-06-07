@@ -1,0 +1,44 @@
+subpillar_2d::Capacities & Response->People Reached/Response Gaps:
+  description: 'Tracks the quantified outcome of humanitarian response delivery: how many people have
+    actually received assistance (beneficiary counts by sector, partner, activity type, and demographic
+    group), and where delivery falls short of declared targets (coverage gaps, unreached geographic areas,
+    and unfunded response requirements). Funding gap statements — such as a sector''s HRP requirements
+    versus amounts received, or pipeline shortfalls expressed in dollar terms — are a core signal, alongside
+    operational constraints (access, supply chain failures, staff capacity) that explain why targets are
+    missed.
+
+    '
+  synonyms:
+  - beneficiaries reached
+  - people assisted
+  - response coverage
+  - humanitarian funding gap
+  - response gap
+  - unmet targets
+  - pipeline shortfall
+  - coverage rate
+  example_questions:
+  - How many people has WFP reached with food assistance this month, and what percentage of the target
+    does that represent?
+  - What is the current funding gap for the WASH sector under the Humanitarian Response Plan?
+  - Which geographic areas or population groups remain unreached despite being targeted in the response
+    plan?
+  distinguish_from:
+    subpillar_2d::Capacities & Response->International Response: 'International Response captures who
+      is delivering aid and what operational capacity international actors have; People Reached/Response
+      Gaps captures how many people actually received that aid and how far delivery falls short of need.
+
+      '
+    subpillar_2d::Humanitarian Conditions->Number Of People In Need: 'Number Of People In Need is a needs
+      estimate derived from severity analysis; People Reached/Response Gaps is an output/delivery metric
+      — how many of those people in need have actually been served and how large the unserved gap is.
+
+      '
+    pillar_2d::Priority Needs: 'Priority Needs identifies what people require most urgently; People Reached/Response
+      Gaps records whether and to what extent the response has delivered against those needs, including
+      the funding and coverage shortfalls that prevent full delivery.
+
+      '
+  low_support: false
+  excerpt_count: 2507
+  saturation_batches: 5

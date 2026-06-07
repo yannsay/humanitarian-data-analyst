@@ -1,0 +1,38 @@
+subpillar_2d::Priority Needs->Expressed By Humanitarian Staff:
+  description: 'Statements by humanitarian actors — UN agencies, cluster leads, NGOs, sector working groups,
+    and field assessment teams — identifying what affected populations lack and what must be provided,
+    typically framed as "there is a need for…", "urgently needed", or "priority needs include…" across
+    sectors such as shelter, food, WASH, health, protection, and NFIs. The source voice is institutional:
+    needs are diagnosed through rapid needs assessments, multi-sector assessments (MSNA), field monitoring,
+    FGDs, and KIIs conducted or synthesised by humanitarian staff, not reported directly by affected communities.
+    Ranking and urgency signals are common — texts distinguish immediate or critical needs from medium-term
+    gaps — and needs are often quantified (households, individuals, funding amounts) to support resource
+    mobilisation.
+
+    '
+  synonyms:
+  - priority needs identified by humanitarian actors
+  - assessed needs (staff-diagnosed)
+  - sectoral needs identified by clusters
+  - unmet needs per field assessment
+  - critical gaps identified by partners
+  - urgent needs flagged by agencies
+  - operational needs analysis
+  example_questions:
+  - What sectors did humanitarian actors flag as the highest-priority needs following the displacement?
+  - Which gaps did OCHA and cluster leads identify as unmet in the multi-sector rapid needs assessment?
+  - What did relief agencies determine were the immediate needs of newly arrived IDPs?
+  distinguish_from:
+    subpillar_2d::Priority Needs->Expressed By Population: The population-expressed node captures needs
+      as articulated in affected people's own words (community consultations, FGD voices, beneficiary
+      surveys), whereas this node captures the same diagnostic question voiced by humanitarian staff on
+      the basis of assessments they conducted or commissioned.
+    subpillar_2d::Priority Interventions->Expressed By Humanitarian Staff: This node covers what is lacking
+      or insufficient (the diagnosis of need); the interventions node covers what action humanitarian
+      actors prescribe or plan to take in response (the operational remedy).
+    pillar_2d::Humanitarian Conditions: Humanitarian Conditions describes the current state of living
+      conditions, severity, and coping capacity for affected populations, whereas this node records which
+      among those conditions humanitarian staff have ranked as the most pressing needs requiring a response.
+  low_support: false
+  excerpt_count: 681
+  saturation_batches: 3

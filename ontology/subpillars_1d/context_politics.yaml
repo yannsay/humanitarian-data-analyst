@@ -1,0 +1,43 @@
+subpillar_1d::Context->Politics:
+  description: 'Captures the political conditions and power dynamics that shape the operating environment
+    for humanitarian response, including government legitimacy and rival authority structures (e.g. GNA
+    vs. LNA in Libya, Maduro vs. Guaido in Venezuela), electoral processes and their disruption by insecurity
+    or fraud, and peace negotiations, ceasefires, and transitional government formation (e.g. Yemen Stockholm
+    Agreement, South Sudan Revitalized Peace Agreement). Also encompasses the role of political instability,
+    state weakness, and governance fragmentation as structural drivers of displacement and humanitarian
+    need, including political repression of opponents and civil society, factional power struggles within
+    governments and armed movements, and the use of foreign political pressure, sanctions, and international
+    recognition contests as tools that shape access, aid delivery, and population movement.
+
+    '
+  synonyms:
+  - political instability
+  - governance crisis
+  - peace process
+  - political transition
+  - electoral violence
+  - rival government
+  - political repression
+  - state fragility
+  example_questions:
+  - What is the current government legitimacy situation and are there competing authorities claiming control?
+  - How have recent elections or peace negotiations affected the humanitarian operating environment?
+  - To what extent is political instability or repression driving displacement and limiting humanitarian
+    access?
+  distinguish_from:
+    subpillar_1d::Context->Legal & Policy: 'Legal & Policy covers the formal statutory and regulatory
+      framework (laws, decrees, national plans, policy instruments) that governments enact, whereas Politics
+      covers the power dynamics, legitimacy contests, electoral processes, and political decisions that
+      produce or undermine those frameworks.
+
+      '
+    subpillar_1d::Context->Security & Stability: 'Security & Stability covers the physical violence, armed
+      conflict, and protection risks experienced by populations and humanitarians, whereas Politics covers
+      the political actors, authority structures, and governance processes that drive or constrain that
+      violence — the distinction is between the manifestation of conflict (Security) and its political
+      root causes and negotiated resolution (Politics).
+
+      '
+  low_support: false
+  excerpt_count: 695
+  saturation_batches: 8

@@ -1,0 +1,52 @@
+sector::Shelter:
+  description: 'Analysts tag excerpts here when the content concerns the physical adequacy and availability
+    of housing and dwelling solutions for crisis-affected populations: emergency shelters, tents, makeshift
+    and transitional shelters, collective centres, camps and camp-like settings, and host-family accommodation.
+    The dominant usage covers shelter damage and destruction from conflict, floods, fires and other shocks
+    (houses destroyed, shelters collapsed, families sleeping in the open); inadequate shelter conditions
+    in displacement settings (overcrowding, poor insulation, leaking roofs, sub-standard materials, lack
+    of privacy); tenure insecurity (eviction threats, lack of occupancy documentation, inability to meet
+    rent); and the provision of Non-Food Items (NFIs — blankets, plastic sheeting, sleeping mats, kitchen
+    sets, jerry cans) alongside shelter kits, rehabilitation works, and transitional shelter construction.
+    The Shelter and NFI (SNFI) cluster and its Living Standards Gap (LSG) severity methodology appear
+    frequently as the organising response architecture.
+
+    '
+  synonyms:
+  - housing
+  - SNFI
+  - shelter and NFI
+  - non-food items
+  - emergency shelter
+  - transitional shelter
+  - collective centre
+  - makeshift shelter
+  example_questions:
+  - What proportion of displaced households are living in inadequate or makeshift shelters, and what are
+    the main reported defects?
+  - How many shelters were destroyed or damaged by the flooding or fire, and what emergency shelter response
+    has been initiated?
+  - What share of IDP households face eviction risk or lack documentation of occupancy status?
+  distinguish_from:
+    sector::WASH: 'Shelter covers the physical dwelling unit and NFI items needed inside it; WASH covers
+      water supply, sanitation infrastructure (latrines, drainage), and hygiene promotion — even when
+      those facilities are located inside or adjacent to a shelter or camp. Excerpts describing latrine
+      conditions or water access within a camp are tagged WASH, not Shelter.
+
+      '
+    sector::Logistics: 'Shelter covers the end-use housing and NFI needs of affected populations; Logistics
+      covers the supply chain, warehousing, and transport of goods including shelter materials — an excerpt
+      about pre-positioning tents at a hub or transporting relief commodity kits across a border crossing
+      is tagged Logistics, not Shelter.
+
+      '
+    sector::Protection: 'Shelter covers the physical adequacy and availability of dwelling solutions;
+      Protection is tagged when the primary concern is rights violations, eviction as a legal or protection
+      issue, discrimination in access to accommodation, gender-based violence risks linked to shelter
+      conditions (e.g. lack of privacy or lighting), or forced displacement — even where shelter is mentioned
+      as a secondary need.
+
+      '
+  low_support: false
+  excerpt_count: 5392
+  saturation_batches: 6

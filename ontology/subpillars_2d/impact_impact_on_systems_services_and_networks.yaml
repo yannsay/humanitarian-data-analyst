@@ -1,0 +1,55 @@
+subpillar_2d::Impact->Impact On Systems, Services And Networks:
+  description: 'Captures the damage, degradation, or disruption that a crisis inflicts on the collective
+    infrastructure and institutions through which services are delivered — including health facilities
+    (hospitals non-functional or at reduced capacity, staff loss, PPE shortfalls, attacks on health workers),
+    education systems (school closures due to conflict or public-health measures, building damage, destroyed
+    learning centres), WASH infrastructure (broken boreholes, damaged latrines, contaminated water networks),
+    and energy utilities (power-grid damage cascading into failures at hospitals, bakeries, and water
+    pumps). Also covers market and supply-chain disruption — bakeries closing, food and fuel supply routes
+    severed by border closures or conflict, transportation networks made impassable — and the weakening
+    of cross-cutting systems such as disease surveillance, civil documentation, and humanitarian coordination
+    networks that underpin multi-sector response.
+
+    '
+  synonyms:
+  - infrastructure damage
+  - service disruption
+  - health system collapse
+  - health facility functionality
+  - school closure
+  - learning centre destruction
+  - WASH infrastructure damage
+  - market disruption
+  - supply chain breakdown
+  - power outage
+  - transport network damage
+  - system capacity degradation
+  example_questions:
+  - What proportion of health facilities are functional, and what are the main causes of reduced capacity
+    — staffing, supplies, physical damage, or attacks?
+  - Which schools or learning centres have been closed or destroyed, and what share of children have lost
+    access to education as a result?
+  - How have conflict, flooding, or public-health restrictions disrupted fuel supply routes, bakery operations,
+    or market access for essential commodities?
+  distinguish_from:
+    subpillar_2d::Impact->Impact On People: 'Impact On Systems focuses on the collective infrastructure
+      and service networks themselves (facilities non-functional, supply chains broken, utilities down);
+      Impact On People describes the resulting harm to individuals and households — displacement, mortality,
+      injury, food insecurity, and deteriorating living conditions.
+
+      '
+    pillar_2d::Capacities & Response: 'Impact On Systems documents the damage or degradation that has
+      already occurred to services and networks; Capacities & Response describes what actors — governments,
+      NGOs, communities — are doing or are able to do to restore, replace, or compensate for those damaged
+      systems.
+
+      '
+    subpillar_2d::Impact->Driver/Aggravating Factors: 'Driver/Aggravating Factors addresses the forces
+      that intensify a crisis (e.g. currency collapse, armed group activity, seasonal flooding); Impact
+      On Systems records the concrete degradation of specific services and networks that those drivers
+      produce, such as hospitals closing or markets shutting down.
+
+      '
+  low_support: false
+  excerpt_count: 10011
+  saturation_batches: 4

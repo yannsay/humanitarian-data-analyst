@@ -1,0 +1,54 @@
+sector::Education:
+  description: 'Covers access to and continuity of formal and non-formal learning for crisis-affected
+    children and adolescents — including school enrolment and attendance rates, out-of-school children
+    (OOSC) counts, school closures due to conflict, disease outbreak (COVID-19), insecurity or displacement,
+    and attacks on educational infrastructure (schools damaged, destroyed, or occupied as shelters). Encompasses
+    Education in Emergencies (EiE) programming such as temporary learning spaces, remote and blended learning
+    modalities (TV, radio, online), non-formal education (NFE), and school feeding programmes, as well
+    as the quality dimensions of education — teacher shortages, lack of trained teachers, absence of learning
+    materials and school kits, and inadequate WASH facilities in schools. Also addresses demand-side barriers
+    to access: inability to pay school fees, distance to school, child labour, early marriage, gender-based
+    exclusion (girls disproportionately out of school), and the protection risks that school closure generates,
+    including increased child marriage, child labour, and recruitment by armed groups.
+
+    '
+  synonyms:
+  - Education in Emergencies (EiE)
+  - out-of-school children
+  - OOSC
+  - school closure
+  - learning continuity
+  - non-formal education
+  - remote learning
+  - school enrolment
+  - education access
+  example_questions:
+  - What share of school-aged children are currently out of school, and what are the main reported barriers
+    to attendance?
+  - How many schools have been damaged, destroyed, or closed due to conflict or COVID-19 in the assessed
+    area?
+  - What remote or non-formal learning modalities are in use, and what proportion of children can access
+    them?
+  distinguish_from:
+    sector::Protection: 'Protection covers violence, abuse, exploitation, and rights violations against
+      individuals (GBV, child protection, HLP, detention), whereas Education covers learning access and
+      continuity; school closure-driven risks such as child marriage or forced recruitment are coded under
+      Education when the primary mechanism is disruption of schooling, and under Protection when the violation
+      itself (e.g., GBV, trafficking) is the focus of the finding.
+
+      '
+    sector::Cross: 'Cross-cutting entries mention education only as one item in a list of basic services
+      (food, health, WASH, education) with no sector-specific analysis of learning access or school functionality;
+      Education entries analyse education conditions in their own right rather than as background context
+      for another sector.
+
+      '
+    sector::Livelihoods: 'Livelihoods covers income generation, employment, and economic coping strategies
+      for adults and adolescents; Education covers formal and non-formal learning pathways, including
+      vocational and technical training only when framed as an education access or continuity issue rather
+      than as a livelihood intervention.
+
+      '
+  low_support: false
+  excerpt_count: 4848
+  saturation_batches: 6

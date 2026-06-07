@@ -1,0 +1,50 @@
+subpillar_2d::Priority Needs->Expressed By Population:
+  description: 'Statements in which affected people themselves — refugees, IDPs, host community members,
+    or other crisis-affected groups — identify what they most urgently lack, typically elicited through
+    community consultations, focus group discussions, beneficiary surveys, or community feedback mechanisms,
+    and expressed in ranked or frequency-weighted lists covering sectors such as food, livelihoods, shelter,
+    health, WASH, NFIs, and protection. The voice is the population''s own: excerpts report phrases like
+    "participants prioritised", "most commonly reported needs by households", "respondents indicated their
+    greatest need", or direct quotations from affected persons stating what they require to survive or
+    recover. Needs are frequently disaggregated by gender, age, displacement status, or disability, with
+    women and youth consistently reporting different priority orderings than men, and preferred modality
+    (cash, in-kind, voucher) often stated alongside the priority need itself.
+
+    '
+  synonyms:
+  - self-reported priority needs
+  - community-ranked needs
+  - beneficiary-expressed needs
+  - population-stated needs
+  - household-prioritised needs
+  - most pressing needs as reported by affected people
+  - community feedback on unmet needs
+  - needs voiced by displaced persons
+  example_questions:
+  - What did Rohingya refugees and host community members identify as their top priority needs in multi-sector
+    assessments?
+  - Which needs did IDP households rank first when asked to prioritise in community consultations?
+  - How did women and youth differ from men in prioritising humanitarian needs according to focus group
+    discussions?
+  distinguish_from:
+    subpillar_2d::Priority Needs->Expressed By Humanitarian Staff: 'This node captures needs as voiced
+      by affected people in their own words through surveys, FGDs, and community feedback, whereas the
+      Humanitarian Staff node captures the same diagnostic question as articulated by UN agencies, cluster
+      leads, or assessment teams on the basis of assessments they conducted or synthesised.
+
+      '
+    subpillar_2d::Priority Interventions->Expressed By Population: 'This node covers what populations
+      say they currently lack or need (the diagnosis of deprivation — food, shelter, medicines); the Interventions
+      node covers what populations say they want done about it (the requested remedy — cash grants, skills
+      training, distribution points closer to home).
+
+      '
+    pillar_2d::Humanitarian Conditions: 'Humanitarian Conditions describes the observed state of living
+      conditions, severity, and coping capacity across the affected population, whereas this node records
+      specifically which among those conditions the population itself has ranked or named as the most
+      pressing priorities from their own perspective.
+
+      '
+  low_support: false
+  excerpt_count: 428
+  saturation_batches: 7

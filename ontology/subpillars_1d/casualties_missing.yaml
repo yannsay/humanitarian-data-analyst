@@ -1,0 +1,43 @@
+subpillar_1d::Casualties->Missing:
+  description: 'Refers to persons whose whereabouts are unknown following a crisis event and who have
+    not been confirmed dead or injured — the defining characteristic is unresolved uncertainty about their
+    fate and location. Missing status arises across four recurring contexts observed in the excerpts:
+    mass displacement events where headcounts cannot be completed (fires, floods, volcanic eruptions);
+    maritime accidents and migration-route disappearances where bodies are not recovered; abduction or
+    kidnapping by armed groups or criminal actors where the captive''s fate remains unknown; and enforced
+    disappearance by state or non-state actors with no subsequent accounting. Children are a disproportionately
+    frequent subgroup, appearing in school-abduction caseloads, post-fire camp registries, and armed-conflict
+    missing-persons lists.
+
+    '
+  synonyms:
+  - missing persons
+  - unaccounted for
+  - disappeared
+  - whereabouts unknown
+  - lost to the system
+  - missing in action
+  - enforced disappearance
+  - ghost (as in ghost boats — migration context)
+  example_questions:
+  - How many people are reported missing following the fire / flood / attack, and what is the breakdown
+    by age and sex?
+  - What is the ICRC or government caseload of missing persons linked to this conflict, and what proportion
+    are children?
+  - Are persons listed as missing because they cannot be located, or because they are confirmed to have
+    been abducted?
+  distinguish_from:
+    subpillar_1d::Casualties->Dead: 'Dead refers to persons whose death has been confirmed (bodies recovered,
+      deaths registered), whereas Missing covers persons whose fate — alive or dead — is still unknown;
+      the two categories frequently appear together in the same incident reports but represent distinct
+      epistemic states.
+
+      '
+    subpillar_1d::Casualties->Injured: 'Injured refers to persons who have been physically harmed but
+      whose location and survival status are known, whereas Missing persons have an unresolved location
+      and fate regardless of whether physical harm has occurred.
+
+      '
+  low_support: true
+  excerpt_count: 106
+  saturation_batches: 4

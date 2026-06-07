@@ -1,0 +1,44 @@
+subpillar_1d::Displacement->Type/Numbers/Movements:
+  description: 'Covers quantitative and categorical data on populations who have been forcibly or voluntarily
+    uprooted, including cumulative totals and periodic snapshots of internally displaced persons (IDPs),
+    refugees, returnees, asylum-seekers, and migrants broken down by location, site type (formal/informal
+    camp, host community, collective shelter), and demographic profile (sex, age, disability status).
+    Encompasses tracking of physical population movements — weekly arrivals and departures at points of
+    entry, flow monitoring point (FMP) counts, cross-border crossing volumes, transit routes, and direction
+    of movement (intra-state, inter-state, international) — as produced by instruments such as IOM''s
+    Displacement Tracking Matrix (DTM) and Emergency Tracking Tool (ETT). Also captures new sudden-onset
+    displacement events triggered by conflict, flooding, or military operations, as well as organised
+    and spontaneous return and resettlement flows with their respective head-counts and destination data.
+
+    '
+  synonyms:
+  - IDP figures
+  - displacement caseload
+  - population movement tracking
+  - flow monitoring
+  - returnee numbers
+  - refugee registration figures
+  - DTM displacement data
+  example_questions:
+  - How many IDPs are currently residing in camps versus host communities in Borno State, and how has
+    that figure changed over the past month?
+  - What were the total arrivals and departures recorded at Points of Entry in Adamawa and Borno during
+    the reporting week, and which LGAs saw the largest influxes?
+  - How many South Sudanese refugees have voluntarily returned from Sudan since 2017, and what proportion
+    were self-organised versus assisted returns?
+  distinguish_from:
+    subpillar_1d::Displacement->Push Factors: 'Push Factors captures the causes or drivers that compel
+      people to flee (conflict, flooding, poor living conditions, military operations), whereas Type/Numbers/Movements
+      records the resulting counts, categories, and trajectories of the displaced populations themselves
+      — the who, how many, and where, not the why.
+
+      '
+    pillar_2d::At Risk: 'At Risk identifies populations who face a future threat of harm or vulnerability
+      requiring protection action; Type/Numbers/Movements provides factual information on populations
+      already displaced — their current numbers, legal/status category, and observed movement patterns
+      — without attributing prospective risk.
+
+      '
+  low_support: false
+  excerpt_count: 9401
+  saturation_batches: 6

@@ -1,0 +1,51 @@
+subpillar_2d::Humanitarian Conditions->Living Standards:
+  description: 'Captures the observable, material conditions under which crisis-affected populations subsist
+    day-to-day, spanning access to and quality of shelter, water and sanitation, food, healthcare, education,
+    energy, and basic non-food items — assessed against minimum humanitarian standards (e.g. Sphere).
+    Excerpts consistently document quantified deficits: households in substandard or shared shelters,
+    unimproved or absent latrine coverage, water trucking costs eroding purchasing power, unaffordable
+    hygiene items, electricity limited to five to six hours per day, and children out of school due to
+    lack of supplies or closures. Conditions are recorded as present-state measurements — percentages
+    of households lacking adequate shelter, median daily wage relative to the minimum expenditure basket,
+    or time-to-water-source — rather than as explanations of why those gaps exist or what people are doing
+    in response.
+
+    '
+  synonyms:
+  - basic needs conditions
+  - material living conditions
+  - subsistence conditions
+  - humanitarian conditions (material)
+  - access to basic services
+  - standard of living (crisis context)
+  - essential services coverage
+  example_questions:
+  - What proportion of IDP households lack access to an improved latrine or adequate shelter, and how
+    does this compare to Sphere minimums?
+  - What is the current water access situation — source type, distance, and cost — for displaced populations
+    in this area?
+  - How many school-aged children are out of school, and what are the main reported barriers to education
+    access?
+  distinguish_from:
+    subpillar_2d::Humanitarian Conditions->Physical And Mental Well Being: 'Living Standards covers the
+      material inputs and infrastructure people depend on (shelter quality, water source, latrine availability,
+      food affordability, school enrollment) — the conditions of daily life — whereas Physical And Mental
+      Well Being captures health and psychosocial outcomes that result from those conditions, such as
+      malnutrition rates, disease burden, injury, and psychological distress.
+
+      '
+    subpillar_2d::Humanitarian Conditions->Coping Mechanisms: 'Living Standards describes what people
+      currently have or lack in terms of material conditions and service access; Coping Mechanisms describes
+      the adaptive strategies people employ — such as borrowing money for food, selling assets, or skipping
+      meals — precisely because those living standards have fallen below an acceptable threshold.
+
+      '
+    subpillar_2d::Impact->Impact On People: 'Living Standards documents the present state of material
+      conditions (e.g., 75% of households in substandard shelter), while Impact On People attributes harm
+      to a specific shock or event — framing the same deficits as consequences caused by conflict, displacement,
+      or disaster rather than as a standalone conditions snapshot.
+
+      '
+  low_support: false
+  excerpt_count: 10643
+  saturation_batches: 5

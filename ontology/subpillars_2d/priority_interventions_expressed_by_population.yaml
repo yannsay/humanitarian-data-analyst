@@ -1,0 +1,44 @@
+subpillar_2d::Priority Interventions->Expressed By Population:
+  description: 'Statements in which affected populations — refugees, IDPs, host community members, children,
+    or other crisis-affected groups — directly articulate what actions, programs, or assistance modalities
+    they want humanitarian actors or governments to implement, going beyond describing deprivation to
+    specifying the desired response. Requests span delivery modality preferences (cash vs. vouchers, home
+    delivery, preferred distribution mechanics), infrastructure improvements (gender-segregated latrines,
+    additional water points, slope protection, private latrine construction), livelihood and income-generation
+    programming (skills training, IGA access, cash-for-work), and process changes to existing aid (separate
+    queues for vulnerable groups, number-based queue systems, expanded distribution points, more Rohingya
+    volunteers in decision-making roles). Populations also express preferences for how information and
+    services should reach them — face-to-face or audio formats in their own language, female doctors in
+    every health facility block, community-committee structures to relay concerns — signalling that the
+    intervention request extends to participation and accountability mechanisms.
+
+    '
+  synonyms:
+  - population recommendations
+  - community requests
+  - beneficiary preferences
+  - what affected people want
+  - community-expressed response priorities
+  - aid improvement requests
+  - modality preferences
+  - people's recommendations to humanitarians
+  example_questions:
+  - What specific changes to food assistance distribution do Rohingya refugees request?
+  - What types of livelihood or income-generation programs are displaced women asking for?
+  - How do affected community members say aid delivery processes should be improved?
+  distinguish_from:
+    subpillar_2d::Priority Interventions->Expressed By Humanitarian Staff: 'This node captures the voice
+      of crisis-affected populations themselves stating what they want done; the Staff node captures recommendations
+      or prioritisation made by humanitarian practitioners, cluster leads, or implementing organisations
+      — the source of the expressed priority is the key distinguishing feature.
+
+      '
+    subpillar_2d::Priority Needs->Expressed By Population: 'Priority Needs captures populations describing
+      what they lack or what their situation is (insufficient food, broken latrines, no income); Priority
+      Interventions captures their next-step statement of what specific action or program should address
+      that gap — the distinction is between articulating a deficit and prescribing a remedy.
+
+      '
+  low_support: true
+  excerpt_count: 131
+  saturation_batches: 5

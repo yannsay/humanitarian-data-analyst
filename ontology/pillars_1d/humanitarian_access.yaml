@@ -1,0 +1,57 @@
+pillar_1d::Humanitarian Access:
+  description: 'Humanitarian Access excerpts report on the ability of humanitarian actors to physically
+    reach affected populations — and conversely the ability of affected populations to reach aid — covering
+    both the constraints that obstruct access and the operational responses used to navigate them. The
+    dominant themes across the corpus are: insecurity and armed violence targeting humanitarian workers
+    or supply routes (attacks on convoys, IED detonations on roads, armed group checkpoints, staff abductions
+    and killings); bureaucratic and administrative impediments imposed by state or non-state actors (movement
+    restrictions, visa and permit delays, mandatory security clearances, interference in delivery, suspension
+    orders against INGOs); physical and environmental barriers that sever routes (floods rendering roads
+    impassable, rainy-season inaccessibility, damaged bridges and infrastructure); and population-side
+    barriers that prevent affected people from reaching assistance (insecurity preventing community members
+    from reaching distribution points, gatekeeping by camp managers, lack of information about available
+    aid, physical inability to travel). Quantified access severity appears regularly — counties classified
+    by access constraint level, incident counts logged by humanitarian access groups, percentages of people
+    in inaccessible areas — marking this as a measurable operational dimension, not merely a qualitative
+    observation.
+
+    '
+  synonyms:
+  - humanitarian access constraints
+  - access impediments
+  - operational access
+  - access restrictions
+  - access challenges
+  - humanitarian space
+  - access incidents
+  - denial of access
+  example_questions:
+  - What are the main constraints preventing humanitarian actors from reaching populations in inaccessible
+    areas of Borno State?
+  - How many people are estimated to be beyond the reach of humanitarian assistance due to insecurity,
+    and what routes or modalities are being used to reach them?
+  - What bureaucratic or administrative impediments are humanitarian partners facing in obtaining movement
+    authorizations or security clearances?
+  distinguish_from:
+    pillar_1d::Displacement: 'Displacement captures information about populations who have moved from
+      their place of origin — their numbers, locations, movements, and return — whereas Humanitarian Access
+      captures whether aid actors can reach those populations (displaced or not) and whether those populations
+      can reach assistance; the two can co-occur but record different facts.
+
+      '
+    pillar_1d::Context: 'Context records durable structural conditions (political arrangements, economic
+      trends, sociocultural patterns) that set the background; Humanitarian Access records operational
+      facts about the actual or attempted delivery of assistance — access incidents, road closures, suspension
+      of operations — which are event- or status-specific rather than structural backdrop.
+
+      '
+    sector::Logistics: 'Logistics (a sector axis node) covers the supply chain, transport infrastructure,
+      warehousing, and cargo management that enable relief delivery; Humanitarian Access covers the political,
+      security, and physical permission environment that determines whether actors are allowed or able
+      to operate at all — the two interact but Humanitarian Access is a 1D information-type describing
+      the operating environment, not a sector describing what humanitarian actors do.
+
+      '
+  low_support: false
+  excerpt_count: 2575
+  saturation_batches: 8

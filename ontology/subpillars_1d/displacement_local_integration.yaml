@@ -1,0 +1,44 @@
+subpillar_1d::Displacement->Local Integration:
+  description: 'Covers the degree to which displaced populations (refugees, migrants, IDPs) are becoming
+    socially, economically, and legally embedded in their host location, including access to regularization
+    and documentation, insertion into labor markets and social protection systems, enrollment in education,
+    and ability to access healthcare and other public services. A central indicator of integration quality
+    is the state of social cohesion between displaced and host populations, which the corpus consistently
+    measures through levels of xenophobia, discrimination, and inter-community tension over shared resources
+    — as well as through programmatic efforts such as anti-xenophobia campaigns, community-based protection,
+    and socioeconomic inclusion initiatives. Legal status is documented as the root-cause variable: irregular
+    migration status generates cascading exclusions from health, education, social security, and formal
+    employment, and simultaneously exposes displaced persons to labor exploitation and deportation risk.
+
+    '
+  synonyms:
+  - socioeconomic integration
+  - social inclusion
+  - host community relations
+  - social cohesion
+  - regularization and legal status
+  - durable solutions (local integration track)
+  - refugee/migrant integration
+  - self-reliance
+  example_questions:
+  - What proportion of Venezuelan refugees and migrants have obtained legal residency or work permits
+    in host countries, and what barriers prevent regularization?
+  - To what extent are displaced populations experiencing discrimination or xenophobia from host communities,
+    and what social cohesion programming is in place?
+  - Are displaced children enrolled in host-country schools and are adults able to access formal or informal
+    employment without exploitative conditions?
+  distinguish_from:
+    subpillar_1d::Displacement->Intentions: 'Intentions captures whether displaced persons want to return,
+      integrate, or move onward; Local Integration captures the actual conditions and outcomes of embedding
+      in the host location regardless of whether that was the preferred durable solution.
+
+      '
+    subpillar_1d::Displacement->Pull Factors: 'Pull Factors explains why a destination was chosen (access
+      to livelihoods, family ties, services); Local Integration describes what actually happens to displaced
+      persons once they are present in that destination — the quality of access, the social reception,
+      and the degree of legal and economic inclusion.
+
+      '
+  low_support: false
+  excerpt_count: 330
+  saturation_batches: 11

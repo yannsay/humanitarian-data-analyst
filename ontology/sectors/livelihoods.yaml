@@ -1,0 +1,49 @@
+sector::Livelihoods:
+  description: 'Analysts tag excerpts here when the content concerns households'' capacity to generate
+    income and sustain economic self-reliance: employment status and wage levels (formal, informal, daily
+    labour, petty trade, small business), income sources and their disruption (conflict, movement restrictions,
+    COVID-19 containment measures), and key economic assets such as remittances, savings, and purchasing
+    power. The dominant usage covers how crises erode income-generating capacity — conflict blocking access
+    to markets or wage-labour sites, currency depreciation and inflation reducing purchasing power, displacement
+    severing people from jobs and economic networks — and the negative coping strategies households adopt
+    when livelihoods collapse: debt accumulation, child labour, early marriage, begging, and engagement
+    in illegal economies. Response- side tagging includes livelihood support programming such as cash-for-work,
+    vocational and skills training, micro-financing, asset protection, and job placement assistance.
+
+    '
+  synonyms:
+  - income generation
+  - employment
+  - economic self-reliance
+  - income-generating activities
+  - wage labour
+  - purchasing power
+  - livelihood support
+  - cash-for-work
+  example_questions:
+  - What are the main income sources for affected households, and to what extent have those sources been
+    disrupted?
+  - What proportion of households have taken on debt, and what are the primary reasons for indebtedness?
+  - What livelihood support interventions (skills training, cash-for-work, micro-finance) are being implemented,
+    and who is being reached?
+  distinguish_from:
+    sector::Agriculture: 'Agriculture is tagged when the excerpt is specifically about farming, herding,
+      or fishing activities and their productive conditions; Livelihoods is tagged when the focus is on
+      income-generating capacity, employment, or economic assets more broadly (including but not limited
+      to agriculture-based income).
+
+      '
+    sector::Food Security: 'Livelihoods covers income and economic capacity; Food Security covers household-level
+      food access and consumption outcomes — though the two frequently co-occur, excerpts describing reduced
+      purchasing power as a barrier to food access are primarily tagged Food Security unless the income
+      disruption mechanism is the central subject.
+
+      '
+    sector::Cross: 'Cross is used for excerpts addressing coordination, response modalities, or multi-sector
+      needs that span sectors; Livelihoods is used when the excerpt focuses substantively on income, employment,
+      or economic self-reliance rather than on cross-cutting response architecture or coordination mechanisms.
+
+      '
+  low_support: false
+  excerpt_count: 7319
+  saturation_batches: 4

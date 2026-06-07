@@ -1,0 +1,41 @@
+sector::Agriculture:
+  description: 'Analysts tag excerpts here when the content concerns on-the-ground agricultural production
+    conditions and constraints: crop cultivation (planting, harvesting, yields, crop losses), livestock
+    keeping (cattle, poultry, sheep; fodder, veterinary services, animal diseases), fisheries, and pastoral/transhumance
+    activities. The dominant usage covers disruptions to agricultural systems — conflict blocking access
+    to farmland, shortages or high prices of inputs (seeds, fertilizers, fuel for irrigation), climate
+    shocks (floods, drought, erratic rainfall) destroying harvests, and displacement severing farmers
+    and herders from their land and productive assets. Response-side tagging includes distribution of
+    seeds, fertilizers and livestock to crisis-affected farmers, and FAO/WFP-led agricultural livelihoods
+    programmes.
+
+    '
+  synonyms:
+  - crop production
+  - farming
+  - livestock
+  - agropastoral
+  - pastoralism
+  - fisheries
+  - agricultural inputs
+  - smallholder farming
+  example_questions:
+  - What constraints are farmers facing in accessing land, seeds, or fertilizer this season?
+  - How has conflict or flooding affected crop yields and livestock production?
+  - What agricultural inputs have been distributed to crisis-affected households?
+  distinguish_from:
+    sector::Food Security: 'Agriculture covers the production side — whether crops are being grown, livestock
+      kept, and inputs available; Food Security covers household-level food access and consumption outcomes
+      (IPC phases, coping strategies, food basket adequacy), even when the underlying driver is agricultural
+      collapse.
+
+      '
+    sector::Livelihoods: 'Agriculture is tagged when the excerpt is specifically about farming, herding,
+      or fishing activities and their productive conditions; Livelihoods is tagged when the focus is on
+      income-generating capacity, employment, or economic assets more broadly (including but not limited
+      to agriculture-based income).
+
+      '
+  low_support: false
+  excerpt_count: 1221
+  saturation_batches: 5

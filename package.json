@@ -1,0 +1,26 @@
+{
+  "name": "humanitarian-data-analyst",
+  "version": "0.1.0",
+  "description": "An Agent Skill for disciplined analysis of humanitarian needs-assessment data (Kobo/ODK, RNA/MSNA/HNO). Routes questions to the HumSet/DEEP framework, identifies indicators, binds datasets, and analyses with coverage discipline.",
+  "keywords": [
+    "agent-skill",
+    "agent-skills",
+    "humanitarian",
+    "needs-assessment",
+    "humset",
+    "deep",
+    "kobo",
+    "odk",
+    "reach",
+    "msna",
+    "hno"
+  ],
+  "license": "SEE LICENSE IN LICENSE",
+  "files": [
+    "SKILL.md",
+    "references/",
+    "ontology/",
+    "scripts/",
+    "LICENSE"
+  ]
+}

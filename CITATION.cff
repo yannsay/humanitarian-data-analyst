@@ -1,0 +1,54 @@
+cff-version: 1.2.0
+message: >-
+  This skill derives its Layer A ontology from the HumSet dataset. If you use this
+  skill or its ontology in academic work, please cite the HumSet paper (see the
+  references section below).
+title: "humanitarian-data-analyst (Agent Skill)"
+abstract: >-
+  An Agent Skill for disciplined analysis of humanitarian needs-assessment data
+  (Kobo/ODK, RNA/MSNA/HNO). It routes analyst questions to the HumSet/DEEP
+  analytical framework (Layer A), identifies indicators (Layer B), binds datasets
+  (Layer C), and analyses with coverage discipline.
+authors:
+  - given-names: Yann
+type: software
+license: MIT
+repository-code: "https://github.com/<your-org>/humanitarian-data-analyst"
+keywords:
+  - agent-skill
+  - humanitarian
+  - needs-assessment
+  - humset
+  - deep
+references:
+  - type: conference-paper
+    title: >-
+      HumSet: Dataset of Multilingual Information Extraction and Classification
+      for Humanitarian Crises Response
+    authors:
+      - family-names: Fekih
+        given-names: Selim
+      - family-names: Tamagnone
+        given-names: Nicolo'
+      - family-names: Minixhofer
+        given-names: Benjamin
+      - family-names: Shrestha
+        given-names: Ranjan
+      - family-names: Contla
+        given-names: Ximena
+      - family-names: Oglethorpe
+        given-names: Ewan
+      - family-names: Rekabsaz
+        given-names: Navid
+    collection-title: "Findings of the Association for Computational Linguistics: EMNLP 2022"
+    publisher:
+      name: Association for Computational Linguistics
+    conference:
+      name: "Findings of the Association for Computational Linguistics: EMNLP 2022"
+      city: Abu Dhabi
+      country: AE
+    year: 2022
+    month: 12
+    start: 4379
+    end: 4389
+    url: "https://aclanthology.org/2022.findings-emnlp.321"

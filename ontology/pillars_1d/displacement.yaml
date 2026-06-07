@@ -1,0 +1,37 @@
+pillar_1d::Displacement:
+  description: 'Excerpts record the factual state of population movement — counts of internally displaced
+    persons (IDPs), refugees, returnees, and cross-border migrants, along with the spatial patterns of
+    those flows (origins, destinations, transit routes, and Points of Entry). Reporting consistently identifies
+    the drivers that triggered movement — armed conflict, insecurity, natural disasters such as floods
+    or volcanic eruptions, and deteriorating living conditions — as well as the factors that shape whether
+    populations stay, move on, or attempt to return, including improved security conditions, family reunification,
+    lack of livelihood opportunities, and poor conditions in displacement sites.
+
+    '
+  synonyms:
+  - internal displacement
+  - IDP movements
+  - refugee flows
+  - population movements
+  - forced displacement
+  - returnee flows
+  - cross-border movements
+  example_questions:
+  - How many IDPs are currently displaced in Borno State and where did they come from?
+  - What proportion of displaced households intend to return to their area of origin, and what factors
+    are driving that intention?
+  - What are the main push factors behind recent displacement waves in northeast Nigeria?
+  distinguish_from:
+    pillar_1d::Shock/Event: 'Shock/Event captures the triggering incident itself (an attack, a flood event,
+      an outbreak) as a discrete occurrence; Displacement captures the resulting or ongoing population
+      movement — the who, how many, where from, where to, and why of people leaving or returning.
+
+      '
+    pillar_2d::At Risk: 'At Risk (2D) assesses the degree of vulnerability or exposure of a population
+      group to harm; Displacement (1D) describes the factual phenomenon of people moving — numbers, directions,
+      and motivations — without evaluating the severity of their resulting condition.
+
+      '
+  low_support: false
+  excerpt_count: 10284
+  saturation_batches: 3

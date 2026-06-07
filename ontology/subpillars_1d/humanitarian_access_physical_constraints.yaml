@@ -1,0 +1,46 @@
+subpillar_1d::Humanitarian Access->Physical Constraints:
+  description: 'Covers the physical and environmental barriers that prevent humanitarian actors and civilians
+    from moving through or operating in crisis-affected areas — including active hostilities, frontlines,
+    airstrikes, and armed group presence that render locations inaccessible; contamination by IEDs, landmines,
+    UXOs, and explosive remnants of war (ERW) that block roads, farmland, and return areas; and natural
+    or infrastructural obstacles such as impassable flooded roads, damaged bridges, and degraded supply
+    routes that physically cut off hard-to-reach or deep-field locations. Also captures movement restrictions
+    imposed by armed checkpoints, military security perimeters, curfews, border closures, and government-imposed
+    lockdowns that constrain the free movement of people, humanitarian cargo, and staff — including no-fly-zone
+    constraints limiting access to helicopter-only areas.
+
+    '
+  synonyms:
+  - hard-to-reach areas
+  - H2R access constraints
+  - inaccessible areas
+  - physical access barriers
+  - explosive hazard contamination
+  - impassable roads
+  - frontline access
+  - movement restrictions
+  example_questions:
+  - Which Local Government Areas or districts are completely inaccessible to humanitarian actors due to
+    active hostilities or armed group control, and what is the estimated affected population?
+  - To what extent do IED, landmine, or UXO contamination along key supply routes and in returnee areas
+    restrict humanitarian movement and civilian return?
+  - How do seasonal flooding, degraded road infrastructure, and military checkpoints combine to reduce
+    coverage in deep-field locations during the rainy season?
+  distinguish_from:
+    subpillar_1d::Humanitarian Access->Relief To Population: 'Relief To Population covers the operational
+      and administrative constraints on aid organisations actively delivering assistance (denied convoy
+      permissions, bureaucratic restrictions on NGO operations, aid looted or blocked at distribution);
+      Physical Constraints covers the upstream physical environment — terrain, explosive contamination,
+      active combat, and infrastructure damage — that makes areas physically unreachable regardless of
+      operational intent.
+
+      '
+    sector::Logistics: 'Logistics covers the humanitarian supply chain as an operational sector (warehousing,
+      transport assets, freight capacity, procurement, last-mile delivery infrastructure); Physical Constraints
+      is a cross-cutting access dimension that reports on how terrain, conflict, and environmental conditions
+      obstruct movement, irrespective of which response sector is affected.
+
+      '
+  low_support: false
+  excerpt_count: 968
+  saturation_batches: 5

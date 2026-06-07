@@ -1,0 +1,50 @@
+subpillar_2d::At Risk->Risk And Vulnerabilities:
+  description: 'Captures analysis of the conditions, characteristics, and compounding factors that place
+    specific population groups at heightened probability of future harm — including protection risks (GBV,
+    trafficking, arbitrary detention, exploitation), food insecurity risk, disease outbreak risk, and
+    eviction or displacement risk. Texts identify which groups are at elevated risk (women and girls,
+    IDPs, refugees and migrants, children, elderly, persons with disabilities) and explain why — through
+    depleted coping capacity, precarious shelter, asset loss, loss of documentation, overcrowding, or
+    cumulative shock exposure. The subpillar also encompasses risk quantification: population counts "at
+    risk of famine/starvation," proportions of households "at risk of eviction," or share of population
+    "at high COVID risk," where the analytical register is prospective threat rather than current deprivation.
+
+    '
+  synonyms:
+  - vulnerability analysis
+  - population at risk
+  - protection risk exposure
+  - heightened vulnerability
+  - risk of harm
+  - differential vulnerability
+  - risk factors
+  - compounded vulnerability
+  example_questions:
+  - Which population groups face the highest risk of GBV, trafficking, or exploitation in this context,
+    and what structural factors drive that exposure?
+  - How many people are projected to face food insecurity or famine risk if current trends continue and
+    humanitarian access remains constrained?
+  - What proportion of IDP and returnee households face eviction risk, and which household characteristics
+    are most associated with multi-sectoral vulnerability?
+  distinguish_from:
+    subpillar_2d::Humanitarian Conditions->Living Standards: 'At Risk focuses on the probability and drivers
+      of future or escalating harm for specific groups; Living Standards describes the current, observable
+      state of conditions such as shelter quality, food consumption, or access to services as they exist
+      now.
+
+      '
+    subpillar_1d::Shock/Event->Hazard & Threats: 'Hazard & Threats (1d axis) records the nature and characteristics
+      of the precipitating event or threat as factual information; Risk And Vulnerabilities (2d axis)
+      is an analytical judgment about which populations are differentially exposed to harm from those
+      hazards by virtue of pre-existing vulnerabilities, capacity gaps, or marginalised status.
+
+      '
+    subpillar_2d::Impact->Impact On People: 'Impact On People documents harm that has already occurred
+      — deaths, injuries, displacement, loss of livelihood; Risk And Vulnerabilities concerns potential
+      or escalating harm that has not yet been fully realised, framed as exposure and susceptibility rather
+      than recorded outcome.
+
+      '
+  low_support: false
+  excerpt_count: 5640
+  saturation_batches: 7

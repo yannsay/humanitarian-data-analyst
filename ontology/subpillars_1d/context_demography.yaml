@@ -1,0 +1,41 @@
+subpillar_1d::Context->Demography:
+  description: 'Covers the size, composition, and structural characteristics of affected populations,
+    including total headcounts disaggregated by population group (IDPs, returnees, non-displaced, migrants,
+    refugees), age cohorts (children under 5, under 18, adults, elderly), and sex ratios. Includes household-level
+    demographic data such as average household size, the prevalence of female-headed or child-headed households,
+    and the proportion of individuals belonging to cross-cutting vulnerability groups such as pregnant
+    and lactating women, unaccompanied or separated children, and persons with disabilities. Also encompasses
+    structural background indicators — national or regional fertility rates, population density, population
+    growth rates, and vital statistics such as maternal and under-five mortality rates — that frame the
+    demographic context in which a crisis unfolds.
+
+    '
+  synonyms:
+  - population composition
+  - population breakdown
+  - demographic profile
+  - population disaggregation
+  - age and sex distribution
+  - household composition
+  - vulnerable population groups
+  - demographic characteristics
+  example_questions:
+  - What is the age and sex breakdown of the IDP population in this location?
+  - What proportion of affected households are female-headed, and what is the average household size?
+  - What are the background fertility and population growth rates in this country or region?
+  distinguish_from:
+    subpillar_1d::Context->Socio Cultural: 'Socio Cultural covers social norms, cultural practices, and
+      community dynamics (e.g. gender roles, religious practices, discrimination) that shape behaviour
+      and access, whereas Demography covers the quantitative composition of the population itself — counts,
+      ratios, and structural vital statistics.
+
+      '
+    pillar_1d::Displacement: 'Displacement captures movement events and drivers — where people fled from,
+      why, and their displacement status — whereas Demography captures the demographic attributes (age,
+      sex, household composition, vulnerability sub-groups) of any population, including but not limited
+      to displaced populations.
+
+      '
+  low_support: false
+  excerpt_count: 1770
+  saturation_batches: 8

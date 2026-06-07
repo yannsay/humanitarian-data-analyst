@@ -1,0 +1,46 @@
+subpillar_2d::Humanitarian Conditions->Number Of People In Need:
+  description: 'Quantified estimates of the population requiring humanitarian assistance, typically expressed
+    as aggregate PiN figures sourced from Humanitarian Needs Overviews (HNOs), Humanitarian Response Plans
+    (HRPs), or sector-level analyses (e.g. "7.9 million people in need of emergency assistance in north-east
+    Nigeria", "24.1 million — close to 80 per cent of the population — need assistance and protection"
+    in Yemen). Figures are routinely disaggregated by severity tier (acute, critical, severe, extreme),
+    by population group (IDPs, returnees, host community, refugees, children, women of reproductive age),
+    and by sector (food security, WASH, health, shelter/NFI, nutrition, protection), allowing analysts
+    to compare multi-sectoral need intersections and track escalation over time. Shock-driven changes
+    in PiN — such as COVID-19 pushing north-east Nigeria''s caseload from 7.9 million to 10.6 million,
+    or conflict increasing Burkina Faso''s figure from 2.9 million to 3.5 million — are a dominant pattern
+    in the corpus, establishing this node as the primary quantitative anchor for humanitarian scale assessments.
+
+    '
+  synonyms:
+  - people in need (PiN)
+  - humanitarian caseload
+  - number in need of assistance
+  - population requiring humanitarian assistance
+  - people requiring urgent support
+  - people facing acute humanitarian needs
+  - persons in need of life-saving assistance
+  example_questions:
+  - How many people are currently in need of humanitarian assistance in this crisis, and how has that
+    figure changed over the past year?
+  - What share of the total population in need are in acute or critical need versus moderate need, and
+    which population groups account for the most severe tier?
+  - Which sectors drive the highest PiN figures, and are there populations with co-occurring multi-sectoral
+    needs?
+  distinguish_from:
+    subpillar_2d::Impact->Number Of People Affected: 'People in need are those requiring humanitarian
+      assistance to meet basic needs (a forward-looking operational threshold), whereas people affected
+      counts all individuals whose lives or livelihoods were disrupted by the shock regardless of whether
+      they require external assistance — affected is the broader universe from which the PiN subset is
+      derived.
+
+      '
+    subpillar_2d::Capacities & Response->People Reached/Response Gaps: 'Number of people in need establishes
+      the demand side of the equation (the total caseload requiring assistance), while People Reached/Response
+      Gaps captures the supply side — how many of those in need have actually received assistance and
+      where coverage falls short.
+
+      '
+  low_support: false
+  excerpt_count: 880
+  saturation_batches: 9

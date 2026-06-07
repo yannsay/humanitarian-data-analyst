@@ -1,0 +1,45 @@
+subpillar_1d::Humanitarian Access->People Facing Humanitarian Access Constraints/Humanitarian Access Gaps:
+  description: 'Quantified estimates of the number of people — disaggregated by displacement status, age,
+    and sex where available — who are cut off from humanitarian assistance due to access constraints,
+    typically expressed as a total count for a named geographic unit (e.g., "823,000 people in inaccessible
+    areas of Borno State" or "1.2 million people inaccessible to humanitarian actors in northeast Nigeria").
+    Coverage gaps are documented at the site or LGA level, tracking which settlements, wards, or collective
+    centres receive no assistance or only partial coverage across one or more sectors. When direct enumeration
+    is impossible, proxy indicators — such as MUAC screening of new arrivals from inaccessible areas or
+    food security phase estimates applied to hard-to-reach populations — are used to infer the scale and
+    severity of unmet need.
+
+    '
+  synonyms:
+  - people out of reach of humanitarian aid
+  - inaccessible population
+  - hard-to-reach population
+  - population cut off from assistance
+  - humanitarian coverage gap
+  - unserved population
+  - people beyond reach of aid organizations
+  - assistance gap
+  example_questions:
+  - How many people are estimated to be in areas inaccessible to humanitarian actors, and how has that
+    figure changed across assessment rounds?
+  - Which LGAs or districts have no reported humanitarian assistance coverage, and what proportion of
+    the population in need does this represent?
+  - What proxy methods are used to estimate needs and population size in areas where direct assessment
+    is not possible?
+  distinguish_from:
+    subpillar_1d::Humanitarian Access->Physical Constraints: 'Physical Constraints describes the barriers
+      themselves (insecurity, road conditions, IEDs, movement restrictions, bureaucratic impediments)
+      that prevent access; People Facing HA Constraints/HA Gaps documents the resulting number and profile
+      of people on the receiving end of those barriers — the population count and coverage gap, not the
+      cause.
+
+      '
+    subpillar_1d::Humanitarian Access->Population To Relief: 'Population To Relief captures people''s
+      own ability or inability to reach assistance points (movement toward distribution sites, clinics,
+      or services); this node captures the supply side — the size of the population that aid organisations
+      cannot reach, regardless of whether those people are themselves mobile.
+
+      '
+  low_support: false
+  excerpt_count: 191
+  saturation_batches: 6

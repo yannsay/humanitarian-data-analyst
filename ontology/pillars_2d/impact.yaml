@@ -1,0 +1,47 @@
+pillar_2d::Impact:
+  description: 'Impact is the analytical lens applied to document and quantify what a shock or crisis
+    has caused: the damage to systems, services, and infrastructure (health facilities overwhelmed or
+    destroyed, WASH networks disrupted, schools closed, supply chains broken), the scale of people affected
+    (counts of displaced, injured, food-insecure, or malnourished populations), and the downstream harms
+    on individuals and communities (livelihood collapse, protection violations including GBV and child
+    marriage, deteriorating nutritional status). Excerpts consistently pair a causal attribution — conflict,
+    flooding, COVID-19, economic shock — with a measured outcome: "the flooding adversely affected approximately
+    436,000 people, destroying more than 66,000 houses"; "COVID-19 could nearly double the number of people
+    experiencing serious food insecurity." The lens also captures how multiple compounding shocks (conflict
+    + pandemic + economic crisis) interact to aggravate each other''s effects on already fragile systems
+    and populations.
+
+    '
+  synonyms:
+  - crisis effects
+  - shock consequences
+  - damage and losses
+  - humanitarian impact
+  - crisis-induced harm
+  - compound crisis effects
+  - crisis aftermath
+  example_questions:
+  - How many people were displaced or affected by the flooding, and what infrastructure was destroyed?
+  - What has the conflict done to health system capacity and access to essential services?
+  - How has the combination of COVID-19 and economic collapse worsened food insecurity and protection
+    outcomes?
+  distinguish_from:
+    pillar_1d::Shock/Event: 'Shock/Event (1D) describes the triggering incident itself — the flood, the
+      armed attack, the pandemic declaration — while Impact (2D) describes what that incident caused:
+      the people harmed, the infrastructure destroyed, and the services disrupted as a result.
+
+      '
+    pillar_2d::Humanitarian Conditions: 'Humanitarian Conditions describes the current living state of
+      the affected population (food consumption scores, shelter quality, WASH access levels) without attributing
+      that state to a specific shock, whereas Impact explicitly links an outcome to the crisis or event
+      that produced it.
+
+      '
+    pillar_1d::Casualties: 'Casualties (1D) records the raw count of dead, injured, or missing as an event-level
+      fact, while Impact (2D) frames death tolls and injuries as one dimension of the broader harm a crisis
+      has inflicted — placed alongside systemic damage and population-scale deprivation.
+
+      '
+  low_support: false
+  excerpt_count: 20513
+  saturation_batches: 5

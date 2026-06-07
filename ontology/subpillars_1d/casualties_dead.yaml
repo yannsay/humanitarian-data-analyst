@@ -1,0 +1,46 @@
+subpillar_1d::Casualties->Dead:
+  description: 'Refers to persons whose deaths have been confirmed or reported — either as individual
+    fatality counts, cumulative death tolls, or mortality rates — arising from any crisis-related cause
+    including armed conflict, disease outbreaks, natural or man-made disasters, and acute deprivation.
+    The corpus is dominated by three recurring causal clusters: conflict deaths (killings in armed attacks,
+    airstrikes, IED/UXO explosions, intercommunal violence), epidemic deaths (COVID-19 death tolls and
+    case fatality rates, cholera, Ebola, Lassa fever, measles, dengue), and disaster deaths (fire, flood,
+    landslide, shipwreck). Counts are frequently presented in compound form alongside other casualty categories
+    — "X killed, Y injured, Z missing" — and are often reported both as point-in-time figures and running
+    cumulative totals; demographic disaggregation by age group (under-five, children, women, elderly),
+    sex, or population type (civilians vs. combatants, IDPs vs. host community, refugees vs. nationals)
+    is common across all causal clusters.
+
+    '
+  synonyms:
+  - killed
+  - fatalities
+  - deaths
+  - dead
+  - death toll
+  - lost their lives
+  - perished
+  - passed away
+  - mortality
+  - case fatality rate (CFR)
+  example_questions:
+  - How many people have been killed in this conflict, and what is the breakdown between civilians and
+    combatants?
+  - What is the death toll and case fatality rate for the current disease outbreak, disaggregated by age
+    group and area?
+  - How many deaths have been attributed to the disaster (fire/flood/landslide), and how does this compare
+    to previous incidents?
+  distinguish_from:
+    subpillar_1d::Casualties->Injured: 'Injured covers persons who have been physically harmed but survived;
+      Dead is reserved for confirmed fatalities — the two categories routinely co-appear in the same incident
+      reports but represent mutually exclusive outcomes.
+
+      '
+    subpillar_1d::Casualties->Missing: 'Missing covers persons whose fate is unresolved and who have not
+      been confirmed dead; Dead requires confirmation (bodies recovered, deaths registered, or officially
+      reported), whereas Missing reflects epistemic uncertainty about survival status.
+
+      '
+  low_support: false
+  excerpt_count: 1687
+  saturation_batches: 5

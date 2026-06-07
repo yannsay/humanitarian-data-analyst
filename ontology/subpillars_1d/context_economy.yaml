@@ -1,0 +1,45 @@
+subpillar_1d::Context->Economy:
+  description: 'Covers the macroeconomic and structural conditions that shape the operating environment
+    for affected populations, including currency depreciation, inflation, food and commodity price volatility,
+    GDP contraction, poverty rates, and fiscal constraints on governments — all tracked as background
+    factors that heighten or attenuate humanitarian vulnerability. Encompasses labour market dynamics
+    such as unemployment, underemployment, wage erosion, and the collapse of both formal and informal
+    income sources, particularly among daily labourers, women in the informal sector, and migrant workers
+    whose remittances sustain fragile household economies. Also captures trade and market functioning
+    — import dependency, exchange-rate-driven supply disruptions, subsidy removal, and the differential
+    impact of sanctions, border closures, and commodity price shocks on countries reliant on oil, minerals,
+    or food imports.
+
+    '
+  synonyms:
+  - macroeconomic context
+  - economic environment
+  - economic conditions
+  - economic deterioration
+  - currency depreciation
+  - inflation context
+  - purchasing power erosion
+  - market conditions
+  example_questions:
+  - What is the current inflation rate and how has the local currency depreciated against the USD over
+    the past year?
+  - How has GDP contraction or the removal of fuel and food subsidies affected the purchasing power of
+    low-income households?
+  - To what extent do households depend on remittances, and how vulnerable are those flows to external
+    economic shocks?
+  distinguish_from:
+    sector::Livelihoods: 'Context->Economy describes the macroeconomic and structural backdrop — exchange
+      rates, inflation, GDP, poverty rates, subsidy policy — as conditions that affect everyone in the
+      environment; Livelihoods covers individual and household-level income strategies, asset bases, and
+      coping mechanisms in direct response to those conditions.
+
+      '
+    subpillar_1d::Context->Security & Stability: 'Context->Economy focuses on economic drivers of vulnerability
+      (currency collapse, food price spikes, unemployment) even when conflict is a cause; Context->Security
+      & Stability addresses the presence, intensity, and geographic spread of armed violence and political
+      instability as primary analytical objects, though the two nodes frequently co-occur.
+
+      '
+  low_support: false
+  excerpt_count: 2422
+  saturation_batches: 6

@@ -1,0 +1,42 @@
+pillar_2d::Capacities & Response:
+  description: 'This pillar captures what has actually been delivered to affected populations: the scale,
+    type, and coverage of assistance provided by humanitarian actors (UN agencies, INGOs, NNGOs, governments,
+    and the private sector), as well as funding levels, funding gaps, and operational constraints that
+    limit delivery. It also covers the capacity of responders themselves — trained personnel, logistics
+    infrastructure, coordination mechanisms, and supply pipelines — and documents where response has reached
+    people versus where gaps persist relative to needs or targets.
+
+    '
+  synonyms:
+  - humanitarian response
+  - aid delivery
+  - response coverage
+  - response capacity
+  - operational capacity
+  - assistance delivered
+  - people reached
+  - response gaps
+  example_questions:
+  - How many people have been reached with food, WASH, health, or protection assistance, and what proportion
+    of the target population does that represent?
+  - What funding has been mobilized or remains unmet for the current humanitarian response plan?
+  - What operational constraints — access, staff shortages, supply gaps, funding shortfalls — are limiting
+    the capacity of actors to deliver assistance?
+  distinguish_from:
+    pillar_2d::Priority Interventions: 'Priority Interventions identifies what actions should be taken
+      next; Capacities & Response documents what has already been delivered, by whom, at what scale, and
+      where delivery has fallen short.
+
+      '
+    pillar_2d::Priority Needs: 'Priority Needs describes what affected populations require; Capacities
+      & Response describes what has actually been provided and how far that provision covers those needs.
+
+      '
+    pillar_2d::Impact: 'Impact captures the consequences of a crisis on people''s lives and wellbeing;
+      Capacities & Response captures the humanitarian system''s actions and operational footprint in response
+      to that crisis.
+
+      '
+  low_support: false
+  excerpt_count: 14446
+  saturation_batches: 16

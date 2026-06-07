@@ -1,0 +1,45 @@
+subpillar_1d::Displacement->Push Factors:
+  description: 'Captures the conditions or events at a place of origin that compel people to leave, including
+    armed conflict, attacks by non-state armed groups, intercommunal violence, military operations, and
+    fear of attack — the dominant triggers across the corpus (e.g., "85% of new arrivals reported to have
+    relocated due to the ongoing conflict/attack"; "the lingering conflict in Nigeria''s North East Zone
+    has been the major cause of widespread population displacement"). Poor living conditions and deteriorating
+    economic situations appear as a second major cluster of push factors, frequently reported alongside
+    or independently of security triggers (e.g., "the deterioration of the economic situation remained
+    the primary reason for leaving place of displacement"; arrivals "due to poor living conditions" reported
+    in dozens of IOM ETT assessments). Natural hazards — flooding, volcanic eruption, fire — constitute
+    a third, smaller cluster that produces acute but often shorter-duration displacement (e.g., "heavy
+    flood is causing people displaced from their home"; "the eruption from the flank of Mount Nyiragongo
+    … destroyed four villages").
+
+    '
+  synonyms:
+  - drivers of displacement
+  - movement triggers
+  - reasons for leaving
+  - causes of forced displacement
+  - displacement triggers
+  - reasons for departure
+  - flight causes
+  example_questions:
+  - What were the main reasons people left their areas of origin during the reporting period?
+  - What proportion of displaced people cited conflict/attack versus poor living conditions as the trigger
+    for their movement?
+  - Which security incidents or hazard events have driven new displacement waves this week?
+  distinguish_from:
+    subpillar_1d::Displacement->Pull Factors: 'Pull factors describe conditions at the destination that
+      attract displaced people (e.g., access to services, livelihoods, family ties), whereas Push Factors
+      are conditions at the origin that force or compel departure; a single movement report often names
+      both (e.g., "deterioration of the economic situation remained the primary reason for leaving … access
+      to livelihoods remained the primary reason for displacement into place of arrival").
+
+      '
+    subpillar_1d::Shock/Event->Hazard & Threats: 'Hazard & Threats captures the occurrence and nature
+      of the hazard or threat as an event in itself (the attack, the flood, the armed clash), while Push
+      Factors captures that same hazard specifically as a reason why people left — the causal link between
+      the event and population movement is what distinguishes this node.
+
+      '
+  low_support: false
+  excerpt_count: 1087
+  saturation_batches: 7

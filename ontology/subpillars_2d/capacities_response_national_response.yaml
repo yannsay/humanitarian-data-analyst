@@ -1,0 +1,41 @@
+subpillar_2d::Capacities & Response->National Response:
+  description: 'Covers actions taken by national governments and their ministries to respond to humanitarian
+    crises, including emergency declarations, regulatory measures (lockdowns, border closures, curfews,
+    school closures), government-led or co-led service delivery (vaccination campaigns, food distribution
+    programmes, social safety nets, national health facility operations), and national authority coordination
+    with humanitarian and UN partners. Also encompasses national government capacity constraints — underfunded
+    sector budgets, weak ministry systems, gaps in national social services — that limit the effectiveness
+    or reach of the state-led response.
+
+    '
+  synonyms:
+  - government response
+  - national authority response
+  - state-led response
+  - national government measures
+  - ministry-led operations
+  - national emergency response
+  - government humanitarian action
+  example_questions:
+  - What measures has the national government taken to address displacement, food insecurity, or disease
+    outbreaks in the affected area?
+  - How are national ministries coordinating with UN agencies and NGOs to deliver humanitarian assistance,
+    and where are the capacity gaps?
+  - What government policies (border closures, lockdowns, school closures, social protection programmes)
+    are shaping humanitarian needs and access?
+  distinguish_from:
+    subpillar_2d::Capacities & Response->International Response: 'International Response covers assistance
+      delivered by international actors (UN agencies, INGOs, donor governments, international funds) operating
+      in-country, whereas National Response focuses specifically on what the national government itself
+      is doing — its own declarations, policies, service delivery, and institutional capacity.
+
+      '
+    subpillar_2d::Capacities & Response->People Reached/Response Gaps: 'People Reached/Response Gaps quantifies
+      coverage outcomes — how many people received assistance and where gaps remain — regardless of who
+      delivered it, whereas National Response focuses on the nature, scope, and capacity of the government
+      actor delivering or shaping the response.
+
+      '
+  low_support: false
+  excerpt_count: 1073
+  saturation_batches: 5

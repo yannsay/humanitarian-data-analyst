@@ -1,0 +1,42 @@
+pillar_2d::Priority Needs:
+  description: 'Priority Needs captures what affected populations or humanitarian actors identify as the
+    most pressing unmet conditions requiring urgent attention — expressed as ranked deficits, unfulfilled
+    gaps, or self-reported lack of access ("food was consistently reported as the priority and immediate
+    need," "top three most commonly reported priority needs: Shelter 47%, Food 40%, Healthcare 44%").
+    Entries include ranked-need outputs from multi-sector needs assessments (MSNAs), community feedback
+    mechanisms, and KI surveys, as well as sector-level gap statements quantifying the proportion of sites
+    or households with unfulfilled needs (e.g., "75% of locations cited food as the main unfulfilled need,"
+    "74% of households in Borno have a WASH sectoral need"). The pillar is split by voice: needs expressed
+    directly by affected populations (FGDs, AAP feedback, community consultations) versus needs identified
+    and articulated by humanitarian staff (cluster reporting, sector needs sections, partner assessments).
+
+    '
+  synonyms:
+  - priority needs
+  - most pressing needs
+  - unmet needs
+  - immediate needs
+  - urgent needs
+  - top needs
+  - first priority
+  - main unfulfilled needs
+  example_questions:
+  - What do IDPs and host communities identify as their top priority needs, and how do these differ by
+    population group?
+  - Which sectors are most frequently cited as priority needs in MSNA or AAP feedback for this caseload?
+  - What percentage of assessed sites flag food, shelter, or WASH as the primary unfulfilled need?
+  distinguish_from:
+    pillar_2d::Priority Interventions: 'Priority Needs captures what is lacking or unmet (the documented
+      deficit or gap), while Priority Interventions captures what should be done to address those gaps
+      — the proposed action or recommendation, not the stated shortfall.
+
+      '
+    pillar_2d::Humanitarian Conditions: 'Humanitarian Conditions describes the current state of wellbeing,
+      living conditions, or severity of outcomes for the affected population, whereas Priority Needs captures
+      the population''s or humanitarians'' explicit identification and ranking of what is most urgently
+      missing or required.
+
+      '
+  low_support: false
+  excerpt_count: 1417
+  saturation_batches: 6

@@ -1,0 +1,44 @@
+subpillar_1d::Casualties->Injured:
+  description: 'Refers to persons who have suffered physical harm — wounds, burns, or other bodily injury
+    — as a result of a crisis event, and whose survival status and (at least approximate) location are
+    known, distinguishing them from the dead and the missing. Injury is reported across two primary cause
+    clusters observed throughout the excerpts: armed conflict (airstrikes, shelling, rocket and artillery
+    fire, small-arms fire, IEDs, landmines, UXOs, and armed clashes between state and non-state actors)
+    and sudden-onset disasters (fires in camps and urban settings, floods, storms, and structural collapses).
+    Severity qualifications appear frequently — excerpts distinguish minor injuries released after first
+    aid from serious or critical cases requiring hospitalization, surgery, or intensive care, with burn
+    percentage and amputation noted in the most severe incidents. Injury counts are almost invariably
+    reported alongside deaths and, where applicable, missing-person figures, forming a standard casualty
+    triad in humanitarian situation reports.
+
+    '
+  synonyms:
+  - wounded
+  - injured persons
+  - casualties (wounded)
+  - wounded civilians
+  - injured civilians
+  - hurt
+  - maimed
+  - hospitalized (in injury-count context)
+  example_questions:
+  - How many civilians were injured in the attack / fire / flood, and what is the breakdown by age and
+    sex?
+  - What proportion of the injured required hospitalization or surgical care versus first-aid only treatment?
+  - What were the leading causes of injury (conflict weapons, explosive ordnance, fire, flood) and in
+    which locations were injury counts highest?
+  distinguish_from:
+    subpillar_1d::Casualties->Dead: 'Dead refers to persons whose death has been confirmed (body recovered,
+      death registered), whereas Injured refers to persons who have been physically harmed but have survived;
+      the two are consistently co-reported in incident narratives but represent categorically distinct
+      outcomes.
+
+      '
+    subpillar_1d::Casualties->Missing: 'Missing refers to persons whose location and fate are still unresolved,
+      whereas Injured persons are alive and their location is known (typically receiving treatment); a
+      person initially listed as missing may subsequently be reclassified as injured once located.
+
+      '
+  low_support: false
+  excerpt_count: 306
+  saturation_batches: 3

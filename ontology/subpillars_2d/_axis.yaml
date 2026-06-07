@@ -1,0 +1,4 @@
+axis: subpillars_2d
+description: Children of the 2D pillars. Most sibling confusion lives here; consult
+  distinguish_from before committing.
+lookup: one file per node in this folder

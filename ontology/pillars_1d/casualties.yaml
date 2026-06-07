@@ -1,0 +1,40 @@
+pillar_1d::Casualties:
+  description: 'Excerpts that report factual counts or descriptions of persons killed, injured, or missing
+    as a direct result of conflict, disease outbreaks, natural disasters, or accidents — including disaggregated
+    figures by cause (airstrikes, IEDs, shelling, drowning, fire, cholera, COVID-19), population group
+    (civilians, children, women, combatants), and geographic scope. The information type is a raw numerical
+    or narrative statement of human losses: death tolls with case fatality rates, wound tallies, and missing-person
+    counts, often sourced from health clusters, protection monitoring mechanisms, or UN verified reporting.
+    Reporting conventions vary from verified confirmed counts to cumulative epidemiological totals and
+    unconfirmed "at least" estimates.
+
+    '
+  synonyms:
+  - death toll
+  - fatalities
+  - killed and wounded
+  - civilian casualties
+  - mortality and morbidity
+  - case fatality rate
+  - missing persons
+  - human losses
+  example_questions:
+  - How many civilians were killed or injured in Hudaydah Governorate between June and November?
+  - What is the cumulative cholera death toll and case fatality rate in Yemen as of this reporting period?
+  - How many children are reported missing or unaccounted for following the Katsina school abduction?
+  distinguish_from:
+    pillar_1d::Shock/Event: 'Shock/Event captures the occurrence and nature of the triggering incident
+      (an airstrike, flood, or disease outbreak as an event); Casualties captures the human loss count
+      that results from that event — the two often co-occur in one excerpt but label different informational
+      components.
+
+      '
+    pillar_2d::Impact: 'Impact (2D) is an analytical lens describing how a shock affects living conditions
+      or needs; Casualties (1D) is a factual data type — a raw count of dead, injured, or missing — and
+      an excerpt can simultaneously carry Casualties as its information type and Impact as its analytical
+      framing without the two being synonymous.
+
+      '
+  low_support: false
+  excerpt_count: 3279
+  saturation_batches: 5

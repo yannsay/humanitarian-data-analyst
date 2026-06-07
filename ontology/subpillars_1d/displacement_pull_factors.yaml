@@ -1,0 +1,44 @@
+subpillar_1d::Displacement->Pull Factors:
+  description: 'Pull factors are the conditions or opportunities at a destination — or at a place of origin
+    for returnees — that attract or draw displaced populations toward movement, as distinct from the threats
+    or hardships that expel them. Across the excerpts, improved security at the place of origin is the
+    single most frequently cited pull factor, driving return movements for IDPs, refugees, and cross-border
+    populations in Nigeria, Syria, DRC, and Burkina Faso; secondary pull factors include access to livelihoods
+    and seasonal farming opportunities, access to humanitarian assistance and basic services, social and
+    familial ties in the destination, and the need to protect or reclaim assets and property. Voluntary
+    relocation — recorded as a distinct movement trigger in IOM Emergency Tracking Tool data — co-occurs
+    with pull factors and reflects population agency in choosing a destination based on perceived advantages
+    rather than compulsion.
+
+    '
+  synonyms:
+  - attraction factors
+  - return incentives
+  - destination pull
+  - movement triggers (positive)
+  - return motivations
+  - magnet factors
+  - pull conditions
+  example_questions:
+  - What factors are drawing IDPs to return to their areas of origin, and how significant is perceived
+    security improvement as a pull?
+  - To what extent are access to livelihoods, humanitarian assistance, or seasonal farming opportunities
+    driving movement toward specific locations?
+  - Are displaced populations moving to this destination voluntarily because of available services, social
+    ties, or economic opportunity?
+  distinguish_from:
+    subpillar_1d::Displacement->Push Factors: 'Push factors are conditions — insecurity, conflict, poor
+      living conditions, fear of attack, military operations — that compel populations to flee or leave
+      a location involuntarily, whereas pull factors are positive attractions at a destination or origin
+      that draw voluntary movement toward it; in practice both operate simultaneously (e.g., poor camp
+      conditions push while improved security at origin pulls).
+
+      '
+    subpillar_1d::Displacement->Intentions: 'Intentions captures what displaced people plan or want to
+      do (return, integrate locally, relocate elsewhere), whereas pull factors captures the specific conditions
+      or incentives that make a destination attractive and thereby shape those intentions.
+
+      '
+  low_support: false
+  excerpt_count: 161
+  saturation_batches: 5

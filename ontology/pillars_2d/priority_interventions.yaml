@@ -1,0 +1,39 @@
+pillar_2d::Priority Interventions:
+  description: 'Priority Interventions captures recommended actions that humanitarian actors, governments,
+    or affected populations propose in order to address identified conditions — expressed as imperatives
+    ("should," "is needed," "must be prioritised," "is recommended") spanning programmatic, operational,
+    and policy levels. Entries range from sector-specific operational directives (e.g., "construct emergency
+    institutional latrines," "scale up Blanket Supplementary Feeding Programme," "provide PPE to GBV responders")
+    to cross-cutting strategic recommendations (e.g., "adopt a community-driven, gender-transformative
+    approach," "establish anticipatory action frameworks," "ensure multi-year localised funding"). The
+    pillar is further split by voice: interventions expressed by humanitarian staff or institutional actors,
+    and interventions expressed by the affected population itself.
+
+    '
+  synonyms:
+  - recommendations
+  - proposed actions
+  - response priorities
+  - what should be done
+  - calls to action
+  - operational recommendations
+  - strategic recommendations
+  example_questions:
+  - What actions are humanitarian actors recommending to address shelter gaps for newly displaced IDPs?
+  - What interventions are affected communities requesting to improve food security and livelihoods?
+  - Which sectors does the humanitarian response plan flag as requiring scale-up, and what specific actions
+    are proposed?
+  distinguish_from:
+    pillar_2d::Priority Needs: 'Priority Needs captures what is lacking or unmet (gaps, shortfalls, unmet
+      conditions), while Priority Interventions captures what should be done about those gaps — the proposed
+      action, not the documented deficit.
+
+      '
+    pillar_2d::Capacities & Response: 'Capacities & Response records actions already undertaken or existing
+      capacities already in place, whereas Priority Interventions records actions that are proposed, recommended,
+      or called for but not yet confirmed as delivered.
+
+      '
+  low_support: false
+  excerpt_count: 3380
+  saturation_batches: 6

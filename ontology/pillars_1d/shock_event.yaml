@@ -1,0 +1,51 @@
+pillar_1d::Shock/Event:
+  description: 'Excerpts describing the nature, type, scope, and progression of the hazard or crisis event
+    driving humanitarian need — including disease outbreaks (COVID-19 case counts, waves, and geographic
+    spread; cholera, Ebola, Lassa fever, measles, and other epidemic events with onset dates, CFRs, and
+    affected areas), armed conflict events (airstrikes, ground engagements, IED detonations, shelling
+    of populated areas, armed group attacks), and natural hazard events (riverine and flash floods, tropical
+    cyclones, drought and rainfall failure, cold waves, heatwaves, landslides, desert locust infestations,
+    and camp fires). Compound and multi-hazard shock configurations — such as COVID-19 coinciding with
+    active conflict and a below-average rainy season, or back-to-back flooding years exacerbated by La
+    Niña — are prominent throughout the corpus. The axis also captures the factors that shape shock severity:
+    aggravating structural conditions (pre-existing fragility, weak health systems, crowded displacement
+    settings, porous borders enabling disease transmission, climate change increasing extreme weather
+    frequency) and mitigating interventions (border screening programs, vaccination campaigns, disease
+    containment measures, cyclone preparedness activities).
+
+    '
+  synonyms:
+  - crisis event
+  - hazard event
+  - disaster
+  - outbreak
+  - emergency trigger
+  - shock driver
+  - acute event
+  - precipitating crisis
+  example_questions:
+  - What type of shock or hazard is driving the current humanitarian crisis, and what are its key characteristics
+    (onset, geographic scope, severity)?
+  - What factors are aggravating or mitigating the impact of this shock?
+  - Is this a single acute event, a compound multi-hazard situation, or a recurring/protracted shock?
+  distinguish_from:
+    pillar_1d::Context: 'Context covers the broader structural, political, socioeconomic, and environmental
+      background conditions that predate or frame the crisis (e.g. chronic poverty, governance failures,
+      pre-existing fragility); Shock/Event covers the discrete triggering hazard or crisis event itself,
+      including its onset, spread, and immediate characteristics.
+
+      '
+    pillar_1d::Casualties: 'Casualties records the human cost of the shock in terms of deaths, injuries,
+      and missing persons; Shock/Event describes the event causing those casualties — its type, scale,
+      and progression — not the resulting toll.
+
+      '
+    pillar_2d::Impact: 'Impact (2D) describes what the shock does to people and systems — food insecurity
+      levels, displacement figures, service disruption, livelihood losses; Shock/Event (1D) describes
+      the shock itself — its nature, hazard type, compound configuration, and the aggravating or mitigating
+      factors shaping its severity.
+
+      '
+  low_support: false
+  excerpt_count: 3988
+  saturation_batches: 6

@@ -1,0 +1,46 @@
+subpillar_1d::Shock/Event->Mitigating Factors:
+  description: 'Tags excerpts describing factors, mechanisms, or conditions that reduce the severity,
+    spread, or impact of the shock itself — as distinct from its downstream effects on people. In practice,
+    analysts apply this tag to: preparedness and response measures taken before or during the shock (pre-positioned
+    supplies, early-warning systems, dam construction, evacuation, public communication campaigns); institutional
+    and legal frameworks that buffer the shock (peace agreements, government policies granting refugee
+    access, functioning emergency coordination bodies); and existing community or humanitarian networks
+    that enable faster response (community animal health worker networks, inter-cluster coordination pipelines,
+    mobile surveillance systems). Excerpts also appear where mitigating capacity is explicitly absent
+    or strained, framing the gap as a factor that removes a buffer — for example, insufficient institutional
+    capacity, lack of global attention, or under-funded response pipelines.
+
+    '
+  synonyms:
+  - preparedness measures
+  - response capacity
+  - buffering factors
+  - protective factors
+  - shock mitigation
+  - early warning systems
+  - coping infrastructure
+  - institutional buffers
+  example_questions:
+  - What measures were in place before or during the shock to reduce its severity or spread?
+  - What existing systems, networks, or frameworks helped contain the impact of the crisis?
+  - Where is response or preparedness capacity insufficient, removing a key buffer against the shock?
+  distinguish_from:
+    subpillar_1d::Shock/Event->Underlying/Aggravating Factors: 'Aggravating factors increase the shock''s
+      severity or likelihood (e.g., low development, environmental degradation, pre-existing social unrest
+      feeding displacement); mitigating factors reduce or buffer it — use the direction of effect on the
+      shock to distinguish: worsening = aggravating, dampening = mitigating.
+
+      '
+    subpillar_1d::Shock/Event->Hazard & Threats: 'Hazard & Threats describes the nature and source of
+      the danger itself (armed groups, disease outbreak, flooding); Mitigating Factors describes what
+      is being done — or what exists — to limit that danger''s severity or spread.
+
+      '
+    subpillar_1d::Shock/Event->Type And Characteristics: 'Type And Characteristics tags what the shock
+      is and how it manifests (scale, geographic scope, timeline); Mitigating Factors tags what moderates
+      it, not what it is.
+
+      '
+  low_support: true
+  excerpt_count: 38
+  saturation_batches: 2

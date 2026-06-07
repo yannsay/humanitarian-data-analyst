@@ -1,0 +1,51 @@
+sector::Health:
+  description: 'Covers the functionality of health systems and the population''s access to preventive,
+    curative, and emergency medical care — including primary health care facilities, hospitals, mobile
+    health teams, and community health workers — with analysis of barriers such as physical distance,
+    cost, insecurity, supply shortages, and facility damage or closure due to conflict or disaster. Encompasses
+    communicable disease surveillance and outbreak response (COVID-19, cholera/AWD, malaria, measles,
+    TB, Ebola, Lassa fever), essential medicines and medical supplies, reproductive and maternal health
+    services (antenatal care, skilled birth attendance, emergency obstetric care), mental health and psychosocial
+    support (MHPSS), chronic and non-communicable disease management, immunization coverage, infection
+    prevention and control (IPC), and the protection of health workers and facilities from attacks.
+
+    '
+  synonyms:
+  - healthcare access
+  - health services
+  - health system
+  - disease outbreak
+  - primary health care
+  - reproductive health
+  - MHPSS
+  - mental health and psychosocial support
+  - immunization
+  - epidemic response
+  example_questions:
+  - What proportion of households that needed healthcare in the past two weeks were unable to access it,
+    and what were the main barriers?
+  - How many health facilities are functional in the assessed area, and what services have been reduced
+    or suspended?
+  - What communicable disease outbreaks are active, and what is the current case fatality rate?
+  distinguish_from:
+    sector::Nutrition: 'Nutrition covers anthropometric status and nutrition-specific interventions (SAM/MAM
+      treatment, IYCF counselling, CMAM programmes, micronutrient supplementation), whereas Health covers
+      the broader health system and disease burden — even when malnutrition treatment is delivered inside
+      health facilities.
+
+      '
+    sector::Protection: 'Protection covers rights violations, GBV case management, child protection, and
+      legal/documentation services; Health covers the clinical and public-health dimensions of care, including
+      medical response to violence-related injuries and the safety of health workers, but not the protection
+      monitoring or legal-aid dimensions.
+
+      '
+    sector::WASH: 'WASH covers water supply infrastructure, sanitation facilities, and hygiene promotion
+      as engineering and service-delivery interventions; Health covers the disease burden and health-system
+      response that results when WASH conditions are inadequate (e.g., cholera outbreaks, diarrhoeal disease
+      morbidity), but not the construction or rehabilitation of water or sanitation infrastructure itself.
+
+      '
+  low_support: false
+  excerpt_count: 18836
+  saturation_batches: 7

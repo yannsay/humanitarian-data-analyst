@@ -1,0 +1,44 @@
+subpillar_1d::Humanitarian Access->Population To Relief:
+  description: 'Covers barriers preventing affected populations from physically reaching, registering
+    for, or receiving humanitarian assistance — including movement restrictions imposed by conflict, checkpoints,
+    or containment measures; administrative and documentation obstacles such as lack of identity papers
+    or bureaucratic registration requirements; and discriminatory exclusion of specific groups (people
+    with disabilities, ethnic minorities, IDPs, undocumented migrants) from distribution lists or service
+    sites. Also captures distance and accessibility barriers that prevent populations from travelling
+    to distribution points, as well as confinement dynamics — whether from armed group control, COVID
+    lockdowns, or border closures — that physically trap populations away from available assistance.
+
+    '
+  synonyms:
+  - population access to assistance
+  - beneficiary access to services
+  - civilian movement to aid
+  - access to humanitarian services
+  - population mobility to relief
+  - barriers to reaching assistance
+  - exclusion from distributions
+  - access to distribution points
+  example_questions:
+  - What proportion of IDPs are unable to reach food distribution points due to movement restrictions
+    or insecurity?
+  - Which population groups (people with disabilities, undocumented migrants, ethnic minorities) are being
+    excluded from or unable to access humanitarian distributions?
+  - Are border or checkpoint restrictions preventing civilians from crossing to access medical care or
+    assistance?
+  distinguish_from:
+    subpillar_1d::Humanitarian Access->Relief To Population: 'Relief To Population concerns logistics
+      and operational constraints on aid organisations delivering assistance to communities (trucks denied
+      passage, aid convoys blocked, NGO staff unable to enter areas); Population To Relief concerns the
+      reverse direction — affected people being unable or blocked from travelling to, registering for,
+      or physically reaching available assistance.
+
+      '
+    subpillar_1d::Humanitarian Access->Physical Constraints: 'Physical Constraints covers infrastructure,
+      terrain, and environmental obstacles that impede humanitarian operations broadly; Population To
+      Relief specifically focuses on barriers experienced from the population side — movement restrictions,
+      exclusion, documentation gaps, and distance preventing people from accessing assistance.
+
+      '
+  low_support: true
+  excerpt_count: 94
+  saturation_batches: 4

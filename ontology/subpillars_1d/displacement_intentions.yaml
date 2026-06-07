@@ -1,0 +1,44 @@
+subpillar_1d::Displacement->Intentions:
+  description: 'Captures what displaced populations, migrants, and refugees state they plan to do next
+    — return to origin, stay in current location, move onward to another destination, or remain undecided
+    — along with the conditions under which those plans would change (e.g. security improvement, access
+    to citizenship, family reunification, availability of livelihoods). Includes disaggregated intention
+    rates by settlement type (camp vs. host community), sociodemographic group, and time horizon (short-term
+    0–3 years vs. long-term), as well as shifts in plans caused by external shocks such as the COVID-19
+    pandemic. Also covers intentions to re-migrate after a previous return, staging intentions (treating
+    a current location as temporary while planning onward movement), and tensions between expressed voluntary
+    intentions and government- or authority-driven forced movements.
+
+    '
+  synonyms:
+  - return intentions
+  - durable solutions preferences
+  - migratory intention
+  - future movement plans
+  - intent to stay
+  - intent to return
+  - re-migration plans
+  - onward movement intention
+  example_questions:
+  - What share of IDPs in north-east Nigeria intend to return to their areas of origin, and what conditions
+    would need to be met first?
+  - Among Venezuelan migrants in Colombia, how many plan to stay long-term versus return home, and how
+    has that changed over time?
+  - What proportion of Rohingya refugees want to return to Myanmar, and what prerequisites do they attach
+    to that intention?
+  distinguish_from:
+    subpillar_1d::Displacement->Pull Factors: 'Pull factors are characteristics of a destination that
+      attract people toward it (e.g. ease of entry, proximity to origin, employment opportunities, family
+      networks); intentions are the stated forward-looking plans of the displaced person themselves —
+      what they have decided or are leaning toward doing — which may or may not be driven by pull factors.
+
+      '
+    subpillar_1d::Displacement->Local Integration: 'Local integration describes the process and degree
+      to which displaced persons become economically, socially, and legally embedded in the host community;
+      intentions capture only what people say they want or plan to do, not whether integration has actually
+      occurred or is progressing.
+
+      '
+  low_support: true
+  excerpt_count: 108
+  saturation_batches: 4

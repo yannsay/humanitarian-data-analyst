@@ -1,0 +1,46 @@
+sector::Protection:
+  description: 'Analysts tag excerpts here when the content concerns the safety, dignity, and rights of
+    crisis-affected people: gender-based violence (GBV) including rape, sexual exploitation, forced marriage,
+    and domestic violence; child protection including child labour, child marriage, recruitment of children
+    into armed groups, and unaccompanied or separated children; physical security threats including armed
+    attacks on civilians, killings, kidnappings, and explosive remnants of war; and violations of legal
+    status and rights including arbitrary detention, lack of documentation (birth registration, asylum
+    papers), trafficking, and restrictions on freedom of movement. The sector also covers protection services
+    and response: psychosocial support, legal aid and case management, GBV prevention and referral pathways,
+    mine action, repatriation and voluntary return processes, and protection cluster coordination.
+
+    '
+  synonyms:
+  - GBV
+  - gender-based violence
+  - child protection
+  - SGBV
+  - protection cluster
+  - sexual and gender-based violence
+  - human rights violations
+  - civilian harm
+  example_questions:
+  - What GBV risks and services are reported for women and girls in displacement settings?
+  - How prevalent is child labour, child marriage, or recruitment of children into armed groups?
+  - What protection risks do refugees or IDPs face regarding documentation, detention, or freedom of movement?
+  distinguish_from:
+    sector::Health: 'Protection covers violence, rights violations, and the psychosocial dimension of
+      trauma; Health covers medical care, disease burden, and health system access — even when the health
+      need arises from a protection incident (e.g. clinical care for GBV survivors is tagged Protection,
+      while a hospital''s general capacity is tagged Health).
+
+      '
+    sector::Education: 'Protection is tagged when education-related content concerns safety risks at or
+      around schools (attacks on schools, child recruitment of out-of-school children, psychosocial barriers);
+      Education is tagged when the focus is on access to, quality of, or disruption of learning itself.
+
+      '
+    sector::Shelter: 'Protection is tagged when shelter content concerns safety and dignity risks in collective
+      or camp settings (lack of locks, exposure to intruders, gender-segregated facilities); Shelter is
+      tagged when the focus is on physical housing conditions, structural adequacy, or core relief items
+      distribution.
+
+      '
+  low_support: false
+  excerpt_count: 13168
+  saturation_batches: 6

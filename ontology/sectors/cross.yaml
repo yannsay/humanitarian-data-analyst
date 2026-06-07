@@ -1,0 +1,57 @@
+sector::Cross:
+  description: 'Cross is applied when a single excerpt simultaneously addresses humanitarian conditions
+    spanning multiple sectors that cannot be disentangled into one primary concern — for example, a situation
+    where conflict simultaneously disrupts food access, destroys WASH infrastructure, displaces populations,
+    and removes livelihoods in a single analytical statement (e.g., "Over 100,000 people remain trapped
+    in frontline areas with water and electricity cuts, limited market access, and inability to access
+    emergency services"). The tag captures compound and cascading crises where the cross-sector entanglement
+    is the analytical finding itself, including priority-need lists that span sectors ("food, medical
+    care, housing, water and sanitation"), multi-sector severity scores, and population-level analyses
+    that link vulnerability across food security, protection, shelter, and health simultaneously. It also
+    covers the structural drivers and enabling conditions — conflict, displacement, economic collapse,
+    COVID-19 restrictions, flooding — when they are described expressly as affecting multiple sectors
+    at once rather than one sector in depth.
+
+    '
+  synonyms:
+  - multi-sector
+  - intersectoral
+  - cross-sectoral
+  - multi-cluster
+  - compound needs
+  - overlapping vulnerabilities
+  - integrated humanitarian situation
+  example_questions:
+  - What are the simultaneous multi-sector priority needs reported by displaced households in Borno State?
+  - How has the COVID-19 pandemic compounded existing cross-sector vulnerabilities for refugees and IDPs
+    in Cox's Bazar?
+  - Which geographic areas show the highest multi-sectoral severity scores across food security, shelter,
+    protection, and WASH simultaneously?
+  distinguish_from:
+    sector::Health: 'Health covers excerpts where the primary analytical focus is disease burden, health
+      service access, mortality, or medical care; Cross is used only when health needs are described alongside
+      and causally linked to simultaneous deprivations in food, WASH, shelter, or protection within the
+      same excerpt.
+
+      '
+    sector::Protection: 'Protection covers excerpts centred on safety, rights violations, GBV, or legal
+      status; Cross applies when protection risks are presented as one element of a broader multi-sector
+      breakdown — for instance, when camp congestion simultaneously drives protection risks, COVID-19
+      exposure, food shortfalls, and shelter gaps in a single analytical statement.
+
+      '
+    sector::Food Security: 'Food Security covers excerpts where food access, food consumption, or food
+      system disruption is the primary subject; Cross is used when food insecurity is co-presented with
+      WASH, shelter, livelihoods, or health deprivation as jointly determining household or population
+      outcomes, and no single sector is dominant.
+
+      '
+    sector::Livelihoods: 'Livelihoods covers excerpts focused on income, employment, and economic coping;
+      Cross applies when economic collapse or livelihood loss is described as triggering or compounding
+      simultaneous failures across food security, shelter, health, and protection rather than being the
+      standalone subject.
+
+      '
+  low_support: false
+  excerpt_count: 15214
+  saturation_batches: 6

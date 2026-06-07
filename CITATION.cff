@@ -13,7 +13,7 @@ authors:
   - given-names: Yann
 type: software
 license: MIT
-repository-code: "https://github.com/<your-org>/humanitarian-data-analyst"
+repository-code: "https://github.com/yannsay/humanitarian-data-analyst"
 keywords:
   - agent-skill
   - humanitarian

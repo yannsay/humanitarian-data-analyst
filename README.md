@@ -28,7 +28,7 @@ not passive context.
 ## Install
 
 ```bash
-npx @agentskills/cli install <your-org>/humanitarian-data-analyst
+npx @agentskills/cli install yannsay/humanitarian-data-analyst
 ```
 
 Or copy the `humanitarian-data-analyst/` directory into your agent's skills folder

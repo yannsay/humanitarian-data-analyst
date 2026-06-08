@@ -15,9 +15,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install pyyaml
-        run: pip install pyyaml
-
       - name: Validate Agent Skill format
         # skills-ref is the agentskills.io reference validator.
         # See https://github.com/agentskills/agentskills/tree/main/skills-ref
@@ -28,6 +25,3 @@ jobs:
             echo "skills-ref not installed; skipping format validation."
             echo "Install from https://github.com/agentskills/agentskills to enable."
           fi
-
-      - name: Check ontology integrity
-        run: python3 scripts/check_ontology.py

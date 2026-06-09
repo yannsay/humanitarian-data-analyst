@@ -15,10 +15,13 @@ build script in that folder.
 
 ## Validate before you push
 
-Use the agentskills reference validator to check the frontmatter and conventions:
+Use the agentskills reference validator to check the frontmatter and conventions.
+Run it from the **parent** directory and pass the skill's folder name — not `.`,
+which resolves to an empty basename and fails the directory-name check:
 
 ```bash
-skills-ref validate .
+cd ..
+skills-ref validate humanitarian-data-analyst
 ```
 
 CI runs this on every push and PR (see `.github/workflows/validate.yml`).

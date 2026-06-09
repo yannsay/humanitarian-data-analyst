@@ -8,7 +8,12 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
+      # Check out into a directory whose name matches the skill `name`.
+      # skills-ref validates that the directory basename == frontmatter name,
+      # and `validate .` would resolve to an empty basename and fail.
       - uses: actions/checkout@v4
+        with:
+          path: humanitarian-data-analyst
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -24,4 +29,5 @@ jobs:
           pip install -e /tmp/agentskills/skills-ref
 
       - name: Validate Agent Skill format
-        run: skills-ref validate .
+        # validate by the skill's directory name (not `.`)
+        run: skills-ref validate humanitarian-data-analyst

@@ -15,13 +15,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate Agent Skill format
-        # skills-ref is the agentskills.io reference validator.
-        # See https://github.com/agentskills/agentskills/tree/main/skills-ref
+      - name: Install skills-ref validator
+        # skills-ref is the agentskills.io reference validator (no PyPI package;
+        # installed editable from the agentskills monorepo subdirectory).
+        # https://github.com/agentskills/agentskills/tree/main/skills-ref
         run: |
-          if command -v skills-ref >/dev/null 2>&1; then
-            skills-ref validate .
-          else
-            echo "skills-ref not installed; skipping format validation."
-            echo "Install from https://github.com/agentskills/agentskills to enable."
-          fi
+          git clone --depth 1 https://github.com/agentskills/agentskills.git /tmp/agentskills
+          pip install -e /tmp/agentskills/skills-ref
+
+      - name: Validate Agent Skill format
+        run: skills-ref validate .

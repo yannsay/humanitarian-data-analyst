@@ -22,8 +22,12 @@ not passive context.
 |-------|--------|
 | A — Framework routing (66 nodes, 5 axes, HumSet/DEEP) | ✅ implemented |
 | B — Indicator catalog (41 indicators: WASH, Food Security, Shelter/CCCM) | ✅ implemented |
-| C — Dataset binding | 🚧 stub |
+| C — Dataset binding (built per dataset from the Kobo/ODK instrument) | ✅ implemented |
 | Analysis | 🚧 stub |
+
+The skill opens by writing a checklist to disk (in the analyst's working folder) and
+mirroring it as a task list, then iterates Route → Indicators → Bind → Analyse —
+re-enterable after `/clear`.
 
 ## Install
 
@@ -57,6 +61,10 @@ humanitarian-data-analyst/
 │   ├── food_security.yaml        # 9 indicators
 │   ├── wash.yaml                 # 17 indicators
 │   └── cccm.yaml                 # 15 indicators (Shelter)
+├── bindings/
+│   └── schema.md                 # Layer C instrument-map format (built per dataset)
+├── templates/
+│   └── checklist.md              # disk-persisted run checklist (copied per analysis)
 ├── LICENSE
 └── package.json
 ```

@@ -14,7 +14,7 @@ metadata:
   author: yann
   version: "0.1.0"
   framework: HumSet/DEEP
-  status: "Layers A and B implemented; Layer C and analysis are stubs"
+  status: "Layers A, B, C implemented; analysis step is a stub"
 ---
 
 # Humanitarian Data Analyst
@@ -57,6 +57,38 @@ Analyst question + dataset (Kobo/ODK XLS)
       │
   STEP 4 — ANALYSE                 → grounded answer, caveated by coverage
 ```
+
+---
+
+## Before you start: build the checklist
+
+This skill **opens by writing a checklist to disk and mirroring it as a task list**,
+then iterates through it. Do this before any routing — it is what makes a run
+re-enterable after `/clear` and what stops the pipeline from skipping a step.
+
+**On the first turn of a new analysis:**
+
+1. Pick a short kebab `<question-slug>` from the analyst's question.
+2. Copy `templates/checklist.md` into the **analyst's working folder** (next to their
+   dataset — not the skill directory, which may be read-only) as
+   `analysis_<question-slug>_checklist.md`. Fill in the header (verbatim question,
+   dataset path, date).
+3. Create an in-session task list with **one task per pipeline step** (Route,
+   Indicators, Bind, Analyse), in order. This mirrors the checklist.
+4. Then begin Step 1.
+
+**On every later turn (including after `/clear`):**
+
+1. Look for an `analysis_*_checklist.md` in the working folder. If one exists, read
+   it, find the first unchecked `[ ]` line, and report: *"Resuming `<slug>` — next
+   step: **<step>**."* Rebuild the task list from the checklist (steps with all
+   boxes `[x]` → completed; first step with an unchecked box → in_progress).
+2. If none exists, treat it as a new analysis (above).
+
+**As you work:** keep exactly one step `in_progress`; when a step's checklist boxes
+are all `[x]`, mark its task `completed` and move on. The checklist on disk is
+authoritative — the task list is its human-visible mirror, never a replacement. Do
+not invoke a step's work before its checklist entry exists.
 
 ---
 
@@ -153,12 +185,55 @@ Errors to avoid (from catalog common_implementation_errors): <pull the relevant 
 
 ---
 
-## STEP 3 — BIND (Layer C)  🚧 stub
+## STEP 3 — BIND (Layer C)  ✅ implemented
 
-Build the instrument map: walk every substantive question in the survey, map it to
-a Layer B indicator, and record a coverage verdict (direct / partial / absent).
-The output is the honest picture of what this specific dataset can and cannot
-prove. **Not yet implemented.** See `references/layer_c_binding.md`.
+Build the **instrument map**: the binding between *this specific survey* and the
+Layer B indicators from Step 2. Unlike Layers A and B, Layer C is **not shipped
+data — you generate it at runtime** from the analyst's Kobo/ODK file. It is the
+audit trail that says what this dataset can and cannot prove, and it must be saved
+to disk before Step 4 runs.
+
+**Procedure — follow exactly:**
+
+1. **Read the instrument.** Open the Kobo/ODK XLS the analyst provided — the
+   `survey` sheet (questions, types, skip logic) and the `choices` sheet (answer
+   options). If no dataset was provided, stop and ask for it; Layer C cannot be
+   built without the instrument.
+2. **Walk every substantive question.** Skip pure admin fields (`calculate`,
+   `note`, `begin_group`/`end_group`) unless they carry analytical content. For
+   each substantive question, write one entry using the schema in
+   `bindings/schema.md`.
+3. **Bind to Layer B.** For each question, record the Layer B indicator `id`(s)
+   from Step 2 it serves (or `NONE`), and assign a **coverage verdict**:
+   - `DIRECT` — collects the exact construct the indicator needs (right unit,
+     recall period, response format), at the right unit of analysis.
+   - `PROXY` — same construct but different format/unit, or missing one required
+     criterion (e.g. KI community estimate standing in for a household measure).
+   - `NONE` — does not map to any Layer B indicator.
+   Every entry — even `DIRECT` — must state **what it cannot prove**.
+4. **Surface the two gap lists.** (a) survey questions no Layer B indicator can
+   interpret; (b) Layer B indicators (from Step 2) the instrument cannot compute.
+   These are the analytical blind spots Step 4 must respect.
+5. **Save it.** Write the map to the analyst's working folder as
+   `layer_c_<survey>_<YYYY-MM-DD>.md`. This file is required before Step 4.
+
+See `references/layer_c_binding.md` for the full build guide and `bindings/schema.md`
+for the exact per-question entry format and the verdict rules.
+
+### Output contract — the instrument map (saved file + short in-chat summary)
+
+The saved file follows `bindings/schema.md`. In chat, show only a compact summary:
+
+```
+STEP 3 — BIND (Layer C)  →  saved: layer_c_<survey>_<date>.md
+
+| Indicator (from Step 2) | Computable here? | Binding questions | Verdict |
+|-------------------------|------------------|-------------------|---------|
+| rcsi                    | yes (proxy)      | Q90 coping freq   | PROXY   |
+| jmp_water_basic         | no               | —                 | NONE    |
+
+Blind spots: <indicators that can't be computed; survey questions with no indicator>
+```
 
 ---
 

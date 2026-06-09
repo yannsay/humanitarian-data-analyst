@@ -1,31 +1,62 @@
-# Layer C — Dataset Binding  🚧 NOT YET IMPLEMENTED
+# Layer C — Dataset Binding Guide
 
-This reference is a **stub**. Layer C is not yet bundled into this skill.
+Detailed reference for **Step 3 — Bind**. Read it when you need more than the
+procedure in `SKILL.md`. The exact output format is in `bindings/schema.md`.
 
-## What Layer C will be
+## What Layer C is — and why it's different from A and B
 
-The per-dataset binding the agent builds at runtime from a Kobo/ODK XLS (the
-`survey` and `choices` sheets). For every substantive survey question it records:
+Layers A and B are **static data shipped with the skill**. Layer C is **generated
+at runtime**, fresh for every dataset, because it depends on the specific Kobo/ODK
+instrument the analyst brings. There is nothing to "look up" — you *build* it.
 
-- the variable name and section
-- the Layer A sector/subpillar it serves (from Step 1 routing)
-- the Layer B indicator it maps to (if any)
-- a **coverage verdict**: `direct` / `partial component` / `absent`
-- notes on what the question can and cannot prove
+Layer C answers three questions about the instrument:
+1. What can this instrument actually prove, per Layer B indicator?
+2. Where would a naive analyst overclaim?
+3. What did the instrument collect that no Layer B indicator can interpret?
 
-The output is the honest picture of what *this specific instrument* supports —
-including the gaps (an indicator the question implies but the survey never measures).
+It is the audit trail. **Save it to disk before answering anything** (Step 4 reads
+it). Filename: `layer_c_<survey>_<YYYY-MM-DD>.md` in the analyst's working folder.
 
-## Until it's implemented
+## Reading a Kobo/ODK XLS
 
-Do not attempt to bind a dataset or assert coverage verdicts. After Step 2, state
-that instrument binding is not yet implemented and stop.
+A Kobo XLSForm has two sheets that matter:
+- **`survey`** — one row per question: `type`, `name` (the variable), `label`,
+  and `relevant` (skip logic). Types like `calculate`, `note`, `begin_group`,
+  `end_group` are structural — skip them unless they carry analytical content.
+- **`choices`** — answer options, grouped by `list_name`; a `select_one foo`
+  question in `survey` draws its options from the `foo` list here.
 
-## Porting notes (for whoever implements this)
+Join them: for each substantive `survey` row, pull its options from `choices` by
+list name. (You can read the sheets directly, or use pandas — `pd.read_excel(path,
+sheet_name=["survey","choices"])` — whichever is available.)
 
-Reference implementation and schema live in the parent project:
-`05_layer_c__end_to_end/` (instrument map + gap analysis) and
-`06_discipline_prompt/output/layer_c_schema.md` (the reusable schema and the
-build procedure the agent follows). Layer C is built fresh per dataset — it is the
-thin, project-specific layer — so this ships as *instructions for building it*, not
-as static data.
+## The binding: questions → Step-2 indicators
+
+For each question, decide which Layer B indicator(s) from Step 2 it serves, and the
+**coverage verdict** (`DIRECT` / `PROXY` / `NONE`). The verdict rules are in
+`bindings/schema.md` — apply them strictly. The most common real-world case in KI
+community surveys is `PROXY`: the instrument asks a key informant for a community
+estimate where the indicator is defined at household level. That is a PROXY, not a
+DIRECT — saying otherwise is exactly the overclaim Layer C exists to catch.
+
+## Always state "what this cannot prove"
+
+Every entry, including `DIRECT` ones, must complete the "What this cannot prove"
+line. This is not boilerplate — it is the field that forces honest scoping. A
+DIRECT FCS question still cannot prove *why* consumption is low, or trends over
+time from a single round.
+
+## The two gap lists are the deliverable
+
+End the file with the two blind-spot lists (schema has the format):
+1. Survey questions that map to no Layer B indicator — collected but uninterpretable.
+2. Step-2 indicators the instrument cannot compute — requested but unanswerable.
+
+Step 4 must treat list 2 as a hard boundary: an indicator that cannot be computed
+cannot be reported as a finding, no matter how relevant to the analyst's question.
+
+## Worked reference
+
+`05_layer_c__end_to_end/` in the parent research project contains a full instrument
+map for the Aleppo RNA (133-interview KI community survey) built to this schema —
+use it as a model for structure and verdict calls.

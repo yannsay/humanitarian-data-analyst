@@ -1,0 +1,958 @@
+# CCCM Indicator Catalog — Layer B
+# Drafted: 2026-05-20
+# Source documents:
+#   [1] "Collective Centers (CCs) standards – Ukraine, May 2022" (CCCM Cluster Ukraine)
+#       Abbreviated below as: Ukraine CC 2022
+#   [2] "Minimum Standards for Camp Management, 2021 Edition" (CAMP-EN)
+#       Abbreviated below as: CAMP-EN 2021
+#   [3] Sphere Handbook 2018 — not directly ingested; 3.5 m²/person value
+#       cross-referenced via Ukraine CC 2022 background text and
+#       methodology_comparison_standards.md §3.3
+# ─────────────────────────────────────────────────────────────────────────────
+
+- id: sphere_shelter_floor_area_minimum
+  label: "Sphere minimum covered floor area per person (3.5 m²)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Sphere Handbook 2018, Shelter Standard 1 (cross-referenced via Ukraine CC 2022 background, p.1, and methodology_comparison_standards.md §3.3)"
+    secondary:
+      - "Ukraine CC 2022 — references Sphere Handbook as source [1] for the CC standards table"
+      - "methodology_comparison_standards.md §3.3 — confirms 3.5 m²/person (warm climate) and 4.5–5.5 m² cold-climate adjustment"
+    note: >
+      The Sphere Handbook 2018 PDF was not directly ingested in this experiment.
+      The 3.5 m²/person figure is attributed to Sphere Shelter Standard 1 and is
+      cross-referenced via two secondary sources listed above. The cold-climate
+      elevation (4.5–5.5 m²) is a separate Sphere adjustment documented in
+      methodology_comparison_standards.md §3.3; the Ukraine CC 2022 medium-term
+      standard (4.5–5 m²/person) is captured in a separate indicator
+      (cccm_shelter_floor_area_medium).
+  definition: |
+    The Sphere Handbook establishes a minimum of 3.5 m² of covered floor area
+    per person as the baseline shelter standard in humanitarian settings. This
+    applies to warm-climate or default contexts and represents the lowest
+    acceptable threshold below which shelter conditions compromise human dignity
+    and physical safety. The standard covers usable enclosed space only and
+    excludes communal areas, corridors, and service spaces.
+  unit_of_analysis: household
+  recall_period: null
+  formula: |
+    Covered floor area (m²) ÷ number of persons occupying the unit
+    ≥ 3.5 m²/person
+    Threshold is a minimum floor; compliance requires meeting or exceeding it.
+  thresholds:
+    - value: "< 3.5 m²/person"
+      label: "Below Sphere minimum — critical gap"
+      note: "Any reading below this threshold indicates a failure to meet the Sphere baseline regardless of context."
+    - value: "3.5 m²/person"
+      label: "Sphere minimum met (warm climate baseline)"
+      note: "Acceptable only in warm climates; cold-climate contexts require upward adjustment to 4.5–5.5 m²."
+    - value: "4.5–5.5 m²/person"
+      label: "Cold-climate Sphere adjustment"
+      note: "Sphere Handbook cold-climate elevation; applies in cold-season or cold-region settings. See cccm_shelter_floor_area_medium for Ukraine CC equivalent."
+  context_modifiers:
+    - condition: "Cold climate or cold season (e.g., winter operations in Ukraine, Central Asia, mountain settings)"
+      adjustment: "Increase minimum threshold to 4.5–5.5 m²/person in line with Sphere cold-climate guidance and Ukraine CC medium-term standard."
+    - condition: "Long-term / protracted displacement (> ~12 months)"
+      adjustment: "Target national accommodation standards where applicable (e.g., 12.5 m²/person + 35 m²/family in Ukraine)."
+    - condition: "Collective centres / dormitory-style settings"
+      adjustment: "Measure net usable room area only; exclude corridors, bathrooms, and shared service spaces from the per-person calculation."
+  prerequisites:
+    - "Accurate room-level floor area measurements (length × width of enclosed liveable space)"
+    - "Accurate household roster (total number of persons per accommodation unit, including children)"
+    - "Clear demarcation of which spaces count as 'covered floor area' vs. shared/service spaces"
+  do_not_confuse_with:
+    cccm_shelter_floor_area_medium: >
+      Ukraine CC 2022 medium-term standard of 4.5–5 m²/person. That indicator is
+      Ukraine-specific and cold-climate adapted. This indicator is the global Sphere
+      warm-climate baseline (3.5 m²/person).
+    cccm_shelter_floor_area_longterm: >
+      Ukraine national long-term standard (12.5 m²/person + 35 m²/family). Represents
+      a durable-solutions target, not an emergency minimum.
+  common_implementation_errors:
+    - "Including corridor, bathroom, kitchen, and communal space square meterage in the per-person calculation, inflating the apparent figure."
+    - "Measuring total building footprint rather than net usable floor area of the accommodation unit."
+    - "Applying the 3.5 m²/person warm-climate baseline in cold-climate or winter contexts without adjusting to the 4.5–5.5 m² cold-climate threshold."
+    - "Using household-level estimates without verifying actual occupancy count, especially in contexts of fluid household composition or secondary occupancy."
+    - "Conflating Sphere's minimum standard with a target: 3.5 m² is the floor below which conditions are unacceptable, not a design target."
+  ki_assessment_note: |
+    This indicator CANNOT be reliably validated through community-level Key Informant
+    (KI) data. KIs typically report perceived adequacy or general crowding, not
+    measured floor area per person. Sphere floor area compliance requires direct
+    physical measurement. If a KI tool asks about shelter space, treat the result
+    as a perception proxy only — it cannot confirm or deny Sphere compliance.
+    Triangulate with shelter assessment data, registration records, or CCCM
+    monitoring data that includes measured floor area.
+  also_referenced_by: "wash — Sphere Handbook is the baseline cross-cutting reference for all clusters"
+  notes: >
+    The 3.5 m²/person standard is the global emergency minimum. All cluster-specific
+    and country-specific shelter standards in this catalog build on it. In Ukraine, the
+    CCCM Cluster explicitly references Sphere as source [1] in the CC standards table
+    background text (Ukraine CC 2022, p.1).
+
+
+- id: cccm_shelter_floor_area_medium
+  label: "Ukraine CC medium-term floor area standard (4.5–5 m²/person)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Ukraine CC 2022, table 6-c (Shelter and Infrastructure indicators), indicator for 'People have enough, safe and adequate space within the Collective Center'"
+    secondary:
+      - "methodology_comparison_standards.md §3.3 — confirms 4.5–5.5 m² cold-climate Sphere adjustment"
+    note: >
+      The Ukraine CC document specifies 4.5–5 m²/person for medium-term accommodation
+      (table 6-c). The Sphere cold-climate range documented in
+      methodology_comparison_standards.md §3.3 is 4.5–5.5 m²; the Ukraine CC figure
+      falls within that range but has its own specific upper bound of 5 m² for medium-term
+      planning. These are treated as consistent but distinct specifications.
+  definition: |
+    For medium-term accommodation in Ukrainian collective centres, the minimum covered
+    floor area is 4.5–5 m² per person. Additionally, rooms must not be shared between
+    members of different households. This standard adapts the Sphere baseline upward
+    for the cold-climate Ukrainian context and for medium-term (rather than acute
+    emergency) occupancy. Source: Ukraine CC 2022, table 6-c.
+  unit_of_analysis: household
+  recall_period: null
+  formula: |
+    Covered floor area of the room/unit (m²) ÷ number of persons from the same household
+    occupying it ≥ 4.5 m²/person AND ≤ 5 m²/person as a planning target.
+    Room must be occupied by a single household only (no inter-household room sharing).
+    Both conditions must be met for medium-term compliance.
+  thresholds:
+    - value: "< 4.5 m²/person"
+      label: "Below Ukraine CC medium-term minimum — gap"
+      note: "Fails the Ukraine CC medium-term standard even if the global Sphere minimum (3.5 m²) is technically met."
+    - value: "4.5–5 m²/person"
+      label: "Ukraine CC medium-term standard met"
+      note: "Applicable to medium-term collective centre accommodation. No inter-household room sharing permitted."
+    - value: "> 5 m²/person"
+      label: "Exceeds medium-term standard; trend toward long-term national standard"
+      note: "Progress toward the long-term national standard (12.5 m²/person). See cccm_shelter_floor_area_longterm."
+  context_modifiers:
+    - condition: "Acute emergency / short-term transit accommodation (days, not weeks)"
+      adjustment: "Sphere baseline of 3.5 m²/person may apply; document justification if below 4.5 m²/person."
+    - condition: "Long-term accommodation (protracted displacement beyond medium-term)"
+      adjustment: "Target Ukrainian national standard: 12.5 m²/person + 35 m²/family (see cccm_shelter_floor_area_longterm)."
+    - condition: "Dormitory-to-CC conversion with structural constraints"
+      adjustment: >
+        Ukraine CC 2022 (table 6-c, key actions) notes that for dormitories converted
+        to collective centres, reduction in households per centre over time is the
+        pathway to achieving medium/long-term standards. Document structural constraints
+        and track trajectory.
+  prerequisites:
+    - "Direct floor area measurement of individual rooms/units (not building-level estimate)"
+    - "Household roster confirming which household occupies which room"
+    - "Confirmation that rooms are not shared across different households"
+    - "Site phase classification (acute emergency vs. medium-term vs. long-term)"
+  do_not_confuse_with:
+    sphere_shelter_floor_area_minimum: >
+      Global Sphere baseline of 3.5 m²/person for warm-climate emergency settings.
+      The Ukraine CC medium-term standard (4.5–5 m²) is higher and context-specific.
+      Meeting sphere_shelter_floor_area_minimum does NOT mean this indicator is met.
+    cccm_shelter_floor_area_longterm: >
+      Ukraine national long-term standard of 12.5 m²/person + 35 m²/family. That is
+      the durable-solutions target, not the medium-term emergency standard.
+  common_implementation_errors:
+    - "Applying the Sphere global minimum (3.5 m²/person) as the compliance threshold in Ukraine medium-term settings, ignoring the Ukraine CC upward adjustment to 4.5–5 m²."
+    - "Measuring total room area without checking for inter-household room sharing — the no-room-sharing condition is co-equal with the floor area requirement."
+    - "Including shared bathrooms, kitchens, and corridors in the per-person area calculation."
+    - "Treating 4.5–5 m² as the final target rather than as a medium-term waypoint toward the long-term national standard (12.5 m²/person)."
+  ki_assessment_note: |
+    This indicator CANNOT be reliably validated through KI data. Community-level
+    key informants report perceived overcrowding or room-sharing situations but cannot
+    provide measured floor area figures. KI data can signal whether inter-household
+    room sharing is occurring (a co-condition of this indicator) but cannot confirm
+    the 4.5–5 m²/person threshold. Physical measurement by site monitors is required.
+    KI responses on space adequacy should be coded as perception proxies only.
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 (table 6-c) specifies both conditions together: "4.5–5 m²/person
+    AND no rooms shared between members of different households." Both must be tracked
+    as a composite compliance check. The document also notes that longer-term
+    accommodation should progress toward national standards (12.5 m²/person + 35 m²/family).
+
+
+- id: cccm_shelter_floor_area_longterm
+  label: "Ukraine national long-term accommodation standard (12.5 m²/person + 35 m²/family)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Ukraine CC 2022, table 6-c (Shelter and Infrastructure indicators)"
+    secondary: []
+    note: >
+      Described in Ukraine CC 2022 as the national accommodation standard to aim
+      for in longer-term settings. The document does not cite the specific national
+      legal instrument; it references this as the Ukrainian standard applicable once
+      displacement becomes protracted.
+  definition: |
+    For longer-term accommodation in Ukraine, the recommendation is to move toward
+    the national accommodation standard of 12.5 m² per person plus an additional
+    35 m² per family. This standard applies when displacement extends beyond
+    medium-term collective centre arrangements and households transition to more
+    permanent or durable solutions. Source: Ukraine CC 2022, table 6-c.
+  unit_of_analysis: household
+  recall_period: null
+  formula: |
+    Per-person area: Covered floor area (m²) ÷ number of persons ≥ 12.5 m²/person
+    Family supplement: Total unit area ≥ (12.5 × number of persons) + 35 m²
+    Both components apply simultaneously for full compliance with the national standard.
+  thresholds:
+    - value: "< 4.5 m²/person"
+      label: "Below Ukraine CC medium-term minimum — urgent gap"
+      note: "Does not meet even the medium-term standard. Priority action required."
+    - value: "4.5–12.5 m²/person"
+      label: "Medium-term standard met; below long-term national target"
+      note: "Trajectory monitoring required; plan for progression toward national standard."
+    - value: "≥ 12.5 m²/person + 35 m²/family"
+      label: "Ukraine national long-term standard met"
+      note: "Appropriate for protracted displacement or durable solutions phase."
+  context_modifiers:
+    - condition: "Acute or medium-term emergency phase"
+      adjustment: "Apply medium-term standard (4.5–5 m²/person) as operative threshold; use national standard as planning target."
+    - condition: "Transition to durable solutions / integration into national housing system"
+      adjustment: "National standard (12.5 m²/person + 35 m²/family) becomes the operative compliance threshold."
+  prerequisites:
+    - "Site lifecycle classification confirming longer-term phase"
+    - "Household-level floor area measurement (not aggregate building estimate)"
+    - "Agreement with local authorities on application of national standard in collective centre context"
+  do_not_confuse_with:
+    sphere_shelter_floor_area_minimum: "Global Sphere emergency baseline (3.5 m²/person). Far lower than this indicator."
+    cccm_shelter_floor_area_medium: "Ukraine CC medium-term standard (4.5–5 m²/person). Intermediate waypoint, not the national long-term target."
+  common_implementation_errors:
+    - "Conflating the long-term national standard with the medium-term emergency standard and applying 12.5 m²/person as an acute-phase compliance target."
+    - "Omitting the 35 m²/family supplement and tracking only the per-person component."
+    - "Applying the national standard in contexts where site lifecycle classification has not been formally agreed."
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 (table 6-c) explicitly frames this as a trajectory target:
+    "For longer term, the recommendation is to go towards the national accommodation
+    standard: 12.5 m²/person + extra 35 m²/family." The word "towards" signals
+    directional aspiration rather than a hard immediate threshold.
+
+
+- id: cccm_heating_standard_rooms
+  label: "Minimum indoor heating temperature — standard rooms (≥18°C)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Ukraine CC 2022, table 7-1 (Shelter and Infrastructure — heating system), key actions column"
+    secondary:
+      - "WHO indoor temperature recommendations — ≥18°C cited as 'safe and well-balanced indoor temperature'"
+    note: >
+      Ukraine CC 2022 (table 7-1, key actions) states: "18°C is a safe and well-balanced
+      indoor temperature." The WHO minimum recommended indoor temperature for healthy
+      adults is also 18°C, which the Ukraine CC cites as the basis.
+  definition: |
+    Standard rooms in collective centres (rooms with one exterior wall or interior
+    rooms) must maintain a minimum indoor temperature of 18°C. This is described in
+    Ukraine CC 2022 as a "safe and well-balanced indoor temperature." Rooms classified
+    as corner type (two external walls) are subject to a higher threshold — see
+    cccm_heating_corner_rooms. Source: Ukraine CC 2022, table 7-1.
+  unit_of_analysis: site
+  recall_period: null
+  formula: |
+    Measured indoor air temperature (°C) in standard rooms ≥ 18°C
+    Measurement should be taken during the heating season at the coldest likely
+    time of day (typically early morning) and away from direct heat sources.
+  thresholds:
+    - value: "< 18°C"
+      label: "Below minimum safe indoor temperature — gap"
+      note: "Risk of cold-related health impacts, especially for elderly, young children, and persons with disabilities."
+    - value: "≥ 18°C"
+      label: "Minimum safe indoor temperature met"
+      note: "Standard rooms only. Corner rooms require ≥22°C."
+  context_modifiers:
+    - condition: "Elderly residents, young children, or persons with chronic illness"
+      adjustment: "Ukraine CC 2022 (table 7-a) notes vulnerable persons 'should be granted warmer temperatures'; no specific numeric adjustment given in source."
+    - condition: "Non-heating season"
+      adjustment: "Indicator is conditionally applicable; monitoring during heating season (approximately October–April in Ukraine context) is the priority."
+  prerequisites:
+    - "Functioning heating system in the collective centre"
+    - "Calibrated thermometer; measurement methodology agreed"
+    - "Room classification completed (standard vs. corner type)"
+  do_not_confuse_with:
+    cccm_heating_corner_rooms: >
+      Corner rooms (with 2 external walls) must meet a higher threshold of ≥22°C.
+      Standard rooms require only ≥18°C. These are separate indicators.
+  common_implementation_errors:
+    - "Measuring temperature near a radiator or heat source rather than at room centre height (~1.5 m), which inflates readings."
+    - "Applying the 18°C threshold to corner rooms — corner rooms require 22°C."
+    - "Measuring at the warmest time of day rather than the coldest, masking compliance failures."
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 (table 7-a, key actions): "Temperatures should be high enough to
+    protect residents from the cold: 18°C is a safe and well-balanced indoor temperature
+    and not less than +22°C for premises of a corner type." The WHO recommendation
+    of 18°C for healthy adults is the underlying reference.
+
+
+- id: cccm_heating_corner_rooms
+  label: "Minimum indoor heating temperature — corner rooms (≥22°C)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Ukraine CC 2022, table 7-1 (Shelter and Infrastructure — heating system), key actions column"
+    secondary: []
+    note: >
+      Ukraine CC 2022 (table 7-a) defines corner rooms as "premises that have 2 external
+      walls, i.e., rooms that are located at the corner of the building." The ≥22°C
+      threshold is specified for this room type only.
+  definition: |
+    Corner rooms in collective centres — defined as rooms with two external walls
+    (located at the corner of a building) — must maintain a minimum indoor temperature
+    of 22°C. The higher threshold reflects the greater heat loss experienced in rooms
+    with two exterior surfaces. Source: Ukraine CC 2022, table 7-1.
+  unit_of_analysis: site
+  recall_period: null
+  formula: |
+    Measured indoor air temperature (°C) in corner-type rooms ≥ 22°C
+    Room classification: corner type = 2 external walls.
+    Measurement methodology as per cccm_heating_standard_rooms.
+  thresholds:
+    - value: "< 18°C"
+      label: "Critical — below standard room minimum, far below corner room threshold"
+    - value: "18–21°C"
+      label: "Standard room threshold met but corner room threshold not met — gap"
+      note: "Corner rooms with 18–21°C fail this indicator even though standard rooms at those temperatures comply with cccm_heating_standard_rooms."
+    - value: "≥ 22°C"
+      label: "Corner room minimum temperature met"
+  context_modifiers:
+    - condition: "Rooms housing elderly, children, or persons with disabilities"
+      adjustment: "Ukraine CC 2022 notes these groups should receive warmer temperatures; 22°C is the minimum, not an aspirational target for vulnerable residents."
+  prerequisites:
+    - "Room classification: each room in the CC identified as standard or corner type (2 external walls)"
+    - "Calibrated thermometer; standardized measurement methodology"
+    - "Functioning heating system"
+  do_not_confuse_with:
+    cccm_heating_standard_rooms: >
+      Standard rooms (1 or 0 external walls) require only ≥18°C. This indicator
+      (≥22°C) applies exclusively to corner rooms with 2 external walls.
+  common_implementation_errors:
+    - "Applying the 18°C standard-room threshold to corner rooms, which require 22°C."
+    - "Failing to classify rooms by external-wall count before assigning temperature thresholds."
+    - "Treating 22°C as the universal threshold for all rooms rather than as a corner-room-specific adjustment."
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 (table 7-a): "not less than +22°C for premises of a corner type
+    (premises that have 2 external walls, i.e., rooms that are located at the corner
+    of the building)." The two heating indicators (cccm_heating_standard_rooms and
+    cccm_heating_corner_rooms) must be tracked separately because the same building
+    will contain both room types.
+
+
+- id: cccm_sma_staffing_ratio
+  label: "SMA staffing ratio — 1 site management team per 15,000 displaced persons"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "CAMP-EN 2021, Standard 1.1 (Mandate, policies and presence), Key indicators, p.14–15"
+    secondary:
+      - "CAMP-EN 2021, Standard 1.1 Guidance Note 2 — contextualisation requirement"
+    note: >
+      CAMP-EN 2021 lists "1 site management team per 15,000 displaced persons" as a
+      key indicator under Standard 1.1 and explicitly flags that this ratio must be
+      contextualised (Guidance Note 2). The ratio is the only numeric staffing standard
+      in CAMP-EN; physical site thresholds are delegated to Sphere. The Ukraine CC
+      document provides a different, Ukraine-specific SMS staffing metric
+      (≥6 staff per 1,000 HHs) — see cccm_sms_staffing_ukraine.
+  definition: |
+    The minimum standard for site management agency (SMA) coverage is one site
+    management team per 15,000 displaced persons. A team may cover more than one
+    physical location and may operate as a stationary, mobile, or hybrid structure.
+    This ratio is a minimum quantitative requirement and must be contextualised to
+    account for community capacities, host-displaced relations, service provider
+    capacity, and site type — especially in evacuation centres and transit sites.
+    Source: CAMP-EN 2021, Standard 1.1, p.14.
+  unit_of_analysis: population
+  recall_period: null
+  formula: |
+    Number of deployed SMA teams ÷ total displaced persons in area of operation
+    Minimum: 1 team per 15,000 persons
+    (i.e., ratio ≤ 15,000 displaced persons per team)
+  thresholds:
+    - value: "> 15,000 displaced persons per team"
+      label: "Below CAMP-EN minimum — staffing gap"
+      note: "Context adjustment may be required; document justification if above threshold."
+    - value: "≤ 15,000 displaced persons per team"
+      label: "CAMP-EN minimum met"
+      note: "Still requires contextualisation; may be insufficient in complex, scattered, or high-need settings."
+  context_modifiers:
+    - condition: "Evacuation centres and transit sites"
+      adjustment: "CAMP-EN Guidance Note 2 explicitly flags these site types as requiring contextual adjustment — one team per 15,000 may be insufficient."
+    - condition: "Scattered informal urban/peri-urban sites"
+      adjustment: "Mobile team model recommended; one team may serve multiple sites within a geographic cluster."
+    - condition: "High community capacity / strong local authority presence"
+      adjustment: "Ratio may be adjusted upward (fewer teams per population) where local governance adequately substitutes SMA functions."
+  prerequisites:
+    - "Accurate population count or estimate for the area of operation (disaggregated by site)"
+    - "Clear mandate documentation confirming which SMA team covers which geographic area or site"
+    - "Definition of 'team' agreed at country-level (minimum size, composition)"
+  do_not_confuse_with:
+    cccm_sms_staffing_ukraine: >
+      Ukraine CC 2022 specifies ≥6 SMS staff per 1,000 HHs — a household-denominated,
+      Ukraine-specific staffing indicator. CAMP-EN uses population-denominated teams
+      (1 per 15,000 persons). These measure different things and should not be conflated.
+  common_implementation_errors:
+    - "Applying the 1:15,000 ratio mechanically without contextual adjustment for site type, especially in evacuation or transit settings."
+    - "Counting individual staff members rather than teams, misreading the indicator unit."
+    - "Using a total national displaced population figure as the denominator instead of the population within the SMA's area of operation."
+  also_referenced_by: null
+  notes: >
+    CAMP-EN 2021, Standard 1.1 Guidance Note 2: "The ratio of one site management team
+    per 15,000 displaced persons needs to be contextualised taking into account community
+    capacities, the relationships between displaced and host communities, the capacities
+    of service-providing organisations, and the type of sites, especially in evacuation
+    centres and transit sites." This contextualisation note is integral to correct
+    application of the indicator.
+
+
+- id: cccm_sms_staffing_ukraine
+  label: "Ukraine SMS staffing ratio — ≥6 SMS staff per 1,000 households"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Ukraine CC 2022, table 0-1 (CCCM indicators), Standard: 'Affected population living in CCs have equitable access to protection and assistance with the support of a mandated site management support agency'"
+    secondary: []
+    note: >
+      Ukraine CC 2022 (table 0-1) specifies: "Site management support team should
+      consist of at least 6 staff per 1,000 HHs." This is the Ukraine-specific
+      operationalisation of the SMA staffing standard; it denominates by households
+      rather than by total persons as in CAMP-EN.
+  definition: |
+    In the Ukraine collective centre context, the site management support (SMS) team
+    must consist of at least 6 staff members per 1,000 households served. The team
+    may operate through a mobile approach, site-level offices, or a combination.
+    The SMS team can cluster centres based on number of locations, distance, needs,
+    and displaced population size. Source: Ukraine CC 2022, table 0-1.
+  unit_of_analysis: site
+  recall_period: null
+  formula: |
+    Number of SMS staff deployed ÷ total households in area of operation × 1,000
+    ≥ 6 SMS staff per 1,000 HHs
+  thresholds:
+    - value: "< 6 SMS staff per 1,000 HHs"
+      label: "Below Ukraine CC minimum — staffing gap"
+    - value: "≥ 6 SMS staff per 1,000 HHs"
+      label: "Ukraine CC minimum staffing standard met"
+  context_modifiers:
+    - condition: "Clustered multi-site operation"
+      adjustment: "Ukraine CC 2022 allows one mobile team to cluster centres; denominator should include all HHs across clustered sites."
+    - condition: "Base-level offices vs. mobile approach"
+      adjustment: "Operational modality (mobile vs. fixed) does not affect the numeric threshold, but affects how staff deployment is counted."
+  prerequisites:
+    - "Accurate household count (registered HHs in area of operation)"
+    - "Clear staff roster distinguishing SMS staff from other CC personnel"
+    - "Agreement on what roles count as 'SMS staff' (vs. administrative or security staff)"
+  do_not_confuse_with:
+    cccm_sma_staffing_ratio: >
+      CAMP-EN global standard of 1 team per 15,000 displaced persons. Denominated
+      by total persons, not households. Ukraine CC uses households as denominator and
+      a staff-count (not team-count) as numerator.
+  common_implementation_errors:
+    - "Using total persons as denominator instead of households, applying the CAMP-EN metric to the Ukraine CC indicator."
+    - "Including CC administrative, security, or maintenance staff in the SMS staff count."
+    - "Counting volunteer or part-time staff at full-time equivalents without confirming actual availability."
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 (table 0-1) also notes that the SMS team will "preferably operate:
+    Through a mobile approach … Through a base at site-level offices … A mixed between
+    the two." The staffing ratio applies regardless of operational modality.
+
+
+- id: cccm_staff_code_of_conduct
+  label: "Staff Code of Conduct signature — 100%"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Ukraine CC 2022, table 1-5/1-6 (CCCM — site management team capacity)"
+    secondary: []
+    note: >
+      Ukraine CC 2022 (table 1-5/1-6) states: "100% of site management staff who
+      have signed a Code of Conduct stating their commitment to respect and foster
+      humanitarian standards and the rights of beneficiaries."
+  definition: |
+    All site management staff — including staff from local authorities and local
+    organisations operating in the site — must have signed a Code of Conduct (CoC)
+    committing to respect and foster humanitarian standards and the rights of
+    beneficiaries. Measures to prevent, report, investigate, and sanction perpetrators
+    of sexual exploitation and abuse (SEA) must be in place and known by all staff.
+    Source: Ukraine CC 2022, table 1-5/1-6.
+  unit_of_analysis: staff
+  recall_period: null
+  formula: |
+    (Number of site management staff with signed CoC ÷ total site management staff) × 100
+    Target: 100%
+  thresholds:
+    - value: "< 100%"
+      label: "Non-compliance — any unsigned CoC is a gap"
+      note: "No tolerance threshold; 100% is a binary compliance requirement."
+    - value: "100%"
+      label: "Full compliance"
+  context_modifiers:
+    - condition: "New staff / recent recruitment"
+      adjustment: "CoC must be signed at onboarding; monitoring should track time-to-signature for new staff."
+    - condition: "Government-employed local authority staff"
+      adjustment: "Ukraine CC 2022 explicitly includes 'staff from local authorities and local organisations' in the 100% requirement."
+  prerequisites:
+    - "Complete staff roster including all local authority and partner organisation staff"
+    - "Standardised CoC document in relevant languages"
+    - "Signed CoC records stored securely and accessible for verification"
+  do_not_confuse_with:
+    cccm_staff_training: >
+      Training completion (90% target) is a separate indicator. A staff member may
+      have signed the CoC but not yet completed training, or vice versa.
+  common_implementation_errors:
+    - "Excluding local authority staff or local NGO partner staff from the denominator, understating the actual compliance gap."
+    - "Treating CoC signature as a one-time event without re-signature for major updates to the CoC."
+    - "Confusing CoC signature with training completion — signing and training are tracked as separate indicators."
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 links CoC signing directly to SEA prevention: "Measures to prevent,
+    report, investigate and impose sanctions against perpetrators of SEA are in place
+    and are known by all staff … as well as by the population residing in it."
+
+
+- id: cccm_staff_training
+  label: "Staff training completion — 90%"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Ukraine CC 2022, table 1-5/1-6 (CCCM — site management team capacity)"
+    secondary: []
+    note: >
+      Ukraine CC 2022 (table 1-5/1-6) states: "90% of site management staff (including
+      from local authorities and local organisation) who have completed adequate training
+      related to their role."
+  definition: |
+    At least 90% of site management staff — including staff from local authorities
+    and local organisations — must have completed adequate training related to their
+    role. Core CCCM training modules include at minimum: roles and responsibilities;
+    participation; accountability; humanitarian principles and Protection Principles;
+    coordination; site improvement and planning; and site closure. Training must be
+    contextualised, translated into relevant languages, and adapted to the context.
+    Source: Ukraine CC 2022, table 1-5/1-6.
+  unit_of_analysis: staff
+  recall_period: null
+  formula: |
+    (Number of site management staff who have completed adequate role-related training
+    ÷ total site management staff) × 100
+    Target: ≥ 90%
+  thresholds:
+    - value: "< 90%"
+      label: "Below training coverage target — gap"
+    - value: "≥ 90%"
+      label: "Training coverage target met"
+  context_modifiers:
+    - condition: "Rapid staff turnover"
+      adjustment: "Track training pipeline; a gap in coverage may reflect onboarding lag rather than systemic failure. Monitor time-to-training for new staff."
+  prerequisites:
+    - "Training completion records disaggregated by staff member and training module"
+    - "Agreed definition of 'adequate training' (minimum module list confirmed)"
+    - "Denominator includes local authority and local partner staff"
+  do_not_confuse_with:
+    cccm_staff_code_of_conduct: >
+      CoC signature (100% target) is separate from training completion (90% target).
+      Both must be tracked independently.
+  common_implementation_errors:
+    - "Excluding local authority or partner organisation staff from the denominator, inflating the apparent training completion rate."
+    - "Counting attendance at a training event as 'completion' without verifying that the core module content was covered."
+    - "Applying a 90% threshold as an acceptable permanent state rather than as a minimum floor, and not striving for 100%."
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 specifies that training must be coordinated with other stakeholders
+    operating in the same geographic area, particularly for local authority staff.
+    The 90% threshold (vs. 100% for CoC signing) acknowledges practical onboarding
+    realities while maintaining a high minimum.
+
+
+- id: cccm_resident_participation_satisfaction
+  label: "Resident satisfaction with decision-making participation — 80%"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Ukraine CC 2022, table 1-b/1-c (CCCM — resident participation)"
+    secondary: []
+    note: >
+      Ukraine CC 2022 (table 1-b/1-c) indicator: "80% of the site population who are
+      satisfied with the opportunities they have to influence site decisions."
+  definition: |
+    At least 80% of the site population must report satisfaction with the opportunities
+    they have to influence site decisions. This is a perception indicator measuring
+    the quality and inclusiveness of participatory mechanisms. Separate mechanisms
+    must be in place to allow people with specific needs to participate (by gender,
+    age, disability, etc.). Meaningful participation and leadership of women and
+    LGBTQ+ persons must be promoted. Source: Ukraine CC 2022, table 1-b/1-c.
+  unit_of_analysis: population
+  recall_period: null
+  formula: |
+    (Number of site residents reporting satisfaction with opportunities to influence
+    site decisions ÷ total site residents surveyed) × 100
+    Target: ≥ 80%
+    Disaggregation required: gender, age, disability status at minimum.
+  thresholds:
+    - value: "< 80%"
+      label: "Below participation satisfaction target — gap"
+      note: "Investigate whether specific groups (women, elderly, persons with disabilities) are driving the shortfall."
+    - value: "≥ 80%"
+      label: "Participation satisfaction target met"
+      note: "Monitor disaggregated data to ensure the target is met across all population groups, not only in aggregate."
+  context_modifiers:
+    - condition: "Disaggregated results show specific groups below 80% while aggregate is above"
+      adjustment: "Indicator should be flagged as partially failing; targeted participatory measures required for underrepresented groups."
+  prerequisites:
+    - "Household or individual survey with validated satisfaction question"
+    - "Disaggregation by gender, age, disability status"
+    - "Survey coverage representative of the full site population"
+  do_not_confuse_with:
+    cccm_governance_representation_satisfaction: >
+      Governance representation satisfaction (90% target) measures whether residents
+      feel represented by governance structures. This indicator (80%) measures
+      satisfaction with opportunities to influence decisions — a related but distinct
+      construct.
+  common_implementation_errors:
+    - "Measuring aggregate satisfaction without disaggregation, masking exclusion of specific groups."
+    - "Conducting satisfaction assessments only with easily accessible residents (e.g., at a central point) rather than a representative sample."
+    - "Conflating this participation indicator with the governance representation indicator (cccm_governance_representation_satisfaction), which has a different threshold (90%) and referent."
+  ki_assessment_note: |
+    Perception-based indicators can be collected via KI methods, but KI data
+    introduces significant bias risks for this indicator: KIs are typically
+    community leaders or service staff who may overestimate participation
+    satisfaction. A representative household or individual survey is the
+    appropriate methodology. KI data may be used as a rapid proxy in the absence
+    of survey data, but should be flagged as low-validity evidence for this
+    specific indicator.
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 (table 1-d, key actions) notes that "people with specific needs,
+    including women and girls, are provided with means to meaningfully engage" and
+    that "separate mechanisms put in place to allow people with specific needs to
+    participate." This means the 80% target must be assessed against an inclusive
+    participation structure, not merely a general one.
+
+
+- id: cccm_complaints_mechanism_awareness
+  label: "Awareness of feedback and complaints mechanisms — 90%"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Ukraine CC 2022, table 2-5/2-6 (CCCM — feedback mechanisms)"
+    secondary: []
+    note: >
+      Ukraine CC 2022 (table 2-5/2-6) indicator: "90% of site population aware of
+      feedback and complaints mechanisms and know how to access them."
+  definition: |
+    At least 90% of the site population must be aware of feedback and complaints
+    mechanisms available in the collective centre and know how to access them.
+    Mechanisms must be harmonised, multilingual, multichannel, and include information
+    on SEA reporting channels. Confidentiality must be maintained. Source: Ukraine CC
+    2022, table 2-5/2-6.
+  unit_of_analysis: population
+  recall_period: null
+  formula: |
+    (Number of site residents who are aware of feedback/complaints mechanisms and
+    know how to access them ÷ total site residents surveyed) × 100
+    Target: ≥ 90%
+  thresholds:
+    - value: "< 90%"
+      label: "Below awareness target — gap"
+      note: "Information dissemination and outreach on mechanisms must be strengthened."
+    - value: "≥ 90%"
+      label: "Awareness target met"
+  context_modifiers:
+    - condition: "Multilingual population or low-literacy residents"
+      adjustment: "Mechanisms must be available in relevant languages and accessible formats; awareness target applies across language groups."
+    - condition: "Persons with disabilities"
+      adjustment: "Ukraine CC 2022 specifies 'ensure ability of people to access information and express despite disabilities.'"
+  prerequisites:
+    - "At least one functioning feedback/complaints mechanism in place before measuring awareness"
+    - "Survey or assessment methodology covering a representative sample of the site population"
+    - "Question must test both awareness AND knowledge of access (two components)"
+  do_not_confuse_with:
+    cccm_governance_representation_satisfaction: >
+      Governance representation indicator (90% target) measures a different
+      perception: whether residents feel represented. Awareness of complaints
+      mechanisms is an access/information indicator, not a representation indicator.
+  common_implementation_errors:
+    - "Measuring awareness of mechanisms without confirming residents also know how to access them — the indicator requires both."
+    - "Surveying only residents who have recently used the mechanism (selection bias toward higher awareness)."
+    - "Assuming awareness equals utilisation; the indicator measures awareness only, not whether the mechanism is effectively used."
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 (table 2-7, key actions) specifies that mechanisms must be able
+    to "maintain confidentiality" and must be monitored for functionality. If residents
+    fail to get responses through individual agency mechanisms, the SMA should follow
+    up directly with service providers.
+
+
+- id: cccm_governance_representation_satisfaction
+  label: "Site population satisfaction with governance representation — 90%"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Ukraine CC 2022, table 2-8/2-9 (CCCM — governance representation)"
+    secondary: []
+    note: >
+      Ukraine CC 2022 (table 2-8/2-9) indicator: "90% of the site population who feel
+      they are represented by and through the site governance structure."
+  definition: |
+    At least 90% of the site population must report that they feel represented by and
+    through the site governance structure. This requires functional community
+    self-governing committees with inclusive, gender- and youth-balanced participation,
+    including active involvement of women, LGBTIQ+ persons, and other at-risk groups.
+    Terms of Reference and CoC for committees must be participatorily developed.
+    Source: Ukraine CC 2022, table 2-8/2-9.
+  unit_of_analysis: population
+  recall_period: null
+  formula: |
+    (Number of site residents who feel represented by the site governance structure
+    ÷ total site residents surveyed) × 100
+    Target: ≥ 90%
+  thresholds:
+    - value: "< 90%"
+      label: "Below representation satisfaction target — gap"
+    - value: "≥ 90%"
+      label: "Representation satisfaction target met"
+  context_modifiers:
+    - condition: "Marginalized language communities or communities surrounding the CC"
+      adjustment: "Ukraine CC 2022 specifies inclusion of marginalized language communities and surrounding communities in focal point and committee structures."
+  prerequisites:
+    - "Functional governance/committee structure established before measuring satisfaction"
+    - "Representative household or individual survey"
+    - "Disaggregation by gender, age, and relevant diversity dimensions"
+  do_not_confuse_with:
+    cccm_resident_participation_satisfaction: >
+      Participation satisfaction (80% target) measures satisfaction with opportunities
+      to influence decisions. This indicator (90% target) measures whether residents
+      feel represented by the governance structure itself. Related but distinct.
+    cccm_complaints_mechanism_awareness: >
+      Awareness of complaints mechanisms (90% target) is an information/access
+      indicator, not a governance representation indicator.
+  common_implementation_errors:
+    - "Conflating the higher 90% governance representation target with the 80% participation satisfaction target."
+    - "Measuring satisfaction only among committee members or regular meeting attendees rather than the full site population."
+    - "Failing to disaggregate by gender and minority group status, masking underrepresentation of specific groups."
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 (table 2-a, key actions) specifies that women, LGBTIQ+ persons,
+    and other at-risk groups must be actively involved in community-based camp
+    governance structures. Terms of Reference and CoC for committees must be
+    "participatorily developed and translated into relevant languages."
+
+
+- id: cccm_fire_safety
+  label: "Fire safety equipment — 1 FA kit + 1 kg extinguishing agent per 25 m²"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Ukraine CC 2022, table 2-b/2-c (CCCM — safety environment)"
+    secondary: []
+    note: >
+      Ukraine CC 2022 (table 2-c) indicator: "Fire prevention and first aid equipment
+      available - 1 FA kit + fire extinguishing system / CC (1 kg of extinguishing agent
+      per 25 m2 of area)." The broader indicator also includes presence of safety devices
+      (smoke and carbon monoxide alarms, stair gates, window guards).
+  definition: |
+    Each collective centre must have fire prevention and first aid equipment available,
+    specifically: one first aid (FA) kit per collective centre, plus a fire extinguishing
+    system providing at minimum 1 kg of extinguishing agent per 25 m² of floor area.
+    Safety devices (smoke alarms, carbon monoxide alarms, stair gates, window guards)
+    must also be present. Source: Ukraine CC 2022, table 2-b/2-c.
+  unit_of_analysis: site
+  recall_period: null
+  formula: |
+    Required extinguishing agent (kg) = Total CC floor area (m²) ÷ 25
+    Compliance: Actual extinguishing agent available (kg) ≥ required extinguishing agent (kg)
+    AND ≥ 1 FA kit present per CC
+    AND smoke/CO alarms, stair gates, and window guards present
+  thresholds:
+    - value: "< 1 kg extinguishing agent per 25 m²"
+      label: "Fire extinguishing capacity below minimum — gap"
+    - value: "≥ 1 kg per 25 m² + 1 FA kit"
+      label: "Minimum fire safety equipment standard met"
+      note: "Safety devices (alarms, stair gates, guards) are a co-condition."
+  context_modifiers:
+    - condition: "Multi-floor buildings"
+      adjustment: "Extinguishing agent calculation should be applied per floor or per fire zone; ensure equipment is accessible on each floor."
+    - condition: "High occupancy or vulnerable residents (elderly, mobility-impaired)"
+      adjustment: "Evacuation pathways and drills become critical co-indicators; fire safety equipment alone is insufficient."
+  prerequisites:
+    - "Total floor area (m²) of the collective centre documented"
+    - "Extinguishing agent inventory updated and accessible"
+    - "FA kit contents standardised and unexpired"
+    - "Safety device installation (alarms, guards) verified"
+  do_not_confuse_with:
+    cccm_protection_reserved_units: >
+      Reserved housing units for vulnerable households is a protection access
+      indicator, not a fire safety indicator.
+  common_implementation_errors:
+    - "Calculating extinguishing agent requirement based on occupied area only, excluding communal, corridor, and service spaces that also require coverage."
+    - "Counting extinguisher units rather than agent weight (kg), which are different metrics depending on extinguisher type."
+    - "Not verifying expiry dates of FA kit contents and fire extinguishers during monitoring visits."
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 (table 2-c, key actions) also specifies that evacuation pathways
+    must have proper ventilation arrangements and that related information must be
+    disseminated to residents. Fire safety is part of the broader standard on
+    "residents living in a dignified environment that is safe and secure from harm."
+
+
+- id: cccm_protection_reserved_units
+  label: "Reserved housing units for vulnerable households — up to 4 units or 1 apartment per CC"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [access_and_security_of_tenure]
+  source:
+    primary: "Ukraine CC 2022, table 9-8/9-9 (Protection — reserved units)"
+    secondary: []
+    note: >
+      Ukraine CC 2022 (table 9-8/9-9) standard: "Housing units or apartments available
+      are specifically allocated to single female headed households in the collective
+      center and persons with disabilities in need of assistance/calm area/area safe
+      to move." Indicator: "Up to 4 housing units or 1 apartment specifically allocated
+      for single female headed households and persons with disabilities in need of
+      assistance/calm area/area safe to move."
+  definition: |
+    Each collective centre must specifically allocate up to 4 housing units or 1
+    apartment for single female-headed households and persons with disabilities who
+    need assistance, a calm area, or an area safe to move. These units are reserved
+    to ensure that the most vulnerable households have access to appropriate and
+    safe accommodation within the CC. Source: Ukraine CC 2022, table 9-8/9-9.
+  unit_of_analysis: site
+  recall_period: null
+  formula: |
+    Reserved units per CC: up to 4 housing units OR 1 apartment
+    allocated specifically for: (a) single female-headed households AND/OR
+    (b) persons with disabilities requiring assistance, calm area, or safe movement.
+    Compliance: Reserved allocation exists and is maintained for eligible households.
+  thresholds:
+    - value: "0 reserved units"
+      label: "No protection allocation in place — gap"
+    - value: "1–4 housing units or 1 apartment reserved"
+      label: "Protection allocation standard met"
+      note: "'Up to 4' sets the scope; actual number may be lower depending on CC size and eligible HH count."
+  context_modifiers:
+    - condition: "Very small CC (fewer than 4 total units)"
+      adjustment: "Reserve the maximum feasible number; document constraints. The 'up to 4' language acknowledges CC-size variation."
+    - condition: "High proportion of eligible households"
+      adjustment: "4 units / 1 apartment is a minimum reservation; a larger CC with many eligible households may require additional advocacy and referral to alternative accommodation."
+  prerequisites:
+    - "Identification and registration of eligible households (single female-headed HHs and PwD with relevant needs)"
+    - "Physical units identified, demarcated, and maintained as reserved"
+    - "Allocation process documented and transparent to residents"
+  do_not_confuse_with:
+    cccm_protection_emergency_relocation_reserve: >
+      Emergency relocation reserve (5% of total units) is for households needing
+      emergency relocation from any cause. Reserved units under this indicator are
+      for specific vulnerable profile households (single female-headed HHs, PwD).
+      Different eligibility criteria, different numeric threshold.
+  common_implementation_errors:
+    - "Treating the 'up to 4' ceiling as an automatic allocation regardless of eligible household presence, rather than as a maximum tied to need."
+    - "Conflating this fixed-category protection allocation with the emergency relocation reserve (5%), which serves a different function."
+    - "Failing to maintain the reservation — units being occupied by non-eligible households without review."
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 (table 9-9) specifies eligibility as "single female headed
+    households and persons with disabilities in need of assistance/calm area/area
+    safe to move." The qualification criteria are functional (need for assistance,
+    calm area, safe movement) not just categorical (disability status alone is
+    insufficient; the specific accommodation need must be present).
+
+
+- id: cccm_protection_emergency_relocation_reserve
+  label: "Emergency relocation housing reserve — 5% of total units"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [access_and_security_of_tenure]
+  source:
+    primary: "Ukraine CC 2022, table 9-b/9-c (Protection — emergency relocation reserve)"
+    secondary: []
+    note: >
+      Ukraine CC 2022 (table 9-b/9-c) standard: "Housing units/apartments are available
+      for HH in need of emergency relocation in collective center, including women and
+      men single-parent households." Indicator: "5% of the total number of housing units."
+  definition: |
+    Each collective centre must maintain a reserve of housing units equivalent to 5%
+    of the total number of housing units, available for households requiring emergency
+    relocation within the CC. This reserve is intended for any household that needs
+    to be relocated urgently — including women and men single-parent households —
+    due to security, protection, or other emergency circumstances. Source: Ukraine CC
+    2022, table 9-b/9-c.
+  unit_of_analysis: site
+  recall_period: null
+  formula: |
+    Required emergency reserve units = Total housing units in CC × 0.05 (rounded up)
+    Compliance: Maintained empty/available units ≥ required reserve
+  thresholds:
+    - value: "< 5% of total units reserved"
+      label: "Emergency relocation reserve insufficient — gap"
+    - value: "≥ 5% of total units reserved"
+      label: "Emergency relocation reserve standard met"
+  context_modifiers:
+    - condition: "High occupancy / full CC capacity"
+      adjustment: "5% reserve must still be maintained; full occupancy does not waive the requirement. This may require advocacy to reduce intake or identify overflow capacity."
+    - condition: "Very small CC (e.g., fewer than 20 units)"
+      adjustment: "5% rounds to ≤1 unit; at minimum 1 unit should be reserved. Document the calculation."
+  prerequisites:
+    - "Accurate and current total housing unit count for the CC"
+    - "Clear designation and documentation of which units constitute the emergency reserve"
+    - "Protocol for emergency allocation (who decides, under what criteria, with what timeframe)"
+  do_not_confuse_with:
+    cccm_protection_reserved_units: >
+      Reserved units for vulnerable households (up to 4 units or 1 apartment) target
+      specific profiles (single female-headed HHs, PwD). Emergency relocation reserve
+      (5%) is available for any household facing an emergency situation. Different
+      purpose, different eligibility, different calculation method.
+  common_implementation_errors:
+    - "Including the protected units for vulnerable households (cccm_protection_reserved_units) in the 5% emergency reserve calculation, double-counting limited stock."
+    - "Allowing emergency reserve units to be permanently occupied during high-demand periods, eliminating the emergency capacity."
+    - "Calculating 5% against occupied units rather than total units, which understates the requirement."
+  also_referenced_by: null
+  notes: >
+    Ukraine CC 2022 (table 9-c) indicator is simply "5% of the total number of
+    housing units" — the calculation base is total housing units in the CC, not
+    occupied or registered units. The standard text explicitly includes "women and
+    men single-parent households" as an eligible group, signalling that emergency
+    relocation needs are broadly defined and not limited to protection incidents.

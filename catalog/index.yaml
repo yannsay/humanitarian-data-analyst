@@ -1,0 +1,450 @@
+# Layer B Catalog — Top-Level Retrieval Index
+# Version: 2026-05-20
+# Purpose: LLM-facing index of all 41 indicators. Each entry lists id, label, cluster,
+#          layer_a_anchor, and known synonyms. Use this file to route an indicator query
+#          to the correct full entry in the cluster YAML file.
+#
+# Cluster YAML files:
+#   catalog/food_security.yaml  — 9 indicators (food security)
+#   catalog/wash.yaml           — 17 indicators (WASH)
+#   catalog/cccm.yaml           — 15 indicators (CCCM / shelter)
+#
+# Index structure per entry:
+#   id:              Canonical identifier matching the cluster YAML entry
+#   label:           Primary human-readable name
+#   cluster:         yaml file (food_security | wash | cccm)
+#   layer_a_anchor:  Sectors, pillars, and subpillars for cross-layer routing
+#   synonyms:        Common alternative names or abbreviations for retrieval
+#   priority:        true = one of the four priority indicators with ≥4 impl errors
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ═════════════════════════════════════════════════════════════════════════════
+# FOOD SECURITY — 9 indicators
+# ═════════════════════════════════════════════════════════════════════════════
+
+- id: rcsi
+  label: "Reduced Coping Strategies Index"
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_coping_mechanisms]
+  synonyms: [rCSI, reduced coping strategy index, coping strategies index short form, food coping score]
+  priority: true
+
+- id: fcs
+  label: "Food Consumption Score"
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [FCS, food consumption score, WFP food consumption score, dietary score]
+  priority: true
+
+- id: hdds
+  label: "Household Dietary Diversity Score"
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [HDDS, dietary diversity, household dietary diversity, dietary diversity score]
+  priority: false
+
+- id: hhs
+  label: "Household Hunger Scale"
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [HHS, household hunger scale, hunger scale, FANTA hunger scale]
+  priority: false
+
+- id: hfias
+  label: "Household Food Insecurity Access Scale"
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [HFIAS, food insecurity access scale, food access scale]
+  priority: false
+
+- id: cash_expenditure_food_share
+  label: "% Total Cash Expenditure Spent on Food"
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [food expenditure share (cash), share of cash expenditure on food, food spending share]
+  priority: false
+
+- id: food_expenditure_share
+  label: "% HHs with Food Expenditure >75% of Total Expenditure"
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [food expenditure share (binary), high food expenditure threshold, 75% food share]
+  priority: false
+
+- id: terms_of_trade
+  label: "Terms of Trade of Key Commodities"
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [ToT, terms of trade, commodity exchange rate, livestock-cereal exchange rate]
+  priority: false
+
+- id: hea_survival_deficit
+  label: "% HHs with Survival Deficit (HEA)"
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [HEA survival deficit, survival deficit, HEA, household economy analysis deficit, 2100 kcal deficit]
+  priority: false
+
+# ═════════════════════════════════════════════════════════════════════════════
+# WASH — 17 indicators
+# ═════════════════════════════════════════════════════════════════════════════
+
+- id: jmp_water_safely_managed
+  label: "JMP Drinking Water — Safely Managed"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [safely managed water, JMP safely managed, SDG 6.1.1, safely managed drinking water service]
+  priority: true
+
+- id: jmp_water_basic
+  label: "JMP Drinking Water — Basic"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [basic water service, JMP basic water, improved water within 30 minutes]
+  priority: false
+
+- id: jmp_water_limited
+  label: "JMP Drinking Water — Limited"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [limited water service, JMP limited water, improved water over 30 minutes]
+  priority: false
+
+- id: jmp_water_unimproved
+  label: "JMP Drinking Water — Unimproved"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [unimproved water, JMP unimproved water, unprotected well, unprotected spring]
+  priority: false
+
+- id: jmp_water_surface
+  label: "JMP Drinking Water — Surface Water"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [surface water, JMP surface water, river water, lake water, open water source]
+  priority: false
+
+- id: jmp_water_ecoli_threshold
+  label: "JMP / Sphere E. coli threshold distinction"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [E. coli threshold, water quality threshold, W6, CFU per 100mL, faecal contamination threshold, JMP drinking water ecoli quality threshold W6, ecoli quality threshold W6]
+  priority: false
+
+- id: jmp_sanitation_safely_managed
+  label: "JMP Sanitation — Safely Managed"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [safely managed sanitation, JMP safely managed sanitation, SDG 6.2.1]
+  priority: false
+
+- id: jmp_sanitation_basic
+  label: "JMP Sanitation — Basic"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [basic sanitation, JMP basic sanitation, improved private toilet]
+  priority: false
+
+- id: jmp_sanitation_limited
+  label: "JMP Sanitation — Limited"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [limited sanitation, JMP limited sanitation, shared improved toilet]
+  priority: false
+
+- id: jmp_sanitation_unimproved
+  label: "JMP Sanitation — Unimproved"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [unimproved sanitation, JMP unimproved sanitation, hanging latrine, pit latrine without slab]
+  priority: false
+
+- id: jmp_sanitation_open_defecation
+  label: "JMP Sanitation — Open Defecation"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [open defecation, OD, JMP open defecation, no sanitation facility]
+  priority: false
+
+- id: jmp_hygiene_basic
+  label: "JMP Hygiene — Basic"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [basic hygiene, JMP basic hygiene, handwashing with soap and water]
+  priority: false
+
+- id: jmp_hygiene_limited
+  label: "JMP Hygiene — Limited"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [limited hygiene, JMP limited hygiene, handwashing facility without soap or water]
+  priority: false
+
+- id: jmp_hygiene_no_facility
+  label: "JMP Hygiene — No Facility"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [no hygiene facility, JMP no hygiene facility, no handwashing facility]
+  priority: false
+
+- id: jmp_menstrual_hygiene
+  label: "JMP Menstrual Health and Hygiene"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [MHM, menstrual hygiene management, MHH, JMP MHH, menstrual health, period hygiene]
+  priority: false
+
+- id: sphere_wash_water_quantity
+  label: "Sphere WASH Water Quantity Standard (15 L/p/d)"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [Sphere water quantity, 15 litres per person per day, Sphere WASH standard, minimum water quantity]
+  priority: true
+
+- id: sphere_wash_sanitation
+  label: "Sphere WASH Sanitation Standard (1:20 ratio)"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [Sphere sanitation standard, 1 toilet per 20 people, Sphere latrine ratio, person-to-toilet ratio]
+  priority: true
+
+# ═════════════════════════════════════════════════════════════════════════════
+# CCCM / SHELTER — 15 indicators
+# ═════════════════════════════════════════════════════════════════════════════
+
+- id: sphere_shelter_floor_area_minimum
+  label: "Sphere minimum covered floor area per person (3.5 m²)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [Sphere floor area minimum, 3.5 m2 per person, Sphere shelter standard, minimum floor area, covered floor area standard]
+  priority: true
+
+- id: cccm_shelter_floor_area_medium
+  label: "Ukraine CC medium-term floor area standard (4.5–5 m²/person)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [medium-term floor area, 4.5 m2, 5 m2 per person, Ukraine CC shelter standard, collective centre floor area]
+  priority: false
+
+- id: cccm_shelter_floor_area_longterm
+  label: "Ukraine CC long-term floor area standard (12.5 m² + 35 m² communal)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [long-term floor area, 12.5 m2, 35 m2 communal, durable solution floor area, Ukraine CC long-term standard, Ukraine national long-term accommodation standard]
+  priority: false
+
+- id: cccm_heating_standard_rooms
+  label: "Ukraine CC heating standard — standard rooms (min. 18°C)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [heating standard, 18 degrees, minimum indoor temperature, collective centre heating, room temperature standard, minimum indoor heating temperature standard rooms]
+  priority: false
+
+- id: cccm_heating_corner_rooms
+  label: "Ukraine CC heating standard — corner rooms (min. 22°C)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [corner room heating, 22 degrees, corner room temperature standard, perimeter room heating, minimum indoor heating temperature corner rooms]
+  priority: false
+  # CORRECTED 2026-05-25: label and synonyms updated from 20°C to 22°C.
+  # Source adjudication: Ukraine CC 2022 PDF table 7-a (raw HTML cell id="7-a") states
+  # "not less than +22°C for premises of a corner type". The YAML entry was correct at
+  # 22°C; this index entry had an error. See also ukraine_cc_raw.txt extraction confirmation.
+
+- id: cccm_sma_staffing_ratio
+  label: "CAMP-EN SMA staffing ratio (1 team per 15,000 displaced)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [SMA staffing, site management authority ratio, CAMP-EN staffing, 15000 displaced persons per team]
+  priority: false
+
+- id: cccm_sms_staffing_ukraine
+  label: "Ukraine CC SMS staffing ratio (≥6 staff per 1,000 HHs)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [SMS staffing, site management staff ratio, Ukraine CC staffing, 6 staff per 1000 households, SMS team staffing Ukraine]
+  priority: false
+  # CORRECTED 2026-05-25: label and synonyms updated from "1 per 150–200 residents" to
+  # "≥6 staff per 1,000 HHs". Source adjudication: Ukraine CC 2022 PDF (table 0-1,
+  # CCCM section) and Ukraine_collective_centres_extracted.txt both confirm threshold
+  # "at least 6 staff per 1,000 HHs". The YAML entry was correct; this index entry
+  # had a drafting error with a different (incorrect) formulation.
+
+- id: cccm_staff_code_of_conduct
+  label: "CC staff code of conduct compliance"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [code of conduct, CoC compliance, staff conduct, PSEA code of conduct, site staff CoC]
+  priority: false
+
+- id: cccm_staff_training
+  label: "CC staff training adequacy"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [staff training, site management training, CC staff capacity, cccm staff training adequacy]
+  priority: false
+
+- id: cccm_resident_participation_satisfaction
+  label: "Resident satisfaction with participation opportunities"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [participation satisfaction, resident participation, site governance participation, meaningful participation, resident satisfaction decision-making participation]
+  priority: false
+
+- id: cccm_complaints_mechanism_awareness
+  label: "Resident awareness of complaints and feedback mechanisms"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [complaints mechanism, feedback mechanism, CFM awareness, accountability to affected populations, AAP awareness]
+  priority: false
+
+- id: cccm_governance_representation_satisfaction
+  label: "Resident satisfaction with site governance representation"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [governance satisfaction, representation satisfaction, site committee, CC governance, resident committee representation]
+  priority: false
+
+- id: cccm_fire_safety
+  label: "CC fire safety compliance (extinguisher + FA kit standard)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [fire safety, fire extinguisher standard, fire prevention, collective centre fire safety, 1kg per 25m2]
+  priority: false
+
+- id: cccm_protection_reserved_units
+  label: "CC protection reserved housing units (up to 4 units or 1 apartment)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [reserved units, protection units, vulnerable housing, single female-headed household units, disability reserved units]
+  priority: false
+
+- id: cccm_protection_emergency_relocation_reserve
+  label: "CC emergency relocation reserve (5% of housing units)"
+  cluster: cccm
+  layer_a_anchor:
+    sectors: [shelter]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  synonyms: [emergency relocation reserve, 5% reserve, emergency housing reserve, urgent relocation units, emergency shelter buffer]
+  priority: false

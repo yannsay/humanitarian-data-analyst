@@ -1,0 +1,539 @@
+# Layer B — Food Security Indicator Catalog
+# Generated: 2026-05-20
+# Sources: FSL Indicator Handbook (2020); WFP CARI Guidelines (2021) [wfp211058.pdf, wfp197216.pdf]
+# Phase 3: LLM-drafted, no human review. Eval catches drafting errors.
+
+- id: rcsi
+  label: Reduced Coping Strategies Index
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_coping_mechanisms]
+  source:
+    primary: "FSL Indicator Handbook (2020), p.45 — Section 2: First Level Food Security Outcome Indicators"
+    secondary:
+      - "WFP CARI Guidelines (2nd edition, 2021), wfp211058.pdf — Annex 3 (rCSI weights and methodology)"
+      - "Maxwell & Caldwell 2008, CSI Field Methods Manual"
+    note: "Strategy weights {1,2,1,3,1} and IPC phase thresholds are documented in wfp211058.pdf, not tabulated verbatim in the FSL Handbook source text."
+  definition: |
+    An experience-based composite indicator measuring household food-insecurity-related
+    coping behaviours over the past 7 days. Households are asked how many days in the
+    past 7 days they resorted to each of five fixed strategies because they lacked food
+    or money to buy food. Each frequency (0–7 days) is multiplied by a fixed severity
+    weight and the products are summed to give the household rCSI score.
+  unit_of_analysis: household
+  recall_period: 7 days
+  formula: |
+    rCSI = Σ (frequency_i × weight_i)  for i ∈ {1..5}
+    frequency_i = number of days in the past 7 the strategy was used (integer 0–7)
+    Maximum possible score = 56 (all five strategies used every day for 7 days)
+  components:
+    - id: less_preferred_food
+      label: "Rely on less preferred / less expensive food"
+      weight: 1
+    - id: borrow_food
+      label: "Borrow food or rely on help from friends or relatives"
+      weight: 2
+    - id: limit_portions
+      label: "Limit portion size at mealtimes"
+      weight: 1
+    - id: restrict_adult_consumption
+      label: "Restrict adult consumption so children can eat"
+      weight: 3
+    - id: reduce_meals
+      label: "Reduce the number of meals eaten per day"
+      weight: 1
+  thresholds:
+    - range: "0–3"
+      label: "No / low coping"
+      ipc_phase: "Phase 1"
+      note: "Reference category."
+    - range: "4–18"
+      label: "Medium coping"
+      ipc_phase: "Phase 2"
+      note: "IPC-linked cut-off from WFP guidance; not a universal standard."
+    - range: "19–42"
+      label: "High coping"
+      ipc_phase: "Phase 3+"
+      note: "Use when Phase 3+ prevalence is elevated."
+    - range: "≥43"
+      label: "Very high coping"
+      ipc_phase: "Phase 4+"
+      note: "Tentative extended cut-off for severe contexts; use with HHS."
+  threshold_note: |
+    The core WFP methodology states there are no universal thresholds. The IPC-linked
+    cut-offs (0–3 / 4–18 / 19+) are derived approximations agreed by cluster/donor,
+    not part of the primary WFP rCSI standard. Context-specific cut-offs should be
+    agreed before use.
+  prerequisites:
+    - "Household-level individual interview (not KI or community representative)."
+    - "All five strategies measured with standardised question wording: 'In the past 7 days, if there have been times when you did not have enough food or money to buy food, how often has your household had to: [strategy]?'"
+    - "Frequencies recorded as integer days 0–7, not categorical bands."
+    - "Do not use during severe, protracted emergencies where households have exhausted most coping options — rCSI artificially inflates the share appearing food-secure in such contexts; pair with HHS."
+    - "Do not collect during fasting periods (Ramadan, pre-Easter) without explicit contextual adjustment."
+  do_not_confuse_with:
+    full_csi: |
+      Full CSI uses context-specific behaviours and weights derived from local validation.
+      The sixth strategy sometimes cited — 'go without food for days', weight 4 — belongs
+      to the full CSI, not the rCSI. Adding it to the rCSI is a non-standard implementation.
+    lcsi: |
+      Livelihood Coping Strategy Index (LCSI) measures asset-depletion and livelihood
+      behaviours over a 30-day recall. Different construct, different recall period,
+      different IPC category (Livelihood Change Outcome, not Food Consumption Outcome).
+    hhs: |
+      Household Hunger Scale (HHS) measures experienced food deprivation over 30 days.
+      Recommended companion indicator in severe contexts where rCSI sensitivity is low.
+  common_implementation_errors:
+    - |
+      SIXTH STRATEGY ERROR: Adding 'go without food for days' (weight 4) as a sixth
+      strategy. That strategy and weight belong to the full CSI methodology. The rCSI
+      uses exactly five strategies with weights {1, 2, 1, 3, 1}. A six-strategy
+      implementation is not comparable to WFP rCSI benchmarks.
+    - |
+      WRONG UNIT OF ANALYSIS: Computing rCSI from Key Informant (KI) responses rather
+      than household interviews. KI responses represent a community-level estimate, not
+      individual household behaviour. The resulting score cannot be benchmarked against
+      standard rCSI norms or IPC phase cut-offs. See ki_assessment_note.
+    - |
+      WRONG RECALL PERIOD: Using a 30-day recall instead of 7 days. The rCSI is
+      explicitly a 7-day recall instrument; 30-day recall produces scores that are
+      not comparable to the standard and will overstate coping frequency.
+    - |
+      WRONG WEIGHTS: Any deviation from {1, 2, 1, 3, 1}. The weights are fixed
+      universally and not context-specific; context-specific weighting belongs to the
+      full CSI.
+    - |
+      MISSING STRATEGIES: Collecting fewer than five strategies. All five must be
+      present or the score is not computable as an rCSI.
+    - |
+      THRESHOLD MISAPPLICATION: Treating IPC phase cut-offs as universal thresholds
+      without cluster or donor agreement. The primary WFP guidance states no universal
+      thresholds exist.
+  ki_assessment_note: |
+    When the only available data comes from a Key Informant assessment, the rCSI is
+    NOT computable as a benchmarkable score. The closest legitimate output is a
+    community-level severity proxy describing observed or reported coping prevalence —
+    clearly labelled as such and never compared against rCSI cut-offs or IPC phase
+    benchmarks. Any report using KI-sourced coping data must carry an explicit caveat
+    that the data source is incompatible with standard rCSI methodology.
+  disaggregations: [admin_unit, displacement_status, hh_head_sex, wealth_quintile]
+  ipc_category: "Food Consumption Outcome (1st level outcome indicator)"
+  core_indicator: true
+
+- id: fcs
+  label: Food Consumption Score
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "FSL Indicator Handbook (2020), p.42 — Section 2: First Level Food Security Outcome Indicators"
+    secondary:
+      - "WFP FCS Guidance Sheet, wfp197216.pdf (food group weights and classification rules)"
+    note: |
+      The eight food group importance weights are documented in wfp197216.pdf and referenced
+      in the FSL Handbook but not tabulated verbatim in the handbook source text.
+      FCS was absent from the Aleppo RNA (neither Doc A nor Doc B) without being flagged.
+  definition: |
+    A composite indicator measuring dietary diversity, food frequency, and the relative
+    nutritional importance of food groups, based on a seven-day recall of food consumed
+    at household level. The FCS reflects both the quality and quantity dimensions of
+    food consumption by weighting food groups by nutritional importance.
+  unit_of_analysis: household
+  recall_period: 7 days
+  formula: |
+    FCS = Σ (min(frequency_g, 7) × weight_g)  for g ∈ {1..8 food groups}
+    frequency_g = number of days in past 7 days household consumed food from group g
+    Frequencies are capped at 7 before weighting.
+  components:
+    - id: staples
+      label: "Cereals, grains, roots and tubers"
+      weight: 2
+      note: "Includes bread, rice, maize, pasta, potatoes."
+    - id: pulses
+      label: "Pulses / legumes"
+      weight: 3
+      note: "Beans, lentils, peas, nuts."
+    - id: vegetables
+      label: "Vegetables"
+      weight: 1
+    - id: fruit
+      label: "Fruit"
+      weight: 1
+    - id: protein
+      label: "Meat, fish and eggs"
+      weight: 4
+      note: "Any animal-source protein."
+    - id: dairy
+      label: "Milk and dairy products"
+      weight: 4
+    - id: sugar
+      label: "Sugar and sugar products"
+      weight: 0.5
+    - id: oils
+      label: "Oil, fat, butter"
+      weight: 0.5
+  components_note: |
+    Weights sourced from WFP wfp197216.pdf. The FSL Handbook references WFP's FCS
+    guidelines for the definitive weight table; consult wfp197216.pdf for verbatim values.
+  thresholds:
+    standard:
+      - range: "0–21"
+        label: "Poor food consumption"
+      - range: "21.5–35"
+        label: "Borderline food consumption"
+      - range: "≥35.5"
+        label: "Acceptable food consumption"
+    sugar_oil_rich_context:
+      - range: "0–28"
+        label: "Poor food consumption"
+      - range: "28.5–42"
+        label: "Borderline food consumption"
+      - range: "≥42.5"
+        label: "Acceptable food consumption"
+    sugar_oil_rich_note: |
+      Modified thresholds for populations with high sugar and oil consumption
+      (e.g. Middle East, Central Asia). Consult WFP country guidance and Food Security
+      Cluster before applying.
+  threshold_note: |
+    The standard thresholds (21/35) are not universally valid. They must be validated
+    against local dietary patterns. Read WFP's FCS Guidance Sheet (wfp197216.pdf) and
+    consult the Food Security Cluster before applying thresholds in a new context.
+  prerequisites:
+    - "Household-level interview (not KI). FCS requires enumeration of actual household consumption by a respondent with knowledge of the household's meals."
+    - "Do not collect during fasting periods (Ramadan, pre-Easter) — data will not reflect typical diet."
+    - "Enumerator must probe for consumption of all 8 food groups, not rely on spontaneous recall."
+    - "In acute food insecurity contexts, pair with HHS — FCS is less sensitive to extreme deprivation."
+    - "FCS is prone to seasonal variation; note data collection season in reporting."
+  do_not_confuse_with:
+    hdds: |
+      Household Dietary Diversity Score (HDDS) counts the number of food groups consumed
+      in the past 24 hours (not 7 days). HDDS does not weight groups by nutritional
+      importance and uses 12 food groups vs FCS's 8.
+    hhs: |
+      Household Hunger Scale (HHS) measures experienced food deprivation over 30 days.
+      FCS measures dietary quality and diversity over 7 days. Complementary, not substitutes.
+  common_implementation_errors:
+    - |
+      WRONG UNIT OF ANALYSIS: FCS requires household-level enumeration. Applying
+      FCS weights to KI assessment responses produces a meaningless composite — the
+      KI cannot report household-level meal frequency with the precision the formula requires.
+    - |
+      MISSING FOOD GROUPS: Collecting fewer than 8 food groups. All 8 must be present.
+      A 7-group or 6-group collection is not a valid FCS and cannot be compared to
+      standard thresholds.
+    - |
+      WRONG THRESHOLD SET: Applying the standard 21/35 thresholds in a population
+      with high sugar/oil consumption without contextual validation. This overestimates
+      acceptable food consumption. Use the 28/42 thresholds or conduct local validation.
+    - |
+      WRONG RECALL PERIOD: Using 24-hour recall (that is HDDS methodology, not FCS).
+      FCS recall is 7 days.
+    - |
+      UNCAPPED FREQUENCIES: Failing to cap frequency values at 7 before weighting.
+      Frequencies above 7 must be recoded to 7 (e.g. a household consuming staples
+      every day + extra would still score 7 for that group).
+    - |
+      SILENT OMISSION: Not collecting FCS at all and not flagging the gap. In the Aleppo
+      RNA, FCS was absent from the KI tool but neither Doc A nor Doc B flagged this
+      omission. Any RNA that cannot collect FCS must explicitly note it as a gap.
+  ki_assessment_note: |
+    FCS cannot be collected through a Key Informant assessment. The indicator requires
+    household-level recall of each food group consumed over 7 days; a KI cannot provide
+    this with the required precision. If a survey does not include household-level
+    enumeration, FCS is structurally absent and must be flagged as a gap in the
+    methodology, not substituted with a proxy labelled FCS.
+  disaggregations: [admin_unit, displacement_status, hh_head_sex, wealth_quintile]
+  ipc_category: "Food Consumption Outcome (1st level outcome indicator)"
+  core_indicator: true
+
+- id: hdds
+  label: Household Dietary Diversity Score
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "FSL Indicator Handbook (2020), p.43 — Section 2: First Level Food Security Outcome Indicators"
+    secondary:
+      - "FANTA HDDS Guidance (fantaproject.org)"
+  definition: |
+    A proxy measure of household food access calculated as the number of food groups
+    (out of 12) consumed by any household member in the previous 24 hours. Higher
+    scores indicate greater dietary diversity and are associated with better food access.
+  unit_of_analysis: household
+  recall_period: 24 hours
+  formula: |
+    HDDS = count of food groups consumed (at least once by any HH member) in previous day/night
+    Score range: 0 (no groups) to 12 (all groups consumed)
+  thresholds:
+    - range: "5–12"
+      label: "IPC Phases 1–2"
+    - range: "3–4"
+      label: "IPC Phase 3"
+    - range: "0–2"
+      label: "IPC Phases 4–5"
+  thresholds_note: |
+    The FSL Handbook notes that severity cut-offs are difficult to establish for HDDS.
+    Research has focused on establishing cut-offs for adequate diversity, not on linking
+    scores to specific degrees of food deprivation. Apply IPC cut-offs with caution.
+  prerequisites:
+    - "Household-level interview."
+    - "Enumerator records yes/no for each of 12 food groups consumed by any household member."
+    - "Do not collect during fasting periods or atypical days (celebrations, etc.)."
+  do_not_confuse_with:
+    fcs: |
+      FCS uses 8 food groups weighted by nutritional importance over 7 days.
+      HDDS uses 12 unweighted food groups over 24 hours. Not interchangeable.
+    idds: |
+      IDDS (Individual Dietary Diversity Score) measures dietary diversity for a specific
+      individual (e.g. women of reproductive age, children) not the household aggregate.
+  common_implementation_errors:
+    - "Using a 7-day recall instead of 24 hours — that is FCS methodology, not HDDS."
+    - "Weighting food groups — HDDS is an unweighted count; weighting is an FCS operation."
+    - "Reporting HDDS as a direct substitute for FCS in contexts requiring 7-day recall."
+  disaggregations: [admin_unit, displacement_status, hh_head_sex]
+  ipc_category: "Food Consumption Outcome (1st level outcome indicator)"
+  core_indicator: true
+
+- id: hhs
+  label: Household Hunger Scale
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "FSL Indicator Handbook (2020), p.46 — Section 2: First Level Food Security Outcome Indicators"
+    secondary:
+      - "FANTA HHS Guidance (fantaproject.org)"
+    note: "The three verbatim question wordings are deferred to FANTA guidance — not reproduced in the FSL Handbook source text."
+  definition: |
+    An indicator measuring experienced household hunger based on three questions on food
+    deprivation over the past 4 weeks (30 days). Each question has a frequency-of-occurrence
+    follow-up. HHS is particularly sensitive to severe food insecurity.
+  unit_of_analysis: household
+  recall_period: "30 days (4 weeks)"
+  formula: |
+    For each of 3 questions: answer = no (0), rarely/sometimes (1), often (2)
+    HHS = sum of scores for all 3 questions
+    Score range: 0 to 6
+  thresholds:
+    - score: 0
+      label: "No hunger"
+      ipc_phase: "Phase 1"
+    - score: 1
+      label: "Slight hunger"
+      ipc_phase: "Phase 2"
+    - score: "2–3"
+      label: "Moderate hunger"
+      ipc_phase: "Phase 3"
+    - score: 4
+      label: "Severe hunger"
+      ipc_phase: "Phase 4"
+    - score: "5–6"
+      label: "Very severe hunger"
+      ipc_phase: "Phase 5"
+  prerequisites:
+    - "Household-level interview."
+    - "All three FANTA-validated questions must be used with standardised wording."
+    - "Frequency categories must be: never (0) / rarely or sometimes (1) / often (2)."
+    - "Best used in severe food insecurity contexts; less informative where food deprivation is not widespread."
+  do_not_confuse_with:
+    rcsi: |
+      rCSI measures coping behaviour over 7 days; HHS measures experienced deprivation
+      over 30 days. They are complementary — WFP recommends pairing them in severe contexts.
+  common_implementation_errors:
+    - "Using two categories (rarely, often) instead of three-way then recoded binary split — the question structure requires three frequency options recoded to two."
+    - "Applying HHS in mild food insecurity contexts where it lacks sensitivity (near-zero scores throughout)."
+    - "Collecting fewer than 3 questions — all three are required for a valid HHS score."
+  disaggregations: [admin_unit, displacement_status, hh_head_sex]
+  ipc_category: "Food Consumption Outcome (1st level outcome indicator)"
+  core_indicator: true
+
+- id: hfias
+  label: Household Food Insecurity Access Scale
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "FSL Indicator Handbook (2020), p.47–48 — Section 2: First Level Food Security Outcome Indicators"
+    secondary:
+      - "FANTA HFIAS Guidance (fantaproject.org)"
+  definition: |
+    A continuous indicator measuring the severity of household food insecurity, focusing
+    on the access dimension. Based on nine occurrence questions representing increasing
+    levels of food insecurity severity, each followed by a frequency-of-occurrence question.
+  unit_of_analysis: household
+  recall_period: "30 days (4 weeks)"
+  formula: |
+    HFIAS score = sum of frequency-of-occurrence codes across all 9 occurrence questions
+    Score range: 0 (most food secure) to 27 (most food insecure)
+    Mean HFIAS score reported across surveyed population.
+  thresholds:
+    note: |
+      No IPC phase cut-offs are specified in the FSL Handbook source text for HFIAS.
+      The indicator produces a continuous severity score; interpreting it requires
+      contextual baseline or comparison data. Not an IPC core indicator.
+  prerequisites:
+    - "Household-level interview with nine standardised occurrence questions."
+    - "Each occurrence question requires a follow-up frequency question if answered yes."
+    - "Context-specific terms for 'household' and 'lack of resources' must be piloted before use."
+  do_not_confuse_with:
+    hhs: |
+      HHS uses 3 questions and produces IPC phase-linked thresholds. HFIAS uses 9 questions
+      and produces a continuous score without direct IPC phase mapping.
+  common_implementation_errors:
+    - "Interpreting a doubling of HFIAS score as a 'doubling of food insecurity' — the score is not a ratio scale; report as change in score, not proportional change."
+    - "Collecting fewer than 9 questions — the full set is required for the standard scale."
+  disaggregations: [admin_unit, displacement_status, hh_head_sex]
+  ipc_category: "Food Consumption Outcome"
+  core_indicator: false
+
+- id: cash_expenditure_food_share
+  label: "% Total Cash Expenditure Spent on Food"
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "FSL Indicator Handbook (2020), p.30 — Section 1: Food Security Risk"
+  definition: |
+    Percentage of total cash expenditure spent on food. Vulnerable households typically
+    spend a higher share on food; a high share indicates lower resource availability
+    for non-food needs and increased susceptibility to price shocks.
+  unit_of_analysis: household
+  recall_period: "30 days for food items; 3–6 months for non-food items (standardised to monthly)"
+  formula: |
+    Food expenditure share (%) = (cash expenditure on food / total cash expenditure) × 100
+    Non-food expenditure divided by recall months to align with monthly food recall.
+  thresholds:
+    ipc_chronic:
+      - range: "<40%"
+        label: "IPC Chronic Level 1"
+      - range: "40–50%"
+        label: "IPC Chronic Level 2"
+      - range: "50–70%"
+        label: "IPC Chronic Level 3"
+      - range: ">70%"
+        label: "IPC Chronic Level 4"
+    note: "Cut-offs from IPC Chronic Food Insecurity Reference Table."
+  prerequisites:
+    - "Includes only cash expenditure — does not capture food from own production, gifts, or assistance."
+    - "Best for stable/chronic contexts; requires frequent collection in volatile situations."
+  common_implementation_errors:
+    - "Including in-kind food (own production, food aid) in the denominator — this is a cash expenditure indicator only."
+    - "Applying acute IPC cut-offs — these thresholds are for chronic food insecurity analysis."
+  disaggregations: [admin_unit, displacement_status, wealth_quintile]
+  ipc_category: "Hazards and vulnerability (Contributing Factor)"
+  core_indicator: true
+
+- id: food_expenditure_share
+  label: "% HHs with Food Expenditure >75% of Total Expenditure"
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "FSL Indicator Handbook (2020), p.25 — Section 1: Food Security Risk"
+  definition: |
+    Percentage of households for which food expenditure exceeds 75% of total expenditure.
+    A binary threshold version of the food expenditure share indicator, used as a risk
+    flag for extreme food expenditure concentration.
+  unit_of_analysis: household
+  recall_period: "7 days"
+  formula: |
+    % HHs = (count of HHs with food expenditure > 75% of total expenditure / total HHs) × 100
+  thresholds:
+    ipc_chronic:
+      - range: "<40%"
+        label: "IPC Chronic Level 1"
+      - range: "40–50%"
+        label: "IPC Chronic Level 2"
+      - range: "50–70%"
+        label: "IPC Chronic Level 3"
+      - range: ">70%"
+        label: "IPC Chronic Level 4"
+    note: "IPC Chronic cut-offs apply to the proportion of HHs exceeding the 75% threshold."
+  prerequisites:
+    - "Household-level expenditure data."
+    - "Not a core IPC indicator; contextual use."
+  common_implementation_errors:
+    - "Confusing this with cash_expenditure_food_share — different recall period (7 days vs 30 days) and different operationalisation."
+  disaggregations: [admin_unit, displacement_status]
+  ipc_category: "Hazards and vulnerability (Contributing Factor)"
+  core_indicator: false
+
+- id: terms_of_trade
+  label: Terms of Trade of Key Commodities
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "FSL Indicator Handbook (2020), p.23 — Section 1: Food Security Risk"
+  definition: |
+    Ratio of the selling price of a household's key productive asset (e.g. livestock) to
+    the purchase price of a staple food (e.g. cereal). Captures the exchange value of
+    livelihoods relative to food, indicating financial access to food.
+  unit_of_analysis: household_or_market
+  recall_period: "7 days"
+  formula: |
+    ToT = selling price of key commodity / purchasing price of staple food
+    Example: ToT = price per kg goat meat / price per kg cereal
+  thresholds:
+    - note: "A change of ≥15% within a given period is considered large and warrants attention."
+  prerequisites:
+    - "Requires local context definition of 'key commodity' (livelihood-zone specific)."
+    - "Best used in pastoralist and agro-pastoralist livelihood zones."
+    - "Control for inflation in long recall periods."
+  common_implementation_errors:
+    - "Using a fixed universal commodity pair across diverse livelihood zones — the commodity pair must be locally validated."
+    - "Ignoring seasonality — ToT can vary sharply by season."
+  disaggregations: [admin_unit, livelihood_zone]
+  ipc_category: "Contributing Factor"
+  core_indicator: false
+
+- id: hea_survival_deficit
+  label: "% HHs with Survival Deficit (HEA)"
+  cluster: food_security
+  layer_a_anchor:
+    sectors: [food_security]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "FSL Indicator Handbook (2020), p.40 — Section 2: HEA Indicators"
+    secondary:
+      - "HEA Guidelines (fscluster.org)"
+  definition: |
+    Percentage of households whose total food and cash income falls below the survival
+    threshold — the minimum required to meet food energy needs (2,100 kcal/person/day),
+    food preparation costs, and water costs for human consumption.
+  unit_of_analysis: household
+  recall_period: "30 days (updated after shocks and seasonally)"
+  formula: |
+    Survival deficit = deficit between projected household income and the survival
+    threshold (food energy need 2,100 kcal/person/day + food prep costs + water costs).
+    HEA outcome analysis follows a three-step process: problem specification →
+    coping capacity analysis → projected outcome comparison against threshold.
+  thresholds:
+    energy_minimum: "2,100 kcal/person/day (minimum food energy need)"
+    note: "Threshold sourced from FSL Indicator Handbook p.40 and HEA Guidelines."
+  prerequisites:
+    - "Requires prior HEA baseline (livelihood zoning, wealth breakdown, analysis of livelihood strategies)."
+    - "Best applied when livelihood profiles have been conducted before the shock onset."
+    - "The HEA framework does not adequately capture gender-based vulnerability dynamics within households."
+  common_implementation_errors:
+    - "Applying HEA without a prior baseline — the framework requires pre-crisis livelihood data."
+    - "Using 2,100 kcal as a population-wide threshold without age/sex composition adjustment."
+  disaggregations: [admin_unit, wealth_group, livelihood_zone]
+  ipc_category: "Food Consumption Outcome"
+  core_indicator: false

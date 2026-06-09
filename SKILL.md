@@ -14,7 +14,7 @@ metadata:
   author: yann
   version: "0.1.0"
   framework: HumSet/DEEP
-  status: "Layer A implemented; Layers B/C/analysis are stubs"
+  status: "Layers A and B implemented; Layer C and analysis are stubs"
 ---
 
 # Humanitarian Data Analyst
@@ -102,24 +102,54 @@ Out-of-scope sectors: <list any sectors the pipeline can't serve, or "none">
 ```
 
 `In Layer B scope?` flags whether Step 2 can proceed for that topic. Layer B
-currently covers a limited sector set (see Step 2). If a topic routes to a sector
-outside that set, mark it `no` and say so plainly rather than inventing indicator
-analysis for it.
+currently covers three sectors — **WASH, Food Security, and Shelter (CCCM)**. If a
+topic routes to any other sector, mark it `no` and say so plainly rather than
+inventing indicator analysis for it.
 
 ---
 
-## STEP 2 — INDICATORS (Layer B)  🚧 stub
+## STEP 2 — INDICATORS (Layer B)  ✅ implemented
 
 For each in-scope sector from Step 1, identify the humanitarian indicators that
-answer the question (e.g. FCS, rCSI, JMP service ladder), with their definitions,
-thresholds, common implementation errors, and what the instrument must contain to
-compute them.
+answer the question and read their full definitions **from the catalog** — never
+from memory.
 
-**Not yet implemented in this skill.** The indicator catalog (Layer B) is being
-ported in a later session. Until then: after Step 1, state which indicators
-*would* be consulted and that the catalog is not yet bundled, then stop — do not
-fabricate indicator definitions or thresholds from memory. See
-`references/layer_b_indicators.md`.
+Layer B covers three sectors: **WASH, Food Security, and Shelter (CCCM)** — 41
+indicators total. A topic that routed to any other sector in Step 1 is out of Layer
+B scope; say so and do not invent indicator analysis for it.
+
+**Procedure — follow exactly:**
+
+1. **Open `catalog/index.yaml`.** It lists all 41 indicators with `id`, `label`,
+   `cluster`, `synonyms`, and a `layer_a_anchor` (the sector / pillar / subpillar
+   IDs that tie each indicator back to Layer A).
+2. **Select by anchor.** Keep the indicators whose `layer_a_anchor.sectors` (and,
+   where it sharpens the match, `subpillars_2d`) overlap the IDs you routed to in
+   Step 1. This is the A→B wire: the routed Layer A IDs select the indicators.
+3. **Read the full entry — do not skip.** For each selected indicator, open its
+   cluster file (`catalog/<cluster>.yaml`, where `<cluster>` is `food_security`,
+   `wash`, or `cccm`) and read its `definition`, `formula`, `thresholds`,
+   `components`, and especially `common_implementation_errors` **before** you use
+   the indicator in any later step. Quoting a threshold without reading its catalog
+   entry is the exact failure this skill exists to prevent.
+4. **Emit the indicator list** (see contract below), carrying each indicator's `id`
+   forward — Step 3 binds survey questions to these IDs.
+
+See `references/layer_b_indicators.md` for the catalog structure, the anchor-matching
+rules, and the scope boundary.
+
+### Output contract — the indicator list
+
+```
+STEP 2 — INDICATORS (Layer B)
+
+| Indicator (id) | Label                         | Cluster        | Answers (link to question) | Prerequisites to compute            |
+|----------------|-------------------------------|----------------|----------------------------|-------------------------------------|
+| rcsi           | Reduced Coping Strategies Idx | food_security  | how families cope w/ food  | 5 standard rCSI coping-freq questions |
+| ...            | ...                           | ...            | ...                        | ...                                 |
+
+Errors to avoid (from catalog common_implementation_errors): <pull the relevant ones verbatim>
+```
 
 ---
 

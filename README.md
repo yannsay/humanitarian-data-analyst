@@ -21,7 +21,7 @@ not passive context.
 | Layer | Status |
 |-------|--------|
 | A — Framework routing (66 nodes, 5 axes, HumSet/DEEP) | ✅ implemented |
-| B — Indicator catalog | 🚧 stub — ported in a later release |
+| B — Indicator catalog (41 indicators: WASH, Food Security, Shelter/CCCM) | ✅ implemented |
 | C — Dataset binding | 🚧 stub |
 | Analysis | 🚧 stub |
 
@@ -42,7 +42,7 @@ humanitarian-data-analyst/
 ├── SKILL.md                      # the pipeline conductor (loaded on activation)
 ├── references/
 │   ├── layer_a_routing.md        # full routing guide + worked examples
-│   ├── layer_b_indicators.md     # stub
+│   ├── layer_b_indicators.md     # catalog guide + anchor-matching rules
 │   ├── layer_c_binding.md        # stub
 │   └── analysis.md               # stub
 ├── ontology/                     # Layer A data
@@ -52,6 +52,11 @@ humanitarian-data-analyst/
 │   ├── subpillars_1d/            # 27 nodes
 │   ├── pillars_2d/               # 6 nodes
 │   └── subpillars_2d/            # 16 nodes
+├── catalog/                      # Layer B data
+│   ├── index.yaml                # routing surface — all 41 indicators + layer_a_anchor
+│   ├── food_security.yaml        # 9 indicators
+│   ├── wash.yaml                 # 17 indicators
+│   └── cccm.yaml                 # 15 indicators (Shelter)
 ├── LICENSE
 └── package.json
 ```

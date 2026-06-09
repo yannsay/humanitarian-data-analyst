@@ -1,0 +1,1233 @@
+# WASH Indicator Catalog — Layer B
+# Drafted from: JMP Core Questions for Household Surveys 2018 (WHO/UNICEF)
+# and: Collective Centers Standards Ukraine 2022 (CCCM Cluster, cross-referencing Sphere Handbook 2018)
+# Schema version: Layer B Phase 3
+
+- id: jmp_water_safely_managed
+  label: "JMP Drinking Water — Safely Managed"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7 and Table 2 p.9"
+    secondary:
+      - "SDG indicator 6.1.1 — Proportion of population using safely managed drinking water services"
+    note: "Safely managed is the top rung of the JMP drinking water service ladder, directly linked to SDG 6.1.1."
+  definition: |
+    Drinking water from an improved water source that is located on premises, available when
+    needed, and free from faecal and priority chemical contamination. Specifically: the source
+    must be classified as improved (see classification_rules), located in the household's own
+    dwelling or yard/plot (on premises), available at all times when needed (no significant
+    interruptions in the last month), and the water at the point of collection must contain
+    0 E. coli per 100 mL (W6 test result = 0).
+  unit_of_analysis: household
+  recall_period: "Last month (for availability question W5); point-in-time for W3 location and W6 quality test"
+  formula: |
+    A household is classified as Safely Managed if ALL of the following are true:
+    1. W1 (main drinking water source) is an improved source (codes: 11, 12, 13, 14, 21, 31, 41, 51, 61, 62, 72, 81, 82)
+    2. W3 (location) = In own dwelling (1) OR In own yard/plot (2) — i.e., on premises
+    3. W5 (availability) = No, always sufficient (2) — i.e., no shortage in the last month
+    4. W6 (E. coli count at source) = 0 colonies per 100 mL
+    If any criterion is not met, the household falls to a lower rung (Basic, Limited, or lower).
+  components:
+    - id: improved_source
+      label: "Improved water source (W1)"
+      criteria: "Source type code is in the improved sources list (11, 12, 13, 14, 21, 31, 41, 51, 61, 62, 72, 81, 82)"
+    - id: on_premises
+      label: "On premises (W3)"
+      criteria: "W3 = 1 (in own dwelling) or W3 = 2 (in own yard/plot)"
+    - id: available_when_needed
+      label: "Available when needed (W5)"
+      criteria: "W5 = 2 (no, always sufficient) — no shortage in the last month"
+    - id: free_from_contamination
+      label: "Free from faecal contamination (W6)"
+      criteria: "W6 E. coli count = 0 per 100 mL at point of collection"
+  classification_rules:
+    improved_sources:
+      - "Piped into dwelling (11)"
+      - "Piped into compound, yard or plot (12)"
+      - "Piped to neighbour (13)"
+      - "Public tap or standpipe (14)"
+      - "Borehole or tubewell (21)"
+      - "Protected dug well (31)"
+      - "Protected spring (41)"
+      - "Rainwater collection (51)"
+      - "Tanker-truck (61)"
+      - "Cart with small tank or drum (62)"
+      - "Water kiosk (72)"
+      - "Bottled water (81)"
+      - "Sachet water (82)"
+    unimproved_sources:
+      - "Unprotected dug well (32)"
+      - "Unprotected spring (42)"
+      - "Surface water: river, stream, dam, lake, pond, canal, irrigation channel (91)"
+    note: >
+      Source codes correspond to W1 response categories in JMP 2018, Table 1 p.8.
+      Improved sources are those which by nature of their design and construction have the
+      potential to deliver safe water (Table 2 note 2). Packaged and delivered water (81, 82,
+      61, 62, 72) are treated as improved for SDG monitoring (Table 2 note 3).
+  thresholds:
+    - range/value: "E. coli = 0 CFU per 100 mL"
+      label: "Free from faecal contamination"
+      note: "Tested at point of collection (source), not point of consumption. W6 is applied to a sub-sample of 4–5 households per cluster."
+    - range/value: "Round trip collection time = 0 minutes (on premises)"
+      label: "On premises"
+      note: "W3 = in own dwelling or yard/plot; W4 not needed for on-premises sources."
+    - range/value: "W5 = 2 (no shortage in last month)"
+      label: "Available when needed"
+      note: "W5 asks about the last month only; seasonal variation in availability may not be captured."
+  prerequisites:
+    - "W1 response must be an improved source; if not, the household is Unimproved or Surface Water — not eligible for Safely Managed."
+    - "W3 must be administered to confirm on-premises location (can be skipped only if W1 = 11 or 12)."
+    - "W6 water quality test must be performed on a sub-sample at the point of collection within 30 minutes of sampling."
+    - "W5 must be asked to confirm availability over the last month."
+  do_not_confuse_with:
+    jmp_water_basic: "Basic requires only an improved source with collection time ≤30 min. Safely Managed additionally requires on-premises location, availability when needed, AND zero E. coli. A household with an on-premises piped supply that had a shortage last month falls to Basic or lower, not Safely Managed."
+    jmp_water_ecoli_threshold: "The E. coli threshold in jmp_water_ecoli_threshold is the same measurement (W6) but documented separately as an expanded quality sub-indicator. Safely Managed incorporates zero E. coli as one of four simultaneous criteria."
+  common_implementation_errors:
+    - "Treating any improved source as Safely Managed without checking the remaining three criteria (on premises, availability, zero E. coli). A borehole 200 metres away is at best Basic, not Safely Managed."
+    - "Applying Safely Managed classification to households using tanker-truck water (code 61) or delivered water (codes 62, 72) without verifying E. coli = 0. These sources are improved but rarely meet the zero contamination threshold at point of collection."
+    - "Confusing the water quality threshold with the Sphere/Ukraine CC threshold of <10 CFU/100 mL. JMP Safely Managed requires exactly 0 E. coli per 100 mL at the source, not <10."
+    - "Emergency reclassification error documented in Aleppo RNA (Doc B): boreholes and tanker trucks were reclassified as 'at-risk' water sources, contradicting JMP classification of both as improved sources eligible for Basic or Safely Managed. Assessors must not apply emergency-specific risk classifications that override the JMP improved/unimproved typology without explicit methodological justification."
+    - "Using availability self-report (W5) as a proxy for water quality or contamination — availability and quality are separate criteria measured by different questions."
+  context_modifiers:
+    - condition: "Emergency / conflict settings"
+      adjustment: "W6 water quality testing may be infeasible. In this case, Safely Managed cannot be confirmed; the highest achievable classification is Basic. Document the gap explicitly."
+    - condition: "Packaged water (bottled/sachet, codes 81/82) as main source"
+      adjustment: "W2 must be asked first to establish the secondary source for non-drinking purposes. Packaged water is classified based on W2 source for accessibility and quality criteria when W6 cannot be applied to the packaged product."
+  disaggregations:
+    - urban/rural
+    - wealth quintile
+    - sex of household head
+    - subnational region
+  also_referenced_by: null
+  notes: >
+    SDG 6.1.1 is the proportion of population using safely managed drinking water services.
+    This is the flagship indicator for the water service ladder. Data on off-site treatment
+    (wastewater) cannot be collected through household surveys and must come from administrative
+    sources (JMP 2018, Table 1 footnote 7).
+
+- id: jmp_water_basic
+  label: "JMP Drinking Water — Basic"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7"
+    secondary:
+      - "SDG indicator 1.4.1 — Proportion of population with access to basic services"
+    note: "Basic is the second rung of the JMP drinking water service ladder, corresponding to SDG 1.4.1 target."
+  definition: |
+    Drinking water from an improved source, provided collection time is not more than 30 minutes
+    for a round trip, including queuing. The source must be classified as improved (per Table 2,
+    JMP 2018). Collection time is measured by W4. Households whose source is on premises
+    (W3 = 1 or 2) automatically meet the time criterion and are Basic or higher. Households
+    at Basic do NOT necessarily meet availability or quality criteria for Safely Managed.
+  unit_of_analysis: household
+  recall_period: "Point-in-time for source type (W1) and location (W3); single trip estimate for collection time (W4)"
+  formula: |
+    A household is classified as Basic (not higher) if ALL of the following are true:
+    1. W1 is an improved source (codes: 11, 12, 13, 14, 21, 31, 41, 51, 61, 62, 72, 81, 82)
+    2. W3 = Elsewhere (3) AND W4 ≤ 30 minutes round trip
+       OR W3 = In own dwelling (1) or yard/plot (2) [on premises, collection time = 0]
+    3. At least one of the Safely Managed criteria is NOT met (i.e., not on premises, OR
+       availability issue, OR E. coli > 0) — otherwise the household would be Safely Managed.
+    For global monitoring, Basic is reported as the share of population with at least Basic access
+    (i.e., Basic + Safely Managed combined), not Basic alone.
+  components:
+    - id: improved_source
+      label: "Improved water source (W1)"
+      criteria: "Source type code is in the improved sources list"
+    - id: collection_time
+      label: "Collection time ≤ 30 min round trip (W4)"
+      criteria: "W4 ≤ 30 minutes, or W3 = on premises (W3 = 1 or 2)"
+  classification_rules:
+    improved_sources:
+      - "Same as jmp_water_safely_managed — see that entry for full list"
+    unimproved_sources:
+      - "Unprotected dug well (32)"
+      - "Unprotected spring (42)"
+      - "Surface water (91)"
+    note: "Basic differs from Safely Managed only in that the additional criteria (on premises, availability, quality) need not all be met."
+  thresholds:
+    - range/value: "W4 ≤ 30 minutes"
+      label: "Basic collection time threshold"
+      note: "W4 records total round trip time in minutes including queuing. Code 000 = household members do not collect (piped on premises). Source: JMP 2018, Table 1 p.7."
+  prerequisites:
+    - "W1 must return an improved source code; unimproved sources or surface water cannot yield Basic."
+    - "W3 must be administered for off-premises sources to establish location category."
+    - "W4 must be administered when W3 = Elsewhere (3) to determine collection time."
+  do_not_confuse_with:
+    jmp_water_safely_managed: "Safely Managed requires four simultaneous criteria. Basic requires only improved source + ≤30 min. A household may be Basic while having E. coli-contaminated water."
+    jmp_water_limited: "Limited is an improved source with >30 min collection time. Basic and Limited differ only on the 30-minute threshold."
+  common_implementation_errors:
+    - "Classifying all improved-source households as Basic without checking collection time. A household 45 minutes from a borehole is Limited, not Basic."
+    - "Emergency reclassification error (Aleppo RNA, Doc B): tanker trucks (code 61) and boreholes (code 21) were reclassified as 'at-risk', implicitly moving them below Basic. JMP 2018 classifies both as improved; an assessor must not treat them as unimproved without explicit methodology override and documentation."
+    - "Treating on-premises piped water with frequent shortages as Safely Managed rather than downgrading to Basic. W5 = 1 (shortage in last month) means the household is at most Basic."
+    - "Confusing 'improved' with 'safe'. Basic service uses an improved source but does not guarantee potable water. E. coli contamination is possible even from improved sources."
+  context_modifiers:
+    - condition: "Tanker-truck or delivered water in emergencies"
+      adjustment: "Classify as improved (code 61 or 62) per JMP 2018 Table 2. Emergency assessments that reclassify these as unimproved must document deviation from JMP methodology."
+  disaggregations:
+    - urban/rural
+    - wealth quintile
+    - sex of household head
+    - subnational region
+  also_referenced_by: null
+  notes: >
+    For SDG 1.4.1 reporting, 'at least basic' is the combined share of Basic + Safely Managed
+    population. Basic is not reported as a standalone SDG indicator but is a key benchmark for
+    humanitarian response monitoring.
+
+- id: jmp_water_limited
+  label: "JMP Drinking Water — Limited"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7"
+    secondary: []
+    note: "Limited is the third rung — below Basic, above Unimproved — on the JMP drinking water service ladder."
+  definition: |
+    Drinking water from an improved source for which collection time exceeds 30 minutes for a
+    round trip, including queuing. The source must be improved (per Table 2, JMP 2018) but is
+    located off premises and requires more than 30 minutes to collect.
+  unit_of_analysis: household
+  recall_period: "Single round-trip time estimate (W4)"
+  formula: |
+    A household is classified as Limited if ALL of the following are true:
+    1. W1 is an improved source
+    2. W3 = Elsewhere (3) — source is not on premises
+    3. W4 > 30 minutes round trip
+    If W4 ≤ 30 min, the household is Basic (or Safely Managed if additional criteria met).
+    If W1 is unimproved (codes 32, 42) or surface water (91), the household is Unimproved or Surface Water regardless of time.
+  components:
+    - id: improved_source
+      label: "Improved water source (W1)"
+      criteria: "Source is improved per JMP 2018 Table 2"
+    - id: long_collection_time
+      label: "Collection time > 30 min (W4)"
+      criteria: "W4 > 30 minutes AND W3 = Elsewhere"
+  classification_rules:
+    improved_sources:
+      - "Same as jmp_water_safely_managed"
+    unimproved_sources:
+      - "Unprotected dug well (32)"
+      - "Unprotected spring (42)"
+      - "Surface water (91)"
+    note: "Limited applies only when the source is improved but distant."
+  thresholds:
+    - range/value: "W4 > 30 minutes round trip"
+      label: "Limited service threshold"
+      note: "Source: JMP 2018, Table 1 p.7. Round trip includes queuing time."
+  prerequisites:
+    - "W1 must return an improved source code."
+    - "W3 must = Elsewhere (3); on-premises households are at least Basic."
+    - "W4 must be administered and exceed 30 minutes."
+  do_not_confuse_with:
+    jmp_water_basic: "Basic is the same improved-source requirement but with ≤30 min collection time. The 30-minute threshold is the only distinction."
+    jmp_water_unimproved: "Unimproved has an unprotected source regardless of distance. Limited has an improved but distant source."
+  common_implementation_errors:
+    - "Using one-way travel time instead of round-trip time for W4. The JMP definition requires the total round trip including queuing; using one-way time halves the measured burden and misclassifies Limited households as Basic."
+    - "Treating 'don't know' (W4 = 998) as equivalent to ≤30 minutes, which would upwardly bias Basic estimates. 'Don't know' responses must be handled with explicit imputation rules or reported separately."
+    - "Ignoring seasonal variation — a source that is 20 min away in the dry season may be 45 min in the wet season; a single-round-trip W4 may not capture the worst-case burden."
+  context_modifiers:
+    - condition: "Displacement / camp settings"
+      adjustment: "Water distribution points may move frequently. The W4 response reflects the time at the moment of survey, not typical collection burden over time."
+  disaggregations:
+    - urban/rural
+    - wealth quintile
+    - sex of household head
+  also_referenced_by: null
+  notes: null
+
+- id: jmp_water_unimproved
+  label: "JMP Drinking Water — Unimproved"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7 and Table 2 p.9"
+    secondary: []
+    note: "Unimproved is the fourth rung on the drinking water ladder, above only Surface Water."
+  definition: |
+    Drinking water from an unprotected dug well or unprotected spring. These sources are
+    classified as unimproved because by nature of their design and construction they are unlikely
+    to deliver safe water (Table 2 note 9, JMP 2018). They lack protective infrastructure that
+    prevents runoff and contamination from entering the water source.
+  unit_of_analysis: household
+  recall_period: "Point-in-time (W1 response)"
+  formula: |
+    A household is classified as Unimproved if:
+    W1 = Unprotected dug well (32) OR Unprotected spring (42)
+    Households at Unimproved cannot be Basic or Safely Managed regardless of collection time
+    or availability. Surface water (W1 = 91) is classified separately as the lowest rung.
+  components:
+    - id: unprotected_source
+      label: "Unprotected source type (W1)"
+      criteria: "W1 = 32 (unprotected dug well) or 42 (unprotected spring)"
+  classification_rules:
+    improved_sources: []
+    unimproved_sources:
+      - "Unprotected dug well (32): a dug well lacking a raised lining/casing, apron, cover, or pump/lifting device"
+      - "Unprotected spring (42): a natural spring lacking a spring box to protect against runoff and contamination"
+    note: >
+      From Table 2, JMP 2018: unprotected wells or springs may be the same physical water
+      body as a protected counterpart — the distinction is entirely based on protective
+      infrastructure present at the source.
+  thresholds:
+    - range/value: "W1 = 32 or 42"
+      label: "Unimproved classification"
+      note: "No numeric threshold — classification is based on source type, not measured water quality."
+  prerequisites:
+    - "W1 must be administered to determine source type."
+    - "No further questions (W3, W4, W5, W6) are needed to classify as Unimproved, though W3 and W4 may still be asked for data quality purposes."
+  do_not_confuse_with:
+    jmp_water_basic: "A protected dug well (31) or protected spring (41) is improved and can be classified as Basic or higher. The protective infrastructure is the determining criterion, not the well/spring type per se."
+    jmp_water_surface: "Surface water (code 91) is the lowest rung. Unimproved is one rung above Surface Water."
+  common_implementation_errors:
+    - "Misclassifying a well as protected when it lacks a raised headwall or cover. Enumerators must be trained to observe and confirm all four elements of a protected well (lining above ground, apron, cover, pump or lifting device)."
+    - "Classifying an unprotected spring as improved because water appears clean or is locally trusted. JMP classification is based on infrastructure design, not perceived water quality."
+    - "Failing to distinguish unprotected dug well (32) from protected dug well (31) in data entry — the codes are adjacent and transcription errors are common."
+  disaggregations:
+    - urban/rural
+    - wealth quintile
+  also_referenced_by: null
+  notes: null
+
+- id: jmp_water_surface
+  label: "JMP Drinking Water — Surface Water"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7 and Table 2 p.9"
+    secondary: []
+    note: "Surface Water is the lowest rung on the JMP drinking water service ladder."
+  definition: |
+    Drinking water collected directly from a river, dam, lake, pond, stream, canal, or irrigation
+    canal. These are open water sources above ground (Table 2, JMP 2018). Surface water represents
+    the most acute risk of faecal contamination and is associated with the highest burden of
+    waterborne disease.
+  unit_of_analysis: household
+  recall_period: "Point-in-time (W1 response)"
+  formula: |
+    A household is classified as Surface Water if:
+    W1 = 91 (Surface water: river, stream, dam, lake, pond, canal, irrigation channel)
+    No further questions are needed to assign this classification.
+  components:
+    - id: surface_water_source
+      label: "Surface water source (W1 = 91)"
+      criteria: "Direct collection from open water body"
+  classification_rules:
+    improved_sources: []
+    unimproved_sources:
+      - "River or stream"
+      - "Dam"
+      - "Lake"
+      - "Pond"
+      - "Canal"
+      - "Irrigation channel"
+    note: "Code 91 in W1. Note from Table 2: piped water originating from a surface water reservoir is classified as piped water, not surface water — classification is based on the point of collection, not the origin (Table 2, note 10)."
+  thresholds:
+    - range/value: "W1 = 91"
+      label: "Surface water (lowest rung)"
+      note: "No numeric threshold — classification is entirely source-type based."
+  prerequisites:
+    - "W1 must be administered."
+  do_not_confuse_with:
+    jmp_water_unimproved: "Unimproved refers to unprotected wells and springs — still groundwater sources with some degree of natural filtration. Surface water is open water with no such protection."
+    jmp_water_basic: "Piped water originating from a surface water treatment plant (e.g., municipal river abstraction) is classified as piped water (code 11 or 14) — improved — not surface water. The classification is based on the collection point, not the water origin."
+  common_implementation_errors:
+    - "Classifying treated piped water as surface water because the respondent knows the supply comes from a river. The JMP classifies by where the household collects water, not the water origin (Table 2, note 10, JMP 2018)."
+    - "Missing surface water use when the household primarily reports another source: if W1 is an improved source but XW1 (expanded question on multiple sources) reveals surface water use, the primary W1 classification stands but surface water use should be noted as a supplementary risk."
+    - "Equating surface water with 'no access' in analysis. Surface water users have access to water but to an unsafe source — they should be tracked for targeted WASH interventions, not excluded from access statistics."
+  disaggregations:
+    - urban/rural
+    - wealth quintile
+    - geographic area (proximity to open water bodies)
+  also_referenced_by: null
+  notes: null
+
+- id: jmp_water_ecoli_threshold
+  label: "JMP Drinking Water — E. coli Quality Threshold (W6)"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, question W6 p.10"
+    secondary:
+      - "WHO Guidelines for Drinking-water Quality (referenced conceptually in JMP 2018)"
+    note: "W6 is an expanded quality testing module. JMP 2018 specifies the test protocol but does not itself set the 0 CFU/100 mL threshold — this threshold is derived from the Safely Managed definition in Table 1."
+  definition: |
+    Measurement of faecal contamination in drinking water at the point of collection,
+    using an E. coli test on a water sample collected from the household's main drinking
+    water source. The test is conducted within 30 minutes of sample collection. Results
+    are recorded as a three-digit colony count (CFU per 100 mL); if 101 or more colonies
+    are counted, record 101. This sub-indicator feeds directly into the Safely Managed
+    classification: zero E. coli (0 CFU/100 mL) is required for Safely Managed status.
+  unit_of_analysis: household
+  recall_period: "Point-in-time (test conducted at moment of survey)"
+  formula: |
+    W6: Count of E. coli colonies per 100 mL water sample from main source.
+    - 0 CFU/100 mL: meets Safely Managed water quality criterion
+    - 1–100 CFU/100 mL: does not meet Safely Managed; source is faecally contaminated
+    - ≥101 CFU/100 mL: recorded as 101; high contamination
+    - 998: result lost or not readable
+    Applied to a sub-sample of 4–5 households per cluster.
+  components:
+    - id: ecoli_count
+      label: "E. coli colony count (CFU/100 mL)"
+      criteria: "Measured at point of collection; 0 = meets quality criterion for Safely Managed"
+  classification_rules:
+    improved_sources: []
+    unimproved_sources: []
+    note: "W6 is a quantitative measurement, not a source classification. It supplements W1 source type for Safely Managed determination."
+  thresholds:
+    - range/value: "0 CFU/100 mL"
+      label: "Safely Managed quality threshold"
+      note: "Required for Safely Managed classification per JMP 2018 Table 1. Source: JMP 2018 Table 1 p.7 and W6 question p.10."
+    - range/value: "<10 CFU/100 mL at point of delivery (unchlorinated)"
+      label: "Sphere/Ukraine CC operational threshold"
+      note: >
+        This is the threshold used in the Ukraine CC 2022 document (cross-referencing Sphere Handbook 2018,
+        table 5-6), applicable for service delivery monitoring in collective centres. It differs from
+        the JMP zero-E.coli threshold for Safely Managed classification. The Ukraine CC value is for
+        operational monitoring, not SDG classification.
+  prerequisites:
+    - "W6 is a sub-sample module — not collected for all households in a survey."
+    - "Test must be conducted within 30 minutes of sample collection from the source (W6 note, JMP 2018 p.10)."
+    - "W1 must be known to identify the correct source for testing."
+  do_not_confuse_with:
+    jmp_water_safely_managed: "Safely Managed uses W6 as one of four criteria. A zero E. coli result alone is insufficient for Safely Managed — the source must also be on premises and available when needed."
+    sphere_wash_water_quantity: "Sphere/Ukraine CC specifies <10 CFU/100 mL as an operational water quality threshold; JMP requires exactly 0 CFU/100 mL for SDG Safely Managed. These are different standards for different purposes."
+  common_implementation_errors:
+    - "Applying the Ukraine CC/Sphere operational threshold (<10 CFU/100 mL) as if it satisfies the JMP Safely Managed criterion. JMP requires 0 CFU/100 mL at the source; <10 CFU/100 mL does not qualify a household as Safely Managed."
+    - "Assuming that an improved source (e.g., protected borehole) automatically has zero E. coli without conducting the W6 test. Improved sources have potential to deliver safe water but are not guaranteed to be contamination-free."
+    - "Testing at point of consumption (household storage container) rather than point of collection (source). W6 specifies testing at the source. Point-of-consumption testing is covered by expanded questions and will typically show higher contamination rates."
+  disaggregations:
+    - source_type
+    - urban/rural
+  also_referenced_by: null
+  notes: >
+    W6 forms part of a water quality testing module. The JMP 2018 document (p.10) notes that
+    samples must be collected from the main source and tested for faecal contamination within
+    30 minutes. See expanded questions for point-of-consumption testing.
+
+- id: jmp_sanitation_safely_managed
+  label: "JMP Sanitation — Safely Managed"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7 and Table 3 p.12"
+    secondary:
+      - "SDG indicator 6.2.1(a) — Proportion of population using safely managed sanitation services"
+    note: >
+      To estimate total population using Safely Managed sanitation, additional data on the
+      share of excreta removed and treated offsite (from administrative sources) is required
+      beyond household survey data (JMP 2018, Table 1 footnote 7).
+  definition: |
+    Use of improved sanitation facilities that are not shared with other households and where
+    excreta are safely disposed of in situ or transported and treated offsite. Three simultaneous
+    criteria must be met: (1) the facility must be improved (per Table 3, JMP 2018), (2) the
+    facility must not be shared (S2 = No), and (3) excreta must be safely managed — either
+    safely disposed in situ (pit never emptied for sealed systems, or twin pit with designed
+    in-situ treatment) or removed and transported to a treatment plant (S5 = 1 or 2).
+  unit_of_analysis: household
+  recall_period: "Point-in-time for facility type (S1) and sharing (S2); last emptying event for S4/S5"
+  formula: |
+    A household is classified as Safely Managed sanitation if ALL of the following are true:
+    1. S1 is an improved facility (codes: 11, 12, 13, 22, 31, 32, 33, 42)
+       Note: flush to open drain (14) and flush to don't know where (18) are ambiguous;
+       flush without slab (23), bucket (41), hanging latrine (51) are unimproved.
+    2. S2 = No (2) — facility not shared with other households
+    3. Excreta safely managed:
+       a. Facility connected to piped sewer (S1=11): excreta removed via sewer — safely managed
+       b. Septic tank (S1=12): S4/S5 determine if emptied and transported to treatment (S5=1 or 2)
+       c. Pit latrine with slab (S1=22) or other on-site storage: S4 must = Yes emptied (1)
+          AND S5 must = to treatment plant (1) OR buried in covered pit by service provider (2)
+    For population-level Safely Managed estimates, off-site treatment data from administrative
+    sources must supplement S4/S5 survey data.
+  components:
+    - id: improved_facility
+      label: "Improved sanitation facility (S1)"
+      criteria: "Facility type is improved per Table 3 definitions"
+    - id: not_shared
+      label: "Not shared (S2)"
+      criteria: "S2 = 2 (No — not shared with other households)"
+    - id: safe_disposal
+      label: "Safe excreta disposal (S4/S5)"
+      criteria: "Excreta safely disposed in situ or transported and treated offsite (S5 = 1 or 2)"
+  classification_rules:
+    improved_sources:
+      - "Flush to piped sewer system (11)"
+      - "Flush to septic tank (12)"
+      - "Flush to pit latrine (13)"
+      - "Pit latrine with slab (22)"
+      - "Twin pit with slab (31)"
+      - "Twin pit without slab (32) — composting"
+      - "Other composting toilet (33)"
+      - "Container-based sanitation (42)"
+    unimproved_sources:
+      - "Flush to open drain (14) — unimproved"
+      - "Pit latrine without slab / open pit (23) — unimproved"
+      - "Bucket (41) — unimproved"
+      - "Hanging toilet / hanging latrine (51) — unimproved"
+      - "No facility / bush / field (95) — open defecation"
+    note: >
+      From Table 3, JMP 2018. Flush to open drain (14) is unimproved — excreta is not
+      effectively contained. Flush to don't know where (18) is categorised as improved
+      for household-level classification but cannot be confirmed as Safely Managed.
+  thresholds:
+    - range/value: "S2 = 2 (not shared)"
+      label: "Private facility required for Safely Managed"
+      note: "Sharing with any household outside the enumerated household reduces classification to Limited."
+    - range/value: "S5 = 1 or 2 (treatment plant or covered pit by service provider)"
+      label: "Safe excreta disposal for on-site storage"
+      note: "S5 = 5 (emptied to open ground/water body) is not safe disposal."
+  prerequisites:
+    - "S1 must be administered and return an improved facility code."
+    - "S2 must be administered to confirm non-sharing."
+    - "S4 and S5 apply only to on-site storage facilities (S1 codes 12, 13, 22, 23, 31, 32, 33)."
+  do_not_confuse_with:
+    jmp_sanitation_basic: "Basic requires improved + not shared but does NOT require safe excreta disposal. Safely Managed adds the disposal/treatment criterion."
+    jmp_sanitation_limited: "Limited is improved + shared. Safely Managed is improved + not shared + safe disposal."
+  common_implementation_errors:
+    - "Classifying a flush toilet connected to a sewer as Safely Managed without confirming the sewer discharges to treatment. Administrative data on treatment coverage is required to confirm sewer-connected toilets are truly Safely Managed."
+    - "Treating flush to 'don't know where' (S1 = 18) as Safely Managed. JMP classifies this household as using an improved facility but the disposal chain cannot be confirmed as safe."
+    - "Ignoring S4/S5 for pit latrine households: a pit latrine with slab (improved) that has been emptied to an open water body (S5 = 5) is NOT Safely Managed, even though it is improved and private."
+  disaggregations:
+    - urban/rural
+    - wealth quintile
+    - sex of household head
+  also_referenced_by: null
+  notes: >
+    For SDG 6.2.1(a), off-site treatment data from administrative sources must supplement
+    household survey data on S4/S5 to calculate national Safely Managed estimates
+    (JMP 2018, Table 1, footnote 7).
+
+- id: jmp_sanitation_basic
+  label: "JMP Sanitation — Basic"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7"
+    secondary:
+      - "SDG indicator 1.4.1 — Proportion of population with access to basic services"
+    note: null
+  definition: |
+    Use of improved sanitation facilities that are not shared with other households. Unlike
+    Safely Managed, Basic does not require safe excreta disposal in situ or treatment offsite.
+    The facility must be improved per Table 3 (JMP 2018) and exclusively used by the enumerated
+    household only.
+  unit_of_analysis: household
+  recall_period: "Point-in-time (S1 for facility type, S2 for sharing)"
+  formula: |
+    A household is classified as Basic (and not Safely Managed) if:
+    1. S1 is an improved facility
+    2. S2 = No (2) — not shared
+    3. Excreta disposal does NOT fully meet the Safely Managed disposal criterion
+       (i.e., S5 is unknown, unverified, or indicates unsafe disposal)
+    For global monitoring, 'at least Basic' is the combined share of Basic + Safely Managed.
+  components:
+    - id: improved_facility
+      label: "Improved sanitation facility (S1)"
+      criteria: "Improved facility code in S1"
+    - id: not_shared
+      label: "Not shared (S2 = 2)"
+      criteria: "S2 = 2 — facility exclusively used by enumerated household"
+  classification_rules:
+    improved_sources:
+      - "Same as jmp_sanitation_safely_managed improved list"
+    unimproved_sources:
+      - "Same as jmp_sanitation_safely_managed unimproved list"
+    note: null
+  thresholds:
+    - range/value: "S2 = 2 (not shared)"
+      label: "Basic sharing threshold"
+      note: "Sharing with any outside household reduces to Limited (JMP 2018, Table 1 p.7)."
+  prerequisites:
+    - "S1 and S2 must both be administered."
+  do_not_confuse_with:
+    jmp_sanitation_safely_managed: "Safely Managed requires safe disposal in addition to improved + not shared. Basic stops at improved + not shared."
+    jmp_sanitation_limited: "Limited is improved + shared. Basic is improved + not shared."
+  common_implementation_errors:
+    - "Reporting Basic as the same as Safely Managed in humanitarian WASH assessments. These are distinct rungs — a household with an unimproved pit latrine emptied to open ground is neither."
+    - "Treating flush to open drain (S1 = 14) as Basic because it has a flush mechanism. Flush to open drain is unimproved per Table 3 and cannot be Basic."
+    - "Misinterpreting S2 — 'sharing with family members in the same household' does not make a facility shared. S2 asks about sharing with persons outside the enumerated household."
+  disaggregations:
+    - urban/rural
+    - wealth quintile
+  also_referenced_by: null
+  notes: null
+
+- id: jmp_sanitation_limited
+  label: "JMP Sanitation — Limited"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7"
+    secondary: []
+    note: null
+  definition: |
+    Use of improved sanitation facilities shared between two or more households. The facility
+    type must be improved per Table 3 (JMP 2018) but is shared with at least one other household
+    (S2 = Yes). Sharing is a specific concern for dignity, privacy and personal safety, especially
+    for women and girls (JMP 2018, p.11).
+  unit_of_analysis: household
+  recall_period: "Point-in-time (S1 and S2)"
+  formula: |
+    A household is classified as Limited if:
+    1. S1 is an improved facility
+    2. S2 = Yes (1) — facility shared with other households
+    Note: the number of sharing households is not captured in the core questions. Expanded
+    questions may probe further on the type of sharing.
+  components:
+    - id: improved_facility
+      label: "Improved sanitation facility (S1)"
+      criteria: "Improved facility code"
+    - id: shared_facility
+      label: "Shared with other households (S2 = 1)"
+      criteria: "S2 = Yes"
+  classification_rules:
+    improved_sources:
+      - "Same as jmp_sanitation_safely_managed improved list"
+    unimproved_sources:
+      - "Same as jmp_sanitation_safely_managed unimproved list"
+    note: null
+  thresholds:
+    - range/value: "S2 = 1 (shared with ≥1 other household)"
+      label: "Limited sharing criterion"
+      note: "Any sharing with an outside household triggers Limited classification, regardless of the number of sharing households."
+  prerequisites:
+    - "S1 must return an improved facility code."
+    - "S2 must be administered."
+  do_not_confuse_with:
+    jmp_sanitation_basic: "Basic is improved + not shared. Limited is improved + shared. The sharing question (S2) is the sole distinction."
+    jmp_sanitation_unimproved: "Unimproved is a different facility type (pit without slab, hanging latrine, bucket), regardless of sharing."
+  common_implementation_errors:
+    - "Equating Limited with 'access to sanitation' in communication: a shared flush toilet is Limited service — improved but shared — and should not be reported as equivalent to Basic or Safely Managed."
+    - "Using facility location (S3 = elsewhere) as a proxy for sharing. A facility located elsewhere is not necessarily shared; S2 must be asked directly."
+    - "Not capturing the number of sharing households from expanded questions when assessing communal settings. In collective centres or camp settings, the sphere standard (1:20 ratio) may be more relevant than the binary JMP sharing classification."
+  disaggregations:
+    - urban/rural
+    - settlement type (camp, collective centre, host community)
+  also_referenced_by:
+    - sphere_wash_sanitation
+  notes: null
+
+- id: jmp_sanitation_unimproved
+  label: "JMP Sanitation — Unimproved"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7 and Table 3 p.12"
+    secondary: []
+    note: null
+  definition: |
+    Use of pit latrines without a slab or platform, hanging latrines, or bucket latrines.
+    These facility types are classified as unimproved because they do not hygienically separate
+    human excreta from human contact (Table 3, JMP 2018). They represent the second-lowest
+    rung on the sanitation service ladder, above Open Defecation.
+  unit_of_analysis: household
+  recall_period: "Point-in-time (S1)"
+  formula: |
+    A household is classified as Unimproved sanitation if S1 is one of:
+    - Pit latrine without slab / open pit (23)
+    - Bucket (41)
+    - Hanging toilet / hanging latrine (51)
+    - Flush to open drain (14)
+    If S1 = 95 (no facility / bush / field), the household is Open Defecation — a separate lower rung.
+  components:
+    - id: unimproved_facility_type
+      label: "Unimproved facility type (S1)"
+      criteria: "S1 = 14, 23, 41, or 51"
+  classification_rules:
+    improved_sources: []
+    unimproved_sources:
+      - "Flush to open drain (14)"
+      - "Pit latrine without slab / open pit (23)"
+      - "Bucket (41)"
+      - "Hanging toilet / hanging latrine (51)"
+    note: "Definitions per Table 3, JMP 2018."
+  thresholds:
+    - range/value: "S1 = 14, 23, 41, or 51"
+      label: "Unimproved facility codes"
+      note: "Source: Table 3, JMP 2018."
+  prerequisites:
+    - "S1 must be administered."
+  do_not_confuse_with:
+    jmp_sanitation_open_defecation: "Open Defecation (S1 = 95) is the lowest rung — no facility at all. Unimproved has a facility that is inadequate, not absent."
+    jmp_sanitation_basic: "Basic requires an improved facility. The slab is the critical distinction for pit latrines: with slab = improved; without slab = unimproved."
+  common_implementation_errors:
+    - "Misclassifying a pit latrine with a deteriorated or partial slab as improved. JMP requires the slab to be made of durable materials and to cover the pit adequately (Table 3, note 4). Partially covering slabs or slabs made of non-durable material (sticks, logs, bamboo) should be coded as without slab."
+    - "Classifying container-based sanitation (CBS, code 42) as unimproved. CBS (code 42) is an improved facility in JMP 2018 if containers are regularly collected by a service provider."
+    - "Treating flush to open drain (14) as improved because it uses a flush mechanism. The destination — open drain — makes it unimproved, not the flush technology."
+  disaggregations:
+    - urban/rural
+    - wealth quintile
+  also_referenced_by: null
+  notes: null
+
+- id: jmp_sanitation_open_defecation
+  label: "JMP Sanitation — Open Defecation"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7 and Table 3 p.12"
+    secondary:
+      - "SDG target 6.2 — End open defecation"
+    note: "Ending open defecation is an explicit SDG 6.2 target and priority for JMP monitoring."
+  definition: |
+    Disposal of human faeces in fields, forests, bushes, open bodies of water, beaches or other
+    open spaces, or with solid waste. Captured in S1 as 'No facility / Bush / Field' (code 95).
+    Includes: defecation in bush or field, excreta deposited on ground and covered with earth
+    (cat method), excreta wrapped and thrown in garbage, and defecation into surface water
+    (Table 3, JMP 2018).
+  unit_of_analysis: household
+  recall_period: "Point-in-time (S1)"
+  formula: |
+    A household is classified as Open Defecation if:
+    S1 = 95 (No facility / Bush / Field)
+    This is the lowest rung on the sanitation service ladder.
+    Note: S2, S3, S4, S5 are skipped when S1 = 95 (skip logic in JMP 2018, p.11).
+  components:
+    - id: no_facility
+      label: "No facility (S1 = 95)"
+      criteria: "S1 = 95 — household uses no sanitation facility"
+  classification_rules:
+    improved_sources: []
+    unimproved_sources:
+      - "Fields, forests, bushes"
+      - "Open bodies of water, beaches"
+      - "Other open spaces"
+      - "Disposed with solid waste"
+    note: "Definition from Table 3, JMP 2018."
+  thresholds:
+    - range/value: "S1 = 95"
+      label: "Open defecation classification"
+      note: "No numeric threshold — entirely source-type based."
+  prerequisites:
+    - "S1 must be administered."
+  do_not_confuse_with:
+    jmp_sanitation_unimproved: "Unimproved households have a facility (pit without slab, bucket, etc.). Open Defecation households have no facility at all."
+  common_implementation_errors:
+    - "Missing open defecation when households use a facility during the day but defecate in the open at night or during emergency situations. S1 captures the usual facility — context about nighttime or emergency practices may require additional probe questions."
+    - "Equating 'no facility' response to S1 automatically with open defecation when the household may share a neighbour's facility without considering it their own. Enumerator training must clarify that S1 = 95 means no facility used, including no shared facility."
+    - "Using open defecation rates without disaggregating by urban/rural and subnational level, which can mask concentrated pockets of practice within otherwise-improved regions."
+  disaggregations:
+    - urban/rural
+    - wealth quintile
+    - subnational region
+  also_referenced_by: null
+  notes: >
+    SDG target 6.2 explicitly includes 'ending open defecation'. The JMP monitors this as a
+    separate rung and tracks progress through the proportion of population practising open
+    defecation as an additional indicator for SDG 6.2.
+
+- id: jmp_hygiene_basic
+  label: "JMP Hygiene — Basic"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7 and H1–H3 p.14"
+    secondary:
+      - "SDG indicator 6.2.1(b) — Proportion of population using a handwashing facility with soap and water"
+    note: null
+  definition: |
+    Availability of a handwashing facility on premises with soap and water. Assessed through
+    direct observation (not self-report): the enumerator is shown where household members most
+    often wash their hands (H1), observes whether water is present (H2), and observes whether
+    soap or detergent is present (H3). All three conditions must be met simultaneously.
+  unit_of_analysis: household
+  recall_period: "Point-in-time (direct observation)"
+  formula: |
+    A household is classified as Basic hygiene if ALL of the following are observed:
+    1. H1 = Fixed facility observed (1 or 2) OR mobile object observed (3) — on premises
+    2. H2 = Water is available (1)
+    3. H3 = Soap or detergent available (1)
+    If H1 = 1–3 but H2 = 2 (no water) OR H3 = 2 (no soap): household is Limited.
+    If H1 = 4 (no handwashing place in dwelling/yard/plot): household is No Facility.
+  components:
+    - id: facility_present
+      label: "Handwashing facility on premises (H1)"
+      criteria: "H1 = 1 (fixed in dwelling), 2 (fixed in yard/plot), or 3 (mobile object observed)"
+    - id: water_available
+      label: "Water available at facility (H2)"
+      criteria: "H2 = 1 (water is available)"
+    - id: soap_available
+      label: "Soap or detergent available (H3)"
+      criteria: "H3 = 1 (soap or detergent available)"
+  classification_rules:
+    improved_sources: []
+    unimproved_sources: []
+    note: >
+      From JMP 2018 p.14: soap includes bar soap, liquid soap, powder detergent and soapy water.
+      Ash, soil, sand or other traditional agents are less effective and do NOT count as soap
+      (Table 3 note 2 in hygiene definitions).
+  thresholds:
+    - range/value: "H1 = 1, 2, or 3; H2 = 1; H3 = 1"
+      label: "All three Basic criteria met simultaneously"
+      note: "Assessment is observational — the enumerator must be shown the facility, not rely on self-report."
+  prerequisites:
+    - "H1 must be administered and result in observation of a facility on premises (codes 1–3); codes 4–6 skip to M1."
+    - "H2 and H3 must be administered sequentially following H1."
+  do_not_confuse_with:
+    jmp_hygiene_limited: "Limited has a facility on premises but is missing either water or soap (or both). Basic requires facility + water + soap simultaneously observed."
+    jmp_hygiene_no_facility: "No Facility means no handwashing place exists on premises (H1 = 4). Limited and Basic both require a facility to be present."
+  common_implementation_errors:
+    - "Relying on self-report rather than direct observation for H1–H3. JMP methodology requires the enumerator to be shown the facility and to observe water and soap presence — verbal confirmation alone is insufficient."
+    - "Counting ash or sand as soap equivalents. JMP 2018 hygiene definitions explicitly exclude these: only bar soap, liquid soap, powder detergent, and soapy water qualify."
+    - "Not distinguishing between water available at the facility (H2 = 1) and water available in the household generally. The test is at the point of handwashing, not household water access overall."
+  context_modifiers:
+    - condition: "Rapid assessments where direct observation is not possible"
+      adjustment: "Self-report proxies may be used but must be flagged as departing from JMP observational methodology. Results are not directly comparable to JMP estimates."
+  disaggregations:
+    - urban/rural
+    - wealth quintile
+    - sex of household head
+  also_referenced_by:
+    - jmp_menstrual_hygiene
+  notes: >
+    SDG 6.2.1(b) tracks the proportion using a handwashing facility with soap and water.
+    The JMP hygiene ladder has only three rungs: Basic, Limited, No Facility — there is no
+    'Safely Managed' equivalent for hygiene in the 2018 framework.
+
+- id: jmp_hygiene_limited
+  label: "JMP Hygiene — Limited"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7 and H1–H3 p.14"
+    secondary: []
+    note: null
+  definition: |
+    Availability of a handwashing facility on premises without soap or water (or both). The
+    facility must be present and observable on premises (H1 = 1, 2, or 3), but at least one
+    of water (H2) or soap (H3) is not observed at the time of the survey visit.
+  unit_of_analysis: household
+  recall_period: "Point-in-time (direct observation)"
+  formula: |
+    A household is classified as Limited hygiene if:
+    H1 = 1, 2, or 3 (facility observed on premises)
+    AND (H2 = 2 [no water] OR H3 = 2 [no soap or detergent])
+    i.e., facility is present but either water or soap is missing.
+  components:
+    - id: facility_present
+      label: "Handwashing facility on premises (H1)"
+      criteria: "H1 = 1, 2, or 3"
+    - id: missing_water_or_soap
+      label: "Water or soap missing (H2 or H3 = 2)"
+      criteria: "H2 = 2 OR H3 = 2"
+  classification_rules:
+    improved_sources: []
+    unimproved_sources: []
+    note: null
+  thresholds:
+    - range/value: "Facility present + water or soap absent"
+      label: "Limited hygiene criteria"
+      note: "Both water and soap may be absent simultaneously — still Limited, not No Facility."
+  prerequisites:
+    - "H1 must be administered and return codes 1–3."
+    - "H2 and H3 must both be administered."
+  do_not_confuse_with:
+    jmp_hygiene_basic: "Basic requires facility + water + soap. Limited has the facility but lacks water or soap."
+    jmp_hygiene_no_facility: "No Facility means the facility is absent entirely. Limited has a facility present, just not stocked."
+  common_implementation_errors:
+    - "Classifying households as Basic when soap was recently consumed or moved and is temporarily absent. Observation reflects the point-in-time status; absence at time of visit = Limited regardless of claimed normal availability."
+    - "Coding H1 = 3 (mobile object) and then not proceeding to H2/H3. Mobile handwashing facilities (buckets, jugs) must still have water and soap checked — they can be Basic or Limited just as fixed facilities can."
+    - "Using Limited as a proxy for 'near-Basic' in analysis. Presence of a facility without water or soap provides limited disease-prevention benefit; Limited should not be grouped with Basic in effectiveness assessments."
+  disaggregations:
+    - urban/rural
+    - wealth quintile
+  also_referenced_by: null
+  notes: null
+
+- id: jmp_hygiene_no_facility
+  label: "JMP Hygiene — No Facility"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, Table 1 p.7 and H1 p.14"
+    secondary: []
+    note: null
+  definition: |
+    No handwashing facility on premises. Assessed through direct observation: the enumerator
+    asks to be shown where household members wash their hands and finds no fixed or mobile
+    handwashing facility in the dwelling or yard/plot (H1 = 4). Households where observation
+    is refused or not possible (H1 = 5 or 6) are also routed around the H2/H3 questions,
+    but should be treated separately in analysis from confirmed No Facility.
+  unit_of_analysis: household
+  recall_period: "Point-in-time (direct observation)"
+  formula: |
+    A household is classified as No Facility if:
+    H1 = 4 (no handwashing place in dwelling/yard/plot)
+    H1 = 5 (no permission to see) or H1 = 6 (other reason) are ambiguous and should be
+    coded separately, not merged with confirmed No Facility.
+  components:
+    - id: no_facility_observed
+      label: "No handwashing place observed (H1 = 4)"
+      criteria: "H1 = 4"
+  classification_rules:
+    improved_sources: []
+    unimproved_sources: []
+    note: null
+  thresholds:
+    - range/value: "H1 = 4"
+      label: "No Facility classification"
+      note: "No facility on premises."
+  prerequisites:
+    - "H1 must be administered."
+  do_not_confuse_with:
+    jmp_hygiene_limited: "Limited means a facility exists but lacks water or soap. No Facility means no facility is present at all."
+  common_implementation_errors:
+    - "Merging H1 = 5 (no permission to see) with H1 = 4 (no facility) in reporting. These are distinct: no permission could mean a facility exists but could not be observed — it should be handled as missing data, not confirmed No Facility."
+    - "Counting households that wash hands outdoors at a communal point (not on premises) as Basic or Limited. If the point is not in the dwelling or yard/plot, H1 = 4 applies and the household is No Facility per JMP methodology."
+    - "Ignoring No Facility households in WASH targeting: they represent the most acute hygiene gap and should be prioritised for hygiene promotion and facility provision."
+  disaggregations:
+    - urban/rural
+    - wealth quintile
+  also_referenced_by: null
+  notes: null
+
+- id: jmp_menstrual_hygiene
+  label: "JMP Menstrual Hygiene Management (MHM)"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "JMP Core Questions for Household Surveys, 2018 update, WHO/UNICEF, questions M1–M3 p.15–16 and Table 1 p.7"
+    secondary:
+      - "SDG target 6.2 — explicit focus on needs of women and girls"
+    note: >
+      MHM questions are asked in the women's questionnaire (ages 15–49), only to women who
+      have had a period in the preceding year, and should be conducted in private by female
+      enumerators (JMP 2018, p.15).
+  definition: |
+    A three-question module assessing menstrual hygiene management conditions:
+    M1: Private place to wash and change — whether the woman was able to wash and change in
+        privacy while at home during her last menstrual period.
+    M2: Use of menstrual hygiene materials — what hygiene materials were used during the last
+        menstrual period (cloth/reusable pads, disposable pads, tampons, menstrual cup, toilet
+        paper, underwear alone, or other).
+    M3: Exclusion from activities — whether the woman missed any of six activities (school,
+        paid work, social activities, cooking, eating with others, bathing in regular place)
+        due to her period.
+    These three questions together contribute to SDG 6.2 monitoring for the needs of women
+    and girls but do not form a single composite score or threshold in JMP 2018.
+  unit_of_analysis: household
+  recall_period: "Last menstrual period (M1, M2, M3)"
+  formula: |
+    M1: Binary — Yes (1) / No (2): Had private place to wash and change
+    M2: Categorical — records the main type of material used (codes 1–7):
+        1 = Cloth/reusable sanitary pads
+        2 = Disposable sanitary pads
+        3 = Tampons
+        4 = Menstrual cup
+        5 = Toilet paper
+        6 = Underwear alone
+        7 = Other (specify)
+        Hygienic materials = codes 1–4 (cloth/pads/tampons/cup); non-hygienic = 5–7.
+    M3: Six binary items (Yes/No/N/A) for each activity: school, paid work, social activities,
+        cooking, eating with others, bathing.
+    No aggregate threshold is defined in JMP 2018. These are reported as separate prevalences.
+  components:
+    - id: M1
+      label: "Private place to wash and change"
+      criteria: "M1 = 1 (Yes)"
+    - id: M2
+      label: "Use of hygienic menstrual materials"
+      criteria: "M2 = 1, 2, 3, or 4 (cloth, disposable pad, tampon, or menstrual cup)"
+    - id: M3
+      label: "No exclusion from activities due to menstruation"
+      criteria: "M3 = No for all applicable activities"
+  classification_rules:
+    improved_sources: []
+    unimproved_sources: []
+    note: "There is no JMP service ladder rung for MHM as of the 2018 update. M1–M3 are standalone indicators."
+  thresholds:
+    - range/value: "No numeric threshold defined in JMP 2018"
+      label: "No JMP threshold for MHM composite"
+      note: "Results are reported as proportions for each of M1, M2, and M3 separately."
+  prerequisites:
+    - "Questions apply only to women aged 15–49 who report having had a period in the preceding year (JMP 2018, p.15)."
+    - "Should be asked in private, by female enumerators."
+    - "M1 only: applied to women who menstruated in the preceding year."
+    - "M3: N/A should be selected for activities the woman would not normally do."
+  do_not_confuse_with:
+    jmp_hygiene_basic: "Basic hygiene assesses handwashing facilities for all household members. MHM is a women-specific module about menstrual hygiene management conditions — they are complementary, not interchangeable."
+    jmp_sanitation_basic: "Sanitation classification does not assess MHM privacy. Having an improved private latrine does not automatically mean a woman has a private space to wash and change (M1)."
+  common_implementation_errors:
+    - "Administering M1–M3 to all household members or to all women regardless of menstrual history. The module applies only to women aged 15–49 who had a period in the preceding year."
+    - "Treating underwear alone (M2 = 6) or toilet paper (M2 = 5) as hygienic menstrual materials. JMP definitions classify these as non-hygienic management methods."
+    - "Conflating M3 activity exclusion with societal norm vs. facility barrier. Exclusion from activities may result from societal restrictions, inadequate facilities, or pain — the question captures exclusion but not its cause (JMP 2018, Table note 3)."
+  ki_assessment_note: |
+    MHM questions M1–M3 require a women's questionnaire administered to individual women aged
+    15–49 in private. Key Informant (KI) interviews cannot reliably substitute for these individual
+    questions. A community-level KI cannot accurately report on the prevalence of private washing
+    spaces or material use across the population. KI data may yield qualitative context but should
+    never be used to generate quantitative MHM estimates.
+  context_modifiers:
+    - condition: "Collective centres or displacement settings"
+      adjustment: "Privacy for washing and changing (M1) is particularly likely to be absent in collective settings. The Ukraine CC 2022 standard specifically requires discrete disposal of menstrual hygiene materials and access to washing facilities for MHM."
+  disaggregations:
+    - age group (15–24, 25–34, 35–49)
+    - urban/rural
+    - wealth quintile
+  also_referenced_by:
+    - sphere_wash_sanitation
+  notes: >
+    The Ukraine CC 2022 standard (CCCM Cluster, table 5-n/5-o/5-p) cross-references Sphere Handbook
+    2018 and IASC Gender Handbook for MHM in collective centres, including provision of menstrual
+    hygiene materials for women and girls and discrete disposal facilities.
+
+- id: sphere_wash_water_quantity
+  label: "Sphere WASH — Minimum Water Quantity Standard"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Sphere Handbook 2018, cross-referenced via Ukraine CC 2022 (CCCM Cluster, Collective Centers Standards Ukraine, May 2022), WASH table, indicator row 4-e"
+    secondary:
+      - "Ukraine CC 2022, WASH table rows 4-d through 4-f — water quantity and quality standards"
+    note: >
+      The Sphere Handbook 2018 PDF was not directly ingested. Values are attributed to Sphere Handbook 2018
+      as cross-referenced via the Ukraine CC 2022 document. The Ukraine CC 2022 document explicitly states
+      these standards are compiled from Sphere, UNHCR Emergency standards, and Camp Management minimum
+      standards, adapted to the Ukraine context.
+  definition: |
+    All residents have safe and equitable access to a sufficient quantity of water for drinking,
+    cooking, and personal, menstrual and domestic hygiene. The minimum standard is at least 15
+    litres per person per day when stay exceeds one day. For day-use stays, at least 3 litres
+    per person per day. Water points must be located less than 50 metres from households, with
+    paths that are well-lit, accessible, and safe for all gender groups. Water must be available
+    at all times with no shortages or rationing.
+  unit_of_analysis: population
+  recall_period: "Current / operational (spot check or service monitoring)"
+  formula: |
+    Minimum water quantity threshold:
+    - Extended stay (>1 day): ≥ 15 litres per person per day
+    - Day-use / transit: ≥ 3 litres per person per day
+    Proximity threshold: water point ≤ 50 metres from household units
+    Availability: no reported shortages or rationing in the collective centre
+    (Sources: Ukraine CC 2022, WASH table indicators, row 4-e, cross-referencing Sphere Handbook 2018)
+  components:
+    - id: quantity_per_person
+      label: "Litres per person per day"
+      criteria: "≥ 15 L/p/d for stays > 1 day; ≥ 3 L/p/d for day use"
+    - id: proximity
+      label: "Distance to water point"
+      criteria: "Water point < 50 metres from housing units"
+    - id: availability
+      label: "Continuous availability"
+      criteria: "No shortages or rationing reported"
+  classification_rules:
+    improved_sources: []
+    unimproved_sources: []
+    note: "This is an operational humanitarian standard, not a survey classification ladder. It applies to collective centres and displacement settings, not household survey classification."
+  thresholds:
+    - range/value: "≥ 15 litres per person per day"
+      label: "Minimum quantity — extended stay"
+      note: "Source: Ukraine CC 2022, WASH table indicator row 4-e, cross-referencing Sphere Handbook 2018. Applicable when stay > 1 day."
+    - range/value: "≥ 3 litres per person per day"
+      label: "Minimum quantity — day use"
+      note: "Source: Ukraine CC 2022, WASH table indicator row 4-e. Applicable for day-time only stays."
+    - range/value: "< 50 metres from household units"
+      label: "Maximum distance to water point"
+      note: "Source: Ukraine CC 2022, WASH table indicator row 4-e."
+    - range/value: "< 10 CFU/100 mL at point of delivery (unchlorinated)"
+      label: "Water quality — unchlorinated"
+      note: "Source: Ukraine CC 2022, WASH table row 5-6. Separate from JMP E. coli zero threshold for Safely Managed."
+    - range/value: "≥ 0.2–0.5 mg/L free residual chlorine at point of delivery (chlorinated)"
+      label: "Water quality — chlorinated"
+      note: "Source: Ukraine CC 2022, WASH table row 5-6, cross-referencing Sphere Handbook 2018."
+    - range/value: "Turbidity < 5 NTU"
+      label: "Turbidity threshold"
+      note: "Source: Ukraine CC 2022, WASH table row 5-6."
+  prerequisites:
+    - "This standard applies to collective centres and planned settlements — not to household surveys in dispersed populations."
+    - "Litres per person per day must be estimated at the collective centre level; direct measurement requires flow monitoring or distribution records, not household survey questions."
+    - "Persons with specific hygiene needs (e.g., persons with disabilities, pregnant women) may require additional water quantities (Ukraine CC 2022, WASH key actions row 4-f)."
+  do_not_confuse_with:
+    jmp_water_safely_managed: "JMP Safely Managed is a household survey classification based on source type, location, availability, and E. coli. Sphere 15 L/p/d is an operational quantity threshold — the two measure different dimensions and neither substitutes for the other."
+    jmp_water_basic: "JMP Basic does not specify quantity per person — it specifies collection time (≤30 min). A household may be JMP Basic but not meet the Sphere quantity standard, or vice versa."
+  common_implementation_errors:
+    - "Applying the 15 L/p/d threshold to JMP Safely Managed classification. JMP Safely Managed does not include a volumetric quantity threshold — it uses availability (W5) as a proxy, which is a binary question about shortage, not a measured litre count."
+    - "Assuming that water available 'at all times' (JMP W5 = 2) satisfies the Sphere 15 L/p/d threshold. Availability and quantity are distinct dimensions — a continuous supply may still be insufficient in volume."
+    - "Applying the day-use threshold (3 L/p/d) to multi-day collective centre stays. The 3 L/p/d figure applies only to transit or day-use facilities; extended stays require at least 15 L/p/d (Ukraine CC 2022)."
+    - "Using the Sphere <10 CFU/100 mL quality threshold interchangeably with the JMP zero E. coli threshold for Safely Managed. These are different standards for different purposes — Sphere is an operational monitoring threshold, JMP is an SDG classification criterion."
+  ki_assessment_note: |
+    The Sphere minimum water quantity standard (15 L/p/d) cannot be reliably validated through
+    Key Informant (KI) interviews. KIs cannot accurately estimate per-capita water volumes at the
+    collective centre level — they cannot confirm whether 15 or 20 litres per person per day is
+    being provided without flow measurements or distribution records. KI data should be used only
+    to flag potential shortages for follow-up measurement, not to confirm compliance with the
+    Sphere threshold. Any assessment citing KI data as evidence of meeting the 15 L/p/d standard
+    must be flagged as insufficiently validated.
+  context_modifiers:
+    - condition: "Seasonal or emergency water supply disruptions"
+      adjustment: "The 15 L/p/d threshold applies at all times, including periods of supply disruption. Where sustained supply is infeasible, document shortfall against standard with quantified gap."
+    - condition: "Persons with specific needs (disabilities, pregnancy)"
+      adjustment: "Additional water may be required beyond the 15 L/p/d baseline. The Ukraine CC 2022 standard specifies that access to additional buckets/amounts should be allowed for persons with specific hygiene needs."
+  disaggregations:
+    - sex
+    - age group
+    - disability status
+    - collective centre / site
+  also_referenced_by:
+    - jmp_water_safely_managed
+    - jmp_water_basic
+  notes: >
+    The Ukraine CC 2022 document (CCCM Cluster) explicitly cross-references the Sphere Handbook 2018
+    (footnote 1: https://handbook.spherestandards.org/en/sphere/#ch001) as its primary source for
+    these WASH standards. The Sphere Handbook 2018 PDF was not directly ingested in this catalog's
+    source document set.
+
+- id: sphere_wash_sanitation
+  label: "Sphere WASH — Minimum Sanitation Standard (Latrine Ratio)"
+  cluster: wash
+  layer_a_anchor:
+    sectors: [wash]
+    pillars_2d: [humanitarian_conditions]
+    subpillars_2d: [humanitarian_conditions_living_standards]
+  source:
+    primary: "Sphere Handbook 2018, cross-referenced via Ukraine CC 2022 (CCCM Cluster, Collective Centers Standards Ukraine, May 2022), WASH table, indicator row 5-9"
+    secondary:
+      - "Ukraine CC 2022, WASH table rows 5-8 through 5-m — sanitation facility standards"
+    note: >
+      The Sphere Handbook 2018 PDF was not directly ingested. The 1:20 person-to-latrine ratio and
+      related standards are attributed to Sphere Handbook 2018 as cross-referenced via the Ukraine
+      CC 2022 document. Ukraine CC 2022 explicitly states standards are from Sphere, UNHCR Emergency
+      Handbook, and Camp Management Minimum Standards.
+  definition: |
+    Minimum standard for toilet facilities in collective centres: sufficient, well-lit, and
+    secure latrines with a maximum of 20 persons per latrine, separated by sex and, where
+    possible, by children and adults. Latrines must be connected to a pit or municipal sewage
+    system, with locks on cubicle doors, good lighting, maintenance protocols, handwashing
+    facilities with soap at latrine locations, and gender-divided accessible designs including
+    consideration for menstrual hygiene management.
+  unit_of_analysis: facility
+  recall_period: "Current / operational (spot check or infrastructure assessment)"
+  formula: |
+    Key ratio: maximum 20 persons per latrine
+    (Source: Ukraine CC 2022, WASH table indicator row 5-9, cross-referencing Sphere Handbook 2018)
+    Additional requirements:
+    - Separation by sex (mandatory)
+    - Separation by children and adults (if possible)
+    - Locks on doors
+    - Well-lit facilities
+    - Latrines connected to pit or municipal sewage (no feces visible in/around CC)
+    - Handwashing point with soap at latrine location
+    - Inclusive/accessible design for pregnant women and persons with disabilities
+    Number of latrines required = ceiling(total population / 20), separated by sex.
+  components:
+    - id: person_to_latrine_ratio
+      label: "Maximum persons per latrine"
+      criteria: "≤ 20 persons per latrine"
+    - id: sex_separation
+      label: "Sex-separated facilities"
+      criteria: "Separate latrines for men and women"
+    - id: secure_private
+      label: "Secure and private"
+      criteria: "Locks on doors, well-lit, maintained"
+    - id: sewage_connection
+      label: "Connected to sewage/pit"
+      criteria: "Latrines connected to pit or municipal sewage; no feces observed in/around facility"
+    - id: hwws_at_latrine
+      label: "Handwashing with soap at latrine"
+      criteria: "Handwashing point with soap available at latrine location"
+  classification_rules:
+    improved_sources: []
+    unimproved_sources: []
+    note: "This is an operational humanitarian standard for collective centres, not a JMP survey classification."
+  thresholds:
+    - range/value: "Maximum 20 persons per latrine"
+      label: "Person-to-latrine ratio"
+      note: "Source: Ukraine CC 2022, WASH table indicator row 5-9, cross-referencing Sphere Handbook 2018."
+    - range/value: "No feces observed in or around the collective centre"
+      label: "Open defecation/containment indicator"
+      note: "Source: Ukraine CC 2022, WASH table row 5-k/5-l."
+    - range/value: "At least 100L garbage disposal per 10 households"
+      label: "Solid waste disposal"
+      note: "Source: Ukraine CC 2022, WASH table indicator row 5-f. For solid waste including menstrual hygiene material disposal."
+  prerequisites:
+    - "Applies to collective centres and planned displacement settlements — not to dispersed household populations."
+    - "Requires facility count and population count at the site level. KI interviews cannot reliably confirm person-to-latrine ratios."
+    - "Accessible latrine designs must be available for pregnant women and persons with disabilities (Ukraine CC 2022, WASH key actions row 5-a)."
+  do_not_confuse_with:
+    jmp_sanitation_basic: "JMP Basic is a household-level classification (improved + not shared). Sphere 1:20 ratio is a facility-level operational standard. A collective centre meeting the 1:20 ratio could have residents classified as JMP Limited (shared improved facility) — the two frameworks are not interchangeable."
+    jmp_sanitation_limited: "JMP Limited classifies a household as using an improved but shared facility. The Sphere ratio addresses how many people share each facility. Both capture sharing but at different units of analysis and using different measurement approaches."
+    jmp_sanitation_safely_managed: "Safely Managed requires private (non-shared) improved facilities with safe disposal. Sphere 1:20 standard is for communal settings where sharing is expected — it sets the tolerable limit for sharing density, not a private-facility standard."
+  common_implementation_errors:
+    - "Applying the 1:20 person-to-latrine ratio to dispersed household populations. This standard is designed for collective centres and planned settlements where communal facilities are the norm, not for standard household survey contexts."
+    - "Calculating the ratio using total latrines including out-of-service or locked facilities. The ratio should be based on functional, accessible latrines only — out-of-service facilities must be excluded from the denominator."
+    - "Ignoring sex separation in ratio calculations. The 1:20 ratio must be applied separately for men's and women's latrines. A site with 1 toilet for 10 men and 1 toilet for 30 women does not meet the standard."
+    - "Conflating the Sphere 1:20 ratio with JMP sharing categories. A facility shared by 20 people under the Sphere standard is JMP Limited (shared improved), but meeting the Sphere ratio does not mean residents have JMP Basic or Safely Managed sanitation."
+  ki_assessment_note: |
+    The Sphere 1:20 person-to-latrine ratio cannot be validated reliably through Key Informant
+    interviews. KIs typically cannot provide accurate counts of functional latrines and total
+    population using each facility with sufficient precision. Site assessors must conduct direct
+    facility counts and combine them with population estimates from registration data. KI-based
+    estimates of the ratio must be flagged as approximate and insufficient for compliance
+    verification. Additionally, whether latrines are sex-separated, accessible, and have
+    handwashing facilities with soap requires direct physical observation, not KI report.
+  context_modifiers:
+    - condition: "Inclusive design for persons with disabilities or pregnancy"
+      adjustment: "Accessible latrines (wider doors, grab bars, ground-level access) must be available in addition to standard facilities. Ukraine CC 2022 specifies provisions for pregnant women and persons with mobility, visual or other impairments."
+    - condition: "Menstrual hygiene management"
+      adjustment: "Latrines must include discrete disposal facilities for menstrual hygiene materials and handwashing facilities. This is separate from but complementary to the 1:20 ratio standard (Ukraine CC 2022, WASH rows 5-a and 5-n)."
+    - condition: "Child safety"
+      adjustment: "Separation of children's and adults' latrines where possible reduces child safety risks (Ukraine CC 2022, WASH indicator row 5-9)."
+  disaggregations:
+    - sex
+    - age group (adults vs. children)
+    - disability status
+    - collective centre / site
+  also_referenced_by:
+    - jmp_sanitation_limited
+    - jmp_menstrual_hygiene
+  notes: >
+    The Ukraine CC 2022 document (CCCM Cluster) explicitly cross-references the Sphere Handbook 2018
+    (footnote 1: https://handbook.spherestandards.org/en/sphere/#ch001) as the primary source for
+    these WASH standards. Additional solid waste management standard: 2.5-person maintenance team
+    per 1,000 persons (Ukraine CC 2022, WASH table row 5-f).

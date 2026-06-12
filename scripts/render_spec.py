@@ -108,7 +108,10 @@ def render(spec):
     out.append("")
 
     indicators = require(spec, "indicators")
-    # preserve insertion order; group by full dimension string
+    # Group by full dimension string; sort within each group DIRECT→PROXY→NONE then id asc.
+    # This makes the rendered MD canonical regardless of YAML insertion order (D13).
+    MEASURABLE_RANK = {"DIRECT": 0, "PROXY": 1, "NONE": 2}
+
     order = []
     by_dim = {}
     for rid, v in indicators.items():
@@ -117,6 +120,12 @@ def render(spec):
         by_dim.setdefault(full, []).append((rid, v))
         if full not in order:
             order.append(full)
+
+    # Sort each dimension's indicators: DIRECT first, then PROXY, then NONE, then id asc
+    for full in order:
+        by_dim[full].sort(
+            key=lambda rv: (MEASURABLE_RANK.get(rv[1].get("measurable", ""), 9), rv[0])
+        )
 
     for section, full in enumerate(order, start=1):
         base, _ = dim_key(full)

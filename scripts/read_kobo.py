@@ -14,32 +14,45 @@ two phases:
                              Pass --survey-sheet and --choices-sheet to override the
                              defaults ('survey' / 'choices').
 
+  Phase 3 (query modes):    Query an existing kobo_<slug>.json cache without re-parsing
+                             the xlsx. Use these in Step 3 to pull targeted slices instead
+                             of reading the whole cache into context.
+
 Usage:
-    # Phase 1 — inspect sheets, then decide which to pass to Phase 2
+    # Phase 1 — inspect sheets
     python3 scripts/read_kobo.py <dataset>.xlsx --list-sheets
 
-    # Phase 2 — parse with explicit sheet names
+    # Phase 2 — parse and write cache (structural rows excluded by default)
     python3 scripts/read_kobo.py <dataset>.xlsx --slug <slug> \\
-        --survey-sheet "Survey" --choices-sheet "Choices"
+        [--survey-sheet "Survey"] [--choices-sheet "Choices"] \\
+        [--include-structural]   # include begin_group, note, calculate, etc.
 
-    # Phase 2 — with optional data sheet for n_total (omit if no data sheet)
-    python3 scripts/read_kobo.py <dataset>.xlsx --slug <slug> \\
-        --survey-sheet "Survey" --choices-sheet "Choices" \\
-        --data-sheet "Clean Dataset"
+    # Phase 3 query modes (read from cache, not xlsx):
+    python3 scripts/read_kobo.py --cache kobo_<slug>.json --summary
+    python3 scripts/read_kobo.py --cache kobo_<slug>.json --names q85,q87,q88
+    python3 scripts/read_kobo.py --cache kobo_<slug>.json --group wash
+    python3 scripts/read_kobo.py --cache kobo_<slug>.json --names q85 --with-choices
 
-Output (Phase 2): kobo_<slug>.json in the same folder as the input file (or -o path).
+CONTEXT DISCIPLINE (Step 3):
+    The agent MUST use --summary first (cheap orientation), then --names or --group
+    for the specific variables each indicator needs. It MUST NOT read the whole
+    kobo_<slug>.json into context. The --summary output is ~200 bytes; --names for
+    2-3 variables is ~1-2 KB. Reading the whole file is ~100 KB — 50× too large.
 
-JSON shape:
+Phase 2 output: kobo_<slug>.json beside the xlsx (or -o path).
+
+JSON shape (Phase 2):
   {
     "source_file": "<filename>",
-    "sheet_names": [...],          # all sheets in the workbook
-    "survey_sheet": "Survey",      # the sheet actually read
+    "sheet_names": [...],
+    "survey_sheet": "Survey",
     "choices_sheet": "Choices",
-    "n_total": 133,                # null if no data sheet specified or no data rows
+    "n_total": 133,                # null if no data sheet
     "skipped_rows": 0,
-    "survey": [
+    "survey": [                    # substantive rows only (structural excluded by default)
       {"type": "select_one foo", "name": "var_name", "label": "Question text",
-       "relevant": "...", "list_name": "foo", "is_structural": false}
+       "relevant": "...", "list_name": "foo"}
+      # empty fields omitted
     ],
     "choices": {
       "list_name": [{"name": "opt", "label": "Option label"}, ...]
@@ -52,10 +65,14 @@ import os
 import re
 import sys
 
-try:
-    import openpyxl
-except ImportError:
-    sys.exit("read_kobo.py requires openpyxl: pip3 install openpyxl --break-system-packages")
+
+def _require_openpyxl():
+    """Import openpyxl lazily — only needed for Phase 1/2 (xlsx parsing)."""
+    try:
+        import openpyxl
+        return openpyxl
+    except ImportError:
+        sys.exit("read_kobo.py requires openpyxl: pip3 install openpyxl --break-system-packages")
 
 
 # ---------------------------------------------------------------------------
@@ -108,6 +125,7 @@ def _label_col(headers):
 # ---------------------------------------------------------------------------
 
 def list_sheets(xlsx_path):
+    openpyxl = _require_openpyxl()
     wb = openpyxl.load_workbook(xlsx_path, read_only=True, data_only=True)
     result = {
         "source_file": os.path.basename(xlsx_path),
@@ -125,7 +143,9 @@ def list_sheets(xlsx_path):
 # Phase 2 — parse
 # ---------------------------------------------------------------------------
 
-def parse_kobo(xlsx_path, slug, survey_sheet_name, choices_sheet_name, data_sheet_name):
+def parse_kobo(xlsx_path, slug, survey_sheet_name, choices_sheet_name, data_sheet_name,
+               include_structural=False):
+    openpyxl = _require_openpyxl()
     wb = openpyxl.load_workbook(xlsx_path, read_only=True, data_only=True)
     sheet_names = wb.sheetnames
 
@@ -173,15 +193,21 @@ def parse_kobo(xlsx_path, slug, survey_sheet_name, choices_sheet_name, data_shee
             base_type = type_val.split()[0].lower() if type_val else ""
             is_structural = base_type in STRUCTURAL
 
-            entry = {
-                "type": type_val,
-                "name": name_val,
-                "label": label_val,
-                "relevant": relevant_val,
-                "is_structural": is_structural,
-            }
+            # Skip structural rows unless --include-structural requested (D12 slim)
+            if is_structural and not include_structural:
+                continue
+
+            # Build a slim entry — omit empty fields (D12 context fix)
+            entry: dict = {"type": type_val, "name": name_val}
+            if label_val:
+                entry["label"] = label_val
+            if relevant_val:
+                entry["relevant"] = relevant_val
             if list_name:
                 entry["list_name"] = list_name
+            # Keep is_structural only when including structural rows (for caller awareness)
+            if include_structural:
+                entry["is_structural"] = is_structural
             survey_rows.append(entry)
         except Exception:
             skipped += 1
@@ -236,17 +262,88 @@ def parse_kobo(xlsx_path, slug, survey_sheet_name, choices_sheet_name, data_shee
 
 
 # ---------------------------------------------------------------------------
+# Phase 3 — query modes (read from existing cache JSON)
+# ---------------------------------------------------------------------------
+
+def load_cache(cache_path: str) -> dict:
+    with open(cache_path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def query_summary(cache: dict) -> dict:
+    """Return a cheap orientation summary: module groups + question counts.
+    This is the ONLY query that should run before knowing which variables to look up.
+    """
+    survey = cache.get("survey", [])
+    # Attempt to infer groups from name prefixes (e.g. q85 → group by leading alpha)
+    # Use a simple heuristic: questions with same first word in name or label prefix
+    groups: dict[str, list[str]] = {}
+    current_group = "_root"
+    for row in survey:
+        name = row.get("name", "")
+        # Detect group boundaries via original structural info if available
+        if row.get("_group"):
+            current_group = row["_group"]
+        groups.setdefault(current_group, []).append(name)
+
+    substantive = [r for r in survey if not r.get("is_structural", False)]
+    return {
+        "source_file": cache.get("source_file"),
+        "n_total": cache.get("n_total"),
+        "survey_question_count": len(substantive),
+        "choice_list_count": len(cache.get("choices", {})),
+        "all_question_names": [r["name"] for r in substantive],
+        "note": "Use --names q1,q2 or --group <name> to retrieve specific questions with their choice lists.",
+    }
+
+
+def query_names(cache: dict, names: list[str], with_choices: bool = True) -> dict:
+    """Return specific survey entries (+ their choice lists if with_choices)."""
+    name_set = set(names)
+    survey = cache.get("survey", [])
+    matched = [r for r in survey if r.get("name") in name_set]
+
+    result: dict = {"questions": matched}
+    if with_choices:
+        choices_needed = set()
+        for r in matched:
+            if r.get("list_name"):
+                choices_needed.add(r["list_name"])
+        choices = cache.get("choices", {})
+        result["choices"] = {k: choices[k] for k in choices_needed if k in choices}
+    return result
+
+
+def query_group(cache: dict, group_name: str, with_choices: bool = True) -> dict:
+    """Return all survey entries whose _group field matches group_name (case-insensitive)."""
+    survey = cache.get("survey", [])
+    g = group_name.lower()
+    matched = [r for r in survey if r.get("_group", "").lower() == g
+               or r.get("name", "").lower().startswith(g)]
+
+    result: dict = {"group": group_name, "questions": matched}
+    if with_choices:
+        choices_needed = {r["list_name"] for r in matched if r.get("list_name")}
+        choices = cache.get("choices", {})
+        result["choices"] = {k: choices[k] for k in choices_needed if k in choices}
+    return result
+
+
+# ---------------------------------------------------------------------------
 # main
 # ---------------------------------------------------------------------------
 
 def main():
     ap = argparse.ArgumentParser(
         description=(
-            "Phase 1: --list-sheets to inspect sheet names. "
-            "Phase 2: parse with explicit --survey-sheet / --choices-sheet."
+            "Phase 1: --list-sheets. "
+            "Phase 2: parse xlsx to cache. "
+            "Phase 3: query cache with --cache + (--summary | --names | --group)."
         )
     )
-    ap.add_argument("xlsx", help="Path to the Kobo/ODK .xlsx file")
+    # Phase 2 positional (optional so Phase 3 works without it)
+    ap.add_argument("xlsx", nargs="?", default=None,
+                    help="Path to the Kobo/ODK .xlsx file (Phase 1 & 2 only)")
     ap.add_argument("--list-sheets", action="store_true",
                     help="Phase 1: print sheet names as JSON and exit")
     ap.add_argument("--slug", default=None,
@@ -257,14 +354,47 @@ def main():
                     help="Name of the choices sheet (default: 'choices')")
     ap.add_argument("--data-sheet", default=None,
                     help="Name of the response/data sheet for n_total (omit if absent)")
+    ap.add_argument("--include-structural", action="store_true",
+                    help="Include structural rows (begin_group, note, calculate, …) in cache")
     ap.add_argument("-o", "--out", default=None,
                     help="Output JSON path (default: kobo_<slug>.json beside the xlsx)")
+    # Phase 3 query flags
+    ap.add_argument("--cache", default=None,
+                    help="Phase 3: path to an existing kobo_<slug>.json cache to query")
+    ap.add_argument("--summary", action="store_true",
+                    help="Phase 3: return cheap orientation summary (question names + counts)")
+    ap.add_argument("--names", default=None,
+                    help="Phase 3: comma-separated variable names to retrieve, e.g. q85,q87")
+    ap.add_argument("--group", default=None,
+                    help="Phase 3: return all questions in this survey group/module")
+    ap.add_argument("--no-choices", action="store_true",
+                    help="Phase 3: omit choice lists from --names / --group output")
     a = ap.parse_args()
 
+    # ---- Phase 3: query mode ----
+    if a.cache:
+        cache = load_cache(a.cache)
+        with_choices = not a.no_choices
+        if a.summary:
+            result = query_summary(cache)
+        elif a.names:
+            names = [n.strip() for n in a.names.split(",") if n.strip()]
+            result = query_names(cache, names, with_choices=with_choices)
+        elif a.group:
+            result = query_group(cache, a.group, with_choices=with_choices)
+        else:
+            ap.error("--cache requires one of --summary, --names, or --group")
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return
+
+    # ---- Phase 1 ----
+    if a.xlsx is None:
+        ap.error("xlsx path is required unless using --cache")
     if a.list_sheets:
         list_sheets(a.xlsx)
         return
 
+    # ---- Phase 2 ----
     slug = a.slug or os.path.splitext(os.path.basename(a.xlsx))[0]
     out_path = a.out or os.path.join(
         os.path.dirname(os.path.abspath(a.xlsx)), f"kobo_{slug}.json"
@@ -275,12 +405,13 @@ def main():
         survey_sheet_name=a.survey_sheet,
         choices_sheet_name=a.choices_sheet,
         data_sheet_name=a.data_sheet,
+        include_structural=a.include_structural,
     )
 
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    n_survey = sum(1 for r in data["survey"] if not r["is_structural"])
+    n_survey = len(data["survey"])
     print(f"wrote {out_path}")
     print(f"  n_total={data['n_total']}  survey_questions={n_survey}  "
           f"choice_lists={len(data['choices'])}  skipped_rows={data['skipped_rows']}")

@@ -12,9 +12,9 @@ description: >-
 license: see LICENSE
 metadata:
   author: yann
-  version: "0.1.0"
+  version: "0.2.0"
   framework: HumSet/DEEP
-  status: "Layers A, B, C implemented; analysis step is a stub"
+  status: "Layers A, B, C implemented (Layer C emits a YAML-first analysis spec); analysis step is a stub"
 ---
 
 # Humanitarian Data Analyst
@@ -95,28 +95,19 @@ not invoke a step's work before its checklist entry exists.
 ## STEP 1 — ROUTE (Layer A)  ✅ implemented
 
 Map the analyst's question to the HumSet/DEEP analytical framework. This is a
-**classification and scope-gating** step — it decides what the question is about
-and whether the rest of the pipeline can serve it. It is not where analysis
-happens.
+**classification and scope-gating** step — it decides what the question is about and
+whether the rest of the pipeline can serve it. It is not where analysis happens.
 
-**Procedure — follow exactly:**
+In short: read `ontology/index.yaml` (the routing surface — 66 nodes, each with a
+`gist` and `synonyms`), match the question's topics to candidate nodes, then **open each
+candidate's file and read its `distinguish_from` before committing** — sibling confusion
+(e.g. `Living Standards` vs `Physical And Mental Well Being` vs `Impact On People`) is
+the most common routing error. A question usually lands on one sector plus one or more
+subpillars; the 1D and 2D axes are orthogonal, so one question can carry both.
 
-1. **Read the index.** Open `ontology/index.yaml`. It lists all 66 nodes across 5
-   axes with a one-line `gist` and `synonyms`. This is your routing surface.
-2. **Match.** For each distinct topic in the question, find candidate nodes by
-   matching against `gist` and `synonyms`. A question usually lands on **one
-   sector** plus **one or more subpillars** (the 1D and 2D axes are orthogonal —
-   the same question can carry both a "type of information" and an "analytical
-   lens" tag).
-3. **Disambiguate — do not skip.** Before committing to a node, open its full
-   file (the `file:` path in the index) and read its `distinguish_from` field.
-   Sibling confusion (e.g. `Living Standards` vs `Physical And Mental Well Being`
-   vs `Impact On People`) is the most common routing error. `distinguish_from`
-   exists to resolve exactly these.
-4. **Emit the routing table** (see contract below).
-
-See `references/layer_a_routing.md` for the full routing guide, axis definitions,
-the 1D/2D orthogonality rule, and worked examples.
+**Read `references/layer_a_routing.md` before routing** — it has the full procedure, the
+axis definitions, the 1D/2D orthogonality rule, the `distinguish_from` confusions, and a
+worked example. Do not route from memory of the framework.
 
 ### Output contract — the routing table
 
@@ -142,33 +133,24 @@ inventing indicator analysis for it.
 
 ## STEP 2 — INDICATORS (Layer B)  ✅ implemented
 
-For each in-scope sector from Step 1, identify the humanitarian indicators that
-answer the question and read their full definitions **from the catalog** — never
-from memory.
+For each in-scope sector from Step 1, identify the humanitarian indicators that answer
+the question and read their full definitions **from the catalog** — never from memory.
 
-Layer B covers three sectors: **WASH, Food Security, and Shelter (CCCM)** — 41
-indicators total. A topic that routed to any other sector in Step 1 is out of Layer
-B scope; say so and do not invent indicator analysis for it.
+Layer B covers three sectors only: **WASH, Food Security, and Shelter (CCCM)** — 41
+indicators total. A topic that routed to any other sector in Step 1 is out of scope; say
+so and do not invent indicator analysis for it.
 
-**Procedure — follow exactly:**
+In short: open `catalog/index.yaml` (all 41 indicators with `id`, `cluster`, and a
+`layer_a_anchor`), select indicators whose `layer_a_anchor.sectors` overlap the Step-1
+route (use `subpillars_2d` to sharpen), then open each selected indicator's cluster file
+and read its `definition`, `formula`, `thresholds`, `components`, and especially
+`common_implementation_errors`. **Reading `common_implementation_errors` is the
+non-negotiable step** — the four documented RNA errors were all in that list and were
+missed because the analysis didn't consult it. Carry each indicator's `id` forward; Step
+3 binds survey questions to these IDs.
 
-1. **Open `catalog/index.yaml`.** It lists all 41 indicators with `id`, `label`,
-   `cluster`, `synonyms`, and a `layer_a_anchor` (the sector / pillar / subpillar
-   IDs that tie each indicator back to Layer A).
-2. **Select by anchor.** Keep the indicators whose `layer_a_anchor.sectors` (and,
-   where it sharpens the match, `subpillars_2d`) overlap the IDs you routed to in
-   Step 1. This is the A→B wire: the routed Layer A IDs select the indicators.
-3. **Read the full entry — do not skip.** For each selected indicator, open its
-   cluster file (`catalog/<cluster>.yaml`, where `<cluster>` is `food_security`,
-   `wash`, or `cccm`) and read its `definition`, `formula`, `thresholds`,
-   `components`, and especially `common_implementation_errors` **before** you use
-   the indicator in any later step. Quoting a threshold without reading its catalog
-   entry is the exact failure this skill exists to prevent.
-4. **Emit the indicator list** (see contract below), carrying each indicator's `id`
-   forward — Step 3 binds survey questions to these IDs.
-
-See `references/layer_b_indicators.md` for the catalog structure, the anchor-matching
-rules, and the scope boundary.
+**Read `references/layer_b_indicators.md`** for the catalog structure, the A→B anchor
+wire, and the scope boundary.
 
 ### Output contract — the indicator list
 
@@ -187,61 +169,75 @@ Errors to avoid (from catalog common_implementation_errors): <pull the relevant 
 
 ## STEP 3 — BIND (Layer C)  ✅ implemented
 
-Build the **instrument map**: the binding between *this specific survey* and the
-Layer B indicators from Step 2. Unlike Layers A and B, Layer C is **not shipped
-data — you generate it at runtime** from the analyst's Kobo/ODK file. It is the
-audit trail that says what this dataset can and cannot prove, and it must be saved
-to disk before Step 4 runs.
+Produce the **analysis spec**: the gated, reviewable plan that drives Step 4, bound to
+*this specific survey* and the Layer B indicators from Step 2. Unlike Layers A and B,
+Layer C is **not shipped data — you generate it at runtime** from the analyst's Kobo/ODK
+file. It is both the audit trail (what this dataset can and cannot prove) and the
+contract Step 4 executes against.
+
+**YAML-first — this is the core of the step.** Author the spec as a `.yaml` (the source
+of truth), then render the human-readable `.md` from it with a script. Never hand-write
+or hand-edit the `.md`. This is what will let `verify_spec.py` (planned) certify the spec
+against the catalog before any number is computed; authoring prose first would force
+parsing prose back into structure. The analyst signs off on the `.md`; Step 4 reads the
+`.yaml`.
 
 **Procedure — follow exactly:**
 
-1. **Read the instrument.** Open the Kobo/ODK XLS the analyst provided — the
-   `survey` sheet (questions, types, skip logic) and the `choices` sheet (answer
-   options). If no dataset was provided, stop and ask for it; Layer C cannot be
-   built without the instrument.
-2. **Walk every substantive question.** Skip pure admin fields (`calculate`,
-   `note`, `begin_group`/`end_group`) unless they carry analytical content. For
-   each substantive question, write one entry using the schema in
-   `bindings/schema.md`.
-3. **Bind to Layer B.** For each question, record the Layer B indicator `id`(s)
-   from Step 2 it serves (or `NONE`), and assign a **coverage verdict**:
-   - `DIRECT` — collects the exact construct the indicator needs (right unit,
-     recall period, response format), at the right unit of analysis.
-   - `PROXY` — same construct but different format/unit, or missing one required
-     criterion (e.g. KI community estimate standing in for a household measure).
-   - `NONE` — does not map to any Layer B indicator.
-   Every entry — even `DIRECT` — must state **what it cannot prove**.
-4. **Surface the two gap lists.** (a) survey questions no Layer B indicator can
-   interpret; (b) Layer B indicators (from Step 2) the instrument cannot compute.
-   These are the analytical blind spots Step 4 must respect.
-5. **Save it.** Write the map to the analyst's working folder as
-   `layer_c_<survey>_<YYYY-MM-DD>.md`. This file is required before Step 4.
+1. **Read the instrument.** Open the Kobo/ODK XLS — the `survey` sheet (questions, types,
+   skip logic) and the `choices` sheet (answer options). If no dataset was provided,
+   stop and ask for it; Layer C cannot be built without the instrument.
+2. **Propose each binding.** For each Step-2 indicator, identify its dataset variable(s),
+   assign a `measurable` verdict (`DIRECT` / `PROXY` / `NONE` per the rules in
+   `bindings/schema.md`), write `reasons` (what it proves / blocks — always include what
+   it *cannot* prove), and pull its `definition` **verbatim from the catalog** (never
+   paraphrase).
+3. **Write the `.yaml` first.** Save `analysis_spec_<question-slug>.yaml` into the
+   analyst's working folder, following `templates/analysis_spec.yaml`. One entry per
+   indicator (de-duplicated). Group by `dimension` — `sector::X` or `cross_cutting::X`;
+   the pillar/subpillar goes in the `layer_a_route` header, not as a grouping. Record
+   `disaggregation` as its own block and the `gates` that must hold before Step 4 ships.
+4. **Render the `.md` from the `.yaml`.** Run
+   `python scripts/render_spec.py analysis_spec_<slug>.yaml -o analysis_spec_<slug>.md`.
+   Do not hand-write or hand-edit this file — it carries a `generated — do not edit`
+   header.
+5. **Present the `.md`** to the analyst for review/sign-off. On any change, edit the
+   `.yaml` and re-render — never patch the markdown.
 
 See `references/layer_c_binding.md` for the full build guide and `bindings/schema.md`
-for the exact per-question entry format and the verdict rules.
+for the YAML contract, the `dimension` rule, and the verdict rules.
 
-### Output contract — the instrument map (saved file + short in-chat summary)
+### Output contract — the analysis spec (saved files + short in-chat summary)
 
-The saved file follows `bindings/schema.md`. In chat, show only a compact summary:
+Step 3 writes two files to the working folder: `analysis_spec_<slug>.yaml` (the spec)
+and `analysis_spec_<slug>.md` (its rendered view). **The `.yaml` is the spec; the `.md`
+is generated from it. Step 4 reads the `.yaml`.** The rendered §1 uses the six-column
+layout — Indicator | Definition (catalog) | Measurable | Reasons (proves / blocks) |
+Variables in the dataset | Indicator name in the analysis — one table per dimension,
+plus the §1b disaggregation block and the §2 gates checklist. In chat, show only a
+compact summary:
 
 ```
-STEP 3 — BIND (Layer C)  →  saved: layer_c_<survey>_<date>.md
+STEP 3 — BIND (Layer C)  →  wrote analysis_spec_<slug>.yaml + .md
 
-| Indicator (from Step 2) | Computable here? | Binding questions | Verdict |
-|-------------------------|------------------|-------------------|---------|
-| rcsi                    | yes (proxy)      | Q90 coping freq   | PROXY   |
-| jmp_water_basic         | no               | —                 | NONE    |
+| Indicator (from Step 2) | Measurable | Binding variables    |
+|-------------------------|------------|----------------------|
+| rcsi                    | PROXY      | coping_freq_q90      |
+| jmp_water_safely_managed| NONE       | —                    |
 
-Blind spots: <indicators that can't be computed; survey questions with no indicator>
+Gates: G1..Gn  ·  NONE indicators (blind spots Step 4 must not report): <list>
 ```
 
 ---
 
 ## STEP 4 — ANALYSE  🚧 stub
 
-Produce the grounded answer, explicitly caveated by the Layer C coverage verdicts:
-report what the data supports, flag what it cannot, and cite indicator definitions
-for any threshold used. **Not yet implemented.** See `references/analysis.md`.
+Produce the grounded answer, explicitly caveated by the spec. **Not yet implemented.**
+When built, Step 4 **reads `analysis_spec_<slug>.yaml`** (not the markdown): it runs only
+what `measurable: DIRECT`/`PROXY` permits, **never computes a `NONE` indicator**, respects
+every `forbid`, cites the catalog definition for any threshold used, and checks every
+`gate` before emitting. The markdown is for humans; the analysis binds to the YAML. See
+`references/analysis.md`.
 
 ---
 

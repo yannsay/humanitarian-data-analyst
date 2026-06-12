@@ -1,0 +1,49 @@
+# Analysis Spec — canonical template (Layer C, Step 3 output)
+# Author THIS file first; render the .md from it with scripts/render_spec.py.
+# The .yaml is the source of truth; the .md is a generated view. Never hand-edit the .md.
+# Save as analysis_spec_<question-slug>.yaml in the analyst's working folder.
+# Full schema + verdict rules: bindings/schema.md.
+
+dataset: <slug>                          # e.g. reach_rna_aleppo_2026-01-18
+unit_of_analysis: <household | key_informant | facility | mixed>
+n_total: <int>
+
+disaggregation:                          # its own block — not a per-indicator column
+  by: <grouping variable, e.g. site_type>
+  groups: { <group>: <n>, <group>: <n> }
+  source_variables: [<var>, ...]
+  trigger: <phrase in the question that required it, or "analyst-specified">
+
+layer_a_route:                           # carried from Step 1
+  sector: <ID>
+  pillar_2d: <ID>
+  subpillar_2d: <ID>
+  cross_cutting: <ID or null>
+
+layer_b_version: <catalog date>          # see catalog/index.yaml header
+
+# One entry per indicator, de-duplicated. dimension is sector::X or cross_cutting::X
+# (never pillar::/subpillar:: — the pillar route lives in layer_a_route above).
+indicators:
+
+  <result_id>:
+    dimension: <sector::SECTOR | cross_cutting::LENS>
+    definition: "<verbatim from the Layer B catalog — never paraphrase>"
+    measurable: <DIRECT | PROXY | NONE>
+    reasons: "<what the binding proves / blocks — always say what it CANNOT prove>"
+    variables: [<dataset var>, ...]
+    # optional fields, include when useful:
+    result_ids: [<id>, ...]              # if one binding yields several catalog ids
+    max_output: <the most the data legitimately supports>
+    forbid: [<claim the analysis must not make>, ...]
+    caveat_field: <catalog field to quote under the rendered table>
+    rules: { <key>: <value> }            # classification rule a gate enforces
+
+  # <result_id_2>:
+  #   ...
+
+gates:                                   # all must hold before Step 4 ships a report
+  - id: G1
+    assert: "<machine-checkable condition>"
+  # - id: G2
+  #   assert: "..."

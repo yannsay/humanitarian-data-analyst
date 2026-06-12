@@ -1,0 +1,52 @@
+<!-- generated from <spec>.yaml — do not edit by hand -->
+
+<!--
+  RENDER TARGET — illustrative only. This is the shape scripts/render_spec.py emits
+  from analysis_spec.yaml. Do NOT fill this in by hand and do NOT edit a rendered .md;
+  run `python scripts/render_spec.py <spec>.yaml -o <spec>.md` instead. Shown here so a
+  reader knows what the generated file looks like. See bindings/schema.md.
+-->
+
+# Analysis Spec — <dataset>
+
+**Unit of analysis:** <unit_of_analysis> · **Layer B version:** <layer_b_version> · **n:** <n_total>
+**Route:** Sector `<sector>` · Pillar `<pillar_2d>` · Subpillar `<subpillar_2d>` · Cross-cutting `<cross_cutting>`
+**Status:** ☐ DRAFT → ☐ REVIEWED → ☐ APPROVED → ☐ ANALYSIS RUN
+
+---
+
+## 1. Coverage map — by Layer A dimension
+
+*One table per dimension that carries indicators (sector, plus any cross-cutting lens). The pillar/subpillar route is in the header above. Each indicator appears once.*
+
+### 1.1 Sector — `<SECTOR>`
+
+| Indicator | Definition (catalog) | Measurable | Reasons (proves / blocks) | Variables in the dataset | Indicator name in the analysis |
+|---|---|---|---|---|---|
+| <result_id> | <definition> | <DIRECT/PROXY/NONE> | <reasons> | `<var>`, ... | `<result_id>` (or `<result_ids>`) |
+
+### 1.2 Cross-cutting lens — `<LENS>`
+
+| Indicator | Definition (catalog) | Measurable | Reasons (proves / blocks) | Variables in the dataset | Indicator name in the analysis |
+|---|---|---|---|---|---|
+| <result_id> | <definition> | <DIRECT/PROXY/NONE> | <reasons> | `<var>`, ... | `<result_id>` |
+
+---
+
+## 1b. Disaggregation required
+
+Report **every indicator row above separately** for:
+
+| Group | n | Source variable |
+|---|---|---|
+| <group> | <n> | `<var>`, ... |
+
+**Trigger:** <trigger>. A single pooled figure per indicator is **not** acceptable — each table must carry every group.
+
+---
+
+## 2. Pass criteria — gates *(all must hold before the report ships)*
+
+| Gate | Pass condition | ☐ |
+|---|---|---|
+| <id> | <assert> | ☐ |

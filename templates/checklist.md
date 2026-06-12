@@ -20,12 +20,13 @@ step. This file is the durable record; the in-session task list mirrors it.
 - [ ] Read definition/formula/thresholds/common_implementation_errors in the cluster file
 - [ ] Emitted the indicator list, carrying indicator ids forward
 
-## Step 3 — Bind (Layer C)
+## Step 3 — Bind (Layer C) — emit the analysis spec
 - [ ] Read the Kobo/ODK survey + choices sheets
-- [ ] Wrote one entry per substantive question (per bindings/schema.md)
-- [ ] Assigned a coverage verdict (DIRECT/PROXY/NONE) + "cannot prove" for each
-- [ ] Listed the two blind-spot sets
-- [ ] Saved layer_c_<survey>_<date>.md to the working folder
+- [ ] Proposed each Step-2 indicator's binding: variable(s), measurable verdict
+      (DIRECT/PROXY/NONE), reasons, definition verbatim from the catalog
+- [ ] Wrote analysis_spec_<slug>.yaml (one entry per indicator; disaggregation block; gates)
+- [ ] Rendered analysis_spec_<slug>.md via scripts/render_spec.py (did NOT hand-edit it)
+- [ ] Presented the .md to the analyst for sign-off (edits go to the .yaml, then re-render)
 
 ## Step 4 — Analyse
 - [ ] (stub — not yet implemented; stop here and report)

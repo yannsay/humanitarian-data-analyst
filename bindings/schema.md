@@ -1,45 +1,77 @@
-# Layer C — Instrument Map Schema
+# Layer C — Analysis Spec Schema
 
-The exact format for the file Step 3 produces. Layer C is generated per dataset and
-saved as `layer_c_<survey>_<YYYY-MM-DD>.md` in the analyst's working folder.
+The exact format for what Step 3 produces. Step 3 no longer writes a passive
+per-question instrument inventory — it writes a **gated analysis spec**: the reviewable
+plan that drives Step 4.
 
-## Header block (required)
+**The `.yaml` is the spec (source of truth); the `.md` is generated from it by
+`scripts/render_spec.py` and is never hand-written or hand-edited.** Step 4 reads the
+`.yaml`; the analyst signs off on the `.md`. If the YAML changes, re-render — do not
+patch the markdown.
 
+Both files go in the analyst's working folder (next to their dataset):
+`analysis_spec_<question-slug>.yaml` and `analysis_spec_<question-slug>.md`.
+
+## The YAML contract (canonical — author this first)
+
+One entry per indicator, de-duplicated. Field order per indicator mirrors the rendered
+columns: `<result_id>` (map key) · dimension · definition · measurable · reasons ·
+variables.
+
+```yaml
+dataset: <slug>
+unit_of_analysis: <household | key_informant | facility | mixed>
+n_total: <int>
+disaggregation:                      # its own block — never a per-row column
+  by: <variable-derived grouping, e.g. site_type>
+  groups: { <group>: <n>, ... }
+  source_variables: [<var>, ...]
+  trigger: <phrase in the question that required it, or "analyst-specified">
+layer_a_route:                       # from Step 1
+  sector: <ID>
+  pillar_2d: <ID>
+  subpillar_2d: <ID>
+  cross_cutting: <ID or null>
+layer_b_version: <catalog date>
+
+indicators:
+  <result_id>:                       # the indicator id as it appears in the analysis
+    dimension: <sector::X | cross_cutting::X>   # see "Dimensions" below
+    definition: "<verbatim from the Layer B catalog>"
+    measurable: <DIRECT | PROXY | NONE>
+    reasons: "<what the binding proves / blocks>"
+    variables: [<dataset var>, ...]  # variable names from the instrument
+    # optional, when useful to the analysis:
+    result_ids: [<id>, ...]          # if one binding yields several catalog ids
+    max_output: <the most the data legitimately supports>
+    forbid: [<claim the analysis must not make>, ...]
+    caveat_field: <catalog field to quote under the rendered table>
+    rules: { <key>: <value>, ... }   # classification rules a gate enforces,
+                                      # e.g. tanker_truck: improved  (enforced by G1)
+
+gates:                               # pass-criteria; all must hold before Step 4 ships
+  - id: G1
+    assert: "<machine-checkable condition>"
+  - ...
 ```
-# Layer C — Instrument Map
-Survey: <full survey name and version if known>
-Source file: <filename of the Kobo/ODK XLS>
-Assessment type: <KI community survey / household survey / facility survey / mixed>
-Built: <YYYY-MM-DD>
-Layer B version: <date of the catalog used — see catalog/index.yaml header>
-```
 
-## Per-question entry
+## Dimensions — what groups the §1 tables
 
-One entry per substantive question. Skip pure admin fields (`calculate`, `note`,
-`begin_group`/`end_group`) unless they carry analytical content.
+Group by **sector**, plus any **cross-cutting lens**. **There is no pillar/subpillar
+table.** In the Layer B catalog every indicator shares the same 2D anchor
+(`humanitarian_conditions / living_standards`, except `rcsi` which is
+`…_coping_mechanisms`), so a "by pillar" table would only duplicate the sector table.
+The pillar/subpillar route is recorded in the spec **header** (`layer_a_route`), not as
+a grouping.
 
-```
-### <VARIABLE_NAME>
+So `dimension` takes the form `sector::<SECTOR>` (e.g. `sector::WASH`) or
+`cross_cutting::<LENS>` (e.g. `cross_cutting::CCCM`). Each indicator appears **once**,
+under its own dimension. There is no inherit-and-cross-reference case.
 
-Question: <full label text from the survey sheet>
-Type: <select_one / select_multiple / integer / decimal / text / geopoint / date>
-Module: <survey group/module name>
-Skip logic: <relevant condition verbatim, or "always asked">
+## The `measurable` verdict rules (unchanged from the old "Coverage")
 
-Answer options:
-| Code | Label |
-|------|-------|
-| <code> | <label> |
-(or: N/A for free-text and numeric types)
-
-Layer B indicator(s): <comma-separated indicator ids from Step 2, or NONE>
-Coverage verdict: <DIRECT / PROXY / NONE>
-What this can prove: <one sentence>
-What this cannot prove: <one sentence — ALWAYS complete, even for DIRECT>
-```
-
-## Coverage verdict rules
+The surfaced column is now named **Measurable** — it answers *can this catalog
+indicator be measured from this instrument?* The three values are unchanged:
 
 **`DIRECT`** — use only when ALL hold:
 - collects the exact construct the indicator requires (correct unit, recall period, response format);
@@ -51,19 +83,36 @@ What this cannot prove: <one sentence — ALWAYS complete, even for DIRECT>
 - different unit of analysis (KI community estimate for a household indicator); OR
 - one or more required criteria missing (e.g. source type present but collection time absent).
 
-**`NONE`** — the question maps to no Layer B indicator.
+**`NONE`** — the question maps to no Layer B indicator, or the indicator is requested
+but the instrument cannot compute it. A `NONE` indicator is recorded (it is a documented
+blind spot) but **Step 4 must never report it as a finding**.
 
-## Two gap lists (required, at the end)
+The `reasons` field is where "what this binding proves / blocks" goes — every entry,
+including `DIRECT`, must say what it *cannot* prove. That is the field that forces honest
+scoping.
 
-```
-## Blind spots
+## The rendered markdown (generated by `render_spec.py` — do not author by hand)
 
-### Questions with no Layer B indicator
-- <variable>: <one line — what it collected, why no indicator covers it>
+The renderer emits exactly these sections, and nothing else:
 
-### Step-2 indicators this instrument cannot compute
-- <indicator id>: <one line — what is missing from the instrument>
-```
+- **Header** — title (`# Analysis Spec — <dataset>`), the status line
+  (unit_of_analysis · layer_b_version · n), the **Route** line
+  (Sector · Pillar · Subpillar · Cross-cutting — this is where pillar/subpillar live),
+  and `☐ DRAFT → ☐ REVIEWED → ☐ APPROVED → ☐ ANALYSIS RUN`.
+- **§1 Coverage map** — one table per dimension that carries indicators (one per sector;
+  plus one per cross-cutting lens). Columns:
+  **Indicator | Definition (catalog) | Measurable | Reasons (proves / blocks) |
+  Variables in the dataset | Indicator name in the analysis**.
+- **§1b Disaggregation** — its own section: the groups table, source variables, the
+  trigger line, and the "pooled figure not acceptable" rule.
+- **§2 Pass criteria — gates** — one `☐` row per `gates[]` entry.
 
-These two lists are the whole point of Layer C: they are the constraints Step 4's
-analysis must respect. An indicator that lands here cannot be reported as a finding.
+> The renderer does **not** emit prose "errors pre-empted" or "WILL / WILL NOT"
+> sections. Those existed in an early hand-written mock-up but are not generated; if
+> wanted later they must be driven from YAML fields first (a top-level `errors:` list and
+> per-indicator `max_output`/`forbid`) and the renderer extended. Treat that as a
+> separate, optional enhancement.
+
+A worked example lives in
+`12_layout_exploration/output/format_examples/format_1_REVISED_contract.yaml` (the spec)
+and `…/format_1_REVISED_analysis_spec.md` (its rendered view).

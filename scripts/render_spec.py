@@ -16,6 +16,20 @@ import argparse
 import sys
 import yaml
 
+def cell(text):
+    """Make a value safe for a single Markdown table cell.
+    Collapses all whitespace (including newlines from YAML block scalars) to single spaces
+    and escapes pipes so they don't split the cell.
+    """
+    if text is None:
+        return "—"
+    s = str(text)
+    s = s.replace("\r\n", "\n").replace("\r", "\n")
+    s = " ".join(s.split())        # collapse all whitespace runs (incl. newlines) to single spaces
+    s = s.replace("|", "\\|")      # escape pipes so they don't split the cell
+    return s or "—"
+
+
 DIM_LABEL = {
     "sector": "Sector",
     "pillar": "Pillar (2D)",
@@ -113,10 +127,28 @@ def render(spec):
         out.append(SEP)
         for rid, v in by_dim[full]:
             out.append(
-                f"| {v.get('label', rid)} | {v.get('definition','—')} "
-                f"| {v.get('measurable','—')} | {v.get('reasons','—')} "
-                f"| {fmt_vars(v)} | {fmt_result_id(rid, v)} |"
+                "| " + cell(v.get('label', rid))
+                + " | " + cell(v.get('definition', '—'))
+                + " | " + cell(v.get('measurable', '—'))
+                + " | " + cell(v.get('reasons', '—'))
+                + " | " + fmt_vars(v)
+                + " | " + fmt_result_id(rid, v) + " |"
             )
+        out.append("")
+
+    # ---- §1c uncovered modules ----
+    uncovered = spec.get("uncovered_modules")
+    if uncovered:
+        section_count = len(order) + 1
+        out.append(f"### 1.{section_count} Survey modules with no Layer B indicator")
+        out.append("")
+        out.append("| Module | Variables | Note |")
+        out.append("|---|---|---|")
+        for entry in uncovered:
+            mod = cell(entry.get("module", "—"))
+            vars_str = ", ".join(f"`{v}`" for v in entry.get("variables", [])) or "—"
+            note = cell(entry.get("note", "no Layer B indicator"))
+            out.append(f"| {mod} | {vars_str} | {note} |")
         out.append("")
 
     # ---- §1b disaggregation ----
@@ -128,15 +160,25 @@ def render(spec):
         out.append("")
         out.append("Report **every indicator row above separately** for:")
         out.append("")
-        out.append("| Group | n | Source variable |")
-        out.append("|---|---|---|")
+        groups = dis.get("groups", {})
         srcs = ", ".join(f"`{s}`" for s in dis.get("source_variables", []))
-        for g, n in dis.get("groups", {}).items():
-            out.append(f"| {g} | {n} | {srcs} |")
+        # Only show n column if at least one group has a real count
+        has_counts = any(v is not None for v in groups.values())
+        if has_counts:
+            out.append("| Group | n | Source variable |")
+            out.append("|---|---|---|")
+            for g, n in groups.items():
+                n_val = cell(str(n)) if n is not None else "—"
+                out.append(f"| {cell(g)} | {n_val} | {srcs} |")
+        else:
+            out.append("| Group | Source variable |")
+            out.append("|---|---|")
+            for g in groups:
+                out.append(f"| {cell(g)} | {srcs} |")
         out.append("")
         trig = dis.get("trigger")
         if trig:
-            out.append(f"**Trigger:** {trig}. A single pooled figure per indicator is "
+            out.append(f"**Trigger:** {cell(trig)}. A single pooled figure per indicator is "
                        f"**not** acceptable — each table must carry every group.")
             out.append("")
 
@@ -150,7 +192,7 @@ def render(spec):
         out.append("| Gate | Pass condition | ☐ |")
         out.append("|---|---|---|")
         for g in gates:
-            out.append(f"| {g.get('id','—')} | {g.get('assert','—')} | ☐ |")
+            out.append(f"| {cell(g.get('id','—'))} | {cell(g.get('assert','—'))} | ☐ |")
         out.append("")
 
     return "\n".join(out) + "\n"

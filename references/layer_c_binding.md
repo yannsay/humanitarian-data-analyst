@@ -41,19 +41,35 @@ If the analyst asks for a change, edit the `.yaml` and re-render. Never patch th
 The analyst does not need to understand the split — they just sign off on the rendered
 markdown.
 
-## Reading a Kobo/ODK XLS
+## Reading a Kobo/ODK XLS — use the cache script
 
-A Kobo XLSForm has two sheets that matter:
+Sheet names and formats vary across deployments. Always run two phases:
 
-- **`survey`** — one row per question: `type`, `name` (the variable), `label`, and
-  `relevant` (skip logic). Types like `calculate`, `note`, `begin_group`, `end_group`
-  are structural — skip them unless they carry analytical content.
-- **`choices`** — answer options, grouped by `list_name`; a `select_one foo` question in
-  `survey` draws its options from the `foo` list here.
+**Phase 1 — inspect sheets:**
+```
+python3 scripts/read_kobo.py <dataset>.xlsx --list-sheets
+```
+This prints the workbook's sheet names as JSON. Read the output to identify the survey
+sheet, choices sheet, and (if present) a response/data sheet. Many instrument-only
+files have no response sheet — `n_total` will be null, which is fine.
 
-Join them: for each substantive `survey` row, pull its options from `choices` by list
-name. (Read the sheets directly, or use pandas — `pd.read_excel(path,
-sheet_name=["survey","choices"])` — whichever is available.)
+**Phase 2 — parse:**
+```
+python3 scripts/read_kobo.py <dataset>.xlsx --slug <slug> \
+    --survey-sheet "<name>" --choices-sheet "<name>"
+    [--data-sheet "<name>"]   # only if a response sheet exists
+```
+This writes `kobo_<slug>.json` next to the dataset. Read that JSON for **all**
+subsequent instrument lookups. Do not call `load_workbook` / `read_excel` inline again —
+one parse per run is the contract.
+
+The JSON contains `survey` (one entry per row, including structural rows tagged
+`is_structural: true`), `choices` (keyed by `list_name`), `n_total` (null if no data
+sheet), and `sheet_names`. See `scripts/read_kobo.py` docstring for the full shape.
+
+The underlying XLSForm structure for reference: the `survey` sheet has `type`,
+`name` (variable), `label`, and `relevant` (skip logic). The `choices` sheet groups
+options by `list_name`. `select_one foo` draws its options from the `foo` list.
 
 ## The binding: indicators → dataset variables
 
@@ -67,6 +83,23 @@ to catch.
 
 Pull each indicator's `definition` **verbatim from the catalog** — never paraphrase. The
 definition is what the analyst signs off against and what `verify_spec.py` string-matches.
+
+**Every indicator id in the spec must be an id present in `catalog/index.yaml`.** If a
+survey module has no matching catalog indicator, record it in the spec's
+`uncovered_modules:` block (module name + variables + "no Layer B indicator") rather than
+inventing a new id. Inventing an indicator id or writing a definition not copied verbatim
+from the catalog is a hard error.
+
+**`result_ids` must match the binding verdict.** A PROXY row lists only the proxy
+result id(s) consistent with its stated `max_output`, not the full ladder of rung ids it
+explicitly cannot compute. If `reasons`/`max_output` say a rung distribution is
+impossible, those rung ids must not appear in `result_ids`. `NONE` rows list no
+`result_ids`.
+
+**Variables named in `reasons` must equal the `variables` list.** Cross-check against
+`kobo_<slug>.json` before writing the row. If the prose in `reasons` describes question X
+but `variables` lists question Y, resolve the discrepancy — the binding's prose and the
+bound variable must agree.
 
 ## Always state what the binding cannot prove
 

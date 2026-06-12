@@ -21,12 +21,17 @@ step. This file is the durable record; the in-session task list mirrors it.
 - [ ] Emitted the indicator list, carrying indicator ids forward
 
 ## Step 3 — Bind (Layer C) — emit the analysis spec
-- [ ] Read the Kobo/ODK survey + choices sheets
+- [ ] Ran read_kobo.py once; reading kobo_<slug>.json for all instrument lookups
 - [ ] Proposed each Step-2 indicator's binding: variable(s), measurable verdict
       (DIRECT/PROXY/NONE), reasons, definition verbatim from the catalog
-- [ ] Wrote analysis_spec_<slug>.yaml (one entry per indicator; disaggregation block; gates)
+- [ ] Every indicator id verified against catalog/index.yaml (no invented ids)
+- [ ] result_ids consistent with measurable verdict and max_output (no rung fan-out for PROXY/NONE)
+- [ ] variables list matches the variable(s) named in reasons (cross-checked against kobo json)
+- [ ] Uncovered modules recorded under uncovered_modules: (not as invented indicators)
+- [ ] Wrote analysis_spec_<slug>.yaml (one entry per indicator; disaggregation block; uncovered_modules; gates)
 - [ ] Rendered analysis_spec_<slug>.md via scripts/render_spec.py (did NOT hand-edit it)
-- [ ] Presented the .md to the analyst for sign-off (edits go to the .yaml, then re-render)
+- [ ] Presented the .md and STOPPED for sign-off (edits go to the .yaml, then re-render)
+- [ ] Analyst gave EXPLICIT approval before any Step 4 work
 
 ## Step 4 — Analyse
 - [ ] (stub — not yet implemented; stop here and report)

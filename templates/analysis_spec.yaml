@@ -42,6 +42,12 @@ indicators:
   # <result_id_2>:
   #   ...
 
+uncovered_modules:                       # survey modules with no matching Layer B indicator
+  # Record here instead of inventing a catalog id.
+  # - module: <module or group name>
+  #   variables: [<var>, ...]
+  #   note: "no Layer B indicator — <reason>"
+
 gates:                                   # all must hold before Step 4 ships a report
   - id: G1
     assert: "<machine-checkable condition>"

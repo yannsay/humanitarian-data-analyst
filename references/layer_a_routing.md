@@ -59,8 +59,10 @@ node. A node file contains the full record:
      where the cross-sector entanglement is itself the analytical finding. If you can
      name one primary sector, use it.
 
-4. **Emit the routing table** exactly as specified in `SKILL.md`, then hand off to
-   Step 2. Do not begin analysis here.
+4. **Emit one compact trace line** exactly as specified in `SKILL.md`, then hand
+   off immediately to Step 2. Do not begin analysis here. Step 1 does **not** open
+   the dataset and does **not** select indicators — routing is about the question
+   only. Indicator relevance is Step 2's job.
 
 ## Worked example
 

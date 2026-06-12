@@ -79,14 +79,33 @@ preserving the full framework detail on demand.
 
 ## Provenance & citation
 
-Layer A is derived from the **HumSet** dataset and the DEEP humanitarian analytical
+This skill stands on work by others, and credit is due to them.
+
+**Layer A** is derived from the **HumSet** dataset and the DEEP humanitarian analytical
 framework (Data Friendly Space / The DEEP). Each node carries `excerpt_count` /
 `saturation_batches` fields for audit.
 
-If you use this skill or its ontology in published work, please cite HumSet
-(Fekih et al., 2022). Full BibTeX is in [`references/SOURCES.md`](references/SOURCES.md),
-and the repo ships a [`CITATION.cff`](CITATION.cff) so GitHub renders a
-"Cite this repository" button.
+**Layer B** (the indicator catalog) is drafted from authoritative humanitarian standards,
+authored by:
+
+- **WHO/UNICEF Joint Monitoring Programme (JMP)** — *Core Questions for Household
+  Surveys*, 2018 update — WASH service-ladder indicators.
+- **Sphere Association** — *The Sphere Handbook*, 2018 — water-quantity (15 L/p/d),
+  sanitation (1:20) and shelter floor-area (3.5 m²/person) standards.
+- **Global CCCM Cluster** — *Collective Centres Standards, Ukraine 2022* and *Minimum
+  Standards for Camp Management (CAMP-EN), 2021* — site-management indicators.
+- **WFP, the FSL cluster, and FANTA** — *FSL Indicator Handbook (2020)*, *WFP CARI
+  Guidelines (2021)*, and *FANTA HDDS Guidance* — food-security indicators (rCSI, FCS,
+  HDDS, and related).
+
+Per-indicator citations (document, table, page) live in each entry's `source:` block in
+`catalog/<cluster>.yaml`; see [`references/SOURCES.md`](references/SOURCES.md) for the
+full provenance summary.
+
+If you use this skill or its data in published work, please credit these source authors
+and cite the underlying standards directly, plus HumSet (Fekih et al., 2022) for the
+framework. The repo ships a [`CITATION.cff`](CITATION.cff) listing all of them, so GitHub
+renders a "Cite this repository" button.
 
 > Fekih, S., Tamagnone, N., Minixhofer, B., Shrestha, R., Contla, X., Oglethorpe, E.,
 > & Rekabsaz, N. (2022). *HumSet: Dataset of Multilingual Information Extraction and

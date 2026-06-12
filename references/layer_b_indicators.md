@@ -74,7 +74,25 @@ because the analysis didn't consult it. Consulting it is the whole point.
 Each selected indicator's `id` is the key Step 3 (Layer C) uses to bind survey
 questions. Keep the ids in the Step 2 output so the pipeline stays joined.
 
-## Sources
+## Where the indicators come from (provenance)
 
-See `references/SOURCES.md`. Indicator-level sources are in each catalog entry's
-`source` field.
+The catalog is not invented — every indicator is drafted from an authoritative
+humanitarian standard, and the citation travels with the entry:
+
+- **Per-cluster header** — the top comment of each `catalog/<cluster>.yaml` names the
+  documents it was drafted from (e.g. WASH ← JMP 2018 + Sphere 2018; CCCM ← CAMP-EN 2021
+  + Ukraine CC 2022 + Sphere 2018; Food Security ← WFP/FAO/FANTA methodologies).
+- **Per-indicator `source:` block** — most entries carry `source.primary` (document,
+  table, page), `source.secondary` (e.g. the SDG indicator), and a `source.note`.
+  Thresholds and code lists are cited inline in `formula` / `thresholds` /
+  `classification_rules` / `common_implementation_errors`.
+
+So when you pull a `definition` verbatim into the Step-3 spec, its source is one field
+away in the same entry — quote it under the rendered table (`caveat_field`) or in
+`reasons` when the provenance matters to the analyst. **The per-indicator `source:` block
+is the source of truth** if it ever disagrees with the index label (a few index labels
+were corrected post-drafting — see the `# CORRECTED` notes in `catalog/index.yaml`).
+
+Full provenance summary and citation guidance: `references/SOURCES.md`. The drafting +
+sanity-check protocol is in the parent project's `02_layer_b__indicator_extraction/` and
+`03_layer_b__catalog_eda_iteration/`.

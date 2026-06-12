@@ -1,8 +1,12 @@
 cff-version: 1.2.0
 message: >-
-  This skill derives its Layer A ontology from the HumSet dataset. If you use this
-  skill or its ontology in academic work, please cite the HumSet paper (see the
-  references section below).
+  This skill builds on the work of others. Its Layer A ontology derives from the
+  HumSet dataset, and its Layer B indicator catalog is drafted from authoritative
+  humanitarian standards authored by WHO/UNICEF (JMP), the Sphere Association, the
+  Global CCCM Cluster (CAMP-EN and the Ukraine Collective Centres standards), and
+  WFP / FSL cluster / FANTA (food-security methodologies). If you use this skill,
+  please credit those source authors and cite the works listed in the references
+  section below.
 title: "humanitarian-data-analyst (Agent Skill)"
 abstract: >-
   An Agent Skill for disciplined analysis of humanitarian needs-assessment data
@@ -20,7 +24,12 @@ keywords:
   - needs-assessment
   - humset
   - deep
+  - jmp
+  - sphere
+  - cccm
+  - food-security
 references:
+  # --- Layer A: analytical framework ---
   - type: conference-paper
     title: >-
       HumSet: Dataset of Multilingual Information Extraction and Classification
@@ -52,3 +61,57 @@ references:
     start: 4379
     end: 4389
     url: "https://aclanthology.org/2022.findings-emnlp.321"
+  # --- Layer B: indicator catalog source standards (WASH) ---
+  - type: report
+    title: >-
+      Core Questions on Drinking Water, Sanitation and Hygiene for Household
+      Surveys (2018 update)
+    authors:
+      - name: "WHO/UNICEF Joint Monitoring Programme for Water Supply, Sanitation and Hygiene (JMP)"
+    publisher:
+      name: World Health Organization and UNICEF
+    year: 2018
+    notes: "Source for the WASH cluster JMP service-ladder indicators."
+  - type: report
+    title: "The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (2018 edition)"
+    authors:
+      - name: "Sphere Association"
+    publisher:
+      name: Sphere Association
+    year: 2018
+    url: "https://spherestandards.org/handbook/"
+    notes: "Source for the Sphere WASH water-quantity (15 L/p/d) and sanitation (1:20) standards and the shelter floor-area standard (3.5 m2/person)."
+  # --- Layer B: indicator catalog source standards (CCCM / Shelter) ---
+  - type: report
+    title: "Collective Centres (CCs) Standards — Ukraine (May 2022)"
+    authors:
+      - name: "Global CCCM Cluster — Ukraine"
+    year: 2022
+    notes: "Source for the CCCM floor-area, heating, staffing, fire-safety and protection-reserve indicators."
+  - type: report
+    title: "Minimum Standards for Camp Management (2021 edition) (CAMP-EN)"
+    authors:
+      - name: "Global CCCM Cluster"
+    year: 2021
+    notes: "Source for the CCCM site-management-authority staffing indicator."
+  # --- Layer B: indicator catalog source standards (Food Security) ---
+  - type: report
+    title: "FSL Indicator Handbook (2020)"
+    authors:
+      - name: "Food Security and Livelihoods cluster"
+    year: 2020
+    notes: "Source for the food-security first-level outcome indicators (rCSI, FCS, HDDS, and related)."
+  - type: report
+    title: "Consolidated Approach for Reporting Indicators of Food Security (CARI) Guidelines (2nd edition)"
+    authors:
+      - name: "World Food Programme (WFP)"
+    publisher:
+      name: World Food Programme
+    year: 2021
+    notes: "Source for rCSI weights/methodology and FCS food-group weights and classification rules."
+  - type: report
+    title: "Household Dietary Diversity Score (HDDS) Guidance"
+    authors:
+      - name: "Food and Nutrition Technical Assistance (FANTA) Project"
+    url: "https://www.fantaproject.org/"
+    notes: "Source for the HDDS indicator."

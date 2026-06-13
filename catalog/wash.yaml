@@ -1,12 +1,12 @@
-# WASH Indicator Catalog — Layer B
+# WASH Indicator Catalog — Step 2 (indicator catalog)
 # Drafted from: JMP Core Questions for Household Surveys 2018 (WHO/UNICEF)
 # and: Collective Centers Standards Ukraine 2022 (CCCM Cluster, cross-referencing Sphere Handbook 2018)
-# Schema version: Layer B Phase 3
+# Schema version: catalog Phase 3
 
 - id: jmp_water_safely_managed
   label: "JMP Drinking Water — Safely Managed"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -112,7 +112,7 @@
 - id: jmp_water_basic
   label: "JMP Drinking Water — Basic"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -186,7 +186,7 @@
 - id: jmp_water_limited
   label: "JMP Drinking Water — Limited"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -250,7 +250,7 @@
 - id: jmp_water_unimproved
   label: "JMP Drinking Water — Unimproved"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -306,7 +306,7 @@
 - id: jmp_water_surface
   label: "JMP Drinking Water — Surface Water"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -362,7 +362,7 @@
 - id: jmp_water_ecoli_threshold
   label: "JMP Drinking Water — E. coli Quality Threshold (W6)"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -429,7 +429,7 @@
 - id: jmp_sanitation_safely_managed
   label: "JMP Sanitation — Safely Managed"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -524,7 +524,7 @@
 - id: jmp_sanitation_basic
   label: "JMP Sanitation — Basic"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -582,7 +582,7 @@
 - id: jmp_sanitation_limited
   label: "JMP Sanitation — Limited"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -640,7 +640,7 @@
 - id: jmp_sanitation_unimproved
   label: "JMP Sanitation — Unimproved"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -696,7 +696,7 @@
 - id: jmp_sanitation_open_defecation
   label: "JMP Sanitation — Open Defecation"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -755,7 +755,7 @@
 - id: jmp_hygiene_basic
   label: "JMP Hygiene — Basic"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -826,7 +826,7 @@
 - id: jmp_hygiene_limited
   label: "JMP Hygiene — Limited"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -879,7 +879,7 @@
 - id: jmp_hygiene_no_facility
   label: "JMP Hygiene — No Facility"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -929,7 +929,7 @@
 - id: jmp_menstrual_hygiene
   label: "JMP Menstrual Hygiene Management (MHM)"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -1022,7 +1022,7 @@
 - id: sphere_wash_water_quantity
   label: "Sphere WASH — Minimum Water Quantity Standard"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -1126,7 +1126,7 @@
 - id: sphere_wash_sanitation
   label: "Sphere WASH — Minimum Sanitation Standard (Latrine Ratio)"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]

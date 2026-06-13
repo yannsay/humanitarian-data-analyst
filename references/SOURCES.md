@@ -1,8 +1,8 @@
 # Sources & Provenance
 
-## Layer A — HumSet / DEEP analytical framework
+## Step 1 framework — HumSet / DEEP analytical framework
 
-The Layer A ontology (`ontology/`) is derived from the **HumSet** dataset and the
+The Step 1 framework ontology (`ontology/`) is derived from the **HumSet** dataset and the
 DEEP humanitarian analytical framework (Data Friendly Space / The DEEP). The 66
 nodes across 5 axes, their descriptions, synonyms, and `distinguish_from` fields
 were drafted from saturation sampling over the HumSet English corpus
@@ -37,7 +37,7 @@ HumSet:
 Consult the HumSet dataset terms for any restrictions on the underlying taxonomy and
 excerpts before redistribution.
 
-## Layer B — indicator catalog sources
+## Step 2 — indicator catalog sources
 
 The indicator catalog (`catalog/`, version 2026-05-20) holds 41 indicators across three
 clusters, each drafted from authoritative humanitarian standards. **Provenance lives in
@@ -59,7 +59,7 @@ The standards drawn on, by cluster:
 | **CCCM / Shelter** (15) | CAMP-EN 2021 (Camp Management standards); *Collective Centres Standards Ukraine 2022* (CCCM Cluster), which cross-references the Sphere Handbook 2018; Sphere shelter floor-area standard (3.5 m²/person). |
 
 To trace any single indicator's source, open its entry in `catalog/<cluster>.yaml` and
-read its `source:` block — that is the authoritative citation. `references/layer_b_indicators.md`
+read its `source:` block — that is the authoritative citation. `references/step_2_indicator_catalog.md`
 explains how to read the catalog. The catalog draft + sanity-check protocol is in the
 parent project's `02_layer_b__indicator_extraction/` and `03_layer_b__catalog_eda_iteration/`;
 the Step-13 plan adds per-threshold source hardening (document, section/page, verbatim

@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: >-
-  This skill builds on the work of others. Its Layer A ontology derives from the
-  HumSet dataset, and its Layer B indicator catalog is drafted from authoritative
+  This skill builds on the work of others. Its Step 1 framework ontology derives from the
+  HumSet dataset, and its Step 2 indicator catalog is drafted from authoritative
   humanitarian standards authored by WHO/UNICEF (JMP), the Sphere Association, the
   Global CCCM Cluster (CAMP-EN and the Ukraine Collective Centres standards), and
   WFP / FSL cluster / FANTA (food-security methodologies). If you use this skill,
@@ -9,10 +9,10 @@ message: >-
   section below.
 title: "humanitarian-data-analyst (Agent Skill)"
 abstract: >-
-  An Agent Skill for disciplined analysis of humanitarian needs-assessment data
-  (Kobo/ODK, RNA/MSNA/HNO). It routes analyst questions to the HumSet/DEEP
-  analytical framework (Layer A), identifies indicators (Layer B), binds datasets
-  (Layer C), and analyses with coverage discipline.
+  An Agent Skill — one worked example of a disciplined-analysis method — for
+  humanitarian needs-assessment data (Kobo/ODK, RNA/MSNA/HNO). It routes analyst
+  questions to the HumSet/DEEP analytical framework (Step 1), identifies indicators
+  in the catalog (Step 2), binds datasets (Step 3), and analyses with coverage discipline.
 authors:
   - given-names: Yann
 type: software
@@ -29,7 +29,7 @@ keywords:
   - cccm
   - food-security
 references:
-  # --- Layer A: analytical framework ---
+  # --- Step 1: analytical framework ---
   - type: conference-paper
     title: >-
       HumSet: Dataset of Multilingual Information Extraction and Classification
@@ -61,7 +61,7 @@ references:
     start: 4379
     end: 4389
     url: "https://aclanthology.org/2022.findings-emnlp.321"
-  # --- Layer B: indicator catalog source standards (WASH) ---
+  # --- Step 2: indicator catalog source standards (WASH) ---
   - type: report
     title: >-
       Core Questions on Drinking Water, Sanitation and Hygiene for Household
@@ -81,7 +81,7 @@ references:
     year: 2018
     url: "https://spherestandards.org/handbook/"
     notes: "Source for the Sphere WASH water-quantity (15 L/p/d) and sanitation (1:20) standards and the shelter floor-area standard (3.5 m2/person)."
-  # --- Layer B: indicator catalog source standards (CCCM / Shelter) ---
+  # --- Step 2: indicator catalog source standards (CCCM / Shelter) ---
   - type: report
     title: "Collective Centres (CCs) Standards — Ukraine (May 2022)"
     authors:
@@ -94,7 +94,7 @@ references:
       - name: "Global CCCM Cluster"
     year: 2021
     notes: "Source for the CCCM site-management-authority staffing indicator."
-  # --- Layer B: indicator catalog source standards (Food Security) ---
+  # --- Step 2: indicator catalog source standards (Food Security) ---
   - type: report
     title: "FSL Indicator Handbook (2020)"
     authors:

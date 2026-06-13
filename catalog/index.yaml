@@ -1,7 +1,7 @@
-# Layer B Catalog — Top-Level Retrieval Index
+# Indicator Catalog (Step 2) — Top-Level Retrieval Index
 # Version: 2026-05-20
 # Purpose: LLM-facing index of all 41 indicators. Each entry lists id, label, cluster,
-#          layer_a_anchor, and known synonyms. Use this file to route an indicator query
+#          step1_framework_anchor, and known synonyms. Use this file to route an indicator query
 #          to the correct full entry in the cluster YAML file.
 #
 # Cluster YAML files:
@@ -13,7 +13,7 @@
 #   id:              Canonical identifier matching the cluster YAML entry
 #   label:           Primary human-readable name
 #   cluster:         yaml file (food_security | wash | cccm)
-#   layer_a_anchor:  Sectors, pillars, and subpillars for cross-layer routing
+#   step1_framework_anchor:  Sectors, pillars, and subpillars for cross-layer routing
 #   synonyms:        Common alternative names or abbreviations for retrieval
 #   priority:        true = one of the four priority indicators with ≥4 impl errors
 # ─────────────────────────────────────────────────────────────────────────────
@@ -25,7 +25,7 @@
 - id: rcsi
   label: "Reduced Coping Strategies Index"
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_coping_mechanisms]
@@ -35,7 +35,7 @@
 - id: fcs
   label: "Food Consumption Score"
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -45,7 +45,7 @@
 - id: hdds
   label: "Household Dietary Diversity Score"
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -55,7 +55,7 @@
 - id: hhs
   label: "Household Hunger Scale"
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -65,7 +65,7 @@
 - id: hfias
   label: "Household Food Insecurity Access Scale"
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -75,7 +75,7 @@
 - id: cash_expenditure_food_share
   label: "% Total Cash Expenditure Spent on Food"
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -85,7 +85,7 @@
 - id: food_expenditure_share
   label: "% HHs with Food Expenditure >75% of Total Expenditure"
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -95,7 +95,7 @@
 - id: terms_of_trade
   label: "Terms of Trade of Key Commodities"
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -105,7 +105,7 @@
 - id: hea_survival_deficit
   label: "% HHs with Survival Deficit (HEA)"
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -119,7 +119,7 @@
 - id: jmp_water_safely_managed
   label: "JMP Drinking Water — Safely Managed"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -129,7 +129,7 @@
 - id: jmp_water_basic
   label: "JMP Drinking Water — Basic"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -139,7 +139,7 @@
 - id: jmp_water_limited
   label: "JMP Drinking Water — Limited"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -149,7 +149,7 @@
 - id: jmp_water_unimproved
   label: "JMP Drinking Water — Unimproved"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -159,7 +159,7 @@
 - id: jmp_water_surface
   label: "JMP Drinking Water — Surface Water"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -169,7 +169,7 @@
 - id: jmp_water_ecoli_threshold
   label: "JMP / Sphere E. coli threshold distinction"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -179,7 +179,7 @@
 - id: jmp_sanitation_safely_managed
   label: "JMP Sanitation — Safely Managed"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -189,7 +189,7 @@
 - id: jmp_sanitation_basic
   label: "JMP Sanitation — Basic"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -199,7 +199,7 @@
 - id: jmp_sanitation_limited
   label: "JMP Sanitation — Limited"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -209,7 +209,7 @@
 - id: jmp_sanitation_unimproved
   label: "JMP Sanitation — Unimproved"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -219,7 +219,7 @@
 - id: jmp_sanitation_open_defecation
   label: "JMP Sanitation — Open Defecation"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -229,7 +229,7 @@
 - id: jmp_hygiene_basic
   label: "JMP Hygiene — Basic"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -239,7 +239,7 @@
 - id: jmp_hygiene_limited
   label: "JMP Hygiene — Limited"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -249,7 +249,7 @@
 - id: jmp_hygiene_no_facility
   label: "JMP Hygiene — No Facility"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -259,7 +259,7 @@
 - id: jmp_menstrual_hygiene
   label: "JMP Menstrual Health and Hygiene"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -269,7 +269,7 @@
 - id: sphere_wash_water_quantity
   label: "Sphere WASH Water Quantity Standard (15 L/p/d)"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -279,7 +279,7 @@
 - id: sphere_wash_sanitation
   label: "Sphere WASH Sanitation Standard (1:20 ratio)"
   cluster: wash
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [wash]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -293,7 +293,7 @@
 - id: sphere_shelter_floor_area_minimum
   label: "Sphere minimum covered floor area per person (3.5 m²)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -303,7 +303,7 @@
 - id: cccm_shelter_floor_area_medium
   label: "Ukraine CC medium-term floor area standard (4.5–5 m²/person)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -313,7 +313,7 @@
 - id: cccm_shelter_floor_area_longterm
   label: "Ukraine CC long-term floor area standard (12.5 m² + 35 m² communal)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -323,7 +323,7 @@
 - id: cccm_heating_standard_rooms
   label: "Ukraine CC heating standard — standard rooms (min. 18°C)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -333,7 +333,7 @@
 - id: cccm_heating_corner_rooms
   label: "Ukraine CC heating standard — corner rooms (min. 22°C)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -347,7 +347,7 @@
 - id: cccm_sma_staffing_ratio
   label: "CAMP-EN SMA staffing ratio (1 team per 15,000 displaced)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -357,7 +357,7 @@
 - id: cccm_sms_staffing_ukraine
   label: "Ukraine CC SMS staffing ratio (≥6 staff per 1,000 HHs)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -372,7 +372,7 @@
 - id: cccm_staff_code_of_conduct
   label: "CC staff code of conduct compliance"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -382,7 +382,7 @@
 - id: cccm_staff_training
   label: "CC staff training adequacy"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -392,7 +392,7 @@
 - id: cccm_resident_participation_satisfaction
   label: "Resident satisfaction with participation opportunities"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -402,7 +402,7 @@
 - id: cccm_complaints_mechanism_awareness
   label: "Resident awareness of complaints and feedback mechanisms"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -412,7 +412,7 @@
 - id: cccm_governance_representation_satisfaction
   label: "Resident satisfaction with site governance representation"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -422,7 +422,7 @@
 - id: cccm_fire_safety
   label: "CC fire safety compliance (extinguisher + FA kit standard)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -432,7 +432,7 @@
 - id: cccm_protection_reserved_units
   label: "CC protection reserved housing units (up to 4 units or 1 apartment)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -442,7 +442,7 @@
 - id: cccm_protection_emergency_relocation_reserve
   label: "CC emergency relocation reserve (5% of housing units)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]

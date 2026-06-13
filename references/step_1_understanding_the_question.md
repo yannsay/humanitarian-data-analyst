@@ -1,13 +1,12 @@
-# Layer A — Routing Guide
+# Step 1 — Understanding the Question
 
-This is the detailed reference for **Step 1 — Route** of the pipeline. Read it when
-you need more than the procedure summary in `SKILL.md`.
+Detailed reference for routing. Read it when you need more than the procedure summary in `SKILL.md`.
 
-## What Layer A is
+## What the Step 1 framework is
 
 A YAML representation of the **HumSet/DEEP humanitarian analytical framework**: the
 controlled vocabulary humanitarian analysts already use to classify information. It
-has 66 nodes across five axes. Layer A answers one question: *what is this analyst
+has 66 nodes across five axes. The framework answers one question: *what is this analyst
 question about, and is it in scope for the rest of the pipeline?* It does no
 analysis itself.
 

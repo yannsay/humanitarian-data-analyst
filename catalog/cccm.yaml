@@ -1,4 +1,4 @@
-# CCCM Indicator Catalog — Layer B
+# CCCM Indicator Catalog — Step 2 (indicator catalog)
 # Drafted: 2026-05-20
 # Source documents:
 #   [1] "Collective Centers (CCs) standards – Ukraine, May 2022" (CCCM Cluster Ukraine)
@@ -13,7 +13,7 @@
 - id: sphere_shelter_floor_area_minimum
   label: "Sphere minimum covered floor area per person (3.5 m²)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -97,7 +97,7 @@
 - id: cccm_shelter_floor_area_medium
   label: "Ukraine CC medium-term floor area standard (4.5–5 m²/person)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -181,7 +181,7 @@
 - id: cccm_shelter_floor_area_longterm
   label: "Ukraine national long-term accommodation standard (12.5 m²/person + 35 m²/family)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -242,7 +242,7 @@
 - id: cccm_heating_standard_rooms
   label: "Minimum indoor heating temperature — standard rooms (≥18°C)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -301,7 +301,7 @@
 - id: cccm_heating_corner_rooms
   label: "Minimum indoor heating temperature — corner rooms (≥22°C)"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -358,7 +358,7 @@
 - id: cccm_sma_staffing_ratio
   label: "SMA staffing ratio — 1 site management team per 15,000 displaced persons"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -427,7 +427,7 @@
 - id: cccm_sms_staffing_ukraine
   label: "Ukraine SMS staffing ratio — ≥6 SMS staff per 1,000 households"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -483,7 +483,7 @@
 - id: cccm_staff_code_of_conduct
   label: "Staff Code of Conduct signature — 100%"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -539,7 +539,7 @@
 - id: cccm_staff_training
   label: "Staff training completion — 90%"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -595,7 +595,7 @@
 - id: cccm_resident_participation_satisfaction
   label: "Resident satisfaction with decision-making participation — 80%"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -663,7 +663,7 @@
 - id: cccm_complaints_mechanism_awareness
   label: "Awareness of feedback and complaints mechanisms — 90%"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -720,7 +720,7 @@
 - id: cccm_governance_representation_satisfaction
   label: "Site population satisfaction with governance representation — 90%"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -778,7 +778,7 @@
 - id: cccm_fire_safety
   label: "Fire safety equipment — 1 FA kit + 1 kg extinguishing agent per 25 m²"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -838,7 +838,7 @@
 - id: cccm_protection_reserved_units
   label: "Reserved housing units for vulnerable households — up to 4 units or 1 apartment per CC"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [access_and_security_of_tenure]
@@ -902,7 +902,7 @@
 - id: cccm_protection_emergency_relocation_reserve
   label: "Emergency relocation housing reserve — 5% of total units"
   cluster: cccm
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [shelter]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [access_and_security_of_tenure]

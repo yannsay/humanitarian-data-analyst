@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-render_spec.py — deterministic YAML -> Markdown renderer for the Layer C analysis spec.
+render_spec.py — deterministic YAML -> Markdown renderer for the Step 3 binding analysis spec.
 
 The YAML spec is the source of truth. This script ONLY formats what the spec already
 contains: no LLM, no catalog lookups, no network. Catalog/instrument certification is
@@ -80,9 +80,9 @@ def render(spec):
     out.append(f"# Analysis Spec — {require(spec, 'dataset')}")
     out.append("")
     out.append(f"**Unit of analysis:** {spec.get('unit_of_analysis', '—')} · "
-               f"**Layer B version:** {spec.get('layer_b_version', '—')} · "
+               f"**Catalog version (Step 2):** {spec.get('step2_catalog_version', '—')} · "
                f"**n:** {spec.get('n_total', '—')}")
-    route = spec.get("layer_a_route", {})
+    route = spec.get("step1_framework_route", {})
     if route:
         out.append(f"**Route:** Sector `{route.get('sector','—')}` · "
                    f"Pillar `{route.get('pillar_2d','—')}` · "
@@ -100,7 +100,7 @@ def render(spec):
     # catalog every indicator shares one pillar/subpillar anchor, so a pillar table
     # would only duplicate the sector table. There is therefore no inheritance to
     # cross-reference — each indicator simply appears once under its own dimension.
-    out.append("## 1. Coverage map — by Layer A dimension")
+    out.append("## 1. Coverage map — by framework dimension (Step 1)")
     out.append("")
     out.append("*One table per dimension that carries indicators (sector, plus any "
                "cross-cutting lens). The pillar/subpillar route is in the header above. "
@@ -108,9 +108,12 @@ def render(spec):
     out.append("")
 
     indicators = require(spec, "indicators")
-    # Group by full dimension string; sort within each group DIRECT→PROXY→NONE then id asc.
+    # Group by full dimension string; sort within each group MEASURABLE→PROXY→NOT_MEASURABLE then id asc.
     # This makes the rendered MD canonical regardless of YAML insertion order (D13).
-    MEASURABLE_RANK = {"DIRECT": 0, "PROXY": 1, "NONE": 2}
+    MEASURABLE_RANK = {"MEASURABLE": 0, "PROXY": 1, "NOT_MEASURABLE": 2}
+
+    # Human-readable verdict labels (internal YAML values → display)
+    VERDICT_LABEL = {"MEASURABLE": "Measurable", "PROXY": "Proxy", "NOT_MEASURABLE": "Not measurable"}
 
     order = []
     by_dim = {}
@@ -121,7 +124,7 @@ def render(spec):
         if full not in order:
             order.append(full)
 
-    # Sort each dimension's indicators: DIRECT first, then PROXY, then NONE, then id asc
+    # Sort each dimension's indicators: MEASURABLE first, then PROXY, then NOT_MEASURABLE, then id asc
     for full in order:
         by_dim[full].sort(
             key=lambda rv: (MEASURABLE_RANK.get(rv[1].get("measurable", ""), 9), rv[0])
@@ -135,13 +138,17 @@ def render(spec):
         out.append(COLS)
         out.append(SEP)
         for rid, v in by_dim[full]:
+            verdict_raw = v.get('measurable', '')
+            verdict_display = VERDICT_LABEL.get(verdict_raw, cell(verdict_raw))
+            # "Indicator name in the analysis" is empty for Not measurable rows
+            result_cell = "" if verdict_raw == "NOT_MEASURABLE" else fmt_result_id(rid, v)
             out.append(
                 "| " + cell(v.get('label', rid))
                 + " | " + cell(v.get('definition', '—'))
-                + " | " + cell(v.get('measurable', '—'))
+                + " | " + verdict_display
                 + " | " + cell(v.get('reasons', '—'))
                 + " | " + fmt_vars(v)
-                + " | " + fmt_result_id(rid, v) + " |"
+                + " | " + result_cell + " |"
             )
         out.append("")
 
@@ -149,14 +156,14 @@ def render(spec):
     uncovered = spec.get("uncovered_modules")
     if uncovered:
         section_count = len(order) + 1
-        out.append(f"### 1.{section_count} Survey modules with no Layer B indicator")
+        out.append(f"### 1.{section_count} Survey modules with no catalog indicator")
         out.append("")
         out.append("| Module | Variables | Note |")
         out.append("|---|---|---|")
         for entry in uncovered:
             mod = cell(entry.get("module", "—"))
             vars_str = ", ".join(f"`{v}`" for v in entry.get("variables", [])) or "—"
-            note = cell(entry.get("note", "no Layer B indicator"))
+            note = cell(entry.get("note", "no catalog indicator"))
             out.append(f"| {mod} | {vars_str} | {note} |")
         out.append("")
 

@@ -1,4 +1,4 @@
-# Layer A routing index - humanitarian-data-analyst skill
+# Step 1 framework routing index - humanitarian-data-analyst skill
 # Compact surface for routing analyst questions to ontology nodes.
 # Match the question against gist + synonyms, then open the file for the full
 # description, example_questions, and distinguish_from before committing.

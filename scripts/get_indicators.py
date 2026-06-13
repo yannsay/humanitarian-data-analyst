@@ -33,7 +33,7 @@ If an id is not found in any cluster, it appears in "not_found" list in the resp
 
 Default --fields: definition, formula, thresholds, common_implementation_errors,
                   ki_assessment_note, components_note
-(Omits: provenance, synonyms, layer_a_anchor, full components detail — fields that
+(Omits: provenance, synonyms, step1_framework_anchor, full components detail — fields that
  add bulk without helping the binding decision.)
 """
 import argparse

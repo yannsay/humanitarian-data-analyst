@@ -1,4 +1,4 @@
-# Analysis Spec — canonical template (Layer C, Step 3 output)
+# Analysis Spec — canonical template (Step 3 binding output)
 # Author THIS file first; render the .md from it with scripts/render_spec.py.
 # The .yaml is the source of truth; the .md is a generated view. Never hand-edit the .md.
 # Save as analysis_spec_<question-slug>.yaml in the analyst's working folder.
@@ -14,22 +14,22 @@ disaggregation:                          # its own block — not a per-indicator
   source_variables: [<var>, ...]
   trigger: <phrase in the question that required it, or "analyst-specified">
 
-layer_a_route:                           # carried from Step 1
+step1_framework_route:                   # carried from Step 1 (the analytical framework)
   sector: <ID>
   pillar_2d: <ID>
   subpillar_2d: <ID>
   cross_cutting: <ID or null>
 
-layer_b_version: <catalog date>          # see catalog/index.yaml header
+step2_catalog_version: <catalog date>    # see catalog/index.yaml header
 
 # One entry per indicator, de-duplicated. dimension is sector::X or cross_cutting::X
-# (never pillar::/subpillar:: — the pillar route lives in layer_a_route above).
+# (never pillar::/subpillar:: — the pillar route lives in step1_framework_route above).
 indicators:
 
   <result_id>:
     dimension: <sector::SECTOR | cross_cutting::LENS>
-    definition: "<verbatim from the Layer B catalog — never paraphrase>"
-    measurable: <DIRECT | PROXY | NONE>
+    definition: "<verbatim from the indicator catalog (Step 2) — never paraphrase>"
+    measurable: <MEASURABLE | PROXY | NOT_MEASURABLE>
     reasons: "<what the binding proves / blocks — always say what it CANNOT prove>"
     variables: [<dataset var>, ...]
     # optional fields, include when useful:
@@ -42,11 +42,11 @@ indicators:
   # <result_id_2>:
   #   ...
 
-uncovered_modules:                       # survey modules with no matching Layer B indicator
+uncovered_modules:                       # survey modules with no matching catalog indicator
   # Record here instead of inventing a catalog id.
   # - module: <module or group name>
   #   variables: [<var>, ...]
-  #   note: "no Layer B indicator — <reason>"
+  #   note: "no catalog indicator — <reason>"
 
 gates:                                   # all must hold before Step 4 ships a report
   - id: G1

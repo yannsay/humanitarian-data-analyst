@@ -18,7 +18,7 @@ Sector matching rules:
     - Case-insensitive; normalised to lowercase with underscores internally.
     - Aliases accepted: "food security" → food_security, "wash" → wash,
       "shelter" → shelter (cccm cluster uses sectors: [shelter]).
-    - Inclusion criterion: indicator's layer_a_anchor.sectors intersects --sectors.
+    - Inclusion criterion: indicator's step1_framework_anchor.sectors intersects --sectors.
     - Subpillars (optional): used ONLY for ordering/grouping, never to drop indicators.
 
 Output JSON:
@@ -99,7 +99,7 @@ def select(sectors_norm: list, subpillars: list, index: list):
 
     matched = []
     for entry in index:
-        anchor_sectors = entry.get("layer_a_anchor", {}).get("sectors", [])
+        anchor_sectors = entry.get("step1_framework_anchor", {}).get("sectors", [])
         # normalise anchor sectors for matching
         anchor_norm = [normalise_sector(s) for s in anchor_sectors]
         # check intersection

@@ -1,7 +1,6 @@
-# Layer C — Analysis Spec Schema
+# Step 3 binding — Analysis Spec Schema
 
-The exact format for what Step 3 produces. Step 3 no longer writes a passive
-per-question instrument inventory — it writes a **gated analysis spec**: the reviewable
+The exact format for what Step 3 produces. It writes a **gated analysis spec**: the reviewable
 plan that drives Step 4.
 
 **The `.yaml` is the spec (source of truth); the `.md` is generated from it by
@@ -27,18 +26,18 @@ disaggregation:                      # its own block — never a per-row column
   groups: { <group>: <n>, ... }
   source_variables: [<var>, ...]
   trigger: <phrase in the question that required it, or "analyst-specified">
-layer_a_route:                       # from Step 1
+step1_framework_route:               # from Step 1 (the analytical framework)
   sector: <ID>
   pillar_2d: <ID>
   subpillar_2d: <ID>
   cross_cutting: <ID or null>
-layer_b_version: <catalog date>
+step2_catalog_version: <catalog date>
 
 indicators:
   <result_id>:                       # the indicator id as it appears in the analysis
     dimension: <sector::X | cross_cutting::X>   # see "Dimensions" below
-    definition: "<verbatim from the Layer B catalog>"
-    measurable: <DIRECT | PROXY | NONE>
+    definition: "<verbatim from the indicator catalog (Step 2)>"
+    measurable: <MEASURABLE | PROXY | NOT_MEASURABLE>
     reasons: "<what the binding proves / blocks>"
     variables: [<dataset var>, ...]  # variable names from the instrument
     # optional, when useful to the analysis:
@@ -58,22 +57,23 @@ gates:                               # pass-criteria; all must hold before Step 
 ## Dimensions — what groups the §1 tables
 
 Group by **sector**, plus any **cross-cutting lens**. **There is no pillar/subpillar
-table.** In the Layer B catalog every indicator shares the same 2D anchor
+table.** In the indicator catalog every indicator shares the same 2D anchor
 (`humanitarian_conditions / living_standards`, except `rcsi` which is
 `…_coping_mechanisms`), so a "by pillar" table would only duplicate the sector table.
-The pillar/subpillar route is recorded in the spec **header** (`layer_a_route`), not as
+The pillar/subpillar route is recorded in the spec **header** (`step1_framework_route`), not as
 a grouping.
 
 So `dimension` takes the form `sector::<SECTOR>` (e.g. `sector::WASH`) or
 `cross_cutting::<LENS>` (e.g. `cross_cutting::CCCM`). Each indicator appears **once**,
 under its own dimension. There is no inherit-and-cross-reference case.
 
-## The `measurable` verdict rules (unchanged from the old "Coverage")
+## The `measurable` verdict rules
 
-The surfaced column is now named **Measurable** — it answers *can this catalog
-indicator be measured from this instrument?* The three values are unchanged:
+The surfaced column is named **Measurable** — it answers *can this catalog
+indicator be measured from this instrument?* The internal YAML values map to display
+labels as: `MEASURABLE` → Measurable, `PROXY` → Proxy, `NOT_MEASURABLE` → Not measurable.
 
-**`DIRECT`** — use only when ALL hold:
+**`MEASURABLE`** — use only when ALL hold:
 - collects the exact construct the indicator requires (correct unit, recall period, response format);
 - at the correct unit of analysis (household for household indicators, site for community indicators);
 - answer options map to the indicator's required categories without transformation.
@@ -83,19 +83,19 @@ indicator be measured from this instrument?* The three values are unchanged:
 - different unit of analysis (KI community estimate for a household indicator); OR
 - one or more required criteria missing (e.g. source type present but collection time absent).
 
-**`NONE`** — the question maps to no Layer B indicator, or the indicator is requested
-but the instrument cannot compute it. A `NONE` indicator is recorded (it is a documented
+**`NOT_MEASURABLE`** — the question maps to no catalog indicator, or the indicator is requested
+but the instrument cannot compute it. A `NOT_MEASURABLE` indicator is recorded (it is a documented
 blind spot) but **Step 4 must never report it as a finding**.
 
 The `reasons` field is where "what this binding proves / blocks" goes — every entry,
-including `DIRECT`, must say what it *cannot* prove. That is the field that forces honest
+including `MEASURABLE`, must say what it *cannot* prove. That is the field that forces honest
 scoping.
 
 **`result_ids` constraint:** list only the outputs the binding can actually produce given
-its `measurable` verdict and `max_output`. A PROXY that yields a source-type prevalence
+its `measurable` verdict and `max_output`. A `PROXY` that yields a source-type prevalence
 or an ordinal estimate lists the **proxy** result id, not the full ladder of rung ids it
 explicitly cannot compute. If `reasons`/`max_output` say a rung distribution is
-impossible, its rung ids must **not** appear in `result_ids`. `NONE` rows list no
+impossible, its rung ids must **not** appear in `result_ids`. `NOT_MEASURABLE` rows list no
 `result_ids`.
 
 ## The rendered markdown (generated by `render_spec.py` — do not author by hand)
@@ -103,7 +103,7 @@ impossible, its rung ids must **not** appear in `result_ids`. `NONE` rows list n
 The renderer emits exactly these sections, and nothing else:
 
 - **Header** — title (`# Analysis Spec — <dataset>`), the status line
-  (unit_of_analysis · layer_b_version · n), the **Route** line
+  (unit_of_analysis · step2_catalog_version · n), the **Route** line
   (Sector · Pillar · Subpillar · Cross-cutting — this is where pillar/subpillar live),
   and `☐ DRAFT → ☐ REVIEWED → ☐ APPROVED → ☐ ANALYSIS RUN`.
 - **§1 Coverage map** — one table per dimension that carries indicators (one per sector;

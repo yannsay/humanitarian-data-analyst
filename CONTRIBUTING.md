@@ -26,18 +26,20 @@ skills-ref validate humanitarian-data-analyst
 
 CI runs this on every push and PR (see `.github/workflows/validate.yml`).
 
-## Adding a layer (B / C / analysis)
+## Implementing a step (currently Step 4 — Analysis is a stub)
 
-The pipeline steps in `SKILL.md` for Layers B, C, and analysis are stubs. To
-implement one:
+Steps 1–3 are implemented; Step 4 (Analysis) is a stub. To implement it (or to
+extend an earlier step):
 
-1. Replace the relevant `references/layer_*.md` stub with the real guide.
-2. For data-bearing layers (B), mirror the Layer A pattern: a compact
-   `<layer>/index.yaml` routing surface + per-item files loaded on demand. Keep
-   `SKILL.md` thin — it conducts; the heavy material lives in resource files loaded
-   only when that step runs.
+1. Replace the relevant `references/step_*.md` stub (e.g. `references/analysis.md`)
+   with the real guide.
+2. For a data-bearing step (like the Step 2 catalog), mirror the Step 1 framework
+   pattern: a compact `index.yaml` routing surface + per-item files loaded on demand.
+   Keep `SKILL.md` thin — it conducts; the heavy material lives in resource files
+   loaded only when that step runs.
 3. Flip the step's status marker in `SKILL.md` from 🚧 to ✅.
 
 ## Provenance
 
-Cite sources for any data you add. Layer A cites HumSet — see `references/SOURCES.md`.
+Cite sources for any data you add. The Step 1 framework cites HumSet — see
+`references/SOURCES.md`.

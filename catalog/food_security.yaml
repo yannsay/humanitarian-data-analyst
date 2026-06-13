@@ -1,4 +1,4 @@
-# Layer B — Food Security Indicator Catalog
+# Food Security Indicator Catalog — Step 2 (indicator catalog)
 # Generated: 2026-05-20
 # Sources: FSL Indicator Handbook (2020); WFP CARI Guidelines (2021) [wfp211058.pdf, wfp197216.pdf]
 # Phase 3: LLM-drafted, no human review. Eval catches drafting errors.
@@ -6,7 +6,7 @@
 - id: rcsi
   label: Reduced Coping Strategies Index
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_coping_mechanisms]
@@ -124,7 +124,7 @@
 - id: fcs
   label: Food Consumption Score
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -252,7 +252,7 @@
 - id: hdds
   label: Household Dietary Diversity Score
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -302,7 +302,7 @@
 - id: hhs
   label: Household Hunger Scale
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -357,7 +357,7 @@
 - id: hfias
   label: Household Food Insecurity Access Scale
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -398,7 +398,7 @@
 - id: cash_expenditure_food_share
   label: "% Total Cash Expenditure Spent on Food"
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -437,7 +437,7 @@
 - id: food_expenditure_share
   label: "% HHs with Food Expenditure >75% of Total Expenditure"
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -474,7 +474,7 @@
 - id: terms_of_trade
   label: Terms of Trade of Key Commodities
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]
@@ -505,7 +505,7 @@
 - id: hea_survival_deficit
   label: "% HHs with Survival Deficit (HEA)"
   cluster: food_security
-  layer_a_anchor:
+  step1_framework_anchor:
     sectors: [food_security]
     pillars_2d: [humanitarian_conditions]
     subpillars_2d: [humanitarian_conditions_living_standards]

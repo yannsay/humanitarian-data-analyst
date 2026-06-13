@@ -3,13 +3,14 @@
 An [Agent Skill](https://agentskills.io) for disciplined analysis of humanitarian
 needs-assessment data (Kobo/ODK surveys, RNA/MSNA/HNO datasets).
 
-It runs a four-step pipeline between an analyst's free-text question and a raw
-survey:
+It is **one worked example** of a disciplined-analysis method — a reference pipeline,
+not the only way to do this. It runs four steps between an analyst's free-text question
+and a raw survey:
 
-1. **Route** (Layer A) — map the question to the HumSet/DEEP analytical framework.
-2. **Indicators** (Layer B) — identify the indicators that answer it. *(stub)*
-3. **Bind** (Layer C) — map the survey's questions to indicators; surface gaps. *(stub)*
-4. **Analyse** — produce a grounded answer caveated by what the data can prove. *(stub)*
+1. **Route** (Step 1) — map the question to the HumSet/DEEP analytical framework.
+2. **Indicators** (Step 2) — identify the catalog indicators that answer it.
+3. **Bind** (Step 3) — map the survey's questions to indicators; surface gaps.
+4. **Analyse** (Step 4) — produce a grounded answer caveated by what the data can prove. *(stub)*
 
 The point of the pipeline is to **force the consult step**. Generic LLM analysis of
 humanitarian data knows the right methodology but skips it under the pressure of
@@ -18,12 +19,12 @@ not passive context.
 
 ## Status
 
-| Layer | Status |
+| Step | Status |
 |-------|--------|
-| A — Framework routing (66 nodes, 5 axes, HumSet/DEEP) | ✅ implemented |
-| B — Indicator catalog (41 indicators: WASH, Food Security, Shelter/CCCM) | ✅ implemented |
-| C — Dataset binding (built per dataset from the Kobo/ODK instrument) | ✅ implemented |
-| Analysis | 🚧 stub |
+| 1 — Framework routing (66 nodes, 5 axes, HumSet/DEEP) | ✅ implemented |
+| 2 — Indicator catalog (41 indicators: WASH, Food Security, Shelter/CCCM) | ✅ implemented |
+| 3 — Dataset binding (built per dataset from the Kobo/ODK instrument) | ✅ implemented |
+| 4 — Analysis | 🚧 stub |
 
 The skill opens by writing a checklist to disk (in the analyst's working folder) and
 mirroring it as a task list, then iterates Route → Indicators → Bind → Analyse —
@@ -45,31 +46,31 @@ request involves humanitarian assessment data.
 humanitarian-data-analyst/
 ├── SKILL.md                      # the pipeline conductor (loaded on activation)
 ├── references/
-│   ├── layer_a_routing.md        # full routing guide + worked examples
-│   ├── layer_b_indicators.md     # catalog guide + anchor-matching rules
-│   ├── layer_c_binding.md        # stub
+│   ├── step_1_understanding_the_question.md   # routing guide + worked examples
+│   ├── step_2_indicator_catalog.md            # catalog guide + how to use the scripts
+│   ├── step_3_mapping_to_dataset.md           # binding guide + kobo query modes
 │   └── analysis.md               # stub
-├── ontology/                     # Layer A data
+├── ontology/                     # Step 1 framework data
 │   ├── index.yaml                # compact routing surface — all 66 nodes
 │   ├── sectors/                  # 11 nodes
 │   ├── pillars_1d/               # 6 nodes
 │   ├── subpillars_1d/            # 27 nodes
 │   ├── pillars_2d/               # 6 nodes
 │   └── subpillars_2d/            # 16 nodes
-├── catalog/                      # Layer B data
-│   ├── index.yaml                # routing surface — all 41 indicators + layer_a_anchor
+├── catalog/                      # Step 2 indicator catalog data
+│   ├── index.yaml                # routing surface — all 41 indicators + step1_framework_anchor
 │   ├── food_security.yaml        # 9 indicators
 │   ├── wash.yaml                 # 17 indicators
 │   └── cccm.yaml                 # 15 indicators (Shelter)
 ├── bindings/
-│   └── schema.md                 # Layer C instrument-map format (built per dataset)
+│   └── schema.md                 # Step 3 binding spec format (built per dataset)
 ├── templates/
 │   └── checklist.md              # disk-persisted run checklist (copied per analysis)
 ├── LICENSE
 └── package.json
 ```
 
-## How Layer A works (progressive disclosure)
+## How Step 1 framework routing works (progressive disclosure)
 
 The agent never loads the whole 180 KB ontology. On a question it reads
 `ontology/index.yaml` (a compact gist+synonyms line per node), matches the topic,
@@ -81,11 +82,11 @@ preserving the full framework detail on demand.
 
 This skill stands on work by others, and credit is due to them.
 
-**Layer A** is derived from the **HumSet** dataset and the DEEP humanitarian analytical
-framework (Data Friendly Space / The DEEP). Each node carries `excerpt_count` /
+**The Step 1 framework** is derived from the **HumSet** dataset and the DEEP humanitarian
+analytical framework (Data Friendly Space / The DEEP). Each node carries `excerpt_count` /
 `saturation_batches` fields for audit.
 
-**Layer B** (the indicator catalog) is drafted from authoritative humanitarian standards,
+**The Step 2 indicator catalog** is drafted from authoritative humanitarian standards,
 authored by:
 
 - **WHO/UNICEF Joint Monitoring Programme (JMP)** — *Core Questions for Household
